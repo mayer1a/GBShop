@@ -20,6 +20,7 @@
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
 		49556385299A5D7500A22FA4 /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556384299A5D7500A22FA4 /* AbstractRequestFactory.swift */; };
 		49556387299A5DAC00A22FA4 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556386299A5DAC00A22FA4 /* RequestRouter.swift */; };
+		4955638B299A60D300A22FA4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955638A299A60D300A22FA4 /* User.swift */; };
 		D0ADFA0639C4A554631362D0 /* Pods_GBShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651030857E73926EFCE8B55D /* Pods_GBShop.framework */; };
 		DA87668F219EDCEDE8B76805 /* Pods_GBShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027FD96B06793DC752BC5EDD /* Pods_GBShopTests.framework */; };
 		E250272AB4681411EF38AEC1 /* Pods_GBShop_GBShopUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A296522750E3ACE2BFBFB81 /* Pods_GBShop_GBShopUITests.framework */; };
@@ -64,6 +65,7 @@
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
 		49556384299A5D7500A22FA4 /* AbstractRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRequestFactory.swift; sourceTree = "<group>"; };
 		49556386299A5DAC00A22FA4 /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
+		4955638A299A60D300A22FA4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4DEB6DE04907C8C8475F91E6 /* Pods-GBShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShopTests.release.xcconfig"; path = "Target Support Files/Pods-GBShopTests/Pods-GBShopTests.release.xcconfig"; sourceTree = "<group>"; };
 		651030857E73926EFCE8B55D /* Pods_GBShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A664AB45FB5413477C57005 /* Pods-GBShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop.debug.xcconfig"; path = "Target Support Files/Pods-GBShop/Pods-GBShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		491B35CD2997F95700323789 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				4955638A299A60D300A22FA4 /* User.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
 				491B359C2997DB2300323789 /* ViewController.swift in Sources */,
 				491B35982997DB2300323789 /* AppDelegate.swift in Sources */,
+				4955638B299A60D300A22FA4 /* User.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
