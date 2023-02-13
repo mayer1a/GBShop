@@ -20,6 +20,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        testRequests()
+
+        return true
+    }
+
+    private func testRequests() {
+        authRequest()
+        regRequest()
+    }
+
+    // MARK: - Registration request
+
+    private func regRequest() {
+        let reg = requestFactory.makeRegistrationRequestFactory()
+
+        reg.registration(
+            userId: UniqueID.getUniqueId(),
+            username: "Somebody",
+            password: "mypassword",
+            email: "some@some.ru",
+            gender: "m",
+            creditCardNumber: "9872389-2424-234224-234",
+            aboutMe: "This is good! I think I will switch to another language"
+        ) { response in
+            switch response.result {
+            case .success(let message):
+                print(message)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    // MARK: - Authorization request
+
+    private func authRequest() {
         let auth = requestFactory.makeAuthRequestFatory()
 
         auth.login(userName: "Somebody", password: "mypassword") { response in
@@ -30,8 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
-
-        return true
     }
 
     // MARK: UISceneSession Lifecycle
