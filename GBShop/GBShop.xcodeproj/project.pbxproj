@@ -244,11 +244,19 @@
 		4955638E299A619500A22FA4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				49556397299A696900A22FA4 /* AuthRequestFactory.swift */,
-				49556399299A69B900A22FA4 /* Auth.swift */,
+				49B7785B299A9C7500597F11 /* Authorization */,
 				4955639B299A6A6A00A22FA4 /* RequestFactory.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		49B7785B299A9C7500597F11 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				49556399299A69B900A22FA4 /* Auth.swift */,
+				49556397299A696900A22FA4 /* AuthRequestFactory.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		F351701F64643EF08213C141 /* Pods */ = {
