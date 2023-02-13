@@ -70,7 +70,6 @@ extension Registration: RegistrationRequestFactory {
     // MARK: - Functions
 
     func registration(
-        userId: Int,
         username: String,
         password: String,
         email: String,
@@ -81,7 +80,7 @@ extension Registration: RegistrationRequestFactory {
     ) {
         let requestModel = Registration(
             baseUrl: self.baseUrl,
-            userId: userId,
+            userId: UniqueID.getUniqueId(),
             username: username,
             password: password,
             email: email,

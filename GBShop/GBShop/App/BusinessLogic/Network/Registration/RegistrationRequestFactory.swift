@@ -12,7 +12,6 @@ protocol RegistrationRequestFactory {
     // MARK: - Functions
 
     func registration(
-        userId: Int,
         username: String,
         password: String,
         email: String,

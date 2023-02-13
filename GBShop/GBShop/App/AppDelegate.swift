@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reg = requestFactory.makeRegistrationRequestFactory()
 
         reg.registration(
-            userId: UniqueID.getUniqueId(),
             username: "Somebody",
             password: "mypassword",
             email: "some@some.ru",
