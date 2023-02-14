@@ -17,6 +17,7 @@
 		491B35BB2997DB2400323789 /* GBShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35BA2997DB2400323789 /* GBShopUITestsLaunchTests.swift */; };
 		4928AD09299B493D00B665C8 /* LogoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928AD08299B493D00B665C8 /* LogoutResult.swift */; };
 		4928AD0B299B4A1500B665C8 /* LogoutRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928AD0A299B4A1500B665C8 /* LogoutRequestFactory.swift */; };
+		4928AD0D299B4B2B00B665C8 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928AD0C299B4B2B00B665C8 /* Logout.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -72,6 +73,7 @@
 		491B35BA2997DB2400323789 /* GBShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4928AD08299B493D00B665C8 /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
 		4928AD0A299B4A1500B665C8 /* LogoutRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequestFactory.swift; sourceTree = "<group>"; };
+		4928AD0C299B4B2B00B665C8 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		4928AD07299B48D300B665C8 /* Logout */ = {
 			isa = PBXGroup;
 			children = (
+				4928AD0C299B4B2B00B665C8 /* Logout.swift */,
 				4928AD0A299B4A1500B665C8 /* LogoutRequestFactory.swift */,
 			);
 			path = Logout;
@@ -267,9 +270,9 @@
 		4955638E299A619500A22FA4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4928AD07299B48D300B665C8 /* Logout */,
 				49B77878299AAA8200597F11 /* Registration */,
 				49B7785B299A9C7500597F11 /* Authorization */,
+				4928AD07299B48D300B665C8 /* Logout */,
 				4955639B299A6A6A00A22FA4 /* RequestFactory.swift */,
 			);
 			path = Network;
@@ -575,6 +578,7 @@
 				4928AD0B299B4A1500B665C8 /* LogoutRequestFactory.swift in Sources */,
 				49B77862299AA0F500597F11 /* UniqueID.swift in Sources */,
 				4955638B299A60D300A22FA4 /* User.swift in Sources */,
+				4928AD0D299B4B2B00B665C8 /* Logout.swift in Sources */,
 				49B7787C299AAADA00597F11 /* Registration.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
