@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func testRequests() {
         authRequest()
         regRequest()
+        editRequest()
+        logoutRequest()
     }
 
     // MARK: - Registration request
@@ -58,6 +60,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let auth = requestFactory.makeAuthRequestFatory()
 
         auth.login(userName: "Somebody", password: "mypassword") { response in
+            switch response.result {
+            case .success(let login):
+                print(login)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    // MARK: - Edit profile request
+
+    private func editRequest() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+
+        edit.editProfile(
+            userId: 123,
+            username: "Somebody",
+            password: "mypassword",
+            email: "some@some.ru",
+            gender: "m",
+            creditCardNumber: "9872389-2424-234224-234",
+            aboutMe:"This is good! I think I will switch to another language"
+        ) { response in
+            switch response.result {
+            case .success(let login):
+                print(login)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    // MARK: - Logout request
+
+    private func logoutRequest() {
+        let logout = requestFactory.makeLogoutRequestFactory()
+
+        logout.logout(userId: 123) { response in
             switch response.result {
             case .success(let login):
                 print(login)
