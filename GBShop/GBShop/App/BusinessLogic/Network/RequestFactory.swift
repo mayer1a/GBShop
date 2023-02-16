@@ -48,4 +48,9 @@ class RequestFactory {
         return Logout(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
+    func makeCatalogGettingRequestFactory() -> CatalogGettingRequestFactory {
+        let errorParser = makeErrorParser()
+        return CatalogGetting(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+
 }
