@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         editRequest()
         logoutRequest()
         getCatalog()
+        getProduct()
     }
 
     // MARK: - Registration request
@@ -108,10 +109,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    // MARK: - Get catalog request
+
     private func getCatalog() {
         let getCatalog = requestFactory.makeCatalogGettingRequestFactory()
 
         getCatalog.getCatalog(pageNumber: 1, categoryId: 1) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Get product by id request
+
+    private func getProduct() {
+        let getProduct = requestFactory.makeProductGettingRequestFactory()
+
+        getProduct.getProduct(productId: 123) { response in
             switch response.result {
             case .success(let response):
                 print(response)
