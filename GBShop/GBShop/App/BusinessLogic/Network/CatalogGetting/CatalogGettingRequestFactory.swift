@@ -11,7 +11,7 @@ protocol CatalogGettingRequestFactory {
 
     // MARK: - Functions
 
-    func registration(
+    func getCatalog(
         pageNumber: Int,
         categoryId: Int,
         completionHandler: @escaping (AFDataResponse<CatalogGettingResult>) -> Void)
