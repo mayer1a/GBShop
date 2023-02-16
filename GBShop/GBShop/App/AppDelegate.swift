@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         regRequest()
         editRequest()
         logoutRequest()
+        getCatalog()
     }
 
     // MARK: - Registration request
@@ -103,6 +104,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(login)
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+
+    private func getCatalog() {
+        let getCatalog = requestFactory.makeCatalogGettingRequestFactory()
+
+        getCatalog.getCatalog(pageNumber: 1, categoryId: 1) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
             }
         }
     }
