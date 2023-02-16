@@ -61,7 +61,7 @@ final class CatalogGettingTests: XCTestCase {
         let categoryId = 1
         var productResult: [Product] = []
 
-        XCTExpectFailure("trying to get catalog with incorrect page number but the products was recieved")
+        XCTExpectFailure("trying to get catalog with incorrect page number but the products were recieved")
 
         catalog.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { response in
             switch response.result {
@@ -85,7 +85,7 @@ final class CatalogGettingTests: XCTestCase {
         let categoryId = -98
         var productResult: [Product] = []
 
-        XCTExpectFailure("trying to get catalog with incorrect category id but the products was recieved")
+        XCTExpectFailure("trying to get catalog with incorrect category id but the products were recieved")
 
         catalog.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { response in
             switch response.result {
