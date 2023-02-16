@@ -40,6 +40,7 @@
 		49991262299E227C0034015A /* CatalogGetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49991261299E227C0034015A /* CatalogGetting.swift */; };
 		49991264299E2DFC0034015A /* CatalogGettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49991263299E2DFC0034015A /* CatalogGettingTests.swift */; };
 		49991266299E318A0034015A /* ProductResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49991265299E318A0034015A /* ProductResult.swift */; };
+		4999126A299E35B00034015A /* ProductGettingRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49991269299E35B00034015A /* ProductGettingRequestFactory.swift */; };
 		49B77862299AA0F500597F11 /* UniqueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77861299AA0F500597F11 /* UniqueID.swift */; };
 		49B77868299AA5EF00597F11 /* RegistrationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77867299AA5EF00597F11 /* RegistrationResult.swift */; };
 		49B7787A299AAA8F00597F11 /* RegistrationRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77879299AAA8F00597F11 /* RegistrationRequestFactory.swift */; };
@@ -108,6 +109,7 @@
 		49991261299E227C0034015A /* CatalogGetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogGetting.swift; sourceTree = "<group>"; };
 		49991263299E2DFC0034015A /* CatalogGettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogGettingTests.swift; sourceTree = "<group>"; };
 		49991265299E318A0034015A /* ProductResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResult.swift; sourceTree = "<group>"; };
+		49991269299E35B00034015A /* ProductGettingRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGettingRequestFactory.swift; sourceTree = "<group>"; };
 		49B77861299AA0F500597F11 /* UniqueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueID.swift; sourceTree = "<group>"; };
 		49B77867299AA5EF00597F11 /* RegistrationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResult.swift; sourceTree = "<group>"; };
 		49B77879299AAA8F00597F11 /* RegistrationRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestFactory.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		4955638E299A619500A22FA4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				49991268299E35910034015A /* ProductGetting */,
 				4999125E299E21EE0034015A /* CatalogGetting */,
 				49B77878299AAA8200597F11 /* Registration */,
 				49B7785B299A9C7500597F11 /* Authorization */,
@@ -336,6 +339,14 @@
 				4999125F299E221C0034015A /* CatalogGettingRequestFactory.swift */,
 			);
 			path = CatalogGetting;
+			sourceTree = "<group>";
+		};
+		49991268299E35910034015A /* ProductGetting */ = {
+			isa = PBXGroup;
+			children = (
+				49991269299E35B00034015A /* ProductGettingRequestFactory.swift */,
+			);
+			path = ProductGetting;
 			sourceTree = "<group>";
 		};
 		49B7785B299A9C7500597F11 /* Authorization */ = {
@@ -646,6 +657,7 @@
 				4928AD13299B4CF700B665C8 /* EditProfileRequestFactory.swift in Sources */,
 				49991256299E200A0034015A /* Product.swift in Sources */,
 				4928AD17299B502F00B665C8 /* EditProfile.swift in Sources */,
+				4999126A299E35B00034015A /* ProductGettingRequestFactory.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
