@@ -14,7 +14,7 @@ class Registration: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -40,8 +40,8 @@ extension Registration {
         // MARK: - Properties
 
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "registerUser.json"
+        let method: HTTPMethod = .post
+        let path: String = "signup"
 
         let userId: Int
         let username: String
@@ -53,7 +53,7 @@ extension Registration {
 
         var parameters: Parameters? {
             return [
-                "id_user": userId,
+                "user_id": userId,
                 "username": username,
                 "password": password,
                 "email": email,
