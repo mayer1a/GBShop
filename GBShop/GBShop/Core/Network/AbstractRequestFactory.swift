@@ -27,6 +27,10 @@ protocol AbstractRequestFactory {
 
 extension AbstractRequestFactory {
 
+    var baseUrl: URL {
+        return URL(string: "https://gbshop-efcs.onrender.com/")!
+    }
+
     // MARK: - Functions
 
     @discardableResult public func request<T: Decodable>(

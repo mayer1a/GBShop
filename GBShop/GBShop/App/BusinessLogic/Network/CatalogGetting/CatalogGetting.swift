@@ -14,7 +14,7 @@ class CatalogGetting: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -40,8 +40,8 @@ extension CatalogGetting {
         // MARK: - Properties
 
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
+        let method: HTTPMethod = .post
+        let path: String = "catalog"
 
         let pageNumber: Int
         let categoryId: Int
@@ -49,7 +49,7 @@ extension CatalogGetting {
         var parameters: Parameters? {
             return [
                 "page_number": pageNumber,
-                "id_category": categoryId
+                "category_id": categoryId
             ]
         }
     }
@@ -62,7 +62,7 @@ extension CatalogGetting: CatalogGettingRequestFactory {
     func getCatalog(
         pageNumber: Int,
         categoryId: Int,
-        completionHandler: @escaping (AFDataResponse<[Product]>) -> Void
+        completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void
     ) {
         let requestModel = CatalogGetting(
             baseUrl: self.baseUrl,
