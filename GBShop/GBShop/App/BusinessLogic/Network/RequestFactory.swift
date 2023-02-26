@@ -58,4 +58,9 @@ class RequestFactory {
         return ProductGetting(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
+    func makeReviewsRequestFactory() -> ReviewsRequestFactory {
+        let errorParser = makeErrorParser()
+        return Reviews(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+
 }
