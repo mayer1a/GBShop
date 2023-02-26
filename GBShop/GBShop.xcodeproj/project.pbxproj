@@ -47,6 +47,7 @@
 		49B77868299AA5EF00597F11 /* RegistrationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77867299AA5EF00597F11 /* RegistrationResult.swift */; };
 		49B7787A299AAA8F00597F11 /* RegistrationRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77879299AAA8F00597F11 /* RegistrationRequestFactory.swift */; };
 		49B7787C299AAADA00597F11 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7787B299AAADA00597F11 /* Registration.swift */; };
+		49D0285F29ABB14600715F08 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0285E29ABB14600715F08 /* Review.swift */; };
 		D0ADFA0639C4A554631362D0 /* Pods_GBShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651030857E73926EFCE8B55D /* Pods_GBShop.framework */; };
 		DA87668F219EDCEDE8B76805 /* Pods_GBShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027FD96B06793DC752BC5EDD /* Pods_GBShopTests.framework */; };
 		E250272AB4681411EF38AEC1 /* Pods_GBShop_GBShopUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A296522750E3ACE2BFBFB81 /* Pods_GBShop_GBShopUITests.framework */; };
@@ -118,6 +119,7 @@
 		49B77867299AA5EF00597F11 /* RegistrationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResult.swift; sourceTree = "<group>"; };
 		49B77879299AAA8F00597F11 /* RegistrationRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestFactory.swift; sourceTree = "<group>"; };
 		49B7787B299AAADA00597F11 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		49D0285E29ABB14600715F08 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4DEB6DE04907C8C8475F91E6 /* Pods-GBShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShopTests.release.xcconfig"; path = "Target Support Files/Pods-GBShopTests/Pods-GBShopTests.release.xcconfig"; sourceTree = "<group>"; };
 		651030857E73926EFCE8B55D /* Pods_GBShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A664AB45FB5413477C57005 /* Pods-GBShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop.debug.xcconfig"; path = "Target Support Files/Pods-GBShop/Pods-GBShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				49991259299E20940034015A /* ResultsEntity */,
 				4955638A299A60D300A22FA4 /* User.swift */,
+				49D0285E29ABB14600715F08 /* Review.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				49991266299E318A0034015A /* ProductResult.swift in Sources */,
 				49556387299A5DAC00A22FA4 /* RequestRouter.swift in Sources */,
 				49556385299A5D7500A22FA4 /* AbstractRequestFactory.swift in Sources */,
+				49D0285F29ABB14600715F08 /* Review.swift in Sources */,
 				4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */,
 				4955638D299A614D00A22FA4 /* LoginResult.swift in Sources */,
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
