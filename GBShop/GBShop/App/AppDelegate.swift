@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logoutRequest()
         getCatalog()
         getProduct()
+        getReviews()
     }
 
     // MARK: - Registration request
@@ -130,6 +131,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let getProduct = requestFactory.makeProductGettingRequestFactory()
 
         getProduct.getProduct(productId: 123) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Get product reviews page(s) by product id
+
+    private func getReviews() {
+        let getReviews = requestFactory.makeReviewsRequestFactory()
+
+        getReviews.getReviews(productId: 456, pageNumber: 1) { response in
             switch response.result {
             case .success(let response):
                 print(response)
