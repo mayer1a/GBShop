@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         getCatalog()
         getProduct()
         getReviews()
+        approveReview()
     }
 
     // MARK: - Registration request
@@ -170,6 +171,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         getReviews.addReview(userId: nil, productId: 456, description: "Текст отзыва") { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Approve product review
+
+    private func approveReview() {
+        let getReviews = requestFactory.makeApproveReviewRequestFactory()
+
+        getReviews.approveReview(userId: 123, reviewId: 112) { response in
             switch response.result {
             case .success(let response):
                 print(response)
