@@ -1,5 +1,5 @@
 //
-//  ApproveReviewTests.swift
+//  RemoveReviewTests.swift
 //  GBShopTests
 //
 //  Created by Artem Mayer on 27.02.2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class ApproveReviewTests: XCTestCase {
+final class RemoveReviewTests: XCTestCase {
 
     // MARK: - Properties
 
@@ -26,17 +26,17 @@ final class ApproveReviewTests: XCTestCase {
 
     // MARK: - Functions
 
-    func testApproveReviewCorrectInput() {
-        let approveReview = requestFactory.makeApproveReviewRequestFactory()
+    func testRemoveReviewCorrectInput() {
+        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let reviewId = 112
-        var approveReviewResult: ApproveReviewResult? = nil
+        var removeReviewResult: RemoveReviewResult? = nil
 
-        approveReview.approveReview(userId: userId, reviewId: reviewId) { response in
+        removeReview.removeReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
             case .success(let response):
-                approveReviewResult = response
+                removeReviewResult = response
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -46,22 +46,22 @@ final class ApproveReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
 
-        XCTAssertEqual(approveReviewResult?.result, 1)
+        XCTAssertEqual(removeReviewResult?.result, 1)
     }
 
-    func testApproveReviewIncorrectUserId() {
-        let approveReview = requestFactory.makeApproveReviewRequestFactory()
+    func testRemoveReviewIncorrectUserId() {
+        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = -123
         let reviewId = 112
-        var approveReviewResult: ApproveReviewResult? = nil
+        var removeReviewResult: RemoveReviewResult? = nil
 
-        XCTExpectFailure("trying to approve review with incorrect user id but the review was approved")
+        XCTExpectFailure("trying to remove review with incorrect user id but the review was removed")
 
-        approveReview.approveReview(userId: userId, reviewId: reviewId) { response in
+        removeReview.removeReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
             case .success(let response):
-                approveReviewResult = response
+                removeReviewResult = response
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -70,22 +70,22 @@ final class ApproveReviewTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(approveReviewResult?.result, 0)
+        XCTAssertEqual(removeReviewResult?.result, 0)
     }
 
-    func testApproveReviewIncorrectReviewId() {
-        let approveReview = requestFactory.makeApproveReviewRequestFactory()
+    func testRemoveReviewIncorrectReviewId() {
+        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let reviewId = -112
-        var approveReviewResult: ApproveReviewResult? = nil
+        var removeReviewResult: RemoveReviewResult? = nil
 
-        XCTExpectFailure("trying to approve review with incorrect review id but the review was approved")
+        XCTExpectFailure("trying to remove review with incorrect review id but the review was removed")
 
-        approveReview.approveReview(userId: userId, reviewId: reviewId) { response in
+        removeReview.removeReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
             case .success(let response):
-                approveReviewResult = response
+                removeReviewResult = response
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -94,7 +94,7 @@ final class ApproveReviewTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(approveReviewResult?.result, 0)
+        XCTAssertEqual(removeReviewResult?.result, 0)
     }
 
 }
