@@ -31,12 +31,12 @@ final class CatalogGettingTests: XCTestCase {
         let exp = expectation(description: "correctInput")
         let pageNumber = 1
         let categoryId = 1
-        var productResult: [Product] = []
+        var catalogResult: CatalogResult? = nil
 
         catalog.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { response in
             switch response.result {
             case .success(let response):
-                productResult = response
+                catalogResult = response
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -45,13 +45,13 @@ final class CatalogGettingTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 4)
-        XCTAssertEqual(productResult.count, 2)
-        XCTAssertEqual(productResult[0].id, 123)
-        XCTAssertEqual(productResult[0].productName, "Ноутбук")
-        XCTAssertEqual(productResult[0].price, 45600)
-        XCTAssertEqual(productResult[1].id, 456)
-        XCTAssertEqual(productResult[1].productName, "Мышка")
-        XCTAssertEqual(productResult[1].price, 1000)
+        XCTAssertEqual(catalogResult?.products?.count, 2)
+        XCTAssertEqual(catalogResult?.products?[0].id, 123)
+        XCTAssertEqual(catalogResult?.products?[0].name, "Ноутбук")
+        XCTAssertEqual(catalogResult?.products?[0].price, 45600)
+        XCTAssertEqual(catalogResult?.products?[1].id, 456)
+        XCTAssertEqual(catalogResult?.products?[1].name, "Компьютерная мышь")
+        XCTAssertEqual(catalogResult?.products?[1].price, 1000)
     }
 
     func testGetCatalogIncorrectPageNumber() {
@@ -59,14 +59,14 @@ final class CatalogGettingTests: XCTestCase {
         let exp = expectation(description: "incorrectPageNumber")
         let pageNumber = -2
         let categoryId = 1
-        var productResult: [Product] = []
+        var catalogResult: CatalogResult? = nil
 
         XCTExpectFailure("trying to get catalog with incorrect page number but the products were recieved")
 
         catalog.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { response in
             switch response.result {
             case .success(let response):
-                productResult = response
+                catalogResult = response
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -75,7 +75,9 @@ final class CatalogGettingTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 4)
-        XCTAssertEqual(productResult.count, 0)
+        XCTAssertEqual(catalogResult?.result, 0)
+        XCTAssertNil(catalogResult?.pageNumber)
+        XCTAssertNil(catalogResult?.products)
     }
 
     func testGetCatalogIncorrectCategoryid() {
@@ -83,14 +85,14 @@ final class CatalogGettingTests: XCTestCase {
         let exp = expectation(description: "incorrectCategoryId")
         let pageNumber = 1
         let categoryId = -98
-        var productResult: [Product] = []
+        var catalogResult: CatalogResult? = nil
 
         XCTExpectFailure("trying to get catalog with incorrect category id but the products were recieved")
 
         catalog.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { response in
             switch response.result {
             case .success(let response):
-                productResult = response
+                catalogResult = response
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -99,7 +101,9 @@ final class CatalogGettingTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 4)
-        XCTAssertEqual(productResult.count, 0)
+        XCTAssertEqual(catalogResult?.result, 0)
+        XCTAssertNil(catalogResult?.pageNumber)
+        XCTAssertNil(catalogResult?.products)
     }
 
 }
