@@ -54,6 +54,7 @@
 		49D0286829AC7F3100715F08 /* AddReviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286729AC7F3100715F08 /* AddReviewResult.swift */; };
 		49D0286B29AC7FDA00715F08 /* AddReviewRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286A29AC7FDA00715F08 /* AddReviewRequestFactory.swift */; };
 		49D0286D29AC805D00715F08 /* AddReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286C29AC805D00715F08 /* AddReview.swift */; };
+		49D0287229AC86E900715F08 /* ApproveReviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0287129AC86E900715F08 /* ApproveReviewResult.swift */; };
 		D0ADFA0639C4A554631362D0 /* Pods_GBShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651030857E73926EFCE8B55D /* Pods_GBShop.framework */; };
 		DA87668F219EDCEDE8B76805 /* Pods_GBShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027FD96B06793DC752BC5EDD /* Pods_GBShopTests.framework */; };
 		E250272AB4681411EF38AEC1 /* Pods_GBShop_GBShopUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A296522750E3ACE2BFBFB81 /* Pods_GBShop_GBShopUITests.framework */; };
@@ -132,6 +133,7 @@
 		49D0286729AC7F3100715F08 /* AddReviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewResult.swift; sourceTree = "<group>"; };
 		49D0286A29AC7FDA00715F08 /* AddReviewRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewRequestFactory.swift; sourceTree = "<group>"; };
 		49D0286C29AC805D00715F08 /* AddReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReview.swift; sourceTree = "<group>"; };
+		49D0287129AC86E900715F08 /* ApproveReviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveReviewResult.swift; sourceTree = "<group>"; };
 		4DEB6DE04907C8C8475F91E6 /* Pods-GBShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShopTests.release.xcconfig"; path = "Target Support Files/Pods-GBShopTests/Pods-GBShopTests.release.xcconfig"; sourceTree = "<group>"; };
 		651030857E73926EFCE8B55D /* Pods_GBShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A664AB45FB5413477C57005 /* Pods-GBShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop.debug.xcconfig"; path = "Target Support Files/Pods-GBShop/Pods-GBShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				4991448C29A1F2BA00969951 /* CatalogResult.swift */,
 				49D0286029ABB20600715F08 /* ReviewsResult.swift */,
 				49D0286729AC7F3100715F08 /* AddReviewResult.swift */,
+				49D0287129AC86E900715F08 /* ApproveReviewResult.swift */,
 			);
 			path = ResultsEntity;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
 				4928AD0F299B4CA000B665C8 /* ProfileEditResult.swift in Sources */,
 				49B77868299AA5EF00597F11 /* RegistrationResult.swift in Sources */,
+				49D0287229AC86E900715F08 /* ApproveReviewResult.swift in Sources */,
 				491B359C2997DB2300323789 /* ViewController.swift in Sources */,
 				491B35982997DB2300323789 /* AppDelegate.swift in Sources */,
 				4928AD0B299B4A1500B665C8 /* LogoutRequestFactory.swift in Sources */,
