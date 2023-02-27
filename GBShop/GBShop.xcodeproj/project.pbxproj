@@ -58,6 +58,7 @@
 		49D0287729AC876C00715F08 /* ApproveReviewRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0287629AC876C00715F08 /* ApproveReviewRequestFactory.swift */; };
 		49D0287B29AC88A300715F08 /* ApproveReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0287A29AC88A300715F08 /* ApproveReview.swift */; };
 		49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0287D29AC89B200715F08 /* RemoveReviewResult.swift */; };
+		49D0288429AC8A4F00715F08 /* RemoveReviewRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0288329AC8A4F00715F08 /* RemoveReviewRequestFactory.swift */; };
 		D0ADFA0639C4A554631362D0 /* Pods_GBShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651030857E73926EFCE8B55D /* Pods_GBShop.framework */; };
 		DA87668F219EDCEDE8B76805 /* Pods_GBShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027FD96B06793DC752BC5EDD /* Pods_GBShopTests.framework */; };
 		E250272AB4681411EF38AEC1 /* Pods_GBShop_GBShopUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A296522750E3ACE2BFBFB81 /* Pods_GBShop_GBShopUITests.framework */; };
@@ -140,6 +141,7 @@
 		49D0287629AC876C00715F08 /* ApproveReviewRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveReviewRequestFactory.swift; sourceTree = "<group>"; };
 		49D0287A29AC88A300715F08 /* ApproveReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveReview.swift; sourceTree = "<group>"; };
 		49D0287D29AC89B200715F08 /* RemoveReviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveReviewResult.swift; sourceTree = "<group>"; };
+		49D0288329AC8A4F00715F08 /* RemoveReviewRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveReviewRequestFactory.swift; sourceTree = "<group>"; };
 		4DEB6DE04907C8C8475F91E6 /* Pods-GBShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShopTests.release.xcconfig"; path = "Target Support Files/Pods-GBShopTests/Pods-GBShopTests.release.xcconfig"; sourceTree = "<group>"; };
 		651030857E73926EFCE8B55D /* Pods_GBShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A664AB45FB5413477C57005 /* Pods-GBShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop.debug.xcconfig"; path = "Target Support Files/Pods-GBShop/Pods-GBShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		4955638E299A619500A22FA4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				49D0288229AC8A4100715F08 /* RemoveReview */,
 				49D0287329AC874500715F08 /* ApproveReview */,
 				49D0286929AC7FCD00715F08 /* AddReview */,
 				49D0286229ABB2D900715F08 /* Reviews */,
@@ -436,6 +439,14 @@
 				49D0287629AC876C00715F08 /* ApproveReviewRequestFactory.swift */,
 			);
 			path = ApproveReview;
+			sourceTree = "<group>";
+		};
+		49D0288229AC8A4100715F08 /* RemoveReview */ = {
+			isa = PBXGroup;
+			children = (
+				49D0288329AC8A4F00715F08 /* RemoveReviewRequestFactory.swift */,
+			);
+			path = RemoveReview;
 			sourceTree = "<group>";
 		};
 		F351701F64643EF08213C141 /* Pods */ = {
@@ -736,6 +747,7 @@
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
 				49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */,
+				49D0288429AC8A4F00715F08 /* RemoveReviewRequestFactory.swift in Sources */,
 				49B7787A299AAA8F00597F11 /* RegistrationRequestFactory.swift in Sources */,
 				4955639A299A69B900A22FA4 /* Auth.swift in Sources */,
 				49991262299E227C0034015A /* CatalogGetting.swift in Sources */,
