@@ -63,4 +63,9 @@ class RequestFactory {
         return Reviews(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
+    func makeAddReviewRequestFactory() -> AddReviewRequestFactory {
+        let errorParser = makeErrorParser()
+        return AddReview(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+
 }
