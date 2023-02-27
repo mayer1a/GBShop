@@ -41,6 +41,6 @@ struct CatalogResult: Codable {
     // MARK: - Properties
 
     let result: Int
-    let pageNumber: Int
-    let products: [Product]
+    let pageNumber: Int?
+    let products: [Product]?
 }

@@ -32,6 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logoutRequest()
         getCatalog()
         getProduct()
+        getReviews()
+        addReview()
+        approveReview()
+        removeReview()
     }
 
     // MARK: - Registration request
@@ -130,6 +134,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let getProduct = requestFactory.makeProductGettingRequestFactory()
 
         getProduct.getProduct(productId: 123) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Get product reviews page(s) by product id
+
+    private func getReviews() {
+        let getReviews = requestFactory.makeReviewsRequestFactory()
+
+        getReviews.getReviews(productId: 456, pageNumber: 1) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Add product review
+
+    private func addReview() {
+        let getReviews = requestFactory.makeAddReviewRequestFactory()
+
+        getReviews.addReview(userId: 123, productId: 456, description: "Текст отзыва") { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+
+        getReviews.addReview(userId: nil, productId: 456, description: "Текст отзыва") { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Approve product review
+
+    private func approveReview() {
+        let getReviews = requestFactory.makeApproveReviewRequestFactory()
+
+        getReviews.approveReview(userId: 123, reviewId: 112) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Remove product review
+
+    private func removeReview() {
+        let getReviews = requestFactory.makeRemoveReviewRequestFactory()
+
+        getReviews.removeReview(userId: 123, reviewId: 112) { response in
             switch response.result {
             case .success(let response):
                 print(response)
