@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         getProduct()
         getReviews()
         approveReview()
+        removeReview()
     }
 
     // MARK: - Registration request
@@ -186,6 +187,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let getReviews = requestFactory.makeApproveReviewRequestFactory()
 
         getReviews.approveReview(userId: 123, reviewId: 112) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Remove product review
+
+    private func removeReview() {
+        let getReviews = requestFactory.makeRemoveReviewRequestFactory()
+
+        getReviews.removeReview(userId: 123, reviewId: 112) { response in
             switch response.result {
             case .success(let response):
                 print(response)
