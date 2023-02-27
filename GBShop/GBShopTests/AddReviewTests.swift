@@ -102,7 +102,7 @@ final class AddReviewTests: XCTestCase {
         XCTAssertNil(addReviewResult?.userMessage)
     }
 
-    func testAddReviewsIncorrectDescription() {
+    func testAddReviewsIncorrectUserId() {
         let addReview = requestFactory.makeAddReviewRequestFactory()
         let exp = expectation(description: "incorrectUserId")
         let userId = -123
@@ -110,7 +110,7 @@ final class AddReviewTests: XCTestCase {
         let description = "Текст отзыва"
         var addReviewResult: AddReviewResult? = nil
 
-        XCTExpectFailure("trying to add reviews with incorrect user id but the review was added")
+        XCTExpectFailure("trying to add review with incorrect user id but the review was added")
 
         addReview.addReview(userId: userId, productId: productId, description: description) { response in
             switch response.result {

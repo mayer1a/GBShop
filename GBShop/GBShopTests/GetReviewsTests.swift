@@ -67,7 +67,7 @@ final class GetReviewsTests: XCTestCase {
         let pageNumber = 1
         var reviewResult: ReviewsResult? = nil
 
-        XCTExpectFailure("trying to get reviews with incorrect product id but the reviews was recieved")
+        XCTExpectFailure("trying to get reviews with incorrect product id but the reviews were recieved")
 
         reviews.getReviews(productId: productId, pageNumber: pageNumber) { response in
             switch response.result {
@@ -92,7 +92,7 @@ final class GetReviewsTests: XCTestCase {
         let pageNumber = -1
         var reviewResult: ReviewsResult? = nil
 
-        XCTExpectFailure("trying to get reviews with incorrect page number but the reviews was recieved")
+        XCTExpectFailure("trying to get reviews with incorrect page number but the reviews were recieved")
 
         reviews.getReviews(productId: productId, pageNumber: pageNumber) { response in
             switch response.result {
