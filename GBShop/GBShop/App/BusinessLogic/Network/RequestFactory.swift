@@ -73,4 +73,9 @@ class RequestFactory {
         return ApproveReview(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
+    func makeRemoveReviewRequestFactory() -> RemoveReviewRequestFactory {
+        let errorParser = makeErrorParser()
+        return RemoveReview(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+
 }
