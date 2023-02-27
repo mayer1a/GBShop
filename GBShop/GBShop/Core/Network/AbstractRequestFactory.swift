@@ -28,8 +28,7 @@ protocol AbstractRequestFactory {
 extension AbstractRequestFactory {
 
     var baseUrl: URL {
-        return URL(string: "http://127.0.0.1:8080/")!
-//        return URL(string: "https://gbshop-efcs.onrender.com/")!
+        return URL(string: "https://gbshop-efcs.onrender.com/")!
     }
 
     // MARK: - Functions
