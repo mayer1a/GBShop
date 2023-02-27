@@ -155,6 +155,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    // MARK: - Add product review
+
+    private func addReview() {
+        let getReviews = requestFactory.makeAddReviewRequestFactory()
+
+        getReviews.addReview(userId: 123, productId: 456, description: "Текст отзыва") { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+
+        getReviews.addReview(userId: nil, productId: 456, description: "Текст отзыва") { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
