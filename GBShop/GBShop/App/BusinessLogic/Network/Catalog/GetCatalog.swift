@@ -1,20 +1,21 @@
 //
-//  Auth.swift
+//  GetCatalog.swift
 //  GBShop
 //
-//  Created by Artem Mayer on 13.02.2023.
+//  Created by Artem Mayer on 16.02.2023.
 //
 
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class GetCatalog: AbstractRequestFactory {
 
     // MARK: - Properties
 
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -31,40 +32,47 @@ class Auth: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension Auth {
+extension GetCatalog {
 
     // MARK: - RequestRouter
 
-    struct Login: RequestRouter {
+    struct GetCatalog: RequestRouter {
 
         // MARK: - Properties
 
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "signin"
+        let path: String = "catalog"
 
-        let login: String
-        let password: String
+        let pageNumber: Int
+        let categoryId: Int
 
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "page_number": pageNumber,
+                "category_id": categoryId
             ]
         }
     }
 }
 
-extension Auth: AuthRequestFactory {
+// MARK: - GetCatalogRequestFactory
+
+extension GetCatalog: GetCatalogRequestFactory {
 
     // MARK: - Functions
 
-    func login(
-        userName: String,
-        password: String,
-        completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void
+    func getCatalog(
+        pageNumber: Int,
+        categoryId: Int,
+        completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void
     ) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+        let requestModel = GetCatalog(
+            baseUrl: self.baseUrl,
+            pageNumber: pageNumber,
+            categoryId: categoryId)
+
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }

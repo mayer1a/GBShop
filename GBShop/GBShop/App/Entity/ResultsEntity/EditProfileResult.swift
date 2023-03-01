@@ -1,5 +1,5 @@
 //
-//  ProfileEditResult.swift
+//  EditProfileResult.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 14.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProfileEditResult: Codable {
+struct EditProfileResult: Codable {
 
     // MARK: - Properties
 

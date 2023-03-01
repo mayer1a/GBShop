@@ -7,6 +7,8 @@
 
 import Alamofire
 
+// MARK: - AbstractRequestFactory
+
 class AddReview: AbstractRequestFactory {
 
     // MARK: - Properties
@@ -61,6 +63,8 @@ extension AddReview {
         }
     }
 }
+
+// MARK: - AddReviewRequestFactory
 
 extension AddReview: AddReviewRequestFactory {
 

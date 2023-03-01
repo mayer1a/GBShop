@@ -13,5 +13,5 @@ protocol EditProfileRequestFactory {
 
     func editProfile(
         editProfileUser: EditProfileUser,
-        completionHandler: @escaping (AFDataResponse<ProfileEditResult>) -> Void)
+        completionHandler: @escaping (AFDataResponse<EditProfileResult>) -> Void)
 }

@@ -1,5 +1,5 @@
 //
-//  Registration.swift
+//  SignUp.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 13.02.2023.
@@ -7,14 +7,15 @@
 
 import Alamofire
 
-class Registration: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class SignUp: AbstractRequestFactory {
 
     // MARK: - Properties
 
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -31,11 +32,11 @@ class Registration: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension Registration {
+extension SignUp {
 
     // MARK: - RequestRouter
 
-    struct Registration: RequestRouter {
+    struct SignUp: RequestRouter {
 
         // MARK: - Properties
 
@@ -65,7 +66,9 @@ extension Registration {
     }
 }
 
-extension Registration: RegistrationRequestFactory {
+// MARK: - SignUpRequestFactory
+
+extension SignUp: SignUpRequestFactory {
 
     // MARK: - Functions
 
@@ -76,9 +79,9 @@ extension Registration: RegistrationRequestFactory {
         gender: String,
         creditCardNumber: String,
         aboutMe: String,
-        completionHandler: @escaping (Alamofire.AFDataResponse<RegistrationResult>) -> Void
+        completionHandler: @escaping (Alamofire.AFDataResponse<SignUpResult>) -> Void
     ) {
-        let requestModel = Registration(
+        let requestModel = SignUp(
             baseUrl: self.baseUrl,
             userId: UniqueID.getUniqueId(),
             username: username,

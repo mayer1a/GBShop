@@ -28,14 +28,14 @@ class RequestFactory {
         return ErrorParser()
     }
 
-    func makeAuthRequestFatory() -> AuthRequestFactory {
+    func makeAuthRequestFatory() -> SignInRequestFactory {
         let errorParser = makeErrorParser()
-        return Auth(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return SignIn(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
-    func makeRegistrationRequestFactory() -> RegistrationRequestFactory {
+    func makeRegistrationRequestFactory() -> SignUpRequestFactory {
         let errorParser = makeErrorParser()
-        return Registration(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return SignUp(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
     func makeEditProfileRequestFactory() -> EditProfileRequestFactory {
@@ -48,14 +48,14 @@ class RequestFactory {
         return Logout(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
-    func makeCatalogGettingRequestFactory() -> CatalogGettingRequestFactory {
+    func makeCatalogGettingRequestFactory() -> GetCatalogRequestFactory {
         let errorParser = makeErrorParser()
-        return CatalogGetting(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return GetCatalog(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
-    func makeProductGettingRequestFactory() -> ProductGettingRequestFactory {
+    func makeProductGettingRequestFactory() -> GetProductRequestFactory {
         let errorParser = makeErrorParser()
-        return ProductGetting(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return GetProduct(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
 
     func makeReviewsRequestFactory() -> ReviewsRequestFactory {

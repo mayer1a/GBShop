@@ -7,7 +7,7 @@
 
 import Alamofire
 
-protocol ProductGettingRequestFactory {
+protocol GetProductRequestFactory {
 
     // MARK: - Functions
 

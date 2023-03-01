@@ -1,5 +1,5 @@
 //
-//  RegistrationRequestFactory.swift
+//  SignUpRequestFactory.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 14.02.2023.
@@ -7,7 +7,7 @@
 
 import Alamofire
 
-protocol RegistrationRequestFactory {
+protocol SignUpRequestFactory {
 
     // MARK: - Functions
 
@@ -18,5 +18,5 @@ protocol RegistrationRequestFactory {
         gender: String,
         creditCardNumber: String,
         aboutMe: String,
-        completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void)
+        completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void)
 }

@@ -1,20 +1,21 @@
 //
-//  ProductGetting.swift
+//  SignIn.swift
 //  GBShop
 //
-//  Created by Artem Mayer on 16.02.2023.
+//  Created by Artem Mayer on 13.02.2023.
 //
 
 import Alamofire
 
-class ProductGetting: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class SignIn: AbstractRequestFactory {
 
     // MARK: - Properties
 
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -31,39 +32,42 @@ class ProductGetting: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension ProductGetting {
+extension SignIn {
 
     // MARK: - RequestRouter
 
-    struct ProductGetting: RequestRouter {
+    struct SignIn: RequestRouter {
 
         // MARK: - Properties
 
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "product"
+        let path: String = "signin"
 
-        let productId: Int
+        let login: String
+        let password: String
 
         var parameters: Parameters? {
             return [
-                "product_id": productId,
+                "username": login,
+                "password": password
             ]
         }
     }
 }
 
-extension ProductGetting: ProductGettingRequestFactory {
+// MARK: - SignInRequestFactory
+
+extension SignIn: SignInRequestFactory {
 
     // MARK: - Functions
 
-    func getProduct(
-        productId: Int,
-        completionHandler: @escaping (AFDataResponse<ProductResult>) -> Void
+    func login(
+        userName: String,
+        password: String,
+        completionHandler: @escaping (AFDataResponse<SignInResult>) -> Void
     ) {
-        let requestModel = ProductGetting(baseUrl: self.baseUrl, productId: productId)
+        let requestModel = SignIn(baseUrl: baseUrl, login: userName, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-
 }
-

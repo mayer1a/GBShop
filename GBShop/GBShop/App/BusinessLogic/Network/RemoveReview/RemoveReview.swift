@@ -7,6 +7,8 @@
 
 import Alamofire
 
+// MARK: - AbstractRequestFactory
+
 class RemoveReview: AbstractRequestFactory {
 
     // MARK: - Properties
@@ -53,6 +55,8 @@ extension RemoveReview {
         }
     }
 }
+
+// MARK: - RemoveReviewRequestFactory
 
 extension RemoveReview: RemoveReviewRequestFactory {
 

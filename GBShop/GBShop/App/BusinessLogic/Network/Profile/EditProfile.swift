@@ -68,7 +68,7 @@ extension EditProfile: EditProfileRequestFactory {
 
     func editProfile(
         editProfileUser: EditProfileUser,
-        completionHandler: @escaping (Alamofire.AFDataResponse<ProfileEditResult>) -> Void
+        completionHandler: @escaping (Alamofire.AFDataResponse<EditProfileResult>) -> Void
     ) {
         let requestModel = EditProfile(
             baseUrl: self.baseUrl,
