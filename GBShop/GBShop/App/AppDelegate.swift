@@ -79,16 +79,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func editRequest() {
         let edit = requestFactory.makeEditProfileRequestFactory()
-
-        edit.editProfile(
-            userId: 123,
+        
+        let editProfileUserModel = EditProfileUser(
+            id: 123,
             username: "Somebody",
             password: "mypassword",
             email: "some@some.ru",
-            gender: "m",
-            creditCardNumber: "9872389-2424-234224-234",
-            aboutMe:"This is good! I think I will switch to another language"
-        ) { response in
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
+
+        edit.editProfile(editProfileUser: editProfileUserModel) { response in
             switch response.result {
             case .success(let login):
                 print(login)
