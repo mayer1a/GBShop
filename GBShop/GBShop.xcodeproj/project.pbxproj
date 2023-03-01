@@ -56,6 +56,7 @@
 		49ADCC6829AFA2C2001108DC /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCC6729AFA2C2001108DC /* Basket.swift */; };
 		49ADCC6A29AFA3DF001108DC /* Basket+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCC6929AFA3DF001108DC /* Basket+Extensions.swift */; };
 		49ADCC6C29AFAD24001108DC /* AddProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCC6B29AFAD24001108DC /* AddProductTests.swift */; };
+		49ADCC6E29AFAEDB001108DC /* RemoveProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ADCC6D29AFAEDB001108DC /* RemoveProductTests.swift */; };
 		49B77862299AA0F500597F11 /* UniqueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77861299AA0F500597F11 /* UniqueID.swift */; };
 		49B77868299AA5EF00597F11 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77867299AA5EF00597F11 /* SignUpResult.swift */; };
 		49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77879299AAA8F00597F11 /* SignUpRequestFactory.swift */; };
@@ -151,6 +152,7 @@
 		49ADCC6729AFA2C2001108DC /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		49ADCC6929AFA3DF001108DC /* Basket+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Basket+Extensions.swift"; sourceTree = "<group>"; };
 		49ADCC6B29AFAD24001108DC /* AddProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductTests.swift; sourceTree = "<group>"; };
+		49ADCC6D29AFAEDB001108DC /* RemoveProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveProductTests.swift; sourceTree = "<group>"; };
 		49B77861299AA0F500597F11 /* UniqueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueID.swift; sourceTree = "<group>"; };
 		49B77867299AA5EF00597F11 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
 		49B77879299AAA8F00597F11 /* SignUpRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestFactory.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				49D0288F29AC973900715F08 /* RemoveReviewTests.swift */,
 				49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */,
 				49ADCC6B29AFAD24001108DC /* AddProductTests.swift */,
+				49ADCC6D29AFAEDB001108DC /* RemoveProductTests.swift */,
 			);
 			path = GBShopTests;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				49D0288A29AC92B100715F08 /* ReviewsTests.swift in Sources */,
 				49ADCC6C29AFAD24001108DC /* AddProductTests.swift in Sources */,
 				49991270299E38070034015A /* ProductTests.swift in Sources */,
+				49ADCC6E29AFAEDB001108DC /* RemoveProductTests.swift in Sources */,
 				49D0289029AC973900715F08 /* RemoveReviewTests.swift in Sources */,
 				49991252299E19B20034015A /* EditProfileTests.swift in Sources */,
 				49D0288E29AC957700715F08 /* ApproveReviewTests.swift in Sources */,
