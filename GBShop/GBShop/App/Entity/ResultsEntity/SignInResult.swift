@@ -12,5 +12,5 @@ struct SignInResult: Codable {
     // MARK: - Properties
     
     let result: Int
-    let user: User
+    let user: User?
 }
