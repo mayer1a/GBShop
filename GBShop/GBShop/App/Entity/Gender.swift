@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Gender
 
 enum Gender: String, Codable {
-    case man = "m"
-    case woman = "w"
-    case indeterminate = "ind"
+    case man
+    case woman
+    case indeterminate
 }
