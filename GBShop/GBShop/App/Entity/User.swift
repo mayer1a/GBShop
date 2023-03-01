@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - User
+
 struct User: Codable {
 
     // MARK: - CodingKeys
@@ -16,6 +18,10 @@ struct User: Codable {
         case username
         case name
         case lastname
+        case email
+        case creditCard = "credit_card"
+        case gender
+        case bio
     }
 
     // MARK: - Properties
@@ -23,6 +29,9 @@ struct User: Codable {
     let id: Int
     let username: String
     let name: String
+    let email: String
+    let creditCard: String
     let lastname: String
-
+    let gender: Gender
+    let bio: String
 }
