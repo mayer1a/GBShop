@@ -27,7 +27,7 @@ final class ApproveReviewTests: XCTestCase {
     // MARK: - Functions
 
     func testApproveReviewCorrectInput() {
-        let approveReview = requestFactory.makeApproveReviewRequestFactory()
+        let approveReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let reviewId = 112
@@ -50,7 +50,7 @@ final class ApproveReviewTests: XCTestCase {
     }
 
     func testApproveReviewIncorrectUserId() {
-        let approveReview = requestFactory.makeApproveReviewRequestFactory()
+        let approveReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = -123
         let reviewId = 112
@@ -74,7 +74,7 @@ final class ApproveReviewTests: XCTestCase {
     }
 
     func testApproveReviewIncorrectReviewId() {
-        let approveReview = requestFactory.makeApproveReviewRequestFactory()
+        let approveReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let reviewId = -112

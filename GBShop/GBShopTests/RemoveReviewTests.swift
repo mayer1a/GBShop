@@ -27,7 +27,7 @@ final class RemoveReviewTests: XCTestCase {
     // MARK: - Functions
 
     func testRemoveReviewCorrectInput() {
-        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
+        let removeReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let reviewId = 112
@@ -50,7 +50,7 @@ final class RemoveReviewTests: XCTestCase {
     }
 
     func testRemoveReviewIncorrectUserId() {
-        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
+        let removeReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = -123
         let reviewId = 112
@@ -74,7 +74,7 @@ final class RemoveReviewTests: XCTestCase {
     }
 
     func testRemoveReviewIncorrectReviewId() {
-        let removeReview = requestFactory.makeRemoveReviewRequestFactory()
+        let removeReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let reviewId = -112

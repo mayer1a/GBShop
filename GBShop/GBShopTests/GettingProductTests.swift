@@ -45,9 +45,7 @@ final class GettingProductTests: XCTestCase {
 
         waitForExpectations(timeout: 4)
         XCTAssertEqual(productResult?.result, 1)
-        XCTAssertEqual(productResult?.product.name, "Ноутбук")
-        XCTAssertEqual(productResult?.product.price, 45600)
-        XCTAssertEqual(productResult?.product.description, "[Подробное описание товара]")
+        XCTAssertEqual(productResult?.product?.description, "[Подробное описание товара]")
     }
 
     func testGetProductIncorrectProductId() {

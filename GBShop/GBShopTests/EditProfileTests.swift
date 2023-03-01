@@ -29,24 +29,17 @@ final class EditProfileTests: XCTestCase {
     func testEditProfileCorrectInput() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = 123
-        let username = "Somebody"
-        let password = "mypassword"
-        let email = "some@some.ru"
-        let gender = "m"
-        let creditCardNumber = "9872389-2424-234224-234"
-        let aboutMe = "This is good! I think I will switch to another language"
         var result = -1
+        let profile = EditUserProfile(
+            id: 123,
+            username: "Somebody",
+            password: "mypassword",
+            email: "some@some.ru",
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -64,26 +57,20 @@ final class EditProfileTests: XCTestCase {
     func testEditProfileIncorrectUserId() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = -20
-        let username = "Somebody"
-        let password = "mypassword"
-        let email = "some@some.ru"
-        let gender = "m"
-        let creditCardNumber = "9872389-2424-234224-234"
-        let aboutMe = "This is good! I think I will switch to another language"
         var result = -1
+        let profile = EditUserProfile(
+            id: -20,
+            username: "Somebody",
+            password: "mypassword",
+            email: "some@some.ru",
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
+
 
         XCTExpectFailure("trying to logout with incorrect user id but edit profile was succesful")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -101,26 +88,19 @@ final class EditProfileTests: XCTestCase {
     func testEditProfileIncorrectUsername() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectUsername")
-        let userId = 123
-        let username = "самбади"
-        let password = "mypassword"
-        let email = "some@some.ru"
-        let gender = "m"
-        let creditCardNumber = "9872389-2424-234224-234"
-        let aboutMe = "This is good! I think I will switch to another language"
         var result = -1
+        let profile = EditUserProfile(
+            id: 123,
+            username: "самбади",
+            password: "mypassword",
+            email: "some@some.ru",
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
 
         XCTExpectFailure("trying to logout with incorrect username but edit profile was succesful")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -138,26 +118,19 @@ final class EditProfileTests: XCTestCase {
     func testEditProfileIncorrectPassword() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectPassword")
-        let userId = 123
-        let username = "Somebody"
-        let password = "_Б"
-        let email = "some@some.ru"
-        let gender = "m"
-        let creditCardNumber = "9872389-2424-234224-234"
-        let aboutMe = "This is good! I think I will switch to another language"
         var result = -1
+        let profile = EditUserProfile(
+            id: 123,
+            username: "Somebody",
+            password: "_Б",
+            email: "some@some.ru",
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
 
         XCTExpectFailure("trying to logout with incorrect password but edit profile was succesful")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -175,26 +148,19 @@ final class EditProfileTests: XCTestCase {
     func testEditProfileIncorrectEmail() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectEmail")
-        let userId = 123
-        let username = "Somebody"
-        let password = "mypassword"
-        let email = "some @so"
-        let gender = "m"
-        let creditCardNumber = "9872389-2424-234224-234"
-        let aboutMe = "This is good! I think I will switch to another language"
         var result = -1
+        let profile = EditUserProfile(
+            id: 123,
+            username: "Somebody",
+            password: "mypassword",
+            email: "some @so",
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
 
         XCTExpectFailure("trying to logout with incorrect email but edit profile was succesful")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -212,26 +178,19 @@ final class EditProfileTests: XCTestCase {
     func testEditProfileIncorrectCardNumber() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectCardNumber")
-        let userId = 123
-        let username = "Somebody"
-        let password = "mypassword"
-        let email = "some@some.ru"
-        let gender = "m"
-        let creditCardNumber = "98723B A7476"
-        let aboutMe = "This is good! I think I will switch to another language"
         var result = -1
+        let profile = EditUserProfile(
+            id: 123,
+            username: "Somebody",
+            password: "mypassword",
+            email: "some@some.ru",
+            creditCard: "98723B A7476",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
 
         XCTExpectFailure("trying to logout with incorrect card number but edit profile was succesful")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -257,18 +216,18 @@ final class EditProfileTests: XCTestCase {
         let creditCardNumber = ""
         let aboutMe = ""
         var result = -1
+        let profile = EditUserProfile(
+            id: 0,
+            username: "",
+            password: "",
+            email: "",
+            creditCard: "",
+            gender: .man,
+            bio: "")
 
         XCTExpectFailure("trying to logout with empty input but edit profile was succesful")
 
-        edit.editProfile(
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe
-        ) { response in
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
