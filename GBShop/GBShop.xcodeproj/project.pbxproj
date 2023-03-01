@@ -44,6 +44,7 @@
 		4999126C299E36010034015A /* ProductGetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999126B299E36010034015A /* ProductGetting.swift */; };
 		49991270299E38070034015A /* GettingProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999126F299E38070034015A /* GettingProductTests.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
+		49A24B6E29AF2CAA002E3B1A /* EditProfileUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfileUser.swift */; };
 		49B77862299AA0F500597F11 /* UniqueID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77861299AA0F500597F11 /* UniqueID.swift */; };
 		49B77868299AA5EF00597F11 /* RegistrationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77867299AA5EF00597F11 /* RegistrationResult.swift */; };
 		49B7787A299AAA8F00597F11 /* RegistrationRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77879299AAA8F00597F11 /* RegistrationRequestFactory.swift */; };
@@ -133,6 +134,7 @@
 		4999126B299E36010034015A /* ProductGetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGetting.swift; sourceTree = "<group>"; };
 		4999126F299E38070034015A /* GettingProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingProductTests.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		49A24B6D29AF2CAA002E3B1A /* EditProfileUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileUser.swift; sourceTree = "<group>"; };
 		49B77861299AA0F500597F11 /* UniqueID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueID.swift; sourceTree = "<group>"; };
 		49B77867299AA5EF00597F11 /* RegistrationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationResult.swift; sourceTree = "<group>"; };
 		49B77879299AAA8F00597F11 /* RegistrationRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestFactory.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				4955638A299A60D300A22FA4 /* User.swift */,
 				49D0285E29ABB14600715F08 /* Review.swift */,
 				49A24B6B29AF2742002E3B1A /* Gender.swift */,
+				49A24B6D29AF2CAA002E3B1A /* EditProfileUser.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				49D0287229AC86E900715F08 /* ApproveReviewResult.swift in Sources */,
 				491B359C2997DB2300323789 /* ViewController.swift in Sources */,
 				491B35982997DB2300323789 /* AppDelegate.swift in Sources */,
+				49A24B6E29AF2CAA002E3B1A /* EditProfileUser.swift in Sources */,
 				4928AD0B299B4A1500B665C8 /* LogoutRequestFactory.swift in Sources */,
 				49D0286629ABB38B00715F08 /* Reviews.swift in Sources */,
 				49991260299E221C0034015A /* CatalogGettingRequestFactory.swift in Sources */,
