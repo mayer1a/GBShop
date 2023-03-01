@@ -1,5 +1,5 @@
 //
-//  GetCatalog.swift
+//  Catalog.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 16.02.2023.
@@ -9,7 +9,7 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class GetCatalog: AbstractRequestFactory {
+class Catalog: AbstractRequestFactory {
 
     // MARK: - Properties
 
@@ -32,11 +32,11 @@ class GetCatalog: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension GetCatalog {
+extension Catalog {
 
     // MARK: - RequestRouter
 
-    struct GetCatalog: RequestRouter {
+    struct CatalogRequest: RequestRouter {
 
         // MARK: - Properties
 
@@ -56,9 +56,9 @@ extension GetCatalog {
     }
 }
 
-// MARK: - GetCatalogRequestFactory
+// MARK: - CatalogRequestFactory
 
-extension GetCatalog: GetCatalogRequestFactory {
+extension Catalog: CatalogRequestFactory {
 
     // MARK: - Functions
 
@@ -67,7 +67,7 @@ extension GetCatalog: GetCatalogRequestFactory {
         categoryId: Int,
         completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void
     ) {
-        let requestModel = GetCatalog(
+        let requestModel = CatalogRequest(
             baseUrl: self.baseUrl,
             pageNumber: pageNumber,
             categoryId: categoryId)

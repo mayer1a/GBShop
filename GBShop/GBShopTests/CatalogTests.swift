@@ -1,5 +1,5 @@
 //
-//  CatalogGettingTests.swift
+//  CatalogTests.swift
 //  GBShopTests
 //
 //  Created by Artem Mayer on 16.02.2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class CatalogGettingTests: XCTestCase {
+final class CatalogTests: XCTestCase {
 
     // MARK: - Properties
 
@@ -27,7 +27,7 @@ final class CatalogGettingTests: XCTestCase {
     // MARK: - Functions
 
     func testGetCatalogCorrectInput() {
-        let catalog = requestFactory.makeCatalogGettingRequestFactory()
+        let catalog = requestFactory.makeCatalogRequestFactory()
         let exp = expectation(description: "correctInput")
         let pageNumber = 1
         let categoryId = 1
@@ -44,7 +44,7 @@ final class CatalogGettingTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 4)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(catalogResult?.products?.count, 2)
         XCTAssertEqual(catalogResult?.products?[0].id, 123)
         XCTAssertEqual(catalogResult?.products?[0].name, "Ноутбук")
@@ -55,7 +55,7 @@ final class CatalogGettingTests: XCTestCase {
     }
 
     func testGetCatalogIncorrectPageNumber() {
-        let catalog = requestFactory.makeCatalogGettingRequestFactory()
+        let catalog = requestFactory.makeCatalogRequestFactory()
         let exp = expectation(description: "incorrectPageNumber")
         let pageNumber = -2
         let categoryId = 1
@@ -74,14 +74,14 @@ final class CatalogGettingTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 4)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(catalogResult?.result, 0)
         XCTAssertNil(catalogResult?.pageNumber)
         XCTAssertNil(catalogResult?.products)
     }
 
     func testGetCatalogIncorrectCategoryid() {
-        let catalog = requestFactory.makeCatalogGettingRequestFactory()
+        let catalog = requestFactory.makeCatalogRequestFactory()
         let exp = expectation(description: "incorrectCategoryId")
         let pageNumber = 1
         let categoryId = -98
@@ -100,7 +100,7 @@ final class CatalogGettingTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 4)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(catalogResult?.result, 0)
         XCTAssertNil(catalogResult?.pageNumber)
         XCTAssertNil(catalogResult?.products)

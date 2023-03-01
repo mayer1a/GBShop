@@ -1,5 +1,5 @@
 //
-//  EditProfile.swift
+//  Profile.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 14.02.2023.
@@ -9,7 +9,7 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class EditProfile: AbstractRequestFactory {
+class Profile: AbstractRequestFactory {
 
     // MARK: - Properties
 
@@ -32,11 +32,11 @@ class EditProfile: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension EditProfile {
+extension Profile {
 
     // MARK: - RequestRouter
 
-    struct EditProfile: RequestRouter {
+    struct ProfileRequest: RequestRouter {
 
         // MARK: - Properties
 
@@ -44,7 +44,7 @@ extension EditProfile {
         let method: HTTPMethod = .post
         let path: String = "edit-profile"
 
-        let profile: EditUserProfile
+        let profile: EditProfile
 
         var parameters: Parameters? {
             return [
@@ -62,15 +62,15 @@ extension EditProfile {
 
 // MARK: - EditProfileRequestFactory
 
-extension EditProfile: EditProfileRequestFactory {
+extension Profile: ProfileRequestFactory {
 
     // MARK: - Functions
 
     func editProfile(
-        profile: EditUserProfile,
+        profile: EditProfile,
         completionHandler: @escaping (Alamofire.AFDataResponse<EditProfileResult>) -> Void
     ) {
-        let requestModel = EditProfile(
+        let requestModel = ProfileRequest(
             baseUrl: self.baseUrl,
             profile: profile)
 

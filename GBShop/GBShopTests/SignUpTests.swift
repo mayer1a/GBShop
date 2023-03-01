@@ -1,5 +1,5 @@
 //
-//  RegistrationTests.swift
+//  SignUpTests.swift
 //  GBShopTests
 //
 //  Created by Artem Mayer on 16.02.2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class RegistrationTests: XCTestCase {
+final class SignUpTests: XCTestCase {
 
     // MARK: - Properties
 
@@ -26,8 +26,8 @@ final class RegistrationTests: XCTestCase {
 
     // MARK: - Functions
 
-    func testRegCorrectInput() {
-        let reg = requestFactory.makeRegistrationRequestFactory()
+    func testSignUpCorrectInput() {
+        let signUp = requestFactory.makeSignUpRequestFactory()
         let exp = expectation(description: "correctInput")
         var result = -1
         let profile = SignUpUser(
@@ -38,7 +38,7 @@ final class RegistrationTests: XCTestCase {
             gender: .man,
             bio: "This is good! I think I will switch to another language")
 
-        reg.registration(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -49,13 +49,13 @@ final class RegistrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(1, result, "trying to registration")
     }
 
-    func testRegIncorrectUsername() {
+    func testSignUpIncorrectUsername() {
         let exp = expectation(description: "incorrectUsername")
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
         let profile = SignUpUser(
             username: "самбади",
@@ -67,7 +67,7 @@ final class RegistrationTests: XCTestCase {
 
         XCTExpectFailure("trying to registration with incorrect username but registration was succesful")
 
-        reg.registration(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -78,13 +78,13 @@ final class RegistrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
-    func testRegIncorrectEmail() {
+    func testSignUpIncorrectEmail() {
         let exp = expectation(description: "incorrectEmail")
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
         let profile = SignUpUser(
             username: "Somebody",
@@ -96,7 +96,7 @@ final class RegistrationTests: XCTestCase {
 
         XCTExpectFailure("trying to registration with incorrect email but registration was succesful")
 
-        reg.registration(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -107,13 +107,13 @@ final class RegistrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
-    func testRegIncorrectCardNumber() {
+    func testSignUpIncorrectCardNumber() {
         let exp = expectation(description: "incorrectCardNumber")
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
         let profile = SignUpUser(
             username: "Somebody",
@@ -125,7 +125,7 @@ final class RegistrationTests: XCTestCase {
 
         XCTExpectFailure("trying to registration with incorrect card number but registration was succesful")
 
-        reg.registration(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -136,13 +136,13 @@ final class RegistrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
-    func testRegIncorrectPassword() {
+    func testSignUpIncorrectPassword() {
         let exp = expectation(description: "incorrectPassword")
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
         let profile = SignUpUser(
             username: "Somebody",
@@ -154,7 +154,7 @@ final class RegistrationTests: XCTestCase {
 
         XCTExpectFailure("trying to registration with incorrect password but registration was succesful")
 
-        reg.registration(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -165,13 +165,13 @@ final class RegistrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
-    func testRegWithEmptyInput() {
+    func testSignUpWithEmptyInput() {
         let exp = expectation(description: "emptyInput")
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
         let profile = SignUpUser(
             username: "",
@@ -183,7 +183,7 @@ final class RegistrationTests: XCTestCase {
 
         XCTExpectFailure("trying to registration with empty input but registration was succesful")
 
-        reg.registration(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -194,7 +194,7 @@ final class RegistrationTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 }

@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Registration request
 
     private func regRequest() {
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let reg = requestFactory.makeSignUpRequestFactory()
 
         let profile = SignUpUser(
             username: "Somebody",
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Authorization request
 
     private func authRequest() {
-        let auth = requestFactory.makeAuthRequestFatory()
+        let auth = requestFactory.makeSignInRequestFatory()
 
         auth.login(userName: "Somebody", password: "mypassword") { response in
             switch response.result {
@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func editRequest() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 123,
             username: "Somebody",
             password: "mypassword",
@@ -118,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Get catalog request
 
     private func getCatalog() {
-        let getCatalog = requestFactory.makeCatalogGettingRequestFactory()
+        let getCatalog = requestFactory.makeCatalogRequestFactory()
 
         getCatalog.getCatalog(pageNumber: 1, categoryId: 1) { response in
             switch response.result {
@@ -133,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Get product by id request
 
     private func getProduct() {
-        let getProduct = requestFactory.makeProductGettingRequestFactory()
+        let getProduct = requestFactory.makeProductRequestFactory()
 
         getProduct.getProduct(productId: 123) { response in
             switch response.result {

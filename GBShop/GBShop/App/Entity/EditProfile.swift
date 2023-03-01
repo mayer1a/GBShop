@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - User
 
-struct EditUserProfile: Codable {
+struct EditProfile: Codable {
 
     // MARK: - CodingKeys
 

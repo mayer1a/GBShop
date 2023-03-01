@@ -36,7 +36,7 @@ extension SignUp {
 
     // MARK: - RequestRouter
 
-    struct SignUp: RequestRouter {
+    struct SignUpRequest: RequestRouter {
 
         // MARK: - Properties
 
@@ -69,7 +69,7 @@ extension SignUp: SignUpRequestFactory {
         profile: SignUpUser,
         completionHandler: @escaping (Alamofire.AFDataResponse<SignUpResult>) -> Void
     ) {
-        let requestModel = SignUp(
+        let requestModel = SignUpRequest(
             baseUrl: self.baseUrl,
             profile: profile)
         

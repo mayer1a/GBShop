@@ -1,5 +1,5 @@
 //
-//  GetReviewsTests.swift
+//  ReviewsTests.swift
 //  GBShopTests
 //
 //  Created by Artem Mayer on 27.02.2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class GetReviewsTests: XCTestCase {
+final class ReviewsTests: XCTestCase {
 
     // MARK: - Properties
 

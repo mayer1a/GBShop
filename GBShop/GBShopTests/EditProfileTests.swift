@@ -30,7 +30,7 @@ final class EditProfileTests: XCTestCase {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "correctInput")
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 123,
             username: "Somebody",
             password: "mypassword",
@@ -50,7 +50,7 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 1)
     }
 
@@ -58,7 +58,7 @@ final class EditProfileTests: XCTestCase {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "correctInput")
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: -20,
             username: "Somebody",
             password: "mypassword",
@@ -81,7 +81,7 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
@@ -89,7 +89,7 @@ final class EditProfileTests: XCTestCase {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectUsername")
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 123,
             username: "самбади",
             password: "mypassword",
@@ -111,7 +111,7 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
@@ -119,7 +119,7 @@ final class EditProfileTests: XCTestCase {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectPassword")
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 123,
             username: "Somebody",
             password: "_Б",
@@ -141,7 +141,7 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
@@ -149,7 +149,7 @@ final class EditProfileTests: XCTestCase {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectEmail")
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 123,
             username: "Somebody",
             password: "mypassword",
@@ -171,7 +171,7 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
@@ -179,7 +179,7 @@ final class EditProfileTests: XCTestCase {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "incorrectCardNumber")
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 123,
             username: "Somebody",
             password: "mypassword",
@@ -201,22 +201,15 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
     func testEditProfileEmptyInput() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "emptyInput")
-        let userId = Int()
-        let username = ""
-        let password = ""
-        let email = ""
-        let gender = ""
-        let creditCardNumber = ""
-        let aboutMe = ""
         var result = -1
-        let profile = EditUserProfile(
+        let profile = EditProfile(
             id: 0,
             username: "",
             password: "",
@@ -238,7 +231,7 @@ final class EditProfileTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 

@@ -7,7 +7,7 @@
 
 import Alamofire
 
-protocol GetCatalogRequestFactory {
+protocol CatalogRequestFactory {
 
     // MARK: - Functions
 

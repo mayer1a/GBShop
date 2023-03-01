@@ -1,5 +1,5 @@
 //
-//  AuthTests.swift
+//  SignInTests.swift
 //  AuthTests
 //
 //  Created by Artem Mayer on 11.02.2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class AuthTests: XCTestCase {
+final class SignInTests: XCTestCase {
 
     // MARK: - Properties
 
@@ -22,14 +22,14 @@ final class AuthTests: XCTestCase {
         requestFactory = nil
     }
 
-    func testAuthCorrectInput() {
-        let auth = requestFactory.makeAuthRequestFatory()
+    func testSignInCorrectInput() {
+        let signIn = requestFactory.makeSignInRequestFatory()
         let exp = expectation(description: "correctInput")
         let username = "Somebody"
         let password = "mypassword"
         var result = -1
 
-        auth.login(userName: username, password: password) { response in
+        signIn.login(userName: username, password: password) { response in
             switch response.result {
             case .success(let login):
                 result = login.result
@@ -40,15 +40,15 @@ final class AuthTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(1, result, "trying to login with username: \(username). Login not found")
     }
 
-    func testAuthIncorrectUsername() {
+    func testSignInIncorrectUsername() {
         let exp1 = expectation(description: "incorrectUsername1")
         let exp2 = expectation(description: "incorrectUsername2")
         let exp3 = expectation(description: "incorrectUsername3")
-        let auth = requestFactory.makeAuthRequestFatory()
+        let signIn = requestFactory.makeSignInRequestFatory()
         let usernameLowLetter = "somebody"
         let usernameWithDigit = "Somebody2"
         let usernameRussian = "Самбади"
@@ -57,7 +57,7 @@ final class AuthTests: XCTestCase {
 
         XCTExpectFailure("trying to login with non-existent usernames but the usernames were found")
 
-        auth.login(userName: usernameLowLetter, password: password) { response in
+        signIn.login(userName: usernameLowLetter, password: password) { response in
             switch response.result {
             case .success(let login):
                 results.append(login.result)
@@ -68,7 +68,7 @@ final class AuthTests: XCTestCase {
             exp1.fulfill()
         }
 
-        auth.login(userName: usernameWithDigit, password: password) { response in
+        signIn.login(userName: usernameWithDigit, password: password) { response in
             switch response.result {
             case .success(let login):
                 results.append(login.result)
@@ -79,7 +79,7 @@ final class AuthTests: XCTestCase {
             exp2.fulfill()
         }
 
-        auth.login(userName: usernameRussian, password: password) { response in
+        signIn.login(userName: usernameRussian, password: password) { response in
             switch response.result {
             case .success(let login):
                 results.append(login.result)
@@ -94,16 +94,16 @@ final class AuthTests: XCTestCase {
         XCTAssertEqual(results, [0, 0, 0])
     }
 
-    func testAuthEmptyPassword() throws {
+    func testSignInEmptyPassword() throws {
         let exp = expectation(description: "emptyPassword")
-        let auth = requestFactory.makeAuthRequestFatory()
+        let signIn = requestFactory.makeSignInRequestFatory()
         let username = "somebody"
         let password = ""
         var result = -1
 
         XCTExpectFailure("trying to login with an empty password but authentication was successful")
 
-        auth.login(userName: username, password: password) { response in
+        signIn.login(userName: username, password: password) { response in
             switch response.result {
             case .success(let login):
                 result = login.result
@@ -114,20 +114,20 @@ final class AuthTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 
     func testWithIncorrectPassword() {
         let exp = expectation(description: "incorrectPassword")
-        let auth = requestFactory.makeAuthRequestFatory()
+        let signIn = requestFactory.makeSignInRequestFatory()
         let username = "Somebody"
         let password = "psw1000"
         var result = -1
 
         XCTExpectFailure("trying to login with an incorrect password but authentication was successful")
 
-        auth.login(userName: username, password: password) { response in
+        signIn.login(userName: username, password: password) { response in
             switch response.result {
             case .success(let login):
                 result = login.result
@@ -138,21 +138,21 @@ final class AuthTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
 
         XCTAssertEqual(result, 0)
     }
 
     func testWithEmptyInput() {
         let exp = expectation(description: "emptyInput")
-        let auth = requestFactory.makeAuthRequestFatory()
+        let signIn = requestFactory.makeSignInRequestFatory()
         let username = ""
         let password = ""
         var result = -1
 
         XCTExpectFailure("trying to login with an empty login and password but authentication was successful")
 
-        auth.login(userName: username, password: password) { response in
+        signIn.login(userName: username, password: password) { response in
             switch response.result {
             case .success(let login):
                 result = login.result
@@ -163,7 +163,7 @@ final class AuthTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 }

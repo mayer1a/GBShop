@@ -1,5 +1,5 @@
 //
-//  EditProfileRequestFactory.swift
+//  ProfileRequestFactory.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 14.02.2023.
@@ -7,11 +7,11 @@
 
 import Alamofire
 
-protocol EditProfileRequestFactory {
+protocol ProfileRequestFactory {
 
     // MARK: - Functions
 
     func editProfile(
-        profile: EditUserProfile,
+        profile: EditProfile,
         completionHandler: @escaping (AFDataResponse<EditProfileResult>) -> Void)
 }

@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class GettingProductTests: XCTestCase {
+final class ProductTests: XCTestCase {
 
     // MARK: - Properties
 
@@ -27,7 +27,7 @@ final class GettingProductTests: XCTestCase {
     // MARK: - Functions
 
     func testGetProductCorrectInput() {
-        let product = requestFactory.makeProductGettingRequestFactory()
+        let product = requestFactory.makeProductRequestFactory()
         let exp = expectation(description: "correctInput")
         let productId = 123
         var productResult: ProductResult? = nil
@@ -43,13 +43,13 @@ final class GettingProductTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 4)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(productResult?.result, 1)
         XCTAssertEqual(productResult?.product?.description, "[Подробное описание товара]")
     }
 
     func testGetProductIncorrectProductId() {
-        let product = requestFactory.makeProductGettingRequestFactory()
+        let product = requestFactory.makeProductRequestFactory()
         let exp = expectation(description: "incorrectProductId")
         let productId = 123
         var productResult: ProductResult? = nil
@@ -67,7 +67,7 @@ final class GettingProductTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 4)
+        waitForExpectations(timeout: 5)
         XCTAssertNil(productResult)
     }
 
