@@ -41,7 +41,7 @@ extension GetProduct {
         // MARK: - Properties
 
         let baseUrl: URL
-        let method: HTTPMethod = .post
+        let method: HTTPMethod = .get
         let path: String = "product"
 
         let productId: Int

@@ -41,7 +41,7 @@ extension GetCatalog {
         // MARK: - Properties
 
         let baseUrl: URL
-        let method: HTTPMethod = .post
+        let method: HTTPMethod = .get
         let path: String = "catalog"
 
         let pageNumber: Int
