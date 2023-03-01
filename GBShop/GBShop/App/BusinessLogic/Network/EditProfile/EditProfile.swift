@@ -7,6 +7,8 @@
 
 import Alamofire
 
+// MARK: - AbstractRequestFactory
+
 class EditProfile: AbstractRequestFactory {
 
     // MARK: - Properties
@@ -14,7 +16,6 @@ class EditProfile: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -43,51 +44,35 @@ extension EditProfile {
         let method: HTTPMethod = .post
         let path: String = "edit-profile"
 
-        let userId: Int
-        let username: String
-        let password: String
-        let email: String
-        let gender: String
-        let creditCardNumber: String
-        let aboutMe: String
+        let editProfileUser: EditProfileUser
 
         var parameters: Parameters? {
             return [
-                "user_id": userId,
-                "username": username,
-                "password": password,
-                "email": email,
-                "gender": gender,
-                "credit_card": creditCardNumber,
-                "bio": aboutMe
+                "user_id": editProfileUser.id,
+                "username": editProfileUser.username,
+                "password": editProfileUser.password,
+                "email": editProfileUser.email,
+                "gender": editProfileUser.gender,
+                "credit_card": editProfileUser.creditCard,
+                "bio": editProfileUser.bio
             ]
         }
     }
 }
+
+// MARK: - EditProfileRequestFactory
 
 extension EditProfile: EditProfileRequestFactory {
 
     // MARK: - Functions
 
     func editProfile(
-        userId: Int,
-        username: String,
-        password: String,
-        email: String,
-        gender: String,
-        creditCardNumber: String,
-        aboutMe: String,
+        editProfileUser: EditProfileUser,
         completionHandler: @escaping (Alamofire.AFDataResponse<ProfileEditResult>) -> Void
     ) {
         let requestModel = EditProfile(
             baseUrl: self.baseUrl,
-            userId: userId,
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe)
+            editProfileUser: editProfileUser)
 
         self.request(request: requestModel, completionHandler: completionHandler)
     }
