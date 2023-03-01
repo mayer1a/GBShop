@@ -1,13 +1,15 @@
 //
-//  RemoveReview.swift
+//  Profile.swift
 //  GBShop
 //
-//  Created by Artem Mayer on 27.02.2023.
+//  Created by Artem Mayer on 14.02.2023.
 //
 
 import Alamofire
 
-class RemoveReview: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class Profile: AbstractRequestFactory {
 
     // MARK: - Properties
 
@@ -30,45 +32,50 @@ class RemoveReview: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension RemoveReview {
+extension Profile {
 
     // MARK: - RequestRouter
 
-    struct RemoveReview: RequestRouter {
+    struct ProfileRequest: RequestRouter {
 
         // MARK: - Properties
 
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "remove-review"
+        let path: String = "edit-profile"
 
-        let userId: Int
-        let reviewId: Int
+        let profile: EditProfile
 
         var parameters: Parameters? {
             return [
-                "user_id": userId,
-                "review_id": reviewId
+                "user_id": profile.id,
+                "username": profile.username,
+                "password": profile.password,
+                "email": profile.email,
+                "gender": profile.gender,
+                "credit_card": profile.creditCard,
+                "bio": profile.bio
             ]
         }
     }
 }
 
-extension RemoveReview: RemoveReviewRequestFactory {
+// MARK: - EditProfileRequestFactory
+
+extension Profile: ProfileRequestFactory {
 
     // MARK: - Functions
 
-    func removeReview(
-        userId: Int,
-        reviewId: Int,
-        completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void
+    func editProfile(
+        profile: EditProfile,
+        completionHandler: @escaping (Alamofire.AFDataResponse<EditProfileResult>) -> Void
     ) {
-        let requestModel = RemoveReview(
+        let requestModel = ProfileRequest(
             baseUrl: self.baseUrl,
-            userId: userId,
-            reviewId: reviewId)
+            profile: profile)
 
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
 }
+

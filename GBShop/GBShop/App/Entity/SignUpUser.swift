@@ -1,23 +1,21 @@
 //
-//  User.swift
+//  SignUpUser.swift
 //  GBShop
 //
-//  Created by Artem Mayer on 13.02.2023.
+//  Created by Artem Mayer on 01.03.2023.
 //
 
 import Foundation
 
 // MARK: - User
 
-struct User: Codable {
+struct SignUpUser: Codable {
 
     // MARK: - CodingKeys
-    
+
     enum CodingKeys: String, CodingKey {
-        case id = "user_id"
         case username
-        case name
-        case lastname
+        case password
         case email
         case creditCard = "credit_card"
         case gender
@@ -26,12 +24,10 @@ struct User: Codable {
 
     // MARK: - Properties
 
-    let id: Int
     let username: String
-    let name: String
+    let password: String
     let email: String
     let creditCard: String
-    let lastname: String
     let gender: Gender
     let bio: String
 }

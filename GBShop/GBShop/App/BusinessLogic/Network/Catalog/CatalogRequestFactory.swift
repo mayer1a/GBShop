@@ -1,5 +1,5 @@
 //
-//  CatalogGettingRequestFactory.swift
+//  GetCatalogRequestFactory.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 16.02.2023.
@@ -7,7 +7,7 @@
 
 import Alamofire
 
-protocol CatalogGettingRequestFactory {
+protocol CatalogRequestFactory {
 
     // MARK: - Functions
 

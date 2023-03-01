@@ -1,5 +1,5 @@
 //
-//  RegistrationResult.swift
+//  SignUpResult.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 14.02.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RegistrationResult: Codable {
+struct SignUpResult: Codable {
 
     // MARK: - CodingKeys
 

@@ -1,5 +1,5 @@
 //
-//  CatalogGetting.swift
+//  GetProduct.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 16.02.2023.
@@ -7,14 +7,15 @@
 
 import Alamofire
 
-class CatalogGetting: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class GetProduct: AbstractRequestFactory {
 
     // MARK: - Properties
 
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -31,45 +32,41 @@ class CatalogGetting: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension CatalogGetting {
+extension GetProduct {
 
     // MARK: - RequestRouter
 
-    struct CatalogGetting: RequestRouter {
+    struct GetProduct: RequestRouter {
 
         // MARK: - Properties
 
         let baseUrl: URL
-        let method: HTTPMethod = .post
-        let path: String = "catalog"
+        let method: HTTPMethod = .get
+        let path: String = "product"
 
-        let pageNumber: Int
-        let categoryId: Int
+        let productId: Int
 
         var parameters: Parameters? {
             return [
-                "page_number": pageNumber,
-                "category_id": categoryId
+                "product_id": productId,
             ]
         }
     }
 }
 
-extension CatalogGetting: CatalogGettingRequestFactory {
+// MARK: - GetProductRequestFactory
+
+extension GetProduct: GetProductRequestFactory {
 
     // MARK: - Functions
 
-    func getCatalog(
-        pageNumber: Int,
-        categoryId: Int,
-        completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void
+    func getProduct(
+        productId: Int,
+        completionHandler: @escaping (AFDataResponse<ProductResult>) -> Void
     ) {
-        let requestModel = CatalogGetting(
-            baseUrl: self.baseUrl,
-            pageNumber: pageNumber,
-            categoryId: categoryId)
-
+        let requestModel = GetProduct(baseUrl: self.baseUrl, productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
 }
+

@@ -41,16 +41,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Registration request
 
     private func regRequest() {
-        let reg = requestFactory.makeRegistrationRequestFactory()
+        let reg = requestFactory.makeSignUpRequestFactory()
 
-        reg.registration(
+        let profile = SignUpUser(
             username: "Somebody",
             password: "mypassword",
             email: "some@some.ru",
-            gender: "m",
-            creditCardNumber: "9872389-2424-234224-234",
-            aboutMe: "This is good! I think I will switch to another language"
-        ) { response in
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
+
+        reg.registration(profile: profile) { response in
             switch response.result {
             case .success(let message):
                 print(message)
@@ -63,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Authorization request
 
     private func authRequest() {
-        let auth = requestFactory.makeAuthRequestFatory()
+        let auth = requestFactory.makeSignInRequestFatory()
 
         auth.login(userName: "Somebody", password: "mypassword") { response in
             switch response.result {
@@ -79,16 +80,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func editRequest() {
         let edit = requestFactory.makeEditProfileRequestFactory()
-
-        edit.editProfile(
-            userId: 123,
+        
+        let profile = EditProfile(
+            id: 123,
             username: "Somebody",
             password: "mypassword",
             email: "some@some.ru",
-            gender: "m",
-            creditCardNumber: "9872389-2424-234224-234",
-            aboutMe:"This is good! I think I will switch to another language"
-        ) { response in
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
+
+        edit.editProfile(profile: profile) { response in
             switch response.result {
             case .success(let login):
                 print(login)
@@ -116,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Get catalog request
 
     private func getCatalog() {
-        let getCatalog = requestFactory.makeCatalogGettingRequestFactory()
+        let getCatalog = requestFactory.makeCatalogRequestFactory()
 
         getCatalog.getCatalog(pageNumber: 1, categoryId: 1) { response in
             switch response.result {
@@ -131,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Get product by id request
 
     private func getProduct() {
-        let getProduct = requestFactory.makeProductGettingRequestFactory()
+        let getProduct = requestFactory.makeProductRequestFactory()
 
         getProduct.getProduct(productId: 123) { response in
             switch response.result {
@@ -161,9 +163,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Add product review
 
     private func addReview() {
-        let getReviews = requestFactory.makeAddReviewRequestFactory()
+        let addReview = requestFactory.makeReviewsRequestFactory()
 
-        getReviews.addReview(userId: 123, productId: 456, description: "Текст отзыва") { response in
+        addReview.addReview(userId: 123, productId: 456, description: "Текст отзыва") { response in
             switch response.result {
             case .success(let response):
                 print(response)
@@ -172,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        getReviews.addReview(userId: nil, productId: 456, description: "Текст отзыва") { response in
+        addReview.addReview(userId: nil, productId: 456, description: "Текст отзыва") { response in
             switch response.result {
             case .success(let response):
                 print(response)
@@ -185,9 +187,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Approve product review
 
     private func approveReview() {
-        let getReviews = requestFactory.makeApproveReviewRequestFactory()
+        let approveReview = requestFactory.makeReviewsRequestFactory()
 
-        getReviews.approveReview(userId: 123, reviewId: 112) { response in
+        approveReview.approveReview(userId: 123, reviewId: 112) { response in
             switch response.result {
             case .success(let response):
                 print(response)
@@ -200,9 +202,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Remove product review
 
     private func removeReview() {
-        let getReviews = requestFactory.makeRemoveReviewRequestFactory()
+        let removeReview = requestFactory.makeReviewsRequestFactory()
 
-        getReviews.removeReview(userId: 123, reviewId: 112) { response in
+        removeReview.removeReview(userId: 123, reviewId: 112) { response in
             switch response.result {
             case .success(let response):
                 print(response)

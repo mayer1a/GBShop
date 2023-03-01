@@ -1,5 +1,5 @@
 //
-//  Auth.swift
+//  SignUp.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 13.02.2023.
@@ -7,14 +7,15 @@
 
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class SignUp: AbstractRequestFactory {
 
     // MARK: - Properties
 
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -31,40 +32,48 @@ class Auth: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension Auth {
+extension SignUp {
 
     // MARK: - RequestRouter
 
-    struct Login: RequestRouter {
+    struct SignUpRequest: RequestRouter {
 
         // MARK: - Properties
 
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "signin"
+        let path: String = "signup"
 
-        let login: String
-        let password: String
+        let profile: SignUpUser
 
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "username": profile.username,
+                "password": profile.password,
+                "email": profile.email,
+                "gender": profile.gender,
+                "credit_card": profile.creditCard,
+                "bio": profile.bio
             ]
         }
     }
 }
 
-extension Auth: AuthRequestFactory {
+// MARK: - SignUpRequestFactory
+
+extension SignUp: SignUpRequestFactory {
 
     // MARK: - Functions
 
-    func login(
-        userName: String,
-        password: String,
-        completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void
+    func registration(
+        profile: SignUpUser,
+        completionHandler: @escaping (Alamofire.AFDataResponse<SignUpResult>) -> Void
     ) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+        let requestModel = SignUpRequest(
+            baseUrl: self.baseUrl,
+            profile: profile)
+        
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }

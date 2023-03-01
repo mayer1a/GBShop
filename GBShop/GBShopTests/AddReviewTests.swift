@@ -27,7 +27,7 @@ final class AddReviewTests: XCTestCase {
     // MARK: - Functions
 
     func testAddReviewCorrectInput() {
-        let addReview = requestFactory.makeAddReviewRequestFactory()
+        let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 123
         let productId = 456
@@ -52,7 +52,7 @@ final class AddReviewTests: XCTestCase {
     }
 
     func testAddReviewAnonCorrectInput() {
-        let addReview = requestFactory.makeAddReviewRequestFactory()
+        let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctAnonInput")
         let userId: Int? = nil
         let productId = 456
@@ -77,7 +77,7 @@ final class AddReviewTests: XCTestCase {
     }
 
     func testAddReviewIncorrectProductId() {
-        let addReview = requestFactory.makeAddReviewRequestFactory()
+        let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectProductId")
         let userId = 123
         let productId = -456
@@ -103,7 +103,7 @@ final class AddReviewTests: XCTestCase {
     }
 
     func testAddReviewsIncorrectUserId() {
-        let addReview = requestFactory.makeAddReviewRequestFactory()
+        let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectUserId")
         let userId = -123
         let productId = 456

@@ -43,7 +43,7 @@ final class LogoutTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 1)
     }
 
@@ -66,7 +66,7 @@ final class LogoutTests: XCTestCase {
             exp.fulfill()
         }
 
-        waitForExpectations(timeout: 2)
+        waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
 

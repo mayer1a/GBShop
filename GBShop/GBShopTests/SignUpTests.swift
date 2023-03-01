@@ -1,5 +1,5 @@
 //
-//  EditProfileTests.swift
+//  SignUpTests.swift
 //  GBShopTests
 //
 //  Created by Artem Mayer on 16.02.2023.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import GBShop
 
-final class EditProfileTests: XCTestCase {
+final class SignUpTests: XCTestCase {
 
     // MARK: - Properties
 
@@ -26,12 +26,11 @@ final class EditProfileTests: XCTestCase {
 
     // MARK: - Functions
 
-    func testEditProfileCorrectInput() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
+    func testSignUpCorrectInput() {
+        let signUp = requestFactory.makeSignUpRequestFactory()
         let exp = expectation(description: "correctInput")
         var result = -1
-        let profile = EditProfile(
-            id: 123,
+        let profile = SignUpUser(
             username: "Somebody",
             password: "mypassword",
             email: "some@some.ru",
@@ -39,7 +38,7 @@ final class EditProfileTests: XCTestCase {
             gender: .man,
             bio: "This is good! I think I will switch to another language")
 
-        edit.editProfile(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -51,46 +50,14 @@ final class EditProfileTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 1)
+        XCTAssertEqual(1, result, "trying to registration")
     }
 
-    func testEditProfileIncorrectUserId() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "correctInput")
-        var result = -1
-        let profile = EditProfile(
-            id: -20,
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-
-        XCTExpectFailure("trying to logout with incorrect user id but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileIncorrectUsername() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
+    func testSignUpIncorrectUsername() {
         let exp = expectation(description: "incorrectUsername")
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
-        let profile = EditProfile(
-            id: 123,
+        let profile = SignUpUser(
             username: "самбади",
             password: "mypassword",
             email: "some@some.ru",
@@ -98,9 +65,9 @@ final class EditProfileTests: XCTestCase {
             gender: .man,
             bio: "This is good! I think I will switch to another language")
 
-        XCTExpectFailure("trying to logout with incorrect username but edit profile was succesful")
+        XCTExpectFailure("trying to registration with incorrect username but registration was succesful")
 
-        edit.editProfile(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -115,42 +82,11 @@ final class EditProfileTests: XCTestCase {
         XCTAssertEqual(result, 0)
     }
 
-    func testEditProfileIncorrectPassword() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "incorrectPassword")
-        var result = -1
-        let profile = EditProfile(
-            id: 123,
-            username: "Somebody",
-            password: "_Б",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to logout with incorrect password but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileIncorrectEmail() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
+    func testSignUpIncorrectEmail() {
         let exp = expectation(description: "incorrectEmail")
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
-        let profile = EditProfile(
-            id: 123,
+        let profile = SignUpUser(
             username: "Somebody",
             password: "mypassword",
             email: "some @so",
@@ -158,9 +94,9 @@ final class EditProfileTests: XCTestCase {
             gender: .man,
             bio: "This is good! I think I will switch to another language")
 
-        XCTExpectFailure("trying to logout with incorrect email but edit profile was succesful")
+        XCTExpectFailure("trying to registration with incorrect email but registration was succesful")
 
-        edit.editProfile(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -175,22 +111,21 @@ final class EditProfileTests: XCTestCase {
         XCTAssertEqual(result, 0)
     }
 
-    func testEditProfileIncorrectCardNumber() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
+    func testSignUpIncorrectCardNumber() {
         let exp = expectation(description: "incorrectCardNumber")
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
-        let profile = EditProfile(
-            id: 123,
+        let profile = SignUpUser(
             username: "Somebody",
             password: "mypassword",
             email: "some@some.ru",
-            creditCard: "98723B A7476",
+            creditCard: "987A-2424234 B224-234",
             gender: .man,
             bio: "This is good! I think I will switch to another language")
 
-        XCTExpectFailure("trying to logout with incorrect card number but edit profile was succesful")
+        XCTExpectFailure("trying to registration with incorrect card number but registration was succesful")
 
-        edit.editProfile(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -205,12 +140,40 @@ final class EditProfileTests: XCTestCase {
         XCTAssertEqual(result, 0)
     }
 
-    func testEditProfileEmptyInput() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "emptyInput")
+    func testSignUpIncorrectPassword() {
+        let exp = expectation(description: "incorrectPassword")
+        let signUp = requestFactory.makeSignUpRequestFactory()
         var result = -1
-        let profile = EditProfile(
-            id: 0,
+        let profile = SignUpUser(
+            username: "Somebody",
+            password: "",
+            email: "some@some.ru",
+            creditCard: "9872389-2424-234224-234",
+            gender: .man,
+            bio: "This is good! I think I will switch to another language")
+
+        XCTExpectFailure("trying to registration with incorrect password but registration was succesful")
+
+        signUp.registration(profile: profile) { response in
+            switch response.result {
+            case .success(let response):
+                result = response.result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(result, 0)
+    }
+
+    func testSignUpWithEmptyInput() {
+        let exp = expectation(description: "emptyInput")
+        let signUp = requestFactory.makeSignUpRequestFactory()
+        var result = -1
+        let profile = SignUpUser(
             username: "",
             password: "",
             email: "",
@@ -218,9 +181,9 @@ final class EditProfileTests: XCTestCase {
             gender: .man,
             bio: "")
 
-        XCTExpectFailure("trying to logout with empty input but edit profile was succesful")
+        XCTExpectFailure("trying to registration with empty input but registration was succesful")
 
-        edit.editProfile(profile: profile) { response in
+        signUp.registration(profile: profile) { response in
             switch response.result {
             case .success(let response):
                 result = response.result
@@ -234,5 +197,4 @@ final class EditProfileTests: XCTestCase {
         waitForExpectations(timeout: 5)
         XCTAssertEqual(result, 0)
     }
-
 }

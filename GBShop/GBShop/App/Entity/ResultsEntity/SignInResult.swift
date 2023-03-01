@@ -1,5 +1,5 @@
 //
-//  LoginResult.swift
+//  SignInResult.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 13.02.2023.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct LoginResult: Codable {
+struct SignInResult: Codable {
 
     // MARK: - Properties
     
     let result: Int
-    let user: User
+    let user: User?
 }

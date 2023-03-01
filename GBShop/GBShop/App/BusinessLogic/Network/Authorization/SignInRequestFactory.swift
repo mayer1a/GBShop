@@ -1,5 +1,5 @@
 //
-//  AuthRequestFactory.swift
+//  SignInRequestFactory.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 13.02.2023.
@@ -7,12 +7,12 @@
 
 import Alamofire
 
-protocol AuthRequestFactory {
+protocol SignInRequestFactory {
 
     // MARK: - Functions
 
     func login(
         userName: String,
         password: String,
-        completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
+        completionHandler: @escaping (AFDataResponse<SignInResult>) -> Void)
 }

@@ -7,6 +7,8 @@
 
 import Alamofire
 
+// MARK: - AbstractRequestFactory
+
 class Logout: AbstractRequestFactory {
 
     // MARK: - Properties
@@ -14,7 +16,6 @@ class Logout: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-//    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
 
     // MARK: - Constructions
 
@@ -52,6 +53,8 @@ extension Logout {
         }
     }
 }
+
+// MARK: - LogoutRequestFactory
 
 extension Logout: LogoutRequestFactory {
 

@@ -1,13 +1,15 @@
 //
-//  ApproveReview.swift
+//  Catalog.swift
 //  GBShop
 //
-//  Created by Artem Mayer on 27.02.2023.
+//  Created by Artem Mayer on 16.02.2023.
 //
 
 import Alamofire
 
-class ApproveReview: AbstractRequestFactory {
+// MARK: - AbstractRequestFactory
+
+class Catalog: AbstractRequestFactory {
 
     // MARK: - Properties
 
@@ -30,43 +32,45 @@ class ApproveReview: AbstractRequestFactory {
 
 // MARK: - Extensions
 
-extension ApproveReview {
+extension Catalog {
 
     // MARK: - RequestRouter
 
-    struct ApproveReview: RequestRouter {
+    struct CatalogRequest: RequestRouter {
 
         // MARK: - Properties
 
         let baseUrl: URL
-        let method: HTTPMethod = .post
-        let path: String = "approve-review"
+        let method: HTTPMethod = .get
+        let path: String = "catalog"
 
-        let userId: Int
-        let reviewId: Int
+        let pageNumber: Int
+        let categoryId: Int
 
         var parameters: Parameters? {
             return [
-                "user_id": userId,
-                "review_id": reviewId
+                "page_number": pageNumber,
+                "category_id": categoryId
             ]
         }
     }
 }
 
-extension ApproveReview: ApproveReviewRequestFactory {
+// MARK: - CatalogRequestFactory
+
+extension Catalog: CatalogRequestFactory {
 
     // MARK: - Functions
 
-    func approveReview(
-        userId: Int,
-        reviewId: Int,
-        completionHandler: @escaping (AFDataResponse<ApproveReviewResult>) -> Void
+    func getCatalog(
+        pageNumber: Int,
+        categoryId: Int,
+        completionHandler: @escaping (AFDataResponse<CatalogResult>) -> Void
     ) {
-        let requestModel = ApproveReview(
+        let requestModel = CatalogRequest(
             baseUrl: self.baseUrl,
-            userId: userId,
-            reviewId: reviewId)
+            pageNumber: pageNumber,
+            categoryId: categoryId)
 
         self.request(request: requestModel, completionHandler: completionHandler)
     }
