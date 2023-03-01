@@ -12,11 +12,6 @@ protocol SignUpRequestFactory {
     // MARK: - Functions
 
     func registration(
-        username: String,
-        password: String,
-        email: String,
-        gender: String,
-        creditCardNumber: String,
-        aboutMe: String,
+        profile: SignUpUser,
         completionHandler: @escaping (AFDataResponse<SignUpResult>) -> Void)
 }

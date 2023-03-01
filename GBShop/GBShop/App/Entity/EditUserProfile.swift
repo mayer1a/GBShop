@@ -1,5 +1,5 @@
 //
-//  EditProfileUser.swift
+//  Profile.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 01.03.2023.
@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - User
 
-struct EditProfileUser: Codable {
+struct EditUserProfile: Codable {
 
     // MARK: - CodingKeys
 

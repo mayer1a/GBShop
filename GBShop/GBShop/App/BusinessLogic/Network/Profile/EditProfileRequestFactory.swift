@@ -12,6 +12,6 @@ protocol EditProfileRequestFactory {
     // MARK: - Functions
 
     func editProfile(
-        editProfileUser: EditProfileUser,
+        profile: EditUserProfile,
         completionHandler: @escaping (AFDataResponse<EditProfileResult>) -> Void)
 }

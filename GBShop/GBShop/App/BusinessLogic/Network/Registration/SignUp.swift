@@ -44,23 +44,16 @@ extension SignUp {
         let method: HTTPMethod = .post
         let path: String = "signup"
 
-        let userId: Int
-        let username: String
-        let password: String
-        let email: String
-        let gender: String
-        let creditCardNumber: String
-        let aboutMe: String
+        let profile: SignUpUser
 
         var parameters: Parameters? {
             return [
-                "user_id": userId,
-                "username": username,
-                "password": password,
-                "email": email,
-                "gender": gender,
-                "credit_card": creditCardNumber,
-                "bio": aboutMe
+                "username": profile.username,
+                "password": profile.password,
+                "email": profile.email,
+                "gender": profile.gender,
+                "credit_card": profile.creditCard,
+                "bio": profile.bio
             ]
         }
     }
@@ -73,23 +66,12 @@ extension SignUp: SignUpRequestFactory {
     // MARK: - Functions
 
     func registration(
-        username: String,
-        password: String,
-        email: String,
-        gender: String,
-        creditCardNumber: String,
-        aboutMe: String,
+        profile: SignUpUser,
         completionHandler: @escaping (Alamofire.AFDataResponse<SignUpResult>) -> Void
     ) {
         let requestModel = SignUp(
             baseUrl: self.baseUrl,
-            userId: UniqueID.getUniqueId(),
-            username: username,
-            password: password,
-            email: email,
-            gender: gender,
-            creditCardNumber: creditCardNumber,
-            aboutMe: aboutMe)
+            profile: profile)
         
         self.request(request: requestModel, completionHandler: completionHandler)
     }

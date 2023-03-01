@@ -44,17 +44,17 @@ extension EditProfile {
         let method: HTTPMethod = .post
         let path: String = "edit-profile"
 
-        let editProfileUser: EditProfileUser
+        let profile: EditUserProfile
 
         var parameters: Parameters? {
             return [
-                "user_id": editProfileUser.id,
-                "username": editProfileUser.username,
-                "password": editProfileUser.password,
-                "email": editProfileUser.email,
-                "gender": editProfileUser.gender,
-                "credit_card": editProfileUser.creditCard,
-                "bio": editProfileUser.bio
+                "user_id": profile.id,
+                "username": profile.username,
+                "password": profile.password,
+                "email": profile.email,
+                "gender": profile.gender,
+                "credit_card": profile.creditCard,
+                "bio": profile.bio
             ]
         }
     }
@@ -67,12 +67,12 @@ extension EditProfile: EditProfileRequestFactory {
     // MARK: - Functions
 
     func editProfile(
-        editProfileUser: EditProfileUser,
+        profile: EditUserProfile,
         completionHandler: @escaping (Alamofire.AFDataResponse<EditProfileResult>) -> Void
     ) {
         let requestModel = EditProfile(
             baseUrl: self.baseUrl,
-            editProfileUser: editProfileUser)
+            profile: profile)
 
         self.request(request: requestModel, completionHandler: completionHandler)
     }

@@ -30,32 +30,6 @@ class Reviews: AbstractRequestFactory {
     }
 }
 
-// MARK: - Extensions
-
-extension Reviews {
-
-    // MARK: - RequestRouter
-
-    struct Reviews: RequestRouter {
-
-        // MARK: - Properties
-
-        let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "reviews"
-
-        let productId: Int
-        let pageNumber: Int
-
-        var parameters: Parameters? {
-            return [
-                "product_id": productId,
-                "page_number": pageNumber
-            ]
-        }
-    }
-}
-
 // MARK: - ReviewsRequestFactory
 
 extension Reviews: ReviewsRequestFactory {
@@ -71,6 +45,47 @@ extension Reviews: ReviewsRequestFactory {
             baseUrl: self.baseUrl,
             productId: productId,
             pageNumber: pageNumber)
+
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+
+    func addReview(
+        userId: Int?,
+        productId: Int,
+        description: String,
+        completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void
+    ) {
+        let requestModel = AddReview(
+            baseUrl: self.baseUrl,
+            userId: userId,
+            productId: productId,
+            description: description)
+
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+
+    func approveReview(
+        userId: Int,
+        reviewId: Int,
+        completionHandler: @escaping (AFDataResponse<ApproveReviewResult>) -> Void
+    ) {
+        let requestModel = ApproveReview(
+            baseUrl: self.baseUrl,
+            userId: userId,
+            reviewId: reviewId)
+
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+
+    func removeReview(
+        userId: Int,
+        reviewId: Int,
+        completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void
+    ) {
+        let requestModel = RemoveReview(
+            baseUrl: self.baseUrl,
+            userId: userId,
+            reviewId: reviewId)
 
         self.request(request: requestModel, completionHandler: completionHandler)
     }
