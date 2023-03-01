@@ -61,9 +61,6 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "pay-basket"
 
-        let productId: Int
-        let quantity: Int
-
         var parameters: Parameters? {
             nil
         }
