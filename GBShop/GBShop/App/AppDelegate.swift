@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         addReview()
         approveReview()
         removeReview()
+        addProductToBasket()
+        removeProductFromBasket()
+        payBasket()
     }
 
     // MARK: - Registration request
@@ -205,6 +208,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let removeReview = requestFactory.makeReviewsRequestFactory()
 
         removeReview.removeReview(userId: 123, reviewId: 112) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Add product to basket
+
+    private func addProductToBasket() {
+        let basketFactory = requestFactory.makeBasketRequestFactory()
+
+        basketFactory.addProduct(productId: 123, quantity: 1) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Remove product from basket
+
+    private func removeProductFromBasket() {
+        let basketFactory = requestFactory.makeBasketRequestFactory()
+
+        basketFactory.removeProduct(productId: 123) { response in
+            switch response.result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+
+    // MARK: - Pay basket
+
+    private func payBasket() {
+        let basketFactory = requestFactory.makeBasketRequestFactory()
+
+        basketFactory.payBasket { response in
             switch response.result {
             case .success(let response):
                 print(response)
