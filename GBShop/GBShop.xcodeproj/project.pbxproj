@@ -32,6 +32,7 @@
 		49556398299A696900A22FA4 /* SignInRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556397299A696900A22FA4 /* SignInRequestFactory.swift */; };
 		4955639A299A69B900A22FA4 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556399299A69B900A22FA4 /* SignIn.swift */; };
 		4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955639B299A6A6A00A22FA4 /* RequestFactory.swift */; };
+		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
 		4999124B299E14680034015A /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124A299E14680034015A /* SignUpTests.swift */; };
 		4999124F299E18B90034015A /* LogoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124E299E18B90034015A /* LogoutTests.swift */; };
@@ -129,6 +130,7 @@
 		49556397299A696900A22FA4 /* SignInRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestFactory.swift; sourceTree = "<group>"; };
 		49556399299A69B900A22FA4 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		4955639B299A6A6A00A22FA4 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
 		4999124A299E14680034015A /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		4999124E299E18B90034015A /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				495EB6F329B7740F00DF444E /* SignInModule */,
 				491B359B2997DB2300323789 /* ViewController.swift */,
 			);
 			path = Flows;
@@ -390,6 +393,22 @@
 				4955639B299A6A6A00A22FA4 /* RequestFactory.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		495EB6F329B7740F00DF444E /* SignInModule */ = {
+			isa = PBXGroup;
+			children = (
+				495EB6F429B7745900DF444E /* Presenter */,
+			);
+			path = SignInModule;
+			sourceTree = "<group>";
+		};
+		495EB6F429B7745900DF444E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				495EB6F529B7748800DF444E /* SignInPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		49991259299E20940034015A /* ResultsEntity */ = {
@@ -783,6 +802,7 @@
 				4999126C299E36010034015A /* GetProduct.swift in Sources */,
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
+				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
