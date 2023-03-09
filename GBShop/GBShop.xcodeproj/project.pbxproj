@@ -37,6 +37,7 @@
 		495EB71F29B9EB4C00DF444E /* SignInPresenter+DisplayedKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB71E29B9EB4B00DF444E /* SignInPresenter+DisplayedKeyboard.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		495EB72629B9FC8300DF444E /* SignInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72529B9FC8300DF444E /* SignInTextField.swift */; };
+		495EB72929BA11B300DF444E /* SignInModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72829BA11B300DF444E /* SignInModuleBuilder.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
 		4999124B299E14680034015A /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124A299E14680034015A /* SignUpTests.swift */; };
 		4999124F299E18B90034015A /* LogoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124E299E18B90034015A /* LogoutTests.swift */; };
@@ -139,6 +140,7 @@
 		495EB71E29B9EB4B00DF444E /* SignInPresenter+DisplayedKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInPresenter+DisplayedKeyboard.swift"; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		495EB72529B9FC8300DF444E /* SignInTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextField.swift; sourceTree = "<group>"; };
+		495EB72829BA11B300DF444E /* SignInModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModuleBuilder.swift; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
 		4999124A299E14680034015A /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		4999124E299E18B90034015A /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 		491B35CE2997F95E00323789 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				495EB72729BA119D00DF444E /* SignInModule */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -427,6 +430,14 @@
 				495EB72529B9FC8300DF444E /* SignInTextField.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		495EB72729BA119D00DF444E /* SignInModule */ = {
+			isa = PBXGroup;
+			children = (
+				495EB72829BA11B300DF444E /* SignInModuleBuilder.swift */,
+			);
+			path = SignInModule;
 			sourceTree = "<group>";
 		};
 		49991259299E20940034015A /* ResultsEntity */ = {
@@ -832,6 +843,7 @@
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
 				49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */,
 				49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */,
+				495EB72929BA11B300DF444E /* SignInModuleBuilder.swift in Sources */,
 				4955639A299A69B900A22FA4 /* SignIn.swift in Sources */,
 				49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */,
 				49991262299E227C0034015A /* Catalog.swift in Sources */,
