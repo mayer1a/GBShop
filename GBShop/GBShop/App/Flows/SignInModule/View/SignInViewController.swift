@@ -9,9 +9,13 @@ import UIKit
 
 final class SignInViewController: UIViewController {
 
+    // MARK: - Properties
+
+    let scrollView: UIScrollView
+    var presenter: SignInPresenterProtocol?
+
     // MARK: - Private properties
 
-    var presenter: SignInPresenterProtocol?
     private let contentView: UIView
     private let loginTextField: SignInTextField
     private let passwordTextField: SignInTextField
@@ -20,10 +24,6 @@ final class SignInViewController: UIViewController {
     private let headerLabel: UILabel
     private let warningLabel: WarningPaddingLabel
     private lazy var loadingSpinner = UIActivityIndicatorView(style: .large)
-
-    // MARK: - Properties
-
-    let scrollView: UIScrollView
 
     // MARK: - Constructions
 

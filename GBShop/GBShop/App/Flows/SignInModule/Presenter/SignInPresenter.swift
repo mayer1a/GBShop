@@ -21,16 +21,16 @@ protocol SignInViewProtocol: AnyObject {
 protocol SignInPresenterProtocol: AnyObject {
     init(view: SignInViewProtocol, requestFactory: SignInRequestFactory)
 
+    var user: SignInResult? { get }
+
     func signIn(username: String?, password: String?)
     func signUpButtonTapped()
     func inputFieldsTapped()
-
-    var user: SignInResult? { get }
 }
 
-final class SignInPresenter: SignInPresenterProtocol {
+final class SignInPresenter {
 
-    // MARK: - Private properties
+    // MARK: - Properties
 
     weak var view: SignInViewProtocol?
     let requestFactory: SignInRequestFactory!
@@ -77,6 +77,10 @@ final class SignInPresenter: SignInPresenterProtocol {
             object: nil)
     }
 
+}
+
+extension SignInPresenter: SignInPresenterProtocol {
+
     // MARK: - Functions
 
     func signIn(username: String?, password: String?) {
@@ -99,7 +103,7 @@ final class SignInPresenter: SignInPresenterProtocol {
                 case .failure(_):
                     self?.view?.signInFailure()
                 }
-                
+
                 self?.view?.stopLoadingSpinner()
             }
         }
@@ -112,5 +116,4 @@ final class SignInPresenter: SignInPresenterProtocol {
     func inputFieldsTapped() {
         view?.removeWarning()
     }
-
 }
