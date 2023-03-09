@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
-		491B359C2997DB2300323789 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B359B2997DB2300323789 /* ViewController.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
 		491B35A42997DB2400323789 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A22997DB2400323789 /* LaunchScreen.storyboard */; };
 		491B35AF2997DB2400323789 /* SignInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35AE2997DB2400323789 /* SignInTests.swift */; };
@@ -33,6 +32,11 @@
 		4955639A299A69B900A22FA4 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556399299A69B900A22FA4 /* SignIn.swift */; };
 		4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955639B299A6A6A00A22FA4 /* RequestFactory.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
+		495EB6F929B7945C00DF444E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F829B7945C00DF444E /* SignInViewController.swift */; };
+		495EB71B29B8E76500DF444E /* WarningPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB71A29B8E76500DF444E /* WarningPaddingLabel.swift */; };
+		495EB71F29B9EB4C00DF444E /* SignInPresenter+DisplayedKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB71E29B9EB4B00DF444E /* SignInPresenter+DisplayedKeyboard.swift */; };
+		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
+		495EB72629B9FC8300DF444E /* SignInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72529B9FC8300DF444E /* SignInTextField.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
 		4999124B299E14680034015A /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124A299E14680034015A /* SignUpTests.swift */; };
 		4999124F299E18B90034015A /* LogoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124E299E18B90034015A /* LogoutTests.swift */; };
@@ -104,7 +108,6 @@
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		491B359B2997DB2300323789 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		491B35A02997DB2400323789 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		491B35A32997DB2400323789 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		491B35A52997DB2400323789 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,6 +134,11 @@
 		49556399299A69B900A22FA4 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		4955639B299A6A6A00A22FA4 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		495EB6F829B7945C00DF444E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		495EB71A29B8E76500DF444E /* WarningPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningPaddingLabel.swift; sourceTree = "<group>"; };
+		495EB71E29B9EB4B00DF444E /* SignInPresenter+DisplayedKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInPresenter+DisplayedKeyboard.swift"; sourceTree = "<group>"; };
+		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		495EB72529B9FC8300DF444E /* SignInTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextField.swift; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
 		4999124A299E14680034015A /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		4999124E299E18B90034015A /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
@@ -314,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				495EB6F329B7740F00DF444E /* SignInModule */,
-				491B359B2997DB2300323789 /* ViewController.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -398,6 +405,7 @@
 		495EB6F329B7740F00DF444E /* SignInModule */ = {
 			isa = PBXGroup;
 			children = (
+				495EB6F729B793B500DF444E /* View */,
 				495EB6F429B7745900DF444E /* Presenter */,
 			);
 			path = SignInModule;
@@ -409,6 +417,16 @@
 				495EB6F529B7748800DF444E /* SignInPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		495EB6F729B793B500DF444E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				495EB6F829B7945C00DF444E /* SignInViewController.swift */,
+				495EB71A29B8E76500DF444E /* WarningPaddingLabel.swift */,
+				495EB72529B9FC8300DF444E /* SignInTextField.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		49991259299E20940034015A /* ResultsEntity */ = {
@@ -452,8 +470,10 @@
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */,
 				49ADCC6929AFA3DF001108DC /* Basket+Extensions.swift */,
+				49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */,
+				495EB71E29B9EB4B00DF444E /* SignInPresenter+DisplayedKeyboard.swift */,
+				495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -764,6 +784,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49ADCC5729AF3B38001108DC /* SignUpUser.swift in Sources */,
+				495EB6F929B7945C00DF444E /* SignInViewController.swift in Sources */,
 				4928AD09299B493D00B665C8 /* LogoutResult.swift in Sources */,
 				49556398299A696900A22FA4 /* SignInRequestFactory.swift in Sources */,
 				49991266299E318A0034015A /* ProductResult.swift in Sources */,
@@ -779,13 +800,15 @@
 				49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */,
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
+				495EB71B29B8E76500DF444E /* WarningPaddingLabel.swift in Sources */,
 				4928AD0F299B4CA000B665C8 /* EditProfileResult.swift in Sources */,
 				49B77868299AA5EF00597F11 /* SignUpResult.swift in Sources */,
 				49D0287229AC86E900715F08 /* ApproveReviewResult.swift in Sources */,
-				491B359C2997DB2300323789 /* ViewController.swift in Sources */,
+				495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */,
 				491B35982997DB2300323789 /* AppDelegate.swift in Sources */,
 				49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */,
 				4928AD0B299B4A1500B665C8 /* LogoutRequestFactory.swift in Sources */,
+				495EB71F29B9EB4C00DF444E /* SignInPresenter+DisplayedKeyboard.swift in Sources */,
 				49ADCC6829AFA2C2001108DC /* Basket.swift in Sources */,
 				49D0286629ABB38B00715F08 /* Reviews.swift in Sources */,
 				49ADCC5F29AFA11C001108DC /* AddProductResult.swift in Sources */,
@@ -801,6 +824,7 @@
 				4928AD17299B502F00B665C8 /* Profile.swift in Sources */,
 				4999126C299E36010034015A /* GetProduct.swift in Sources */,
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
+				495EB72629B9FC8300DF444E /* SignInTextField.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
