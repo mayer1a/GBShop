@@ -16,12 +16,13 @@ protocol SignInViewProtocol: AnyObject {
     func removeWarning()
     func getSignInButtonFrame() -> CGRect
     func getSafeAreaLayoutFrame() -> CGRect
+    func signInSuccess(with userProfile: User)
 }
 
 protocol SignInPresenterProtocol: AnyObject {
     init(view: SignInViewProtocol, requestFactory: SignInRequestFactory)
 
-    var user: SignInResult? { get }
+    var user: User? { get }
 
     func signIn(username: String?, password: String?)
     func signUpButtonTapped()
@@ -34,7 +35,7 @@ final class SignInPresenter {
 
     weak var view: SignInViewProtocol?
     let requestFactory: SignInRequestFactory!
-    var user: SignInResult?
+    var user: User?
 
     // MARK: - Constructions
 
@@ -97,9 +98,16 @@ extension SignInPresenter: SignInPresenterProtocol {
         requestFactory?.login(userName: username, password: password) { [weak self] response in
             DispatchQueue.main.async {
                 switch response.result {
-                case .success(let user):
-                    self?.user = user
+                case .success(let signInResult):
                     // TODO: Go to Main screen through the Coordinator
+                    guard
+                        let user = signInResult.user
+                    else {
+                        self?.view?.signInFailure()
+                        break
+                    }
+                    
+                    self?.view?.signInSuccess(with: user)
                 case .failure(_):
                     self?.view?.signInFailure()
                 }
