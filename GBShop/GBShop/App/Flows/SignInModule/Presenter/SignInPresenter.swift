@@ -17,6 +17,7 @@ protocol SignInViewProtocol: AnyObject {
     func getSignInButtonFrame() -> CGRect
     func getSafeAreaLayoutFrame() -> CGRect
     func signInSuccess(with userProfile: User)
+    func moveToSignUp()
 }
 
 protocol SignInPresenterProtocol: AnyObject {
@@ -119,6 +120,7 @@ extension SignInPresenter: SignInPresenterProtocol {
 
     func signUpButtonTapped() {
         // TODO: Go to SignUp screen through the Coordinator
+        view?.moveToSignUp()
     }
 
     func inputFieldsTapped() {

@@ -300,4 +300,10 @@ extension SignInViewController: SignInViewProtocol {
         let mainViewController = ModuleBuilder.createMainModule(with: userProfile)
         navigationController?.setViewControllers([mainViewController], animated: true)
     }
+
+    func moveToSignUp() {
+        keyboardShouldBeHidden()
+        let signUpViewController = ModuleBuilder.createSignUpModule()
+        navigationController?.pushViewController(signUpViewController, animated: true)
+    }
 }
