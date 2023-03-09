@@ -100,7 +100,6 @@ extension SignInPresenter: SignInPresenterProtocol {
             DispatchQueue.main.async {
                 switch response.result {
                 case .success(let signInResult):
-                    // TODO: Go to Main screen through the Coordinator
                     guard
                         let user = signInResult.user
                     else {
@@ -119,7 +118,6 @@ extension SignInPresenter: SignInPresenterProtocol {
     }
 
     func signUpButtonTapped() {
-        // TODO: Go to SignUp screen through the Coordinator
         view?.moveToSignUp()
     }
 
