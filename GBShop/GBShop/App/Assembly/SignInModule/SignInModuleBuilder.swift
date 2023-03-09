@@ -10,6 +10,7 @@ import UIKit
 protocol ModuleBuilderProtocol {
     static func createSignInModule() -> UIViewController
     static func createMainModule(with user: SignInResult) -> UIViewController
+    static func createSignUpModule() -> UIViewController
 }
 
 final class ModuleBuilder: ModuleBuilderProtocol {
@@ -27,6 +28,11 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     static func createMainModule(with user: SignInResult) -> UIViewController {
         // TODO: add MainModule assembly components when ready
+        return UIViewController()
+    }
+
+    static func createSignUpModule() -> UIViewController {
+        // TODO: add SignUpModule assembly components when ready
         return UIViewController()
     }
 }
