@@ -15,6 +15,7 @@
 		4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6DA29BB1ABF00FFF9A8 /* InitialViewController.swift */; };
 		4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */; };
 		4900A6E529BB333400FFF9A8 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E429BB333400FFF9A8 /* KeyboardObserver.swift */; };
+		4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */; };
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
@@ -117,6 +118,7 @@
 		4900A6DA29BB1ABF00FFF9A8 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4900A6E429BB333400FFF9A8 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLayer.swift; sourceTree = "<group>"; };
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +301,14 @@
 			path = KeyboardObserver;
 			sourceTree = "<group>";
 		};
+		4900A6E629BB8EBD00FFF9A8 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
 		491B358B2997DB2300323789 = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +388,7 @@
 		491B35C82997F7CB00323789 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4900A6E629BB8EBD00FFF9A8 /* LocalStorage */,
 				4900A6E329BB331E00FFF9A8 /* KeyboardObserver */,
 				49A24B6F29AF34C3002E3B1A /* Extensions */,
 				49B77860299AA0DC00597F11 /* UniqueID */,
@@ -901,6 +912,7 @@
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
+				4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */,
 				49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */,
 				49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */,
 				4955639A299A69B900A22FA4 /* SignIn.swift in Sources */,
