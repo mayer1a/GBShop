@@ -34,8 +34,8 @@ final class SignInPresenter {
 
     // MARK: - Properties
 
-    weak var view: SignInViewProtocol?
-    let requestFactory: SignInRequestFactory!
+    weak var view: SignInViewProtocol!
+    let requestFactory: SignInRequestFactory
     var user: User?
 
     // MARK: - Constructions
@@ -96,7 +96,7 @@ extension SignInPresenter: SignInPresenterProtocol {
 
         view?.startLoadingSpinner()
 
-        requestFactory?.login(userName: username, password: password) { [weak self] response in
+        requestFactory.login(userName: username, password: password) { [weak self] response in
             DispatchQueue.main.async {
                 switch response.result {
                 case .success(let signInResult):

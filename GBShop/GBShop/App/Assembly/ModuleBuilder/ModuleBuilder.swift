@@ -1,8 +1,8 @@
 //
-//  SignInModuleBuilder.swift
+//  ModuleBuilder.swift
 //  GBShop
 //
-//  Created by Artem Mayer on 09.03.2023.
+//  Created by Artem Mayer on 08.03.2023.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ protocol ModuleBuilderProtocol {
 final class ModuleBuilder: ModuleBuilderProtocol {
 
     // MARK: - Functions
-    
+
     static func createSignInModule() -> UIViewController {
         let signInView = SignInViewController()
         let signInReq = RequestFactory().makeSignInRequestFatory()
@@ -70,3 +70,5 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         return viewController
     }
 }
+
+
