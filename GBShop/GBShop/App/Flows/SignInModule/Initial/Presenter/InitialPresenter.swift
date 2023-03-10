@@ -1,5 +1,5 @@
 //
-//  InitialViewPresenter.swift
+//  InitialPresenter.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 10.03.2023.
@@ -8,17 +8,17 @@
 import UIKit
 
 protocol InitialViewProtocol: AnyObject {
-    var navigationController: UINavigationController { get }
+    var initialNavigationController: UINavigationController? { get }
 
     func showLoadingSpinner()
     func hideLoadingSpinner()
 }
 
 protocol InitialPresenterProtocol: AnyObject {
-    func onViewDidLoad()
+    func onViewWillAppear()
 }
 
-final class InitialViewPresenter {
+final class InitialPresenter {
 
     // MARK: - Properties
 
@@ -37,19 +37,21 @@ final class InitialViewPresenter {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) { [weak self] in
             guard let self = self else { return }
+            // TODO: get value of isUserAuthenticated from UserDefaults
             let debugIsUserAuthenticated = false
 
             self.view.hideLoadingSpinner()
 
             if debugIsUserAuthenticated {
+                // TODO: get user data from Realm
                 let debugUser = User(
                     id: 1, username: "foo", name: "Foo", email: "baz", creditCard: "0", lastname: "Bar", gender: .indeterminate, bio: "baz"
                 )
                 let debugMainViewController = ModuleBuilder.createMainModule(with: debugUser)
-                self.view.navigationController.setViewControllers([debugMainViewController], animated: true)
+                self.view.initialNavigationController?.setViewControllers([debugMainViewController], animated: true)
             } else {
                 let signInViewController = ModuleBuilder.createSignInModule()
-                self.view.navigationController.pushViewController(signInViewController, animated: true)
+                self.view.initialNavigationController?.pushViewController(signInViewController, animated: true)
             }
         }
     }
@@ -57,11 +59,11 @@ final class InitialViewPresenter {
 
 // MARK: - Extension
 
-extension InitialViewPresenter: InitialPresenterProtocol {
+extension InitialPresenter: InitialPresenterProtocol {
 
     // MARK: - Functions
 
-    func onViewDidLoad() {
+    func onViewWillAppear() {
         checkUserState()
     }
 }
