@@ -84,7 +84,7 @@ final class KeyboardObserver {
         let subviews = targetView?.subviews.first?.subviews
 
         if isSignInFlow {
-            frame = subviews?.first(where: { ($0 as? UIButton)?.tag == 13 })?.frame
+            frame = targetView?.viewWithTag(13)?.frame
         } else {
             frame = subviews?.first(where: { ($0 as? UITextField)?.isFirstResponder == true })?.frame
         }
