@@ -8,14 +8,10 @@
 import UIKit
 
 protocol SignInViewProtocol: AnyObject {
-    var scrollView: UIScrollView { get }
-
     func startLoadingSpinner()
     func stopLoadingSpinner()
     func signInFailure()
     func removeWarning()
-    func getSignInButtonFrame() -> CGRect
-    func getSafeAreaLayoutFrame() -> CGRect
 }
 
 protocol SignInPresenterProtocol: AnyObject {
@@ -43,42 +39,7 @@ final class SignInPresenter {
         self.view = view
         self.requestFactory = requestFactory
         self.coordinator = coordinator
-
-        addKeyboardObservers()
     }
-
-    deinit {
-        removeKeyboardObservers()
-    }
-
-    // MARK: - Private functions
-
-    private func addKeyboardObservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(moveFrameUp),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(moveFrameBack),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
-    }
-
-    private func removeKeyboardObservers() {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-
-        NotificationCenter.default.removeObserver(
-            self,
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
-    }
-
 }
 
 extension SignInPresenter: SignInPresenterProtocol {

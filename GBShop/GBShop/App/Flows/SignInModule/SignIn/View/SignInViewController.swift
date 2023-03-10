@@ -11,11 +11,12 @@ final class SignInViewController: UIViewController {
 
     // MARK: - Properties
 
-    let scrollView: UIScrollView
     var presenter: SignInPresenterProtocol?
+    var keyboardObserver: KeyboardObserver?
 
     // MARK: - Private properties
 
+    private let scrollView: UIScrollView
     private let contentView: UIView
     private let loginTextField: SignInTextField
     private let passwordTextField: SignInTextField
@@ -49,6 +50,7 @@ final class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        keyboardObserver = KeyboardObserver(targetView: scrollView, isSignInFlow: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,14 +64,6 @@ final class SignInViewController: UIViewController {
     }
 
     // MARK: - Functions
-
-    func getSignInButtonFrame() -> CGRect {
-        signUpButton.frame
-    }
-
-    func getSafeAreaLayoutFrame() -> CGRect {
-        view.safeAreaLayoutGuide.layoutFrame
-    }
 
     func performSignIn() {
         signInButtonTapped()
@@ -193,6 +187,7 @@ final class SignInViewController: UIViewController {
 
     private func configureSignInButton() {
         signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
+        signInButton.tag = 12
         configureButton(signInButton, with: "Войти", color: .label, titleColor: .systemBackground)
 
         NSLayoutConstraint.activate([
@@ -205,6 +200,7 @@ final class SignInViewController: UIViewController {
 
     private func configureSignUpButton() {
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        signUpButton.tag = signInButton.tag + 1
         configureButton(signUpButton, with: "Зарегестрироваться", color: .systemBackground, titleColor: .label)
 
         NSLayoutConstraint.activate([
