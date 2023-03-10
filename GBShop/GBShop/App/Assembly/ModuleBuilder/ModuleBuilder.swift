@@ -8,6 +8,7 @@
 import UIKit
 
 protocol ModuleBuilderProtocol {
+    static func createInitialModule() -> UIViewController
     static func createSignInModule() -> UIViewController
     static func createMainModule(with user: User) -> UIViewController
     static func createSignUpModule() -> UIViewController
@@ -16,6 +17,14 @@ protocol ModuleBuilderProtocol {
 final class ModuleBuilder: ModuleBuilderProtocol {
 
     // MARK: - Functions
+
+    static func createInitialModule() -> UIViewController {
+        let initialView = InitialViewController()
+        let presenter = InitialPresenter(view: initialView)
+        initialView.setPresenter(presenter: presenter)
+
+        return initialView
+    }
 
     static func createSignInModule() -> UIViewController {
         let signInView = SignInViewController()
