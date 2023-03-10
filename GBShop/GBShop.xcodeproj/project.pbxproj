@@ -13,6 +13,7 @@
 		4900A6CF29BB138600FFF9A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6CC29BB138600FFF9A8 /* SignInViewController.swift */; };
 		4900A6D829BB1A7000FFF9A8 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6D729BB1A7000FFF9A8 /* ModuleBuilder.swift */; };
 		4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6DA29BB1ABF00FFF9A8 /* InitialViewController.swift */; };
+		4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */; };
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
@@ -114,6 +115,7 @@
 		4900A6CC29BB138600FFF9A8 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4900A6D729BB1A7000FFF9A8 /* ModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		4900A6DA29BB1ABF00FFF9A8 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,6 +283,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4900A6DC29BB245600FFF9A8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		491B358B2997DB2300323789 = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +405,7 @@
 		491B35CC2997F94C00323789 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				4900A6DC29BB245600FFF9A8 /* Coordinators */,
 				4955638E299A619500A22FA4 /* Network */,
 			);
 			path = BusinessLogic;
@@ -847,6 +858,7 @@
 				4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */,
 				49ADCC5929AF3CE9001108DC /* DetailedProduct.swift in Sources */,
 				49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */,
+				4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */,
 				4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,

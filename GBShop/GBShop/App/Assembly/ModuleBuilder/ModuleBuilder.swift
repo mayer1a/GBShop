@@ -8,34 +8,34 @@
 import UIKit
 
 protocol ModuleBuilderProtocol {
-    static func createInitialModule() -> UIViewController
-    static func createSignInModule() -> UIViewController
-    static func createMainModule(with user: User) -> UIViewController
-    static func createSignUpModule() -> UIViewController
+    func createInitialModule(coordinator: CoordinatorProtocol) -> UIViewController
+    func createSignInModule(coordinator: CoordinatorProtocol) -> UIViewController
+    func createMainModule(with user: User, coordinator: CoordinatorProtocol) -> UIViewController
+    func createSignUpModule(coordinator: CoordinatorProtocol) -> UIViewController
 }
 
 final class ModuleBuilder: ModuleBuilderProtocol {
 
     // MARK: - Functions
 
-    static func createInitialModule() -> UIViewController {
+    func createInitialModule(coordinator: CoordinatorProtocol) -> UIViewController {
         let initialView = InitialViewController()
-        let presenter = InitialPresenter(view: initialView)
+        let presenter = InitialPresenter(view: initialView, coordinator: coordinator)
         initialView.setPresenter(presenter: presenter)
 
         return initialView
     }
 
-    static func createSignInModule() -> UIViewController {
+    func createSignInModule(coordinator: CoordinatorProtocol) -> UIViewController {
         let signInView = SignInViewController()
         let signInReq = RequestFactory().makeSignInRequestFatory()
-        let presenter = SignInPresenter(view: signInView, requestFactory: signInReq)
+        let presenter = SignInPresenter(view: signInView, requestFactory: signInReq, coordinator: coordinator)
         signInView.presenter = presenter
 
         return signInView
     }
 
-    static func createMainModule(with user: User) -> UIViewController {
+    func createMainModule(with user: User, coordinator: CoordinatorProtocol) -> UIViewController {
         // TODO: add MainModule assembly components when ready
         let welcomeLabel = UILabel()
         welcomeLabel.text = "Добро пожаловать, \(user.name) \(user.lastname)!"
@@ -57,7 +57,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         return viewController
     }
 
-    static func createSignUpModule() -> UIViewController {
+    func createSignUpModule(coordinator: CoordinatorProtocol) -> UIViewController {
         // TODO: add SignUpModule assembly components when ready
         let welcomeLabel = UILabel()
         welcomeLabel.text = "Окно регистрации!"

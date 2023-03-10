@@ -15,6 +15,7 @@ protocol InitialViewProtocol: AnyObject {
 }
 
 protocol InitialPresenterProtocol: AnyObject {
+    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol)
     func onViewWillAppear()
 }
 
@@ -23,11 +24,13 @@ final class InitialPresenter {
     // MARK: - Properties
 
     weak var view: InitialViewProtocol!
+    var coordinator: CoordinatorProtocol?
 
     // MARK: - Constructions
 
-    init(view: InitialViewProtocol) {
+    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol) {
         self.view = view
+        self.coordinator = coordinator
     }
 
     // MARK: - Private functions
@@ -47,11 +50,9 @@ final class InitialPresenter {
                 let debugUser = User(
                     id: 1, username: "foo", name: "Foo", email: "baz", creditCard: "0", lastname: "Bar", gender: .indeterminate, bio: "baz"
                 )
-                let debugMainViewController = ModuleBuilder.createMainModule(with: debugUser)
-                self.view.initialNavigationController?.setViewControllers([debugMainViewController], animated: true)
+                self.coordinator?.showMainFlow(with: debugUser)
             } else {
-                let signInViewController = ModuleBuilder.createSignInModule()
-                self.view.initialNavigationController?.pushViewController(signInViewController, animated: true)
+                self.coordinator?.showSignInFlow()
             }
         }
     }

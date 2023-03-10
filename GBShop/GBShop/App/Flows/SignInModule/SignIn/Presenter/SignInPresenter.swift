@@ -16,12 +16,10 @@ protocol SignInViewProtocol: AnyObject {
     func removeWarning()
     func getSignInButtonFrame() -> CGRect
     func getSafeAreaLayoutFrame() -> CGRect
-    func signInSuccess(with userProfile: User)
-    func moveToSignUp()
 }
 
 protocol SignInPresenterProtocol: AnyObject {
-    init(view: SignInViewProtocol, requestFactory: SignInRequestFactory)
+    init(view: SignInViewProtocol, requestFactory: SignInRequestFactory, coordinator: CoordinatorProtocol)
 
     var user: User? { get }
 
@@ -35,14 +33,16 @@ final class SignInPresenter {
     // MARK: - Properties
 
     weak var view: SignInViewProtocol!
+    var coordinator: CoordinatorProtocol?
     let requestFactory: SignInRequestFactory
     var user: User?
 
     // MARK: - Constructions
 
-    init(view: SignInViewProtocol, requestFactory: SignInRequestFactory) {
+    init(view: SignInViewProtocol, requestFactory: SignInRequestFactory, coordinator: CoordinatorProtocol) {
         self.view = view
         self.requestFactory = requestFactory
+        self.coordinator = coordinator
 
         addKeyboardObservers()
     }
@@ -106,8 +106,8 @@ extension SignInPresenter: SignInPresenterProtocol {
                         self?.view?.signInFailure()
                         break
                     }
-                    
-                    self?.view?.signInSuccess(with: user)
+
+                    self?.coordinator?.showMainFlow(with: user)
                 case .failure(_):
                     self?.view?.signInFailure()
                 }
@@ -118,7 +118,7 @@ extension SignInPresenter: SignInPresenterProtocol {
     }
 
     func signUpButtonTapped() {
-        view?.moveToSignUp()
+        coordinator?.showSignUpFlow()
     }
 
     func inputFieldsTapped() {

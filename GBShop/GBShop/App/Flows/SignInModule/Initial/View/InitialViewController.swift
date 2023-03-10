@@ -43,6 +43,11 @@ final class InitialViewController: UIViewController {
         presenter.onViewWillAppear()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavigationBar()
+    }
+
     // MARK: - Functions
 
     func setPresenter(presenter: InitialPresenterProtocol) {
@@ -87,6 +92,10 @@ final class InitialViewController: UIViewController {
 
     private func hideNavigationBar() {
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    private func showNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 

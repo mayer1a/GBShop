@@ -295,15 +295,4 @@ extension SignInViewController: SignInViewProtocol {
         loginTextField.layer.borderColor = UIColor.systemGray5.cgColor
         passwordTextField.layer.borderColor = UIColor.systemGray5.cgColor
     }
-
-    func signInSuccess(with userProfile: User) {
-        let mainViewController = ModuleBuilder.createMainModule(with: userProfile)
-        navigationController?.setViewControllers([mainViewController], animated: true)
-    }
-
-    func moveToSignUp() {
-        keyboardShouldBeHidden()
-        let signUpViewController = ModuleBuilder.createSignUpModule()
-        navigationController?.pushViewController(signUpViewController, animated: true)
-    }
 }

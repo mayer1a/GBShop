@@ -26,19 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func testRequests() {
-        authRequest()
-        regRequest()
-        editRequest()
-        logoutRequest()
-        getCatalog()
-        getProduct()
-        getReviews()
-        addReview()
-        approveReview()
-        removeReview()
-        addProductToBasket()
-        removeProductFromBasket()
-        payBasket()
+//        authRequest()
+//        regRequest()
+//        editRequest()
+//        logoutRequest()
+//        getCatalog()
+//        getProduct()
+//        getReviews()
+//        addReview()
+//        approveReview()
+//        removeReview()
+//        addProductToBasket()
+//        removeProductFromBasket()
+//        payBasket()
     }
 
     // MARK: - Registration request
