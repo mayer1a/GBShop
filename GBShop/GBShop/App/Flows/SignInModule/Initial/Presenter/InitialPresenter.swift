@@ -15,7 +15,7 @@ protocol InitialViewProtocol: AnyObject {
 }
 
 protocol InitialPresenterProtocol: AnyObject {
-    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol)
+    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol, storageService: UserCredentialsStorageService)
     func onViewWillAppear()
 }
 
@@ -25,12 +25,14 @@ final class InitialPresenter {
 
     weak var view: InitialViewProtocol!
     var coordinator: CoordinatorProtocol?
+    let storageService: UserCredentialsStorageService
 
     // MARK: - Constructions
 
-    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol) {
+    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol, storageService: UserCredentialsStorageService) {
         self.view = view
         self.coordinator = coordinator
+        self.storageService = storageService
     }
 
     // MARK: - Private functions
@@ -40,12 +42,10 @@ final class InitialPresenter {
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) { [weak self] in
             guard let self = self else { return }
-            // TODO: get value of isUserAuthenticated from UserDefaults
-            let debugIsUserAuthenticated = false
 
             self.view.hideLoadingSpinner()
 
-            if debugIsUserAuthenticated {
+            if self.storageService.isUserAuthenticated {
                 // TODO: get user data from Realm
                 let debugUser = User(
                     id: 1, username: "foo", name: "Foo", email: "baz", creditCard: "0", lastname: "Bar", gender: .indeterminate, bio: "baz"

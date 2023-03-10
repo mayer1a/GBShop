@@ -19,17 +19,24 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     // MARK: - Functions
 
     func createInitialModule(coordinator: CoordinatorProtocol) -> UIViewController {
-        let initialView = InitialViewController()
-        let presenter = InitialPresenter(view: initialView, coordinator: coordinator)
-        initialView.setPresenter(presenter: presenter)
+        let view = InitialViewController()
+        let storageService = UserCredentialsStorageService()
+        let presenter = InitialPresenter(view: view, coordinator: coordinator, storageService: storageService)
+        view.setPresenter(presenter: presenter)
 
-        return initialView
+        return view
     }
 
     func createSignInModule(coordinator: CoordinatorProtocol) -> UIViewController {
         let signInView = SignInViewController()
         let signInReq = RequestFactory().makeSignInRequestFatory()
-        let presenter = SignInPresenter(view: signInView, requestFactory: signInReq, coordinator: coordinator)
+        let storageService = UserCredentialsStorageService()
+        let presenter = SignInPresenter(
+            view: signInView,
+            requestFactory: signInReq,
+            coordinator: coordinator,
+            storageService: storageService)
+
         signInView.presenter = presenter
 
         return signInView

@@ -15,7 +15,12 @@ protocol SignInViewProtocol: AnyObject {
 }
 
 protocol SignInPresenterProtocol: AnyObject {
-    init(view: SignInViewProtocol, requestFactory: SignInRequestFactory, coordinator: CoordinatorProtocol)
+    init(
+        view: SignInViewProtocol,
+        requestFactory: SignInRequestFactory,
+        coordinator: CoordinatorProtocol,
+        storageService: UserCredentialsStorageService
+    )
 
     var user: User? { get }
 
@@ -31,14 +36,21 @@ final class SignInPresenter {
     weak var view: SignInViewProtocol!
     var coordinator: CoordinatorProtocol?
     let requestFactory: SignInRequestFactory
+    let storageService: UserCredentialsStorageService
     var user: User?
 
     // MARK: - Constructions
 
-    init(view: SignInViewProtocol, requestFactory: SignInRequestFactory, coordinator: CoordinatorProtocol) {
+    init(
+        view: SignInViewProtocol,
+        requestFactory: SignInRequestFactory,
+        coordinator: CoordinatorProtocol,
+        storageService: UserCredentialsStorageService
+    ) {
         self.view = view
         self.requestFactory = requestFactory
         self.coordinator = coordinator
+        self.storageService = storageService
     }
 }
 
@@ -47,10 +59,7 @@ extension SignInPresenter: SignInPresenterProtocol {
     // MARK: - Functions
 
     func signIn(username: String?, password: String?) {
-        guard
-            let username,
-            let password
-        else {
+        guard let username, let password else {
             view?.signInFailure()
             return
         }
@@ -58,22 +67,26 @@ extension SignInPresenter: SignInPresenterProtocol {
         view?.startLoadingSpinner()
 
         requestFactory.login(userName: username, password: password) { [weak self] response in
+            guard let self else { return }
+
             DispatchQueue.main.async {
                 switch response.result {
                 case .success(let signInResult):
                     guard
                         let user = signInResult.user
                     else {
-                        self?.view?.signInFailure()
+                        self.view?.signInFailure()
                         break
                     }
 
-                    self?.coordinator?.showMainFlow(with: user)
+                    // TODO: set user data to Realm
+                    self.storageService.isUserAuthenticated = true
+                    self.coordinator?.showMainFlow(with: user)
                 case .failure(_):
-                    self?.view?.signInFailure()
+                    self.view?.signInFailure()
                 }
 
-                self?.view?.stopLoadingSpinner()
+                self.view?.stopLoadingSpinner()
             }
         }
     }
