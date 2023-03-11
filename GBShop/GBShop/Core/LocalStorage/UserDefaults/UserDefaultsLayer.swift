@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol UserCredentialStorage {
+    var isUserAuthenticated: Bool { get set }
+}
+
 final class UserDefaultsLayer: UserCredentialStorage {
 
     // MARK: - Private properties

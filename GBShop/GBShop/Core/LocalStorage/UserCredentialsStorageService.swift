@@ -8,17 +8,6 @@
 import Foundation
 import RealmSwift
 
-protocol UserCredentialRealmStorage {
-    func create<T: Object>(_ object: T)
-    func read<T: Object>(of type: T.Type) -> T
-    func update<T: Object>(_ object: T)
-    func delete<T: Object>(_ object: T)
-}
-
-protocol UserCredentialStorage {
-    var isUserAuthenticated: Bool { get set }
-}
-
 final class UserCredentialsStorageService {
 
     // MARK: - Private properties
@@ -35,24 +24,26 @@ final class UserCredentialsStorageService {
 
     // MARK: - Public properties
 
-    public var isUserAuthenticated: Bool {
+    private(set) var isUserAuthenticated: Bool {
         get {
             storage.isUserAuthenticated
-        } set {
+        }
+        set {
             storage.isUserAuthenticated = newValue
         }
     }
 
     public var user: User {
         get {
-            let realmUser = realm.read(of: RealmUser.self)
+            let realmUser = realm.read(of: RealmUser.self).first ?? .init()
             return realmToModel(realmUser)
         }
     }
 
     public func createUser(from user: User) {
         let realmUser = modelToRealm(user)
-        realm.create(realmUser)
+        let isCreateSuccessfull = realm.create(realmUser)
+        isUserAuthenticated = isCreateSuccessfull
     }
 
     public func updateUser(from user: User) {
@@ -100,35 +91,5 @@ private extension UserCredentialsStorageService {
         realmUser.bio = user.bio
 
         return realmUser
-    }
-}
-
-class RealmUser: Object {
-
-    enum Gender: String, PersistableEnum {
-        case man
-        case woman
-        case indeterminate
-    }
-
-    @Persisted(primaryKey: true)
-    var id: Int
-    @Persisted
-    var username: String
-    @Persisted
-    var name: String
-    @Persisted
-    var email: String
-    @Persisted
-    var creditCard: String
-    @Persisted
-    var lastname: String
-    @Persisted
-    var gender: Gender
-    @Persisted
-    var bio: String
-
-    override static func primaryKey() -> String? {
-        return "id"
     }
 }
