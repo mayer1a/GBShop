@@ -18,6 +18,7 @@
 		4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */; };
 		490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D2E29BC6E3000427C50 /* RealmLayer.swift */; };
 		490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D3129BCCA9100427C50 /* RealmUser.swift */; };
+		490A6D3829BCE08900427C50 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D3729BCE08900427C50 /* Utils.swift */; };
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
@@ -124,6 +125,7 @@
 		4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLayer.swift; sourceTree = "<group>"; };
 		490A6D2E29BC6E3000427C50 /* RealmLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLayer.swift; sourceTree = "<group>"; };
 		490A6D3129BCCA9100427C50 /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
+		490A6D3729BCE08900427C50 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				49A24B6F29AF34C3002E3B1A /* Extensions */,
 				49B77860299AA0DC00597F11 /* UniqueID */,
 				4955637B299A535C00A22FA4 /* Network */,
+				490A6D3729BCE08900427C50 /* Utils.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 				49991260299E221C0034015A /* CatalogRequestFactory.swift in Sources */,
 				49B77862299AA0F500597F11 /* UniqueID.swift in Sources */,
 				4955638B299A60D300A22FA4 /* User.swift in Sources */,
+				490A6D3829BCE08900427C50 /* Utils.swift in Sources */,
 				49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */,
 				49ADCC6629AFA202001108DC /* BasketRequestFactory.swift in Sources */,
 				4928AD0D299B4B2B00B665C8 /* Logout.swift in Sources */,
