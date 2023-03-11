@@ -79,8 +79,7 @@ extension SignInPresenter: SignInPresenterProtocol {
                         break
                     }
 
-                    // TODO: set user data to Realm
-                    self.storageService.isUserAuthenticated = true
+                    self.storageService.createUser(from: user)
                     self.coordinator?.showMainFlow(with: user)
                 case .failure(_):
                     self.view?.signInFailure()

@@ -46,11 +46,7 @@ final class InitialPresenter {
             self.view.hideLoadingSpinner()
 
             if self.storageService.isUserAuthenticated {
-                // TODO: get user data from Realm
-                let debugUser = User(
-                    id: 1, username: "foo", name: "Foo", email: "baz", creditCard: "0", lastname: "Bar", gender: .indeterminate, bio: "baz"
-                )
-                self.coordinator?.showMainFlow(with: debugUser)
+                self.coordinator?.showMainFlow(with: self.storageService.user)
             } else {
                 self.coordinator?.showSignInFlow()
             }
