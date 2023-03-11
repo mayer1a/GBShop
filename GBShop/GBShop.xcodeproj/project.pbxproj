@@ -16,6 +16,7 @@
 		4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */; };
 		4900A6E529BB333400FFF9A8 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E429BB333400FFF9A8 /* KeyboardObserver.swift */; };
 		4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */; };
+		490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D2E29BC6E3000427C50 /* RealmLayer.swift */; };
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
@@ -120,6 +121,7 @@
 		4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4900A6E429BB333400FFF9A8 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLayer.swift; sourceTree = "<group>"; };
+		490A6D2E29BC6E3000427C50 /* RealmLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLayer.swift; sourceTree = "<group>"; };
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,9 +308,19 @@
 		4900A6E629BB8EBD00FFF9A8 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
+				490A6D2D29BC6E1C00427C50 /* Realm */,
 				49DC253629BC5A7C0095290D /* UserDefaults */,
+				49DC253429BB99D60095290D /* UserCredentialsStorageService.swift */,
 			);
 			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		490A6D2D29BC6E1C00427C50 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				490A6D2E29BC6E3000427C50 /* RealmLayer.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		491B358B2997DB2300323789 = {
@@ -607,7 +619,6 @@
 			isa = PBXGroup;
 			children = (
 				4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */,
-				49DC253429BB99D60095290D /* UserCredentialsStorageService.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -892,6 +903,7 @@
 				4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */,
 				4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
+				490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */,
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
 				4900A6E529BB333400FFF9A8 /* KeyboardObserver.swift in Sources */,
