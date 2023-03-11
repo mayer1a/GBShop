@@ -17,6 +17,7 @@
 		4900A6E529BB333400FFF9A8 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E429BB333400FFF9A8 /* KeyboardObserver.swift */; };
 		4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */; };
 		490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D2E29BC6E3000427C50 /* RealmLayer.swift */; };
+		490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D3129BCCA9100427C50 /* RealmUser.swift */; };
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
@@ -122,6 +123,7 @@
 		4900A6E429BB333400FFF9A8 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		4900A6E729BB8ECF00FFF9A8 /* UserDefaultsLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLayer.swift; sourceTree = "<group>"; };
 		490A6D2E29BC6E3000427C50 /* RealmLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLayer.swift; sourceTree = "<group>"; };
+		490A6D3129BCCA9100427C50 /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +325,14 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		490A6D3029BCCA7800427C50 /* RealmEntity */ = {
+			isa = PBXGroup;
+			children = (
+				490A6D3129BCCA9100427C50 /* RealmUser.swift */,
+			);
+			path = RealmEntity;
+			sourceTree = "<group>";
+		};
 		491B358B2997DB2300323789 = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +458,7 @@
 		491B35CD2997F95700323789 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				490A6D3029BCCA7800427C50 /* RealmEntity */,
 				49991259299E20940034015A /* ResultsEntity */,
 				49ADCC5829AF3CE9001108DC /* DetailedProduct.swift */,
 				49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */,
@@ -932,6 +943,7 @@
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
+				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
 				4900A6CD29BB138600FFF9A8 /* SignInTextField.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
