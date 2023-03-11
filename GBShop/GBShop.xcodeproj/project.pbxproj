@@ -333,6 +333,15 @@
 			path = RealmEntity;
 			sourceTree = "<group>";
 		};
+		490A6D3329BCDDE900427C50 /* RequestEntity */ = {
+			isa = PBXGroup;
+			children = (
+				49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */,
+				49ADCC5629AF3B38001108DC /* SignUpUser.swift */,
+			);
+			path = RequestEntity;
+			sourceTree = "<group>";
+		};
 		491B358B2997DB2300323789 = {
 			isa = PBXGroup;
 			children = (
@@ -459,13 +468,12 @@
 			isa = PBXGroup;
 			children = (
 				490A6D3029BCCA7800427C50 /* RealmEntity */,
+				490A6D3329BCDDE900427C50 /* RequestEntity */,
 				49991259299E20940034015A /* ResultsEntity */,
 				49ADCC5829AF3CE9001108DC /* DetailedProduct.swift */,
-				49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */,
 				49A24B6B29AF2742002E3B1A /* Gender.swift */,
 				49ADCC5A29AF3D18001108DC /* Product.swift */,
 				49D0285E29ABB14600715F08 /* Review.swift */,
-				49ADCC5629AF3B38001108DC /* SignUpUser.swift */,
 				4955638A299A60D300A22FA4 /* User.swift */,
 			);
 			path = Entity;
