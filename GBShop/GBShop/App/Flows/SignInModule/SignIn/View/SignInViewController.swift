@@ -252,7 +252,7 @@ final class SignInViewController: UIViewController {
     }
 
     @objc private func signInButtonTapped() {
-        presenter?.signIn(username: loginTextField.text, password: passwordTextField.text)
+        presenter?.signIn(email: loginTextField.text, password: passwordTextField.text)
     }
 
     @objc private func signUpButtonTapped() {

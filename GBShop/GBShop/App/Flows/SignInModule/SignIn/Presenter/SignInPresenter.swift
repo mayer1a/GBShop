@@ -24,7 +24,7 @@ protocol SignInPresenterProtocol: AnyObject {
 
     var user: User? { get }
 
-    func signIn(username: String?, password: String?)
+    func signIn(email: String?, password: String?)
     func signUpButtonTapped()
     func inputFieldsTapped()
 }
@@ -38,6 +38,7 @@ final class SignInPresenter {
     let requestFactory: SignInRequestFactory
     let storageService: UserCredentialsStorageService
     var user: User?
+    let validator: Validator
 
     // MARK: - Constructions
 
@@ -51,6 +52,38 @@ final class SignInPresenter {
         self.requestFactory = requestFactory
         self.coordinator = coordinator
         self.storageService = storageService
+        self.validator = .init()
+    }
+
+    // MARK: - Private functions
+
+    private func validatePassword(_ password: String?) -> String? {
+        do {
+            try validator.validatePassword(password)
+        } catch let error as Validator.ValidationError {
+            // TODO: add to signInFailure property to send error message to view instead "print()"
+            view?.signInFailure()
+            print(error.localizedDescription)
+            return nil
+        } catch {
+            return nil
+        }
+        return password
+    }
+
+    private func validateEmail(_ email: String?) -> String? {
+        do {
+            try validator.validateEmail(email)
+        } catch let error as Validator.ValidationError {
+            // TODO: add to signInFailure property to send error message to view instead "print()"
+            view?.signInFailure()
+            print(error.localizedDescription)
+            return nil
+        } catch {
+            return nil
+        }
+
+        return email
     }
 }
 
@@ -58,15 +91,17 @@ extension SignInPresenter: SignInPresenterProtocol {
 
     // MARK: - Functions
 
-    func signIn(username: String?, password: String?) {
-        guard let username, let password else {
-            view?.signInFailure()
+    func signIn(email: String?, password: String?) {
+        guard
+            let email = validateEmail(email),
+            let password = validatePassword(password)
+        else {
             return
         }
 
         view?.startLoadingSpinner()
 
-        requestFactory.login(userName: username, password: password) { [weak self] response in
+        requestFactory.login(userName: email, password: password) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {
