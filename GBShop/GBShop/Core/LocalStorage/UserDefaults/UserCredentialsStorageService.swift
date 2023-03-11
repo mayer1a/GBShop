@@ -1,5 +1,5 @@
 //
-//  UserDataStorageService.swift
+//  UserCredentialsStorageService.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 10.03.2023.
