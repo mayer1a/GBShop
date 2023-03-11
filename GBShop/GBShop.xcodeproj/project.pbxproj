@@ -19,6 +19,7 @@
 		490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D2E29BC6E3000427C50 /* RealmLayer.swift */; };
 		490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D3129BCCA9100427C50 /* RealmUser.swift */; };
 		490A6D3829BCE08900427C50 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D3729BCE08900427C50 /* Utils.swift */; };
+		490A6D3E29BCED6D00427C50 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490A6D3D29BCED6D00427C50 /* Validator.swift */; };
 		491B35982997DB2300323789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35972997DB2300323789 /* AppDelegate.swift */; };
 		491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B35992997DB2300323789 /* SceneDelegate.swift */; };
 		491B35A12997DB2400323789 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491B35A02997DB2400323789 /* Assets.xcassets */; };
@@ -126,6 +127,7 @@
 		490A6D2E29BC6E3000427C50 /* RealmLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLayer.swift; sourceTree = "<group>"; };
 		490A6D3129BCCA9100427C50 /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		490A6D3729BCE08900427C50 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		490A6D3D29BCED6D00427C50 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		491B35942997DB2300323789 /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491B35972997DB2300323789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491B35992997DB2300323789 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -344,6 +346,14 @@
 			path = RequestEntity;
 			sourceTree = "<group>";
 		};
+		490A6D3C29BCED6100427C50 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				490A6D3D29BCED6D00427C50 /* Validator.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
 		491B358B2997DB2300323789 = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +433,7 @@
 		491B35C82997F7CB00323789 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				490A6D3C29BCED6100427C50 /* Validator */,
 				4900A6E629BB8EBD00FFF9A8 /* LocalStorage */,
 				4900A6E329BB331E00FFF9A8 /* KeyboardObserver */,
 				49A24B6F29AF34C3002E3B1A /* Extensions */,
@@ -952,6 +963,7 @@
 				4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */,
 				4928AD17299B502F00B665C8 /* Profile.swift in Sources */,
 				4999126C299E36010034015A /* GetProduct.swift in Sources */,
+				490A6D3E29BCED6D00427C50 /* Validator.swift in Sources */,
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
