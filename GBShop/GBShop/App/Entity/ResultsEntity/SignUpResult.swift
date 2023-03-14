@@ -13,11 +13,13 @@ struct SignUpResult: Codable {
 
     enum CodingKeys: String, CodingKey {
         case result
+        case userId = "user_id"
         case userMessage = "user_message"
     }
 
     // MARK: - Properties
 
     let result: Int
+    let userId: Int
     let userMessage: String
 }

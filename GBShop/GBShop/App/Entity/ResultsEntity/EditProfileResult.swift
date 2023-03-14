@@ -9,7 +9,15 @@ import Foundation
 
 struct EditProfileResult: Codable {
 
+    // MARK: - CodignKeys
+
+    enum CodingKeys: String, CodingKey {
+        case result
+        case errorMessage = "error_message"
+    }
+
     // MARK: - Properties
 
     let result: Int
+    let errorMessage: String?
 }

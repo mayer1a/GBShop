@@ -12,7 +12,7 @@ protocol SignInRequestFactory {
     // MARK: - Functions
 
     func login(
-        userName: String,
+        email: String,
         password: String,
         completionHandler: @escaping (AFDataResponse<SignInResult>) -> Void)
 }

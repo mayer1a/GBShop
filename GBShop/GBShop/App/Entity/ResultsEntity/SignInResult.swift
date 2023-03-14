@@ -9,8 +9,17 @@ import Foundation
 
 struct SignInResult: Codable {
 
+    // MARK: - CodignKeys
+
+    enum CodingKeys: String, CodingKey {
+        case result
+        case user
+        case errorMessage = "error_message"
+    }
+
     // MARK: - Properties
     
     let result: Int
     let user: User?
+    let errorMessage: String?
 }

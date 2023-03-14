@@ -101,7 +101,7 @@ extension SignInPresenter: SignInPresenterProtocol {
 
         view?.startLoadingSpinner()
 
-        requestFactory.login(userName: email, password: password) { [weak self] response in
+        requestFactory.login(email: email, password: password) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {

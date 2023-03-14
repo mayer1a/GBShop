@@ -48,6 +48,8 @@ extension SignUp {
 
         var parameters: Parameters? {
             return [
+                "name": profile.name,
+                "lastname": profile.lastname,
                 "username": profile.username,
                 "password": profile.password,
                 "email": profile.email,

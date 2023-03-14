@@ -47,15 +47,25 @@ extension Profile {
         let profile: EditProfile
 
         var parameters: Parameters? {
-            return [
-                "user_id": profile.id,
+            var parameters: [String: Any] = [
+                "user_id": profile.userId,
+                "name": profile.name,
+                "lastname": profile.lastname,
                 "username": profile.username,
-                "password": profile.password,
                 "email": profile.email,
                 "gender": profile.gender,
                 "credit_card": profile.creditCard,
                 "bio": profile.bio
             ]
+            parameters.merge(optionalParameters, uniquingKeysWith: { (_, value) in value })
+            return parameters
+        }
+
+        // MARK: - Private properties
+
+        private var optionalParameters: Parameters {
+            guard let oldPassword = profile.oldPassword, let newPassword = profile.newPassword else { return [:] }
+            return ["old_password": oldPassword, "new_password": newPassword]
         }
     }
 }

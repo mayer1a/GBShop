@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func testRequests() {
-//        authRequest()
 //        regRequest()
+//        authRequest()
 //        editRequest()
 //        logoutRequest()
 //        getCatalog()
@@ -47,10 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reg = requestFactory.makeSignUpRequestFactory()
 
         let profile = SignUpUser(
-            username: "Somebody",
-            password: "mypassword",
+            name: "John",
+            lastname: "Doe",
+            username: "somebody",
+            password: "Mypassword0000",
             email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
+            creditCard: "9872-2424-2342-2340",
             gender: .man,
             bio: "This is good! I think I will switch to another language")
 
@@ -66,10 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Authorization request
 
-    private func authRequest() {
+    private func authRequest(email: String = "some@some.ru", password: String = "Mypassword0000") {
         let auth = requestFactory.makeSignInRequestFatory()
 
-        auth.login(userName: "Somebody", password: "mypassword") { response in
+        auth.login(email: email, password: password) { response in
             switch response.result {
             case .success(let login):
                 print(login)
@@ -84,23 +86,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func editRequest() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         
-        let profile = EditProfile(
-            id: 123,
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
+//        let profile = EditProfile(
+//            userId: 100,
+//            name: "John",
+//            lastname: "Doe",
+//            username: "somebody2",
+//            oldPassword: "Mypassword0000",
+//            newPassword: "Mypassword9882",
+//            email: "s0me2@some.ru",
+//            creditCard: "9872-2424-2342-2342",
+//            gender: .man,
+//            bio: "This is good! I think I will switch to another language")
 
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let login):
-                print(login)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+//        let profile2 = EditProfile(
+//            userId: 100,
+//            name: "Foo",
+//            lastname: "Bar",
+//            username: "foobarbaz",
+//            email: "foobarbaz@foob.bar",
+//            creditCard: "9872-2424-2342-2242",
+//            gender: .man,
+//            bio: "Test fot test")
+
+//        let profile3 = EditProfile(
+//            userId: 100,
+//            name: "",
+//            lastname: "",
+//            username: "foobarbaz",
+//            oldPassword: "Mypassword9882",
+//            newPassword: "Mypassword0000",
+//            email: "",
+//            creditCard: "",
+//            gender: .man,
+//            bio: "")
+
+//        edit.editProfile(profile: profile) { [weak self] response in
+//            switch response.result {
+//            case .success(let login):
+//                print(login)
+//                self?.authRequest(email: "s0me2@some.ru", password: "Mypassword9882")
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+
+//        edit.editProfile(profile: profile2) { [weak self] response in
+//            switch response.result {
+//            case .success(let editResponse):
+//                print(editResponse)
+//                self?.authRequest(email: "foobarbaz@foob.bar", password: "Mypassword9882")
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+
+//        edit.editProfile(profile: profile3) { [weak self] response in
+//            switch response.result {
+//            case .success(let login):
+//                print(login)
+//                self?.authRequest(email: "foobarbaz@foob.bar", password: "Mypassword0000")
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 
     // MARK: - Logout request
@@ -108,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func logoutRequest() {
         let logout = requestFactory.makeLogoutRequestFactory()
 
-        logout.logout(userId: 123) { response in
+        logout.logout(userId: 100) { response in
             switch response.result {
             case .success(let login):
                 print(login)

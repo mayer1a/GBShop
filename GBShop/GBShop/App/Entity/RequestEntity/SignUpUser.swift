@@ -14,6 +14,8 @@ struct SignUpUser: Codable {
     // MARK: - CodingKeys
 
     enum CodingKeys: String, CodingKey {
+        case name
+        case lastname
         case username
         case password
         case email
@@ -24,6 +26,8 @@ struct SignUpUser: Codable {
 
     // MARK: - Properties
 
+    let name: String
+    let lastname: String
     let username: String
     let password: String
     let email: String
