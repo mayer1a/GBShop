@@ -77,6 +77,7 @@
 		49B7787C299AAADA00597F11 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7787B299AAADA00597F11 /* SignUp.swift */; };
 		49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */; };
 		49C0AA2129C06FDE00A927DD /* SignUpUserModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2029C06FDE00A927DD /* SignUpUserModelFactory.swift */; };
+		49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */; };
 		49D0285F29ABB14600715F08 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0285E29ABB14600715F08 /* Review.swift */; };
 		49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286029ABB20600715F08 /* ReviewsResult.swift */; };
 		49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286329ABB30800715F08 /* ReviewsRequestFactory.swift */; };
@@ -190,6 +191,7 @@
 		49B7787B299AAADA00597F11 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelFactory.swift; sourceTree = "<group>"; };
 		49C0AA2029C06FDE00A927DD /* SignUpUserModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserModelFactory.swift; sourceTree = "<group>"; };
+		49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		49D0285E29ABB14600715F08 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		49D0286029ABB20600715F08 /* ReviewsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsResult.swift; sourceTree = "<group>"; };
 		49D0286329ABB30800715F08 /* ReviewsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRequestFactory.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				49C0AA2229C072E000A927DD /* SignUpModule */,
 				495EB6F329B7740F00DF444E /* SignInModule */,
 			);
 			path = Flows;
@@ -640,6 +643,22 @@
 				49C0AA2029C06FDE00A927DD /* SignUpUserModelFactory.swift */,
 			);
 			path = ModelFactory;
+			sourceTree = "<group>";
+		};
+		49C0AA2229C072E000A927DD /* SignUpModule */ = {
+			isa = PBXGroup;
+			children = (
+				49C0AA2329C0731600A927DD /* Presenter */,
+			);
+			path = SignUpModule;
+			sourceTree = "<group>";
+		};
+		49C0AA2329C0731600A927DD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		49D0286229ABB2D900715F08 /* Reviews */ = {
@@ -938,6 +957,7 @@
 				49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */,
 				4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */,
 				4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */,
+				49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
 				490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */,
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,
