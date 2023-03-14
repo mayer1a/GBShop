@@ -5,11 +5,27 @@
 //  Created by Artem Mayer on 11.03.2023.
 //
 
-import Foundation
+import Alamofire
+
+// MARK: - Typealias
+
+typealias AFSignUpResult = AFDataResponse<SignUpResult>
+typealias RawSignUpModel = [Constants.SignUpDictionartKey: String]
 
 // MARK: - App Constants
 
 struct Constants {
+
+    enum SignUpDictionartKey: String {
+        case name
+        case lastname
+        case email
+        case username
+        case password
+        case cardNumber
+        case gender
+        case bio
+    }
 
     // MARK: - Properties
 
