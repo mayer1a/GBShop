@@ -21,13 +21,17 @@ final class Validator {
         }
     }
 
-    func validatePassword(_ password: String?) throws {
+    func validatePassword(_ password: String?, repeatPassword: String? = nil) throws {
         guard let password, !password.isEmpty else {
             throw ValidationError.valueIsEmpty("Пароль")
         }
 
         if !isValidPassword(password) {
             throw ValidationError.passwordWrongFormat
+        }
+
+        if let repeatPassword, repeatPassword != password {
+            throw ValidationError.passwordMismatch
         }
     }
 
@@ -58,6 +62,12 @@ final class Validator {
 
         if !isValidBio(bio) {
             throw ValidationError.bioWrongLength
+        }
+    }
+
+    func validateGender(_ gender: String?) throws {
+        guard let gender, !gender.isEmpty else {
+            throw ValidationError.valueIsEmpty("Пол (гендер)")
         }
     }
 
@@ -107,6 +117,7 @@ extension Validator {
     enum ValidationError: Error, Equatable {
         case emailWrongFormat
         case passwordWrongFormat
+        case passwordMismatch
         case usernameWrongFormat
         case cardWrongFormat
         case bioWrongLength
@@ -127,6 +138,8 @@ extension Validator {
                 return ErrorConstants.bioLengthMessage
             case .valueIsEmpty(let value):
                 return value.appending(ErrorConstants.emptyValueMessage)
+            case .passwordMismatch:
+                return ErrorConstants.passwordMismatch
             default:
                 return ErrorConstants.unknownErrorMessage
             }
