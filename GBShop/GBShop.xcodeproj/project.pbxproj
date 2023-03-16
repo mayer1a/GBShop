@@ -38,6 +38,8 @@
 		493D064829C30AD300442609 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */; };
 		493D064B29C30D3800442609 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064A29C30D3800442609 /* ProfileView.swift */; };
 		493D064F29C34E4F00442609 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064E29C34E4F00442609 /* EditProfilePresenter.swift */; };
+		493D065229C35AE700442609 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065129C35AE700442609 /* EditProfileViewController.swift */; };
+		493D065429C35D0000442609 /* EditProfileViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */; };
 		49437238299DF57F00AA85A3 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
@@ -158,6 +160,8 @@
 		493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
 		493D064A29C30D3800442609 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		493D064E29C34E4F00442609 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		493D065129C35AE700442609 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditProfileViewController+Extensions.swift"; sourceTree = "<group>"; };
 		49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodableTests.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
@@ -542,6 +546,7 @@
 		493D064C29C34E2800442609 /* EditProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				493D065029C35AD200442609 /* View */,
 				493D064D29C34E3400442609 /* Presenter */,
 			);
 			path = EditProfileModule;
@@ -553,6 +558,14 @@
 				493D064E29C34E4F00442609 /* EditProfilePresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		493D065029C35AD200442609 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				493D065129C35AE700442609 /* EditProfileViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4955637B299A535C00A22FA4 /* Network */ = {
@@ -647,6 +660,7 @@
 				49C0AA4A29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift */,
 				493D064529C2FA7700442609 /* UIButton+Extensions.swift */,
 				493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */,
+				493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -997,6 +1011,7 @@
 				49991266299E318A0034015A /* ProductResult.swift in Sources */,
 				49556387299A5DAC00A22FA4 /* RequestRouter.swift in Sources */,
 				49D0286829AC7F3100715F08 /* AddReviewResult.swift in Sources */,
+				493D065229C35AE700442609 /* EditProfileViewController.swift in Sources */,
 				49ADCC6129AFA143001108DC /* RemoveProductResult.swift in Sources */,
 				49ADCC6A29AFA3DF001108DC /* Basket+Extensions.swift in Sources */,
 				49556385299A5D7500A22FA4 /* AbstractRequestFactory.swift in Sources */,
@@ -1012,6 +1027,7 @@
 				4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */,
 				49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
+				493D065429C35D0000442609 /* EditProfileViewController+Extensions.swift in Sources */,
 				49C0AA4B29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift in Sources */,
 				490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */,
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,
