@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6BC29BAFF4000FFF9A8 /* InitialPresenter.swift */; };
-		4900A6CD29BB138600FFF9A8 /* SignInTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6CA29BB138600FFF9A8 /* SignInTextField.swift */; };
+		4900A6CD29BB138600FFF9A8 /* ProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6CA29BB138600FFF9A8 /* ProfileTextField.swift */; };
 		4900A6CE29BB138600FFF9A8 /* WarningPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6CB29BB138600FFF9A8 /* WarningPaddingLabel.swift */; };
 		4900A6CF29BB138600FFF9A8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6CC29BB138600FFF9A8 /* SignInViewController.swift */; };
 		4900A6D829BB1A7000FFF9A8 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4900A6D729BB1A7000FFF9A8 /* ModuleBuilder.swift */; };
@@ -123,7 +123,7 @@
 		0A296522750E3ACE2BFBFB81 /* Pods_GBShop_GBShopUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GBShop_GBShopUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		483E4EE7D25BC0FE6F0606F9 /* Pods-GBShop-GBShopUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GBShop-GBShopUITests.debug.xcconfig"; path = "Target Support Files/Pods-GBShop-GBShopUITests/Pods-GBShop-GBShopUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4900A6BC29BAFF4000FFF9A8 /* InitialPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPresenter.swift; sourceTree = "<group>"; };
-		4900A6CA29BB138600FFF9A8 /* SignInTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInTextField.swift; sourceTree = "<group>"; };
+		4900A6CA29BB138600FFF9A8 /* ProfileTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTextField.swift; sourceTree = "<group>"; };
 		4900A6CB29BB138600FFF9A8 /* WarningPaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningPaddingLabel.swift; sourceTree = "<group>"; };
 		4900A6CC29BB138600FFF9A8 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4900A6D729BB1A7000FFF9A8 /* ModuleBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
@@ -278,8 +278,6 @@
 		4900A6C929BB138600FFF9A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4900A6CA29BB138600FFF9A8 /* SignInTextField.swift */,
-				4900A6CB29BB138600FFF9A8 /* WarningPaddingLabel.swift */,
 				4900A6CC29BB138600FFF9A8 /* SignInViewController.swift */,
 			);
 			path = View;
@@ -531,7 +529,9 @@
 		493D064929C30CBC00442609 /* GeneralCustomView */ = {
 			isa = PBXGroup;
 			children = (
+				4900A6CA29BB138600FFF9A8 /* ProfileTextField.swift */,
 				493D064A29C30D3800442609 /* ProfileView.swift */,
+				4900A6CB29BB138600FFF9A8 /* WarningPaddingLabel.swift */,
 			);
 			path = GeneralCustomView;
 			sourceTree = "<group>";
@@ -1027,7 +1027,7 @@
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
 				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
-				4900A6CD29BB138600FFF9A8 /* SignInTextField.swift in Sources */,
+				4900A6CD29BB138600FFF9A8 /* ProfileTextField.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */,

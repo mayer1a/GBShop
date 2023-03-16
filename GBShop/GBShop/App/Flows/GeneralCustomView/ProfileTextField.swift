@@ -1,5 +1,5 @@
 //
-//  SignInTextField.swift
+//  ProfileTextField.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 09.03.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SignInTextField: UITextField {
+final class ProfileTextField: UITextField {
 
     // MARK: - Private properties
 
@@ -57,7 +57,7 @@ final class SignInTextField: UITextField {
 
 }
 
-extension SignInTextField {
+extension ProfileTextField {
 
     // MARK: - Functions
 

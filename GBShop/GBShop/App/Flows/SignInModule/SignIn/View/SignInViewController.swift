@@ -18,8 +18,8 @@ final class SignInViewController: UIViewController {
 
     private let scrollView: UIScrollView
     private let contentView: UIView
-    private let loginTextField: SignInTextField
-    private let passwordTextField: SignInTextField
+    private let loginTextField: ProfileTextField
+    private let passwordTextField: ProfileTextField
     private let signInButton: UIButton
     private let signUpButton: UIButton
     private let headerLabel: UILabel
@@ -31,8 +31,8 @@ final class SignInViewController: UIViewController {
     required init() {
         scrollView = UIScrollView()
         contentView = UIView()
-        loginTextField = SignInTextField()
-        passwordTextField = SignInTextField()
+        loginTextField = ProfileTextField()
+        passwordTextField = ProfileTextField()
         signInButton = UIButton(type: .roundedRect)
         signUpButton = UIButton(type: .roundedRect)
         headerLabel = UILabel()

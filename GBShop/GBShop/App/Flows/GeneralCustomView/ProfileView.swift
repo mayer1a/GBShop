@@ -12,15 +12,15 @@ final class ProfileView: UIView {
     // MARK: - Properties
 
     let scrollView = UIScrollView()
-    let nameTextField = SignInTextField()
-    let lastnameTextField = SignInTextField()
-    let usernameTextField = SignInTextField()
-    let emailTextField = SignInTextField()
-    let passwordTextField = SignInTextField()
-    let repeatPasswordTextField = SignInTextField()
-    let cardNumberTextField = SignInTextField()
+    let nameTextField = ProfileTextField()
+    let lastnameTextField = ProfileTextField()
+    let usernameTextField = ProfileTextField()
+    let emailTextField = ProfileTextField()
+    let passwordTextField = ProfileTextField()
+    let repeatPasswordTextField = ProfileTextField()
+    let cardNumberTextField = ProfileTextField()
     let genderControl: UISegmentedControl
-    let bioTextField = SignInTextField()
+    let bioTextField = ProfileTextField()
     let signUpButton = UIButton(type: .roundedRect)
     let warningLabel = WarningPaddingLabel()
     let loadingSpinner = UIActivityIndicatorView(style: .large)
@@ -42,7 +42,7 @@ final class ProfileView: UIView {
 
     // MARK: - Constructions
 
-    required init(actionButtonTitle: String, isRepeatPasswordHidden: Bool = true) {
+    required init(actionButtonTitle: String, isRepeatPasswordHidden: Bool = false) {
         genderItems = [Gender.man.rawValue, Gender.woman.rawValue, Gender.indeterminate.rawValue]
         genderControl = UISegmentedControl(items: genderItems)
         self.actionButtonTitle = actionButtonTitle
@@ -239,7 +239,7 @@ final class ProfileView: UIView {
         ])
     }
 
-    private func configureTextField(_ textField: SignInTextField, placeholder: String, isSecure: Bool = false) {
+    private func configureTextField(_ textField: ProfileTextField, placeholder: String, isSecure: Bool = false) {
         textField.tag = nextTag
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.configure(placeholder: placeholder, isSecureTextEntry: isSecure)
