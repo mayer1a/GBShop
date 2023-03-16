@@ -32,7 +32,7 @@ final class SignInViewController: UIViewController {
         scrollView = UIScrollView()
         contentView = UIView()
         loginTextField = SignInTextField()
-        passwordTextField = SignInTextField(isSecureLabel: true)
+        passwordTextField = SignInTextField()
         signInButton = UIButton(type: .roundedRect)
         signUpButton = UIButton(type: .roundedRect)
         headerLabel = UILabel()
@@ -126,7 +126,7 @@ final class SignInViewController: UIViewController {
     }
 
     private func configureHeaderLabel() {
-        let headerText = "войти или зарегестрироваться"
+        let headerText = "войти или зарегистрироваться"
         headerLabel.textColor = .label
         configureLabel(headerLabel, text: headerText, font: .systemFont(ofSize: 33.0, weight: .bold))
 
@@ -171,10 +171,10 @@ final class SignInViewController: UIViewController {
     }
 
     private func configurePasswordTextField() {
-        passwordTextField.placeholder = "Пароль"
         passwordTextField.textContentType = .password
         passwordTextField.returnKeyType = .continue
         passwordTextField.tag = loginTextField.tag + 1
+        passwordTextField.configure(placeholder: "Пароль", isSecureTextEntry: true)
         configureTextField(passwordTextField)
 
         NSLayoutConstraint.activate([
@@ -201,7 +201,7 @@ final class SignInViewController: UIViewController {
     private func configureSignUpButton() {
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         signUpButton.tag = signInButton.tag + 1
-        configureButton(signUpButton, with: "Зарегестрироваться", color: .systemBackground, titleColor: .label)
+        configureButton(signUpButton, with: "Зарегистрироваться", color: .systemBackground, titleColor: .label)
 
         NSLayoutConstraint.activate([
             signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 10),
