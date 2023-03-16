@@ -10,9 +10,9 @@ import RealmSwift
 final class RealmUser: Object {
 
     enum Gender: String, PersistableEnum {
-        case man
-        case woman
-        case indeterminate
+        case man = "Мужской"
+        case woman = "Женский"
+        case indeterminate = "Другой"
     }
 
     @Persisted(primaryKey: true)
