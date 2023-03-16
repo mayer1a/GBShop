@@ -116,7 +116,7 @@ final class SignUpViewController: UIViewController {
         presenter?.inputFieldsTapped()
     }
 
-    @objc private func keyboardShouldBegHidden() {
+    @objc private func keyboardShouldBeHidden() {
         profileView?.scrollView.endEditing(true)
     }
 

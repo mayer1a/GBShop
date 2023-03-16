@@ -22,10 +22,9 @@ protocol SignUpPresenterProtocol: AnyObject {
         storageService: UserCredentialsStorageService
     )
 
-    func signUpButtonTapped()
+    func signUpButtonTapped(rawModel: SignUpRawModel)
     func backButtonTapped()
     func inputFieldsTapped()
-    func inputDidEndEdititng(_ sender: UITextField, of type: Constants.SignUpDictionartKey)
 }
 
 final class SignUpPresenter {
@@ -34,11 +33,11 @@ final class SignUpPresenter {
 
     weak var view: SignUpViewProtocol!
     var coordinator: CoordinatorProtocol
-    var signUpUser: RawSignUpModel
+    var signUpUser: SignUpRawModel
     let requestFactory: SignUpRequestFactory
     let storageService: UserCredentialsStorageService
     let validator: Validator
-    let signUpModelFactory: SignUpUserModelFactory
+    let userModelFactory: UserModelFactory
 
     // MARK: - Constructions
 
@@ -54,20 +53,19 @@ final class SignUpPresenter {
         self.storageService = storageService
         validator = .init()
         signUpUser = .init()
-        signUpModelFactory = .init()
+        userModelFactory = .init()
     }
 
     // MARK: - Private functions
 
-    private func validateUserData() -> SignUpUser? {
-        let user = signUpModelFactory.construct(from: signUpUser)
-
+    private func validateUserData(_ rawModel: SignUpRawModel) -> SignUpUser? {
         do {
-            try validator.validatePassword(user?.password)
-            try validator.validateEmail(user?.email)
-            try validator.validateUsername(user?.username)
-            try validator.validateCard(user?.creditCard)
-            try validator.validateBio(user?.bio)
+            try validator.validatePassword(rawModel.password, repeatPassword: rawModel.repeatPassword)
+            try validator.validateEmail(rawModel.email)
+            try validator.validateUsername(rawModel.username)
+            try validator.validateCard(rawModel.creditCard)
+            try validator.validateBio(rawModel.bio)
+            try validator.validateGender(rawModel.gender)
         } catch let error as Validator.ValidationError {
             view?.signUpFailure(with: error.localizedDescription)
             return nil
@@ -75,18 +73,19 @@ final class SignUpPresenter {
             return nil
         }
 
-        return user
+        return userModelFactory.construct(from: rawModel)
     }
 
-    private func serverDidResponded(with response: AFSignUpResult) {
+    private func serverDidResponded(_ response: AFSignUpResult, with signUpUserModel: SignUpUser) {
         switch response.result {
         case .success(let signUpResult):
             guard signUpResult.result == 1 else {
                 self.view.signUpFailure(with: signUpResult.userMessage)
                 return
             }
-
-            // TODO: create user profile and save to realm
+            let user = userModelFactory.construct(from: signUpUserModel, with: signUpResult.userId)
+            storageService.createUser(from: user)
+            coordinator.showMainFlow(with: user)
         case .failure(_):
             self.view.signUpFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
@@ -100,18 +99,18 @@ extension SignUpPresenter: SignUpPresenterProtocol {
 
     // MARK: - Functions
 
-    func signUpButtonTapped() {
-        guard let user = validateUserData() else {
+    func signUpButtonTapped(rawModel: SignUpRawModel) {
+        guard let signUpUserModel = validateUserData(rawModel) else {
             return
         }
 
         view.startLoadingSpinner()
 
-        requestFactory.registration(profile: user) { [weak self] response in
+        requestFactory.registration(profile: signUpUserModel) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {
-                self.serverDidResponded(with: response)
+                self.serverDidResponded(response, with: signUpUserModel)
                 self.view.stopLoadingSpinner()
             }
         }
@@ -124,9 +123,4 @@ extension SignUpPresenter: SignUpPresenterProtocol {
     func inputFieldsTapped() {
         view.removeWarning()
     }
-
-    func inputDidEndEdititng(_ sender: UITextField, of type: Constants.SignUpDictionartKey) {
-        signUpUser[type] = sender.text ?? ""
-    }
-
 }
