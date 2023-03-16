@@ -49,22 +49,22 @@ struct UserModelFactory {
             bio: bio)
     }
 
-    func construct(from model: SignUpRawModel, with user: User) -> EditProfile? {
+    func construct(from model: SignUpRawModel, with id: Int) -> EditProfile? {
         guard
-            let name = model.name == user.name ? "" : model.name,
-            let lastname = model.lastname == user.lastname ? "" : model.lastname,
-            let username = model.username == user.username ? "" : model.username,
-            let email = model.email == user.email ? "" : model.email,
-            let cardNumber = model.creditCard == user.creditCard ? "" : model.creditCard,
+            let name = model.name,
+            let lastname = model.lastname,
+            let username = model.username,
+            let email = model.email,
+            let cardNumber = model.creditCard,
             let genderString = model.gender,
             let gender = Gender(rawValue: genderString),
-            let bio = model.bio == user.bio ? "" : model.bio
+            let bio = model.bio
         else {
             return nil
         }
 
         return EditProfile(
-            userId: user.id,
+            userId: id,
             name: name,
             lastname: lastname,
             username: username,
