@@ -73,7 +73,7 @@ final class RealmLayer: UserCredentialRealmStorage {
         }
     }
 
-    func delete<T: Object>(_ objects: Results<T>) {
+    func delete<T: Sequence>(_ objects: T) where T.Element: Object {
         do {
             try realm.write {
                 realm.delete(objects)
