@@ -23,6 +23,8 @@ protocol EditProfilePresenterProtocol: AnyObject {
         storageService: UserCredentialsStorageService
     )
 
+    var user: User { get }
+
     func editButtonTapped(rawModel: SignUpRawModel)
     func inputFieldsTapped()
 }
@@ -32,16 +34,13 @@ final class EditProfilePresenter {
     // MARK: - Properties
 
     weak var view: EditProfileViewProtocol!
+    var user: User
     var coordinator: CoordinatorProtocol
     var userRawModel: SignUpRawModel
     let requestFactory: ProfileRequestFactory
     let storageService: UserCredentialsStorageService
     let validator: Validator
     let userModelFactory: UserModelFactory
-
-    // MARK: Private properties
-
-    private var user: User
 
     // MARK: - Constructions
 
@@ -81,13 +80,13 @@ final class EditProfilePresenter {
             return nil
         }
 
-        return userModelFactory.construct(from: rawModel, with: user)
+        return userModelFactory.construct(from: rawModel, with: user.id)
     }
 
     private func serverDidResponded(_ response: AFEditResult, with editProfileModel: EditProfile) {
         switch response.result {
         case .success(let editProfileResult):
-            guard editProfileResult.result == 0 else {
+            guard editProfileResult.result == 1 else {
                 self.view.editFailure(with: editProfileResult.errorMessage)
                 return
             }
