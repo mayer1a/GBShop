@@ -16,6 +16,24 @@ final class WarningPaddingLabel: UILabel {
     private var leftInset: CGFloat = 10.0
     private var rightInset: CGFloat = 10.0
 
+    // MARK: - Constructions
+    
+    init(frame: CGRect = .zero, text: String = "", font: UIFont = .systemFont(ofSize: 16)) {
+        super.init(frame: frame)
+
+        self.text = text
+        self.font = font
+        textColor = .systemRed
+        backgroundColor = .systemBackground
+        lineBreakMode = .byWordWrapping
+        numberOfLines = 0
+        isUserInteractionEnabled = false
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Properties
     
     override var intrinsicContentSize: CGSize {
@@ -43,11 +61,12 @@ final class WarningPaddingLabel: UILabel {
     // MARK: - Private functions
 
     private func addBottomBorder(){
+        layer.sublayers?.removeAll()
         let path = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: [.bottomRight, .bottomLeft],
             cornerRadii: CGSize(width: 10, height: 10))
-
+        
         let maskLayer = CAShapeLayer()
         maskLayer.frame = bounds
         maskLayer.path = path.cgPath
@@ -58,9 +77,25 @@ final class WarningPaddingLabel: UILabel {
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.strokeColor = UIColor.systemRed.cgColor
         borderLayer.lineWidth = 2
-        borderLayer.strokeStart = 0.49
-        borderLayer.strokeEnd = 0.96
+        borderLayer.strokeStart = 0.494
+        borderLayer.strokeEnd = getEndPoint()
+        
         borderLayer.frame = bounds
         layer.addSublayer(borderLayer)
+    }
+
+    func getEndPoint() -> Double {
+        let angleCircleRadius = 10.0
+        let topSide = bounds.width
+        let bottomSide = topSide - (angleCircleRadius * 2)
+        let rightSide = bounds.height - angleCircleRadius
+        let lengthSides = rightSide * 2
+        let widthSides = topSide + bottomSide
+        let anglesLength = Double.pi * angleCircleRadius
+        let pathLength = lengthSides + widthSides + anglesLength
+        let endPoint = pathLength - rightSide
+        let roundedStrokeEnd = round((endPoint/pathLength)*1000)/1000
+
+        return roundedStrokeEnd
     }
 }
