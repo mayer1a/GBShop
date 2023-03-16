@@ -16,7 +16,7 @@ protocol CoordinatorProtocol: BaseCoordinator {
     func initialViewController()
     func showSignUpFlow()
     func showSignInFlow()
-    func showMainFlow(with user: User)
+    func showProfileFlow(with user: User)
     func popViewController()
 }
 
@@ -69,10 +69,10 @@ final class AppCoordinator: CoordinatorProtocol {
         navigationController.pushViewController(signInViewController, animated: true)
     }
 
-    func showMainFlow(with user: User) {
+    func showProfileFlow(with user: User) {
         guard
             let navigationController = navigationController,
-            let mainViewController = assemblyBuilder?.createMainModule(with: user, coordinator: self)
+            let mainViewController = assemblyBuilder?.createEditProfileModule(with: user, coordinator: self)
         else {
             return
         }

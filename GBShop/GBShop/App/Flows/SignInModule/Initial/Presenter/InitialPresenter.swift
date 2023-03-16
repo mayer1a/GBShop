@@ -46,7 +46,7 @@ final class InitialPresenter {
             self.view.hideLoadingSpinner()
 
             if self.storageService.isUserAuthenticated {
-                self.coordinator?.showMainFlow(with: self.storageService.user)
+                self.coordinator?.showProfileFlow(with: self.storageService.user)
             } else {
                 self.coordinator?.showSignInFlow()
             }

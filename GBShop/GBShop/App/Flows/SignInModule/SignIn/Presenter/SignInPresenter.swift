@@ -115,7 +115,7 @@ extension SignInPresenter: SignInPresenterProtocol {
                     }
 
                     self.storageService.createUser(from: user)
-                    self.coordinator?.showMainFlow(with: user)
+                    self.coordinator?.showProfileFlow(with: user)
                 case .failure(_):
                     self.view?.signInFailure()
                 }

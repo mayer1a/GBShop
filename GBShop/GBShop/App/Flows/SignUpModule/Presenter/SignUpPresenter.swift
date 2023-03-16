@@ -85,7 +85,7 @@ final class SignUpPresenter {
             }
             let user = userModelFactory.construct(from: signUpUserModel, with: signUpResult.userId)
             storageService.createUser(from: user)
-            coordinator.showMainFlow(with: user)
+            coordinator.showProfileFlow(with: user)
         case .failure(_):
             self.view.signUpFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
