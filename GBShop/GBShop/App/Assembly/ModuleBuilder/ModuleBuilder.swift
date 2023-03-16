@@ -10,7 +10,7 @@ import UIKit
 protocol ModuleBuilderProtocol {
     func createInitialModule(coordinator: CoordinatorProtocol) -> UIViewController
     func createSignInModule(coordinator: CoordinatorProtocol) -> UIViewController
-    func createMainModule(with user: User, coordinator: CoordinatorProtocol) -> UIViewController
+    func createEditProfileModule(with user: User, coordinator: CoordinatorProtocol) -> UIViewController
     func createSignUpModule(coordinator: CoordinatorProtocol) -> UIViewController
 }
 
@@ -42,26 +42,20 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         return signInView
     }
 
-    func createMainModule(with user: User, coordinator: CoordinatorProtocol) -> UIViewController {
-        // TODO: add MainModule assembly components when ready
-        let welcomeLabel = UILabel()
-        welcomeLabel.text = "Добро пожаловать, \(user.name) \(user.lastname)!"
-        welcomeLabel.textAlignment = .center
-        welcomeLabel.backgroundColor = .systemBackground
-        welcomeLabel.font = .systemFont(ofSize: 20, weight: .bold)
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+    func createEditProfileModule(with user: User, coordinator: CoordinatorProtocol) -> UIViewController {
+        let view = EditProfileViewController()
+        let factory = RequestFactory().makeEditProfileRequestFactory()
+        let storageService = UserCredentialsStorageService()
+        let presenter = EditProfilePresenter(
+            user: user,
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            storageService: storageService)
 
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemBackground
-        viewController.view.addSubview(welcomeLabel)
+        view.presenter = presenter
 
-        NSLayoutConstraint.activate([
-            welcomeLabel.leftAnchor.constraint(equalTo: viewController.view.leftAnchor, constant: 20),
-            welcomeLabel.rightAnchor.constraint(equalTo: viewController.view.rightAnchor, constant: -20),
-            welcomeLabel.topAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.topAnchor)
-        ])
-
-        return viewController
+        return view
     }
 
     func createSignUpModule(coordinator: CoordinatorProtocol) -> UIViewController {
