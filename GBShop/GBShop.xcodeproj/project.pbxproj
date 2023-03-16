@@ -33,6 +33,10 @@
 		4928AD0F299B4CA000B665C8 /* EditProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928AD0E299B4CA000B665C8 /* EditProfileResult.swift */; };
 		4928AD13299B4CF700B665C8 /* ProfileRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928AD12299B4CF700B665C8 /* ProfileRequestFactory.swift */; };
 		4928AD17299B502F00B665C8 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4928AD16299B502F00B665C8 /* Profile.swift */; };
+		493D064429C209F600442609 /* SignUpRawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064329C209F600442609 /* SignUpRawModel.swift */; };
+		493D064629C2FA7700442609 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064529C2FA7700442609 /* UIButton+Extensions.swift */; };
+		493D064829C30AD300442609 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */; };
+		493D064B29C30D3800442609 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D064A29C30D3800442609 /* ProfileView.swift */; };
 		49437238299DF57F00AA85A3 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
@@ -78,6 +82,8 @@
 		49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */; };
 		49C0AA2129C06FDE00A927DD /* SignUpUserModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2029C06FDE00A927DD /* SignUpUserModelFactory.swift */; };
 		49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */; };
+		49C0AA2929C073AA00A927DD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2829C073AA00A927DD /* SignUpViewController.swift */; };
+		49C0AA4B29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA4A29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift */; };
 		49D0285F29ABB14600715F08 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0285E29ABB14600715F08 /* Review.swift */; };
 		49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286029ABB20600715F08 /* ReviewsResult.swift */; };
 		49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0286329ABB30800715F08 /* ReviewsRequestFactory.swift */; };
@@ -147,6 +153,10 @@
 		4928AD0E299B4CA000B665C8 /* EditProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileResult.swift; sourceTree = "<group>"; };
 		4928AD12299B4CF700B665C8 /* ProfileRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequestFactory.swift; sourceTree = "<group>"; };
 		4928AD16299B502F00B665C8 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		493D064329C209F600442609 /* SignUpRawModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRawModel.swift; sourceTree = "<group>"; };
+		493D064529C2FA7700442609 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
+		493D064A29C30D3800442609 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodableTests.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
@@ -192,6 +202,8 @@
 		49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelFactory.swift; sourceTree = "<group>"; };
 		49C0AA2029C06FDE00A927DD /* SignUpUserModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserModelFactory.swift; sourceTree = "<group>"; };
 		49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		49C0AA2829C073AA00A927DD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		49C0AA4A29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		49D0285E29ABB14600715F08 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		49D0286029ABB20600715F08 /* ReviewsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsResult.swift; sourceTree = "<group>"; };
 		49D0286329ABB30800715F08 /* ReviewsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRequestFactory.swift; sourceTree = "<group>"; };
@@ -346,6 +358,7 @@
 			children = (
 				49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */,
 				49ADCC5629AF3B38001108DC /* SignUpUser.swift */,
+				493D064329C209F600442609 /* SignUpRawModel.swift */,
 			);
 			path = RequestEntity;
 			sourceTree = "<group>";
@@ -468,6 +481,7 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				493D064929C30CBC00442609 /* GeneralCustomView */,
 				49C0AA2229C072E000A927DD /* SignUpModule */,
 				495EB6F329B7740F00DF444E /* SignInModule */,
 			);
@@ -514,6 +528,14 @@
 				4928AD12299B4CF700B665C8 /* ProfileRequestFactory.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		493D064929C30CBC00442609 /* GeneralCustomView */ = {
+			isa = PBXGroup;
+			children = (
+				493D064A29C30D3800442609 /* ProfileView.swift */,
+			);
+			path = GeneralCustomView;
 			sourceTree = "<group>";
 		};
 		4955637B299A535C00A22FA4 /* Network */ = {
@@ -605,6 +627,9 @@
 				49ADCC6929AFA3DF001108DC /* Basket+Extensions.swift */,
 				49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */,
 				495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */,
+				49C0AA4A29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift */,
+				493D064529C2FA7700442609 /* UIButton+Extensions.swift */,
+				493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -648,6 +673,7 @@
 		49C0AA2229C072E000A927DD /* SignUpModule */ = {
 			isa = PBXGroup;
 			children = (
+				49C0AA2729C0739C00A927DD /* View */,
 				49C0AA2329C0731600A927DD /* Presenter */,
 			);
 			path = SignUpModule;
@@ -659,6 +685,14 @@
 				49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		49C0AA2729C0739C00A927DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49C0AA2829C073AA00A927DD /* SignUpViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		49D0286229ABB2D900715F08 /* Reviews */ = {
@@ -940,6 +974,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49DC253529BB99D60095290D /* UserCredentialsStorageService.swift in Sources */,
+				493D064629C2FA7700442609 /* UIButton+Extensions.swift in Sources */,
 				49ADCC5729AF3B38001108DC /* SignUpUser.swift in Sources */,
 				4928AD09299B493D00B665C8 /* LogoutResult.swift in Sources */,
 				49556398299A696900A22FA4 /* SignInRequestFactory.swift in Sources */,
@@ -955,10 +990,13 @@
 				4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */,
 				49ADCC5929AF3CE9001108DC /* DetailedProduct.swift in Sources */,
 				49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */,
+				493D064429C209F600442609 /* SignUpRawModel.swift in Sources */,
+				49C0AA2929C073AA00A927DD /* SignUpViewController.swift in Sources */,
 				4900A6DE29BB247800FFF9A8 /* AppCoordinator.swift in Sources */,
 				4900A6DB29BB1ABF00FFF9A8 /* InitialViewController.swift in Sources */,
 				49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
+				49C0AA4B29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift in Sources */,
 				490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */,
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
@@ -975,6 +1013,7 @@
 				4900A6CF29BB138600FFF9A8 /* SignInViewController.swift in Sources */,
 				49ADCC5F29AFA11C001108DC /* AddProductResult.swift in Sources */,
 				49991260299E221C0034015A /* CatalogRequestFactory.swift in Sources */,
+				493D064B29C30D3800442609 /* ProfileView.swift in Sources */,
 				4955638B299A60D300A22FA4 /* User.swift in Sources */,
 				490A6D3829BCE08900427C50 /* Utils.swift in Sources */,
 				49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */,
@@ -987,6 +1026,7 @@
 				4999126C299E36010034015A /* GetProduct.swift in Sources */,
 				490A6D3E29BCED6D00427C50 /* Validator.swift in Sources */,
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
+				493D064829C30AD300442609 /* UISegmentedControl+Extensions.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
 				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
@@ -1184,6 +1224,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
@@ -1204,6 +1246,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Mayer-Inc.GBShop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -1219,6 +1262,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
@@ -1239,6 +1284,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Mayer-Inc.GBShop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
