@@ -65,25 +65,18 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     }
 
     func createSignUpModule(coordinator: CoordinatorProtocol) -> UIViewController {
-        // TODO: add SignUpModule assembly components when ready
-        let welcomeLabel = UILabel()
-        welcomeLabel.text = "Окно регистрации!"
-        welcomeLabel.textAlignment = .center
-        welcomeLabel.backgroundColor = .systemBackground
-        welcomeLabel.font = .systemFont(ofSize: 30, weight: .bold)
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        let view = SignUpViewController()
+        let factory = RequestFactory().makeSignUpRequestFactory()
+        let storageService = UserCredentialsStorageService()
+        let presenter = SignUpPresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            storageService: storageService)
 
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemBackground
-        viewController.view.addSubview(welcomeLabel)
+        view.presenter = presenter
 
-        NSLayoutConstraint.activate([
-            welcomeLabel.leftAnchor.constraint(equalTo: viewController.view.leftAnchor, constant: 20),
-            welcomeLabel.rightAnchor.constraint(equalTo: viewController.view.rightAnchor, constant: -20),
-            welcomeLabel.topAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.topAnchor)
-        ])
-
-        return viewController
+        return view
     }
 }
 
