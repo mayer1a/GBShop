@@ -24,10 +24,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let coordinator = AppCoordinator(navigationController: navigationController, assemblyBuilder: assemblyBuilder)
         coordinator.initialViewController()
 
+        setup(navigationController: navigationController)
+
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
         self.window = window
+    }
+
+    private func setup(navigationController: UINavigationController) {
+        navigationController.navigationBar.backItem?.titleView?.tintColor = .label
+        navigationController.navigationBar.tintColor = .label
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationItem.largeTitleDisplayMode = .always
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
