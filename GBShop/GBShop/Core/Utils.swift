@@ -10,22 +10,10 @@ import Alamofire
 // MARK: - Typealias
 
 typealias AFSignUpResult = AFDataResponse<SignUpResult>
-typealias RawSignUpModel = [Constants.SignUpDictionartKey: String]
 
 // MARK: - App Constants
 
 struct Constants {
-
-    enum SignUpDictionartKey: String {
-        case name
-        case lastname
-        case email
-        case username
-        case password
-        case cardNumber
-        case gender
-        case bio
-    }
 
     // MARK: - Properties
 
@@ -47,6 +35,7 @@ struct ErrorConstants {
     static let unknownErrorMessage = "Произошла неизвестная ошибка."
     static let emptyValueMessage = " пустой. Пожалуйста, заполните его."
     static let emailFormatMessage = "Электронная почта имеет неправильный формат. Пожалуйста, отредактируйте его."
+    static let passwordMismatch = "Введённые пароли не совпадают. Пожалуйста, исправьте это."
     static let passwordFormatMessage = {
         let length = Constants.passwordMinLength
         return "Пароль должен быть не менее \(length) символов и содержать заглавную букву, строчную букву и цифру."
