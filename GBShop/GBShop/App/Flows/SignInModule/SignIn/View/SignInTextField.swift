@@ -17,12 +17,7 @@ final class SignInTextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
-    }
-
-    required init(isSecureLabel: Bool) {
-        super.init(frame: .zero)
-        configure(isSecureLabel)
+        setupView()
     }
 
     required init?(coder: NSCoder) {
@@ -45,7 +40,7 @@ final class SignInTextField: UITextField {
 
     // MARK: - Private functions
 
-    private func configure(_ isSecureLabel: Bool = false) {
+    private func setupView() {
         font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
         borderStyle = .none
         backgroundColor = .white
@@ -54,11 +49,20 @@ final class SignInTextField: UITextField {
         layer.borderWidth = 1
         layer.borderColor = UIColor.systemGray5.cgColor
         textColor = .label
-        isSecureTextEntry = isSecureLabel
         autocorrectionType = .no
         autocapitalizationType = .none
         spellCheckingType = .no
         translatesAutoresizingMaskIntoConstraints = false
     }
 
+}
+
+extension SignInTextField {
+
+    // MARK: - Functions
+
+    func configure(placeholder: String? = nil, isSecureTextEntry: Bool = false) {
+        self.placeholder = placeholder
+        self.isSecureTextEntry = isSecureTextEntry
+    }
 }
