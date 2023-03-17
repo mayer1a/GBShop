@@ -49,7 +49,7 @@ final class SignUpViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardShouldBeHidden))
         profileView?.addGestureRecognizer(tapGestureRecognizer)
         profileView?.genderControl.addTarget(self, action: #selector(textFieldsEditingChanged), for: .valueChanged)
-        profileView?.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        profileView?.actionButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
 
         setupTextFieldsDelegate(profileView?.nameTextField)
         setupTextFieldsDelegate(profileView?.lastnameTextField)
@@ -137,12 +137,12 @@ extension SignUpViewController: SignUpViewProtocol {
     func startLoadingSpinner() {
         keyboardShouldBeHidden()
         profileView?.loadingSpinner.startAnimating()
-        profileView?.signUpButton.setTitle("", for: .normal)
+        profileView?.actionButton.setTitle("", for: .normal)
     }
 
     func stopLoadingSpinner() {
         profileView?.loadingSpinner.stopAnimating()
-        profileView?.signUpButton.setTitle("Зарегистрироваться", for: .normal)
+        profileView?.actionButton.setTitle("Зарегистрироваться", for: .normal)
     }
 
     func signUpFailure(with message: String?) {

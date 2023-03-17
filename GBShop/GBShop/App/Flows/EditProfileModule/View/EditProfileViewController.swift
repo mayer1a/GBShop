@@ -51,7 +51,7 @@ final class EditProfileViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardShouldBeHidden))
         profileView.addGestureRecognizer(tapGestureRecognizer)
         profileView.genderControl.addTarget(self, action: #selector(textFieldsEditingChanged), for: .valueChanged)
-        profileView.signUpButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        profileView.actionButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
 
         profileView.nameTextField.text = presenter?.user.name
         profileView.lastnameTextField.text = presenter?.user.lastname
@@ -154,12 +154,12 @@ extension EditProfileViewController: EditProfileViewProtocol {
     func startLoadingSpinner() {
         keyboardShouldBeHidden()
         profileView?.loadingSpinner.startAnimating()
-        profileView?.signUpButton.setTitle("", for: .normal)
+        profileView?.actionButton.setTitle("", for: .normal)
     }
 
     func stopLoadingSpinner() {
         profileView?.loadingSpinner.stopAnimating()
-        profileView?.signUpButton.setTitle("Сохранить", for: .normal)
+        profileView?.actionButton.setTitle("Сохранить", for: .normal)
     }
 
     func editFailure(with message: String?) {

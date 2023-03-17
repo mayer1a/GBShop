@@ -21,7 +21,7 @@ final class ProfileView: UIView {
     let cardNumberTextField = ProfileTextField()
     let genderControl: UISegmentedControl
     let bioTextField = ProfileTextField()
-    let signUpButton = UIButton(type: .roundedRect)
+    let actionButton = UIButton(type: .roundedRect)
     let warningLabel = WarningPaddingLabel()
     let loadingSpinner = UIActivityIndicatorView(style: .large)
     var repeatPasswordConstraints: [NSLayoutConstraint] = []
@@ -74,7 +74,7 @@ final class ProfileView: UIView {
         configureGenderControl()
         configureCardNumberTextField()
         configureBioTextField()
-        configureSignUpButton()
+        configureActionButton()
         configureSpinner()
     }
 
@@ -103,7 +103,7 @@ final class ProfileView: UIView {
         contentView.addSubview(genderControl)
         contentView.addSubview(cardNumberTextField)
         contentView.addSubview(bioTextField)
-        contentView.addSubview(signUpButton)
+        contentView.addSubview(actionButton)
         contentView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -220,13 +220,13 @@ final class ProfileView: UIView {
         setupBaseConstraints(from: bioTextField, to: nameTextField)
     }
 
-    private func configureSignUpButton() {
-        signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.topAnchor.constraint(equalTo: bioTextField.bottomAnchor, constant: 20).isActive = true
-        signUpButton.addSubview(loadingSpinner)
-        signUpButton.configure(actionButtonTitle, titleColor: .systemBackground, backgroundColor: .label)
+    private func configureActionButton() {
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.topAnchor.constraint(equalTo: bioTextField.bottomAnchor, constant: 20).isActive = true
+        actionButton.addSubview(loadingSpinner)
+        actionButton.configure(actionButtonTitle, titleColor: .systemBackground, backgroundColor: .label)
 
-        setupBaseConstraints(from: signUpButton, to: nameTextField)
+        setupBaseConstraints(from: actionButton, to: nameTextField)
     }
 
     private func configureSpinner() {
@@ -234,8 +234,8 @@ final class ProfileView: UIView {
         loadingSpinner.color = .systemBackground
 
         NSLayoutConstraint.activate([
-            loadingSpinner.centerXAnchor.constraint(equalTo: signUpButton.centerXAnchor),
-            loadingSpinner.centerYAnchor.constraint(equalTo: signUpButton.centerYAnchor)
+            loadingSpinner.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor),
+            loadingSpinner.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor)
         ])
     }
 
