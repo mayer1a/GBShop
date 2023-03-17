@@ -41,6 +41,7 @@
 		493D065229C35AE700442609 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065129C35AE700442609 /* EditProfileViewController.swift */; };
 		493D065429C35D0000442609 /* EditProfileViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */; };
 		493D065629C4306B00442609 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065529C4306B00442609 /* SignInView.swift */; };
+		493D065829C442A100442609 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065729C442A100442609 /* InitialView.swift */; };
 		49437238299DF57F00AA85A3 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
@@ -164,6 +165,7 @@
 		493D065129C35AE700442609 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditProfileViewController+Extensions.swift"; sourceTree = "<group>"; };
 		493D065529C4306B00442609 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		493D065729C442A100442609 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodableTests.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				4900A6DA29BB1ABF00FFF9A8 /* InitialViewController.swift */,
+				493D065729C442A100442609 /* InitialView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */,
 				493D065629C4306B00442609 /* SignInView.swift in Sources */,
 				49ADCC5929AF3CE9001108DC /* DetailedProduct.swift in Sources */,
+				493D065829C442A100442609 /* InitialView.swift in Sources */,
 				49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */,
 				493D064429C209F600442609 /* SignUpRawModel.swift in Sources */,
 				49C0AA2929C073AA00A927DD /* SignUpViewController.swift in Sources */,
