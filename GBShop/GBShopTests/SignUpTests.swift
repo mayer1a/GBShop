@@ -29,19 +29,21 @@ final class SignUpTests: XCTestCase {
     func testSignUpCorrectInput() {
         let signUp = requestFactory.makeSignUpRequestFactory()
         let exp = expectation(description: "correctInput")
-        var result = -1
+        var signUpResult = SignUpResult(result: -1, userId: -1, userMessage: "")
         let profile = SignUpUser(
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
+            name: "Foo",
+            lastname: "Bar",
+            username: "foobarbaz",
+            password: "FooBarBaz0000",
+            email: "foobar@baz.az",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Foo bar baz bio")
 
         signUp.registration(profile: profile) { response in
             switch response.result {
-            case .success(let response):
-                result = response.result
+            case .success(let result):
+                signUpResult = result
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -50,27 +52,29 @@ final class SignUpTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(1, result, "trying to registration")
+        XCTAssertEqual(1, signUpResult.result, "trying to registration")
+        XCTAssertEqual("Регистрация прошла успешно!", signUpResult.userMessage, "trying to registration")
+        XCTAssertNotEqual(-1, signUpResult.userId, "trying to registration")
     }
 
-    func testSignUpIncorrectUsername() {
-        let exp = expectation(description: "incorrectUsername")
+    func testSignUpWithExistsEmail() {
+        let exp = expectation(description: "existsEmail")
         let signUp = requestFactory.makeSignUpRequestFactory()
-        var result = -1
+        var signUpResult = SignUpResult(result: -1, userId: -1, userMessage: "")
         let profile = SignUpUser(
-            username: "самбади",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to registration with incorrect username but registration was succesful")
+            name: "Bar",
+            lastname: "Foob",
+            username: "bazbarbaz0",
+            password: "FooBarBaz0000",
+            email: "foobar@baz.az",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Foob baz baz bio")
 
         signUp.registration(profile: profile) { response in
             switch response.result {
-            case .success(let response):
-                result = response.result
+            case .success(let result):
+                signUpResult = result
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -79,27 +83,29 @@ final class SignUpTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
+        XCTAssertEqual(0, signUpResult.result)
+        XCTAssertEqual("Регистрация завершилась отказом! Введённый email и/или username уже существуют", signUpResult.userMessage)
+        XCTAssertNil(signUpResult.userId)
     }
 
-    func testSignUpIncorrectEmail() {
-        let exp = expectation(description: "incorrectEmail")
+    func testSignUpWithExistsUsername() {
+        let exp = expectation(description: "existsUsername")
         let signUp = requestFactory.makeSignUpRequestFactory()
-        var result = -1
+        var signUpResult = SignUpResult(result: -1, userId: -1, userMessage: "")
         let profile = SignUpUser(
-            username: "Somebody",
-            password: "mypassword",
-            email: "some @so",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to registration with incorrect email but registration was succesful")
+            name: "Baz",
+            lastname: "Barb",
+            username: "foobarbaz",
+            password: "FooBarBaz0000",
+            email: "foobaz@bar.ar",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Barb foo baz bio")
 
         signUp.registration(profile: profile) { response in
             switch response.result {
-            case .success(let response):
-                result = response.result
+            case .success(let result):
+                signUpResult = result
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -108,93 +114,8 @@ final class SignUpTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testSignUpIncorrectCardNumber() {
-        let exp = expectation(description: "incorrectCardNumber")
-        let signUp = requestFactory.makeSignUpRequestFactory()
-        var result = -1
-        let profile = SignUpUser(
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "987A-2424234 B224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to registration with incorrect card number but registration was succesful")
-
-        signUp.registration(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testSignUpIncorrectPassword() {
-        let exp = expectation(description: "incorrectPassword")
-        let signUp = requestFactory.makeSignUpRequestFactory()
-        var result = -1
-        let profile = SignUpUser(
-            username: "Somebody",
-            password: "",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to registration with incorrect password but registration was succesful")
-
-        signUp.registration(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testSignUpWithEmptyInput() {
-        let exp = expectation(description: "emptyInput")
-        let signUp = requestFactory.makeSignUpRequestFactory()
-        var result = -1
-        let profile = SignUpUser(
-            username: "",
-            password: "",
-            email: "",
-            creditCard: "",
-            gender: .man,
-            bio: "")
-
-        XCTExpectFailure("trying to registration with empty input but registration was succesful")
-
-        signUp.registration(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
+        XCTAssertEqual(0, signUpResult.result)
+        XCTAssertEqual("Регистрация завершилась отказом! Введённый email и/или username уже существуют", signUpResult.userMessage)
+        XCTAssertNil(signUpResult.userId)
     }
 }

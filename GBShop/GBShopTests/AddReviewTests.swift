@@ -29,7 +29,7 @@ final class AddReviewTests: XCTestCase {
     func testAddReviewCorrectInput() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = 123
+        let userId = 100
         let productId = 456
         let description = "Текст отзыва"
         var addReviewResult: AddReviewResult? = nil
@@ -79,7 +79,7 @@ final class AddReviewTests: XCTestCase {
     func testAddReviewIncorrectProductId() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectProductId")
-        let userId = 123
+        let userId = 100
         let productId = -456
         let description = "Текст отзыва"
         var addReviewResult: AddReviewResult? = nil
@@ -105,7 +105,7 @@ final class AddReviewTests: XCTestCase {
     func testAddReviewsIncorrectUserId() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectUserId")
-        let userId = -123
+        let userId = -100
         let productId = 456
         let description = "Текст отзыва"
         var addReviewResult: AddReviewResult? = nil
