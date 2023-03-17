@@ -22,7 +22,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         let view = InitialViewController()
         let storageService = UserCredentialsStorageService()
         let presenter = InitialPresenter(view: view, coordinator: coordinator, storageService: storageService)
-        view.setPresenter(presenter: presenter)
+        view.setPresenter(presenter)
 
         return view
     }
@@ -37,7 +37,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             coordinator: coordinator,
             storageService: storageService)
 
-        signInView.presenter = presenter
+        signInView.setPresenter(presenter)
 
         return signInView
     }
@@ -53,7 +53,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             coordinator: coordinator,
             storageService: storageService)
 
-        view.presenter = presenter
+        view.setPresenter(presenter)
 
         return view
     }
@@ -68,7 +68,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             coordinator: coordinator,
             storageService: storageService)
 
-        view.presenter = presenter
+        view.setPresenter(presenter)
 
         return view
     }

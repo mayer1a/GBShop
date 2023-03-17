@@ -9,12 +9,10 @@ import UIKit
 
 final class EditProfileViewController: UIViewController {
 
-    // MARK: - Properties
-
-    var presenter: EditProfilePresenterProtocol?
-    var keyboardObserver: KeyboardObserver?
-
     // MARK: - Private properties
+
+    private var presenter: EditProfilePresenterProtocol!
+    private var keyboardObserver: KeyboardObserver?
 
     private var profileView: ProfileView? {
         isViewLoaded ? view as? ProfileView : nil
@@ -28,7 +26,7 @@ final class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewTargets()
+        setupViewComponents()
         keyboardObserver = KeyboardObserver(targetView: profileView?.scrollView)
     }
 
@@ -39,45 +37,54 @@ final class EditProfileViewController: UIViewController {
 
     // MARK: - Functions
 
+    func setPresenter(_ presenter: EditProfilePresenterProtocol) {
+        self.presenter = presenter
+    }
+
     func performSaveAction() {
         saveButtonTapped()
     }
 
     // MARK: - Private functions
 
-    private func setupViewTargets() {
+    private func setupViewComponents() {
+        addTargets()
+        completeFields()
+
+        setupTextFieldsDelegate(profileView?.nameTextField)
+        setupTextFieldsDelegate(profileView?.lastnameTextField)
+        setupTextFieldsDelegate(profileView?.usernameTextField)
+        setupTextFieldsDelegate(profileView?.emailTextField)
+        setupTextFieldsDelegate(profileView?.passwordTextField)
+        setupTextFieldsDelegate(profileView?.repeatPasswordTextField)
+        setupTextFieldsDelegate(profileView?.cardNumberTextField)
+        setupTextFieldsDelegate(profileView?.bioTextField)
+    }
+
+    private func addTargets() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardShouldBeHidden))
+        profileView?.addGestureRecognizer(tapGestureRecognizer)
+        profileView?.genderControl.addTarget(self, action: #selector(textFieldsEditingChanged), for: .valueChanged)
+        profileView?.actionButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        profileView?.passwordTextField.addTarget(self, action: #selector(passwordTextFieldEditingChanged), for: .editingChanged)
+    }
+
+    private func completeFields() {
         guard let profileView else { return }
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardShouldBeHidden))
-        profileView.addGestureRecognizer(tapGestureRecognizer)
-        profileView.genderControl.addTarget(self, action: #selector(textFieldsEditingChanged), for: .valueChanged)
-        profileView.actionButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
-
-        profileView.nameTextField.text = presenter?.user.name
-        profileView.lastnameTextField.text = presenter?.user.lastname
-        profileView.usernameTextField.text = presenter?.user.username
-        profileView.emailTextField.text = presenter?.user.email
-        profileView.cardNumberTextField.text = presenter?.user.creditCard
-        profileView.bioTextField.text = presenter?.user.bio
-        
         let indexShouldSelected = (0..<profileView.genderControl.numberOfSegments).first { index in
-            profileView.genderControl.titleForSegment(at: index) == presenter?.user.gender.rawValue
+            profileView.genderControl.titleForSegment(at: index) == presenter.user.gender.rawValue
         }
 
         guard let indexShouldSelected else { return }
 
         profileView.genderControl.selectedSegmentIndex = indexShouldSelected
-
-        setupTextFieldsDelegate(profileView.nameTextField)
-        setupTextFieldsDelegate(profileView.lastnameTextField)
-        setupTextFieldsDelegate(profileView.usernameTextField)
-        setupTextFieldsDelegate(profileView.emailTextField)
-        setupTextFieldsDelegate(profileView.passwordTextField)
-        setupTextFieldsDelegate(profileView.repeatPasswordTextField)
-        setupTextFieldsDelegate(profileView.cardNumberTextField)
-        setupTextFieldsDelegate(profileView.bioTextField)
-
-        profileView.passwordTextField.addTarget(self, action: #selector(passwordTextFieldEditingChanged), for: .editingChanged)
+        profileView.nameTextField.text = presenter.user.name
+        profileView.lastnameTextField.text = presenter.user.lastname
+        profileView.usernameTextField.text = presenter.user.username
+        profileView.emailTextField.text = presenter.user.email
+        profileView.cardNumberTextField.text = presenter.user.creditCard
+        profileView.bioTextField.text = presenter.user.bio
     }
 
     private func setupTextFieldsDelegate(_ textField: UITextField?) {
@@ -137,7 +144,7 @@ final class EditProfileViewController: UIViewController {
     }
 
     @objc private func passwordTextFieldEditingChanged(_ sender: UITextField) {
-        guard let isEmpty = sender.text?.isEmpty, let repeatButton = profileView?.repeatPasswordTextField  else { return }
+        guard let isEmpty = sender.text?.isEmpty, let repeatButton = profileView?.repeatPasswordTextField else { return }
         if (!isEmpty && repeatButton.alpha == 0) || (isEmpty && repeatButton.alpha == 1) {
             shouldShowRepeatPassword(isEmpty)
         }

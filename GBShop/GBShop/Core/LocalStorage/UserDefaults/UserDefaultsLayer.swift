@@ -25,7 +25,7 @@ final class UserDefaultsLayer: UserCredentialStorage {
 
     // MARK: - Public properties
 
-    public var isUserAuthenticated: Bool {
+    var isUserAuthenticated: Bool {
         get {
             defaults.bool(forKey: GeneralKeys.isUserAuthenticated)
         } set {

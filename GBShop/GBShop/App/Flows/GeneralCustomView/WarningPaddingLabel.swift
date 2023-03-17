@@ -11,10 +11,10 @@ final class WarningPaddingLabel: UILabel {
 
     // MARK: - Private properties
 
-    private var topInset: CGFloat = 5.0
-    private var bottomInset: CGFloat = 5.0
-    private var leftInset: CGFloat = 10.0
-    private var rightInset: CGFloat = 10.0
+    private let topInset: CGFloat = 5.0
+    private let bottomInset: CGFloat = 5.0
+    private let leftInset: CGFloat = 10.0
+    private let rightInset: CGFloat = 10.0
 
     // MARK: - Constructions
     

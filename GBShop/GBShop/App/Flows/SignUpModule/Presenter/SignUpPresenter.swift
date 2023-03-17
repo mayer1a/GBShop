@@ -29,15 +29,15 @@ protocol SignUpPresenterProtocol: AnyObject {
 
 final class SignUpPresenter {
 
-    // MARK: - Properties
+    // MARK: - Private properties
 
-    weak var view: SignUpViewProtocol!
-    var coordinator: CoordinatorProtocol
-    var signUpUser: SignUpRawModel
-    let requestFactory: SignUpRequestFactory
-    let storageService: UserCredentialsStorageService
-    let validator: Validator
-    let userModelFactory: UserModelFactory
+    private weak var view: SignUpViewProtocol!
+    private var signUpUser: SignUpRawModel
+    private let coordinator: CoordinatorProtocol
+    private let requestFactory: SignUpRequestFactory
+    private let storageService: UserCredentialsStorageService
+    private let validator: Validator
+    private let userModelFactory: UserModelFactory
 
     // MARK: - Constructions
 
@@ -79,18 +79,18 @@ final class SignUpPresenter {
     private func serverDidResponded(_ response: AFSignUpResult, with signUpUserModel: SignUpUser) {
         switch response.result {
         case .success(let signUpResult):
-            guard signUpResult.result == 1 else {
+            if signUpResult.result == 0 {
                 self.view.signUpFailure(with: signUpResult.userMessage)
                 return
             }
+
             let user = userModelFactory.construct(from: signUpUserModel, with: signUpResult.userId)
             storageService.createUser(from: user)
             coordinator.showProfileFlow(with: user)
         case .failure(_):
-            self.view.signUpFailure(with: "Ошибка сервера. Повторите попытку позже.")
+            self.view.signUpFailure(with: "Сервер недоступен. Повторите попытку позже.")
         }
     }
-
 }
 
 // MARK: - Extension

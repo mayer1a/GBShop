@@ -9,12 +9,10 @@ import UIKit
 
 final class SignUpViewController: UIViewController {
 
-    // MARK: - Properties
-
-    var presenter: SignUpPresenterProtocol?
-    var keyboardObserver: KeyboardObserver?
-
     // MARK: - Private properties
+
+    private var presenter: SignUpPresenterProtocol!
+    private var keyboardObserver: KeyboardObserver?
 
     private var profileView: ProfileView? {
         isViewLoaded ? view as? ProfileView : nil
@@ -29,7 +27,6 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewTargets()
-        keyboardObserver = KeyboardObserver(targetView: profileView?.scrollView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +36,10 @@ final class SignUpViewController: UIViewController {
 
     // MARK: - Functions
 
+    func setPresenter(_ presenter: SignUpPresenterProtocol) {
+        self.presenter = presenter
+    }
+
     func performSignUp() {
         signUpButtonTapped()
     }
@@ -46,6 +47,8 @@ final class SignUpViewController: UIViewController {
     // MARK: - Private functions
 
     private func setupViewTargets() {
+        keyboardObserver = KeyboardObserver(targetView: profileView?.scrollView)
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardShouldBeHidden))
         profileView?.addGestureRecognizer(tapGestureRecognizer)
         profileView?.genderControl.addTarget(self, action: #selector(textFieldsEditingChanged), for: .valueChanged)
@@ -104,16 +107,16 @@ final class SignUpViewController: UIViewController {
                 self.profileView?.repeatPasswordTextField.alpha = isHidden ? 0.5 : 1
             }
         } completion: { _ in
-            self.profileView?.repeatPasswordTextField.alpha = isHidden ? 0 : 1
+            self.profileView?.repeatPasswordTextField.alpha = isHidden ? 0 : 1 // ?????
         }
     }
 
     @objc private func signUpButtonTapped() {
-        presenter?.signUpButtonTapped(rawModel: getRawModelFromInput())
+        presenter.signUpButtonTapped(rawModel: getRawModelFromInput())
     }
 
     @objc private func textFieldsEditingChanged(_ sender: UITextField) {
-        presenter?.inputFieldsTapped()
+        presenter.inputFieldsTapped()
     }
 
     @objc private func keyboardShouldBeHidden() {
@@ -148,16 +151,16 @@ extension SignUpViewController: SignUpViewProtocol {
     func signUpFailure(with message: String?) {
         profileView?.warningLabel.text = message
 
-        UIView.animate(withDuration: 0.3) {
-            self.profileView?.warningLabel.alpha = 1
-            self.profileView?.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.profileView?.warningLabel.alpha = 1
+            self?.profileView?.layoutIfNeeded()
         }
     }
 
     func removeWarning() {
-        UIView.animate(withDuration: 0.3) {
-            self.profileView?.warningLabel.alpha = 0
-            self.profileView?.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.profileView?.warningLabel.alpha = 0
+            self?.profileView?.layoutIfNeeded()
         } completion: { _ in
             self.profileView?.warningLabel.text = ""
         }

@@ -20,8 +20,7 @@ protocol EditProfilePresenterProtocol: AnyObject {
         view: EditProfileViewProtocol,
         requestFactory: ProfileRequestFactory,
         coordinator: CoordinatorProtocol,
-        storageService: UserCredentialsStorageService
-    )
+        storageService: UserCredentialsStorageService)
 
     var user: User { get }
 
@@ -33,14 +32,17 @@ final class EditProfilePresenter {
 
     // MARK: - Properties
 
-    weak var view: EditProfileViewProtocol!
     var user: User
-    var coordinator: CoordinatorProtocol
-    var userRawModel: SignUpRawModel
-    let requestFactory: ProfileRequestFactory
-    let storageService: UserCredentialsStorageService
-    let validator: Validator
-    let userModelFactory: UserModelFactory
+
+    // MARK: - Private roperties
+
+    private weak var view: EditProfileViewProtocol!
+    private var userRawModel: SignUpRawModel
+    private let coordinator: CoordinatorProtocol
+    private let requestFactory: ProfileRequestFactory
+    private let storageService: UserCredentialsStorageService
+    private let validator: Validator
+    private let userModelFactory: UserModelFactory
 
     // MARK: - Constructions
 
@@ -86,7 +88,7 @@ final class EditProfilePresenter {
     private func serverDidResponded(_ response: AFEditResult, with editProfileModel: EditProfile) {
         switch response.result {
         case .success(let editProfileResult):
-            guard editProfileResult.result == 1 else {
+            if editProfileResult.result == 0 {
                 self.view.editFailure(with: editProfileResult.errorMessage)
                 return
             }

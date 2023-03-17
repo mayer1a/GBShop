@@ -32,25 +32,25 @@ final class UserCredentialsStorageService {
         }
     }
 
-    public var user: User {
+    var user: User {
         get {
             let realmUser = realm.read(of: RealmUser.self).first ?? .init()
             return realmToModel(realmUser)
         }
     }
 
-    public func createUser(from user: User) {
+    func createUser(from user: User) {
         let realmUser = modelToRealm(user)
         let isCreateSuccessfull = realm.create(realmUser)
         isUserAuthenticated = isCreateSuccessfull
     }
 
-    public func updateUser(from user: User) {
+    func updateUser(from user: User) {
         let realmUser = modelToRealm(user)
         realm.update(realmUser)
     }
 
-    public func deleteUser(from user: User) {
+    func deleteUser(from user: User) {
         let realmUser = modelToRealm(user)
         realm.delete(realmUser)
     }

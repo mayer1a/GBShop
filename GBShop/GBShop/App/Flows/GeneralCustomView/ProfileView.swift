@@ -252,11 +252,4 @@ final class ProfileView: UIView {
             from.heightAnchor.constraint(equalTo: to.heightAnchor)
         ])
     }
-
-    private func didT(_ sender: UITextField) {
-        guard let isHidden = sender.text?.isEmpty else { return }
-
-        repeatPasswordTextField.isHidden = isHidden
-        repeatPasswordConstraints.forEach({ $0.isActive = !isHidden })
-    }
 }
