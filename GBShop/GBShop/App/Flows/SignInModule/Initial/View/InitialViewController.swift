@@ -50,7 +50,7 @@ final class InitialViewController: UIViewController {
 
     // MARK: - Functions
 
-    func setPresenter(presenter: InitialPresenterProtocol) {
+    func setPresenter(_ presenter: InitialPresenterProtocol) {
         self.presenter = presenter
     }
 
@@ -102,12 +102,6 @@ final class InitialViewController: UIViewController {
 // MARK: - Extension
 
 extension InitialViewController: InitialViewProtocol {
-
-    // MARK: - Properties
-
-    var initialNavigationController: UINavigationController? {
-        return navigationController
-    }
 
     // MARK: - Functions
 

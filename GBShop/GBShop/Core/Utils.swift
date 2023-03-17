@@ -11,6 +11,7 @@ import Alamofire
 
 typealias AFSignUpResult = AFDataResponse<SignUpResult>
 typealias AFEditResult = AFDataResponse<EditProfileResult>
+typealias AFSignInResult = AFDataResponse<SignInResult>
 
 // MARK: - App Constants
 

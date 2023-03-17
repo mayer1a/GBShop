@@ -10,7 +10,7 @@ import UIKit
 protocol SignInViewProtocol: AnyObject {
     func startLoadingSpinner()
     func stopLoadingSpinner()
-    func signInFailure()
+    func signInFailure(with errorMessage: String?)
     func removeWarning()
 }
 
@@ -19,10 +19,7 @@ protocol SignInPresenterProtocol: AnyObject {
         view: SignInViewProtocol,
         requestFactory: SignInRequestFactory,
         coordinator: CoordinatorProtocol,
-        storageService: UserCredentialsStorageService
-    )
-
-    var user: User? { get }
+        storageService: UserCredentialsStorageService)
 
     func signIn(email: String?, password: String?)
     func signUpButtonTapped()
@@ -31,14 +28,12 @@ protocol SignInPresenterProtocol: AnyObject {
 
 final class SignInPresenter {
 
-    // MARK: - Properties
+    // MARK: - Private properties
 
-    weak var view: SignInViewProtocol!
-    var coordinator: CoordinatorProtocol?
-    let requestFactory: SignInRequestFactory
-    let storageService: UserCredentialsStorageService
-    var user: User?
-    let validator: Validator
+    private weak var view: SignInViewProtocol!
+    private var coordinator: CoordinatorProtocol
+    private let requestFactory: SignInRequestFactory
+    private let storageService: UserCredentialsStorageService
 
     // MARK: - Constructions
 
@@ -52,52 +47,37 @@ final class SignInPresenter {
         self.requestFactory = requestFactory
         self.coordinator = coordinator
         self.storageService = storageService
-        self.validator = .init()
     }
 
     // MARK: - Private functions
 
-    private func validatePassword(_ password: String?) -> String? {
-        do {
-            try validator.validatePassword(password)
-        } catch let error as Validator.ValidationError {
-            // TODO: add to signInFailure property to send error message to view instead "print()"
-            view?.signInFailure()
-            print(error.localizedDescription)
-            return nil
-        } catch {
-            return nil
+    private func serverDidResponded(_ response: AFSignInResult) {
+        switch response.result {
+        case .success(let signInResult):
+            guard
+                let user = signInResult.user
+            else {
+                self.view?.signInFailure(with: signInResult.errorMessage)
+                break
+            }
+
+            self.storageService.createUser(from: user)
+            self.coordinator.showProfileFlow(with: user)
+        case .failure(_):
+            self.view?.signInFailure(with: "Сервер недоступен. Повторите попытку позже.")
         }
-        return password
     }
 
-    private func validateEmail(_ email: String?) -> String? {
-        do {
-            try validator.validateEmail(email)
-        } catch let error as Validator.ValidationError {
-            // TODO: add to signInFailure property to send error message to view instead "print()"
-            view?.signInFailure()
-            print(error.localizedDescription)
-            return nil
-        } catch {
-            return nil
-        }
-
-        return email
-    }
 }
+
+// MARK: - Extensions
 
 extension SignInPresenter: SignInPresenterProtocol {
 
     // MARK: - Functions
 
     func signIn(email: String?, password: String?) {
-        guard
-            let email = validateEmail(email),
-            let password = validatePassword(password)
-        else {
-            return
-        }
+        guard let email, let password else { return }
 
         view?.startLoadingSpinner()
 
@@ -105,28 +85,14 @@ extension SignInPresenter: SignInPresenterProtocol {
             guard let self else { return }
 
             DispatchQueue.main.async {
-                switch response.result {
-                case .success(let signInResult):
-                    guard
-                        let user = signInResult.user
-                    else {
-                        self.view?.signInFailure()
-                        break
-                    }
-
-                    self.storageService.createUser(from: user)
-                    self.coordinator?.showProfileFlow(with: user)
-                case .failure(_):
-                    self.view?.signInFailure()
-                }
-
+                self.serverDidResponded(response)
                 self.view?.stopLoadingSpinner()
             }
         }
     }
 
     func signUpButtonTapped() {
-        coordinator?.showSignUpFlow()
+        coordinator.showSignUpFlow()
     }
 
     func inputFieldsTapped() {

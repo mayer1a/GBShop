@@ -8,8 +8,6 @@
 import UIKit
 
 protocol InitialViewProtocol: AnyObject {
-    var initialNavigationController: UINavigationController? { get }
-
     func showLoadingSpinner()
     func hideLoadingSpinner()
 }
@@ -23,9 +21,9 @@ final class InitialPresenter {
 
     // MARK: - Properties
 
-    weak var view: InitialViewProtocol!
-    var coordinator: CoordinatorProtocol?
-    let storageService: UserCredentialsStorageService
+    private weak var view: InitialViewProtocol!
+    private let coordinator: CoordinatorProtocol
+    private let storageService: UserCredentialsStorageService
 
     // MARK: - Constructions
 
@@ -46,9 +44,9 @@ final class InitialPresenter {
             self.view.hideLoadingSpinner()
 
             if self.storageService.isUserAuthenticated {
-                self.coordinator?.showProfileFlow(with: self.storageService.user)
+                self.coordinator.showProfileFlow(with: self.storageService.user)
             } else {
-                self.coordinator?.showSignInFlow()
+                self.coordinator.showSignInFlow()
             }
         }
     }
