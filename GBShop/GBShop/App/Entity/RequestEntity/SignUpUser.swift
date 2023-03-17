@@ -32,6 +32,6 @@ struct SignUpUser: Codable {
     let password: String
     let email: String
     let creditCard: String
-    let gender: Gender
+    let gender: Gender.RawValue
     let bio: String
 }

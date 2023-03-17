@@ -84,7 +84,9 @@ final class SignUpPresenter {
                 return
             }
 
-            let user = userModelFactory.construct(from: signUpUserModel, with: signUpResult.userId)
+            guard let userId = signUpResult.userId else { return }
+
+            let user = userModelFactory.construct(from: signUpUserModel, with: userId)
             storageService.createUser(from: user)
             coordinator.showProfileFlow(with: user)
         case .failure(_):

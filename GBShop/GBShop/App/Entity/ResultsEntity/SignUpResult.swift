@@ -20,6 +20,6 @@ struct SignUpResult: Codable {
     // MARK: - Properties
 
     let result: Int
-    let userId: Int
+    let userId: Int?
     let userMessage: String
 }

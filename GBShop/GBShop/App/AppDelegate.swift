@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             password: "Mypassword0000",
             email: "some@some.ru",
             creditCard: "9872-2424-2342-2340",
-            gender: .man,
+            gender: Gender.man.rawValue,
             bio: "This is good! I think I will switch to another language")
 
         reg.registration(profile: profile) { response in

@@ -19,7 +19,7 @@ struct UserModelFactory {
             email: signUpModel.email,
             creditCard: signUpModel.creditCard,
             lastname: signUpModel.lastname,
-            gender: signUpModel.gender,
+            gender: Gender(rawValue: signUpModel.gender) ?? .indeterminate,
             bio: signUpModel.bio)
     }
 
@@ -45,7 +45,7 @@ struct UserModelFactory {
             password: password,
             email: email,
             creditCard: cardNumber,
-            gender: gender,
+            gender: gender.rawValue,
             bio: bio)
     }
 
@@ -70,7 +70,7 @@ struct UserModelFactory {
             username: username,
             email: email,
             creditCard: cardNumber,
-            gender: gender,
+            gender: gender.rawValue,
             bio: bio)
     }
 
@@ -82,7 +82,7 @@ struct UserModelFactory {
             email: editModel.email,
             creditCard: editModel.creditCard,
             lastname: editModel.lastname,
-            gender: editModel.gender,
+            gender: Gender(rawValue: editModel.gender) ?? .indeterminate,
             bio: editModel.bio)
     }
 }

@@ -20,7 +20,7 @@ struct EditProfile: Codable {
         newPassword: String? = nil,
         email: String,
         creditCard: String,
-        gender: Gender,
+        gender: Gender.RawValue,
         bio: String
     ) {
         self.userId = userId
@@ -59,6 +59,6 @@ struct EditProfile: Codable {
     let newPassword: String?
     let email: String
     let creditCard: String
-    let gender: Gender
+    let gender: Gender.RawValue
     let bio: String
 }
