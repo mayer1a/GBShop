@@ -10,7 +10,7 @@ import Foundation
 // MARK: - AbstractErrorParser
 
 /// Parsing error handler
-class ErrorParser: AbstractErrorParser {
+final class ErrorParser: AbstractErrorParser {
 
     // MARK: - Functions
     

@@ -10,7 +10,7 @@ import Alamofire
 // MARK: - DataResponseSerializerProtocol
 
 /// Decodable serializer for converting data received from the server.
-class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
+final class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
 
     // MARK: - Private properties
 

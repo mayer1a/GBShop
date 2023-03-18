@@ -14,7 +14,7 @@ import Alamofire
 /// func makeSignInRequestFatory() -> SignInRequestFactory
 /// ```
 /// creates a concrete factory to send a user authorization request.
-class RequestFactory {
+final class RequestFactory {
 
     // MARK: - Properties
 
