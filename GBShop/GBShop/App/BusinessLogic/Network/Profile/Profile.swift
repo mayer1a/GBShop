@@ -9,6 +9,7 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
+/// `Profile` implements sending requests related to changing user profile data to the server.
 class Profile: AbstractRequestFactory {
 
     // MARK: - Properties

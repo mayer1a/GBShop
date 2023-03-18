@@ -7,12 +7,16 @@
 
 import UIKit
 
+/// The basic contract of any coordinator obliging to implement two properties for navigating the application
 protocol BaseCoordinator {
-    var navigationController: UINavigationController? { get set }
-    var assemblyBuilder: ModuleBuilderProtocol? { get set }
+    var navigationController: UINavigationController? { get }
+    var assemblyBuilder: ModuleBuilderProtocol? { get }
 }
 
+/// Coordinator contract obliging to implement navigation methods on specific screens
 protocol CoordinatorProtocol: BaseCoordinator {
+
+    /// Shows the initialization screen every time the application is launched
     func initialViewController()
     func showSignUpFlow()
     func showSignInFlow()
@@ -20,6 +24,7 @@ protocol CoordinatorProtocol: BaseCoordinator {
     func popViewController()
 }
 
+/// The coordinator of the entire application, responsible for all screen transitions
 final class AppCoordinator: CoordinatorProtocol {
 
     // MARK: - Properties
@@ -85,7 +90,5 @@ final class AppCoordinator: CoordinatorProtocol {
 
         navigationController.popViewController(animated: true)
     }
-
-
 
 }

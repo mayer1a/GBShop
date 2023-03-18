@@ -9,6 +9,7 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
+/// `SignUp` implements sending requests related to user registration to the server.
 class SignUp: AbstractRequestFactory {
 
     // MARK: - Properties

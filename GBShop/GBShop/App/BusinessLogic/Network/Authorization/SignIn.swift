@@ -9,6 +9,7 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
+/// `SignIn` implements sending requests related to the user authorization to the server
 class SignIn: AbstractRequestFactory {
 
     // MARK: - Properties

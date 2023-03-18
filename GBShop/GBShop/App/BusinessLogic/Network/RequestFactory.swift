@@ -7,6 +7,13 @@
 
 import Alamofire
 
+/// A request factory that creates a specific factory.
+///
+/// For example:
+/// ```
+/// func makeSignInRequestFatory() -> SignInRequestFactory
+/// ```
+/// creates a concrete factory to send a user authorization request.
 class RequestFactory {
 
     // MARK: - Properties

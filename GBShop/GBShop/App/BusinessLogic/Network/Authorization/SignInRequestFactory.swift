@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Server request factory contract for user authorization actions
 protocol SignInRequestFactory {
 
     // MARK: - Functions

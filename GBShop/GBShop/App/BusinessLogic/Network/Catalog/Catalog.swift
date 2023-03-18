@@ -9,6 +9,7 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
+/// `Catalog` implements sending requests related to obtaining a catalog of goods to the server.
 class Catalog: AbstractRequestFactory {
 
     // MARK: - Properties

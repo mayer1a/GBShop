@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Server request factory contract to get product catalog
 protocol CatalogRequestFactory {
 
     // MARK: - Functions

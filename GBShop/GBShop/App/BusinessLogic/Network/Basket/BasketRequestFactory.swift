@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Server request factory contract for basket actions
 protocol BasketRequestFactory {
 
     // MARK: - Functions
