@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// The data model of the `SignUpModule` for sending data between the view and the presenter.
 final class SignUpRawModel {
 
     // MARK: - Constructions

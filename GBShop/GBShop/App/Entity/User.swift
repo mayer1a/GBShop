@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - User
-
+/// The user data model containing complete information about the user.
 struct User: Codable {
 
     // MARK: - CodingKeys

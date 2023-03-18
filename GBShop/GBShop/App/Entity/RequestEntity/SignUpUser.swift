@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - User
-
+/// The data model of the `SignUpModule` for sending a request to the server.
 struct SignUpUser: Codable {
 
     // MARK: - CodingKeys

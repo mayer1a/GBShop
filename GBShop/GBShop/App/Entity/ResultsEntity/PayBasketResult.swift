@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - PayBasketResult
-
+/// The data model of the server's response to the user's basket payment request.
 struct PayBasketResult: Codable {
 
     // MARK: - CodingKeys

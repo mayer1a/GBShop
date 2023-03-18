@@ -7,9 +7,10 @@
 
 import Foundation
 
-// MARK: - User
-
+/// The data model of the `EditProfileModule` for sending a request to the server.
 struct EditProfile: Codable {
+
+    // MARK: - Constructions
 
     init(
         userId: Int,
@@ -34,6 +35,7 @@ struct EditProfile: Codable {
         self.gender = gender
         self.bio = bio
     }
+    
     // MARK: - CodingKeys
 
     enum CodingKeys: String, CodingKey {

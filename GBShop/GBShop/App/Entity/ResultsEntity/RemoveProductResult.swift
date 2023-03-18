@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - RemoveProductResult
-
+/// The data model of the server's response to a request to remove an item from the user's basket.
 struct RemoveProductResult: Codable {
 
     // MARK: - Properties

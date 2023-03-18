@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The data model of the server's response to a request to get a specific product.
 struct ProductResult: Codable {
 
     // MARK: - CodingKeys

@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - ApproveReviewResult
-
+/// The data model of the server's response to a request to approve a review.
 struct ApproveReviewResult: Codable {
 
     // MARK: - Properties

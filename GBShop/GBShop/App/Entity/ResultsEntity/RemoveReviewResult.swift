@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - RemoveReviewResult
-
+/// The data model of the server's response to a request to remove a specific review.
 struct RemoveReviewResult: Codable {
 
     // MARK: - Properties

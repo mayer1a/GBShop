@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The product data model for displaying the catalog.
 struct Product: Codable {
 
     // MARK: - CodingKeys

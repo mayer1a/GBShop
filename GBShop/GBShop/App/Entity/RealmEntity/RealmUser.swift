@@ -7,8 +7,10 @@
 
 import RealmSwift
 
+/// User data model for Realm database.
 final class RealmUser: Object {
 
+    /// Gender inner model for Realm database.
     enum Gender: String, PersistableEnum {
         case man = "Мужской"
         case woman = "Женский"

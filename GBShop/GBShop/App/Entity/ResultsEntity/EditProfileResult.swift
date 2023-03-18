@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The data model of the server's response to a request to edit user profile data.
 struct EditProfileResult: Codable {
 
     // MARK: - CodignKeys

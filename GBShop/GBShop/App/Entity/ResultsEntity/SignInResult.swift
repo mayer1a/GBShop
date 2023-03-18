@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The data model of the server's response to a user authorization request.
 struct SignInResult: Codable {
 
     // MARK: - CodignKeys

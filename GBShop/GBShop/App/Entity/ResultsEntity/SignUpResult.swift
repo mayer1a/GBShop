@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The data model of the server's response to a user registration request.
 struct SignUpResult: Codable {
 
     // MARK: - CodingKeys
