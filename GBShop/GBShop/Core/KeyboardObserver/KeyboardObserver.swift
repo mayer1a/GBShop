@@ -14,13 +14,16 @@ final class KeyboardObserver {
     let targetView: UIScrollView?
     var keyboardWillShowHandler: ((_ notification: NSNotification) -> Void)?
     var keyboardWillHideHandler: ((_ notification: NSNotification) -> Void)?
-    let isSignInFlow: Bool
+
+    // MARK: - Private properties
+
+    let viewTag: Int?
 
     // MARK: - Constructions
 
-    init(targetView: UIScrollView?, isSignInFlow: Bool = false) {
+    init(targetView: UIScrollView?, scrollTo viewTag: Int? = nil) {
         self.targetView = targetView
-        self.isSignInFlow = isSignInFlow
+        self.viewTag = viewTag
 
         createNotifications()
     }
@@ -62,7 +65,7 @@ final class KeyboardObserver {
 
         targetView?.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
 
-        let additionalInset = 40.0
+        let additionalInset = LayoutConstants.keyboardAdditionalIndent
         let safeAreaInset = viewRectangle.origin.y
         viewRectangle.size.height -= keyboardSize.height + additionalInset + safeAreaInset
 
@@ -83,8 +86,8 @@ final class KeyboardObserver {
         var frame: CGRect?
         let subviews = targetView?.subviews.first?.subviews
 
-        if isSignInFlow {
-            frame = targetView?.viewWithTag(13)?.frame
+        if let viewTag {
+            frame = (targetView?.viewWithTag(viewTag) as? UIButton)?.frame
         } else {
             frame = subviews?.first(where: { ($0 as? UITextField)?.isFirstResponder == true })?.frame
         }

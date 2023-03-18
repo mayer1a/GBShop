@@ -56,7 +56,7 @@ final class InitialView: UIView {
         loadingSpinner.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            loadingSpinner.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 20),
+            loadingSpinner.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: LayoutConstants.topIndent),
             loadingSpinner.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
     }

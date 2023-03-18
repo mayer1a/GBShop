@@ -15,6 +15,8 @@ final class WarningPaddingLabel: UILabel {
     private let bottomInset: CGFloat = 5.0
     private let leftInset: CGFloat = 10.0
     private let rightInset: CGFloat = 10.0
+    private let redLineStartPoint = 0.494
+    private let cornedRadius: CGFloat = 10.0
 
     // MARK: - Constructions
     
@@ -65,7 +67,7 @@ final class WarningPaddingLabel: UILabel {
         let path = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: [.bottomRight, .bottomLeft],
-            cornerRadii: CGSize(width: 10, height: 10))
+            cornerRadii: CGSize(width: cornedRadius, height: cornedRadius))
         
         let maskLayer = CAShapeLayer()
         maskLayer.frame = bounds
@@ -77,7 +79,7 @@ final class WarningPaddingLabel: UILabel {
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.strokeColor = UIColor.systemRed.cgColor
         borderLayer.lineWidth = 2
-        borderLayer.strokeStart = 0.494
+        borderLayer.strokeStart = redLineStartPoint
         borderLayer.strokeEnd = getEndPoint()
         
         borderLayer.frame = bounds
@@ -85,13 +87,12 @@ final class WarningPaddingLabel: UILabel {
     }
 
     func getEndPoint() -> Double {
-        let angleCircleRadius = 10.0
         let topSide = bounds.width
-        let bottomSide = topSide - (angleCircleRadius * 2)
-        let rightSide = bounds.height - angleCircleRadius
+        let bottomSide = topSide - (cornedRadius * 2)
+        let rightSide = bounds.height - cornedRadius
         let lengthSides = rightSide * 2
         let widthSides = topSide + bottomSide
-        let anglesLength = Double.pi * angleCircleRadius
+        let anglesLength = Double.pi * cornedRadius
         let pathLength = lengthSides + widthSides + anglesLength
         let endPoint = pathLength - rightSide
         let roundedStrokeEnd = round((endPoint/pathLength)*1000)/1000

@@ -119,7 +119,7 @@ final class ProfileView: UIView {
         warningLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            warningLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            warningLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: LayoutConstants.sideIndents),
             warningLabel.leftAnchor.constraint(equalTo: nameTextField.leftAnchor),
             warningLabel.rightAnchor.constraint(equalTo: nameTextField.rightAnchor)
         ])
@@ -131,17 +131,20 @@ final class ProfileView: UIView {
         configureTextField(nameTextField, placeholder: "Имя")
 
         NSLayoutConstraint.activate([
-            nameTextField.topAnchor.constraint(equalTo: warningLabel.bottomAnchor, constant: 20),
-            nameTextField.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            nameTextField.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
-            nameTextField.heightAnchor.constraint(equalToConstant: 50)
+            nameTextField.topAnchor.constraint(equalTo: warningLabel.bottomAnchor, constant: LayoutConstants.sideIndents),
+            nameTextField.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: LayoutConstants.sideIndents),
+            nameTextField.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -LayoutConstants.sideIndents),
+            nameTextField.heightAnchor.constraint(equalToConstant: LayoutConstants.textViewHeight)
         ])
     }
 
     private func configureLastnameTextField() {
         lastnameTextField.textContentType = .familyName
         lastnameTextField.returnKeyType = .next
-        lastnameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10).isActive = true
+        lastnameTextField.topAnchor.constraint(
+            equalTo: nameTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         configureTextField(lastnameTextField, placeholder: "Фамилия")
         setupBaseConstraints(from: lastnameTextField, to: nameTextField)
@@ -150,7 +153,10 @@ final class ProfileView: UIView {
     private func configureUsernameTextField() {
         usernameTextField.textContentType = .nickname
         usernameTextField.returnKeyType = .next
-        usernameTextField.topAnchor.constraint(equalTo: lastnameTextField.bottomAnchor, constant: 10).isActive = true
+        usernameTextField.topAnchor.constraint(
+            equalTo: lastnameTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         configureTextField(usernameTextField, placeholder: "Логин")
         setupBaseConstraints(from: usernameTextField, to: nameTextField)
@@ -160,7 +166,10 @@ final class ProfileView: UIView {
         emailTextField.keyboardType = .emailAddress
         emailTextField.textContentType = .emailAddress
         emailTextField.returnKeyType = .next
-        emailTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 10).isActive = true
+        emailTextField.topAnchor.constraint(
+            equalTo: usernameTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         configureTextField(emailTextField, placeholder: "Почта")
         setupBaseConstraints(from: emailTextField, to: nameTextField)
@@ -169,7 +178,10 @@ final class ProfileView: UIView {
     private func configurePasswordTextField() {
         passwordTextField.textContentType = .fullStreetAddress
         passwordTextField.returnKeyType = .next
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10).isActive = true
+        passwordTextField.topAnchor.constraint(
+            equalTo: emailTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         configureTextField(passwordTextField, placeholder: "Пароль", isSecure: true)
         setupBaseConstraints(from: passwordTextField, to: nameTextField)
@@ -181,7 +193,7 @@ final class ProfileView: UIView {
         repeatPasswordTextField.returnKeyType = .next
         repeatPasswordConstraints = [
             repeatPasswordTextField.heightAnchor.constraint(equalTo: nameTextField.heightAnchor),
-            repeatPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10)
+            repeatPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: LayoutConstants.topIndent)
         ]
         repeatPasswordConstraints.forEach({ $0.isActive = !isRepeatPasswordHidden })
 
@@ -196,8 +208,15 @@ final class ProfileView: UIView {
     private func configureGenderControl() {
         genderControl.configure()
         genderControl.translatesAutoresizingMaskIntoConstraints = false
-        genderControl.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor, constant: 10).isActive = true
-        genderControl.topAnchor.constraint(greaterThanOrEqualTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
+        genderControl.topAnchor.constraint(
+            equalTo: repeatPasswordTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
+
+        genderControl.topAnchor.constraint(
+            greaterThanOrEqualTo: passwordTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         setupBaseConstraints(from: genderControl, to: nameTextField)
     }
@@ -206,7 +225,10 @@ final class ProfileView: UIView {
         cardNumberTextField.keyboardType = .numberPad
         cardNumberTextField.textContentType = .telephoneNumber
         cardNumberTextField.returnKeyType = .next
-        cardNumberTextField.topAnchor.constraint(equalTo: genderControl.bottomAnchor, constant: 10).isActive = true
+        cardNumberTextField.topAnchor.constraint(
+            equalTo: genderControl.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         configureTextField(cardNumberTextField, placeholder: "Номер платёжной карты")
         setupBaseConstraints(from: cardNumberTextField, to: nameTextField)
@@ -214,7 +236,10 @@ final class ProfileView: UIView {
 
     private func configureBioTextField() {
         bioTextField.returnKeyType = .continue
-        bioTextField.topAnchor.constraint(equalTo: cardNumberTextField.bottomAnchor, constant: 10).isActive = true
+        bioTextField.topAnchor.constraint(
+            equalTo: cardNumberTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
 
         configureTextField(bioTextField, placeholder: "О себе")
         setupBaseConstraints(from: bioTextField, to: nameTextField)
@@ -222,7 +247,11 @@ final class ProfileView: UIView {
 
     private func configureActionButton() {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        actionButton.topAnchor.constraint(equalTo: bioTextField.bottomAnchor, constant: 20).isActive = true
+        actionButton.topAnchor.constraint(
+            equalTo: bioTextField.bottomAnchor,
+            constant: LayoutConstants.sideIndents
+        ).isActive = true
+
         actionButton.addSubview(loadingSpinner)
         actionButton.configure(actionButtonTitle, titleColor: .systemBackground, backgroundColor: .label)
 

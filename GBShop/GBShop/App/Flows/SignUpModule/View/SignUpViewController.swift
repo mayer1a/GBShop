@@ -96,18 +96,21 @@ final class SignUpViewController: UIViewController {
     }
 
     private func shouldShowRepeatPassword(_ isHidden: Bool) {
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0) {
-            UIView.addKeyframe(withRelativeStartTime: isHidden ? 0.5 : 0, relativeDuration: 0.5) {
-                self.profileView?.repeatPasswordTextField.alpha = isHidden ? 0 : 0.5
-                self.profileView?.repeatPasswordConstraints.forEach({ $0.isActive = !isHidden })
-                self.profileView?.layoutIfNeeded()
+        let firstKeyStartTime = isHidden ? 0.5 : 0
+        let firstKeyAlpha = isHidden ? 0 : 0.5
+        let secondKeyStartTime = isHidden ? 0 : 0.5
+        let secondKeyAlpha = isHidden ? 0.5 : 1
+        
+        UIView.animateKeyframes(withDuration: AnimationConstants.animationDuration, delay: 0) {
+            UIView.addKeyframe(withRelativeStartTime: firstKeyStartTime, relativeDuration: 0.5) { [weak self] in
+                self?.profileView?.repeatPasswordTextField.alpha = firstKeyAlpha
+                self?.profileView?.repeatPasswordConstraints.forEach({ $0.isActive = !isHidden })
+                self?.profileView?.layoutIfNeeded()
             }
 
-            UIView.addKeyframe(withRelativeStartTime: isHidden ? 0 : 0.5, relativeDuration: 0.5) {
-                self.profileView?.repeatPasswordTextField.alpha = isHidden ? 0.5 : 1
+            UIView.addKeyframe(withRelativeStartTime: secondKeyStartTime, relativeDuration: 0.5) { [weak self] in
+                self?.profileView?.repeatPasswordTextField.alpha = secondKeyAlpha
             }
-        } completion: { _ in
-            self.profileView?.repeatPasswordTextField.alpha = isHidden ? 0 : 1 // ?????
         }
     }
 
@@ -124,8 +127,14 @@ final class SignUpViewController: UIViewController {
     }
 
     @objc private func passwordTextFieldEditingChanged(_ sender: UITextField) {
-        guard let isEmpty = sender.text?.isEmpty, let repeatButton = profileView?.repeatPasswordTextField  else { return }
-        if (!isEmpty && repeatButton.alpha == 0) || (isEmpty && repeatButton.alpha == 1) {
+        guard
+            let isEmpty = sender.text?.isEmpty,
+            let repeatButton = profileView?.repeatPasswordTextField
+        else {
+            return
+        }
+
+        if (!isEmpty && repeatButton.alpha.isZero) || (isEmpty && repeatButton.alpha == 1.0) {
             shouldShowRepeatPassword(isEmpty)
         }
     }
@@ -151,15 +160,15 @@ extension SignUpViewController: SignUpViewProtocol {
     func signUpFailure(with message: String?) {
         profileView?.warningLabel.text = message
 
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.profileView?.warningLabel.alpha = 1
+        UIView.animate(withDuration: AnimationConstants.animationDuration) { [weak self] in
+            self?.profileView?.warningLabel.alpha = 1.0
             self?.profileView?.layoutIfNeeded()
         }
     }
 
     func removeWarning() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.profileView?.warningLabel.alpha = 0
+        UIView.animate(withDuration: AnimationConstants.animationDuration) { [weak self] in
+            self?.profileView?.warningLabel.alpha = .zero
             self?.profileView?.layoutIfNeeded()
         } completion: { _ in
             self.profileView?.warningLabel.text = ""

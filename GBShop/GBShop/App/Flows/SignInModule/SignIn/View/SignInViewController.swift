@@ -13,6 +13,7 @@ final class SignInViewController: UIViewController {
 
     private var presenter: SignInPresenterProtocol!
     private var keyboardObserver: KeyboardObserver?
+    private let signUpButtonTag = 10
 
     private var signInView: SignInView? {
         isViewLoaded ? view as? SignInView : nil
@@ -47,12 +48,13 @@ final class SignInViewController: UIViewController {
     // MARK: - Private functions
 
     private func setupViewTargets() {
-        keyboardObserver = KeyboardObserver(targetView: signInView?.scrollView, isSignInFlow: true)
+        keyboardObserver = KeyboardObserver(targetView: signInView?.scrollView, scrollTo: signUpButtonTag)
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardShouldBeHidden))
         signInView?.addGestureRecognizer(tapGestureRecognizer)
         signInView?.signInButton.addTarget(self, action: #selector(signInButtonTapped), for: .touchUpInside)
         signInView?.signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        signInView?.signUpButton.tag = signUpButtonTag
 
         setupTextFieldsDelegate(signInView?.emailTextField)
         setupTextFieldsDelegate(signInView?.passwordTextField)
@@ -103,7 +105,7 @@ extension SignInViewController: SignInViewProtocol {
     func signInFailure(with errorMessage: String?) {
         signInView?.warningLabel.text = errorMessage
         
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: AnimationConstants.animationDuration) { [weak self] in
             self?.signInView?.warningLabel.alpha = 1
             self?.signInView?.emailTextField.layer.borderColor = UIColor.systemRed.cgColor
             self?.signInView?.passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
@@ -111,7 +113,7 @@ extension SignInViewController: SignInViewProtocol {
     }
 
     func removeWarning() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: AnimationConstants.animationDuration) { [weak self] in
             self?.signInView?.warningLabel.alpha = 0
             self?.signInView?.emailTextField.layer.borderColor = UIColor.systemGray5.cgColor
             self?.signInView?.passwordTextField.layer.borderColor = UIColor.systemGray5.cgColor

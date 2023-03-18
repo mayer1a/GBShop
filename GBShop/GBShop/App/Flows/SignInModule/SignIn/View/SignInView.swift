@@ -103,10 +103,20 @@ final class SignInView: UIView {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            headerLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 20),
-            headerLabel.bottomAnchor.constraint(equalTo: emailTextField.topAnchor, constant: -20),
-            headerLabel.leftAnchor.constraint(equalTo: emailTextField.leftAnchor),
-            headerLabel.rightAnchor.constraint(equalTo: emailTextField.rightAnchor)
+            headerLabel.topAnchor.constraint(
+                greaterThanOrEqualTo: contentView.topAnchor,
+                constant: LayoutConstants.sideIndents
+            ),
+            headerLabel.bottomAnchor.constraint(
+                equalTo: emailTextField.topAnchor,
+                constant: -LayoutConstants.sideIndents
+            ),
+            headerLabel.leftAnchor.constraint(
+                equalTo: emailTextField.leftAnchor
+            ),
+            headerLabel.rightAnchor.constraint(
+                equalTo: emailTextField.rightAnchor
+            )
         ])
     }
 
@@ -115,10 +125,20 @@ final class SignInView: UIView {
         warningLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            warningLabel.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 20),
-            warningLabel.leftAnchor.constraint(equalTo: emailTextField.leftAnchor),
-            warningLabel.rightAnchor.constraint(equalTo: emailTextField.rightAnchor),
-            warningLabel.bottomAnchor.constraint(equalTo: headerLabel.topAnchor, constant: -10)
+            warningLabel.topAnchor.constraint(
+                greaterThanOrEqualTo: contentView.topAnchor,
+                constant: LayoutConstants.sideIndents
+            ),
+            warningLabel.leftAnchor.constraint(
+                equalTo: emailTextField.leftAnchor
+            ),
+            warningLabel.rightAnchor.constraint(
+                equalTo: emailTextField.rightAnchor
+            ),
+            warningLabel.bottomAnchor.constraint(
+                equalTo: headerLabel.topAnchor,
+                constant: -LayoutConstants.topIndent
+            )
         ])
     }
 
@@ -129,10 +149,21 @@ final class SignInView: UIView {
         configureTextField(emailTextField, placeholder: "E-mail")
 
         NSLayoutConstraint.activate([
-            emailTextField.bottomAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -30),
-            emailTextField.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
-            emailTextField.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
-            emailTextField.heightAnchor.constraint(equalToConstant: 50)
+            emailTextField.bottomAnchor.constraint(
+                equalTo: contentView.centerYAnchor,
+                constant: -LayoutConstants.centerYOffset
+            ),
+            emailTextField.leftAnchor.constraint(
+                equalTo: contentView.leftAnchor,
+                constant: LayoutConstants.sideIndents
+            ),
+            emailTextField.rightAnchor.constraint(
+                equalTo: contentView.rightAnchor,
+                constant: -LayoutConstants.sideIndents
+            ),
+            emailTextField.heightAnchor.constraint(
+                equalToConstant: LayoutConstants.textViewHeight
+            )
         ])
     }
 
@@ -141,7 +172,10 @@ final class SignInView: UIView {
         passwordTextField.returnKeyType = .continue
         configureTextField(passwordTextField, placeholder: "Пароль", isSecure: true)
 
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 10).isActive = true
+        passwordTextField.topAnchor.constraint(
+            equalTo: emailTextField.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
         setupBaseConstraints(from: passwordTextField, to: emailTextField)
     }
 
@@ -150,14 +184,20 @@ final class SignInView: UIView {
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.configure("Войти", titleColor: .systemBackground, backgroundColor: .label)
 
-        signInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20).isActive = true
+        signInButton.topAnchor.constraint(
+            equalTo: passwordTextField.bottomAnchor,
+            constant: LayoutConstants.sideIndents
+        ).isActive = true
         setupBaseConstraints(from: signInButton, to: emailTextField)
     }
 
     private func configureSignUpButton() {
         signUpButton.configure("Зарегистрироваться", titleColor: .label, backgroundColor: .systemBackground)
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 10).isActive = true
+        signUpButton.topAnchor.constraint(
+            equalTo: signInButton.bottomAnchor,
+            constant: LayoutConstants.topIndent
+        ).isActive = true
         setupBaseConstraints(from: signUpButton, to: emailTextField)
     }
 

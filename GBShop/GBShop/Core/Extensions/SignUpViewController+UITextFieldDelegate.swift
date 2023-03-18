@@ -13,7 +13,7 @@ extension SignUpViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            if nextField.alpha == 0 {
+            if nextField.alpha.isZero {
                 return textFieldShouldReturn(nextField)
             }
             nextField.becomeFirstResponder()

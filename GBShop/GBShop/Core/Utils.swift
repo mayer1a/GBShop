@@ -49,10 +49,27 @@ struct ErrorConstants {
     }()
 
     static let cardFormatMessage = {
-        "Номер карты имеет неправильный формат. Пожалуйста, отредактируйте его в формат ХХХХ-ХХХХ-ХХХХ-ХХХХ"
+        "Номер карты имеет неправильный формат. Пожалуйста, отредактируйте его в формат ХХХХХХХХХХХХХХХХ"
     }()
 
     static let bioLengthMessage = {
         "Раздел \"О себе\" может содержать не более \(Constants.bioMaxSymbols) символов"
     }()
+}
+
+
+// MARK: - Layout Constants
+
+struct LayoutConstants {
+    static let sideIndents: CGFloat = 20.0
+    static let textViewHeight: CGFloat = 50.0
+    static let topIndent: CGFloat = 10.0
+    static let centerYOffset: CGFloat = 30
+    static let keyboardAdditionalIndent: CGFloat = 40.0
+}
+
+// MARK: - Animation Constants
+
+struct AnimationConstants {
+    static let animationDuration = 0.3
 }
