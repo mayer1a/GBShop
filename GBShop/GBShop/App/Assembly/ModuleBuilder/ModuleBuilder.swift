@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// The module assembler method contract returns a view controller in a unified way
 protocol ModuleBuilderProtocol {
     func createInitialModule(coordinator: CoordinatorProtocol) -> UIViewController
     func createSignInModule(coordinator: CoordinatorProtocol) -> UIViewController
@@ -14,6 +15,7 @@ protocol ModuleBuilderProtocol {
     func createSignUpModule(coordinator: CoordinatorProtocol) -> UIViewController
 }
 
+/// Assembly of all module components and injects dependencies
 final class ModuleBuilder: ModuleBuilderProtocol {
 
     // MARK: - Functions
