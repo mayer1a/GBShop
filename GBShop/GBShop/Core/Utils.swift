@@ -15,6 +15,7 @@ typealias AFSignInResult = AFDataResponse<SignInResult>
 
 // MARK: - App Constants
 
+/// Application-wide text settings constants
 struct Constants {
 
     // MARK: - Properties
@@ -30,6 +31,7 @@ struct Constants {
 
 // MARK: - Error Constants
 
+/// Application-wide error constants
 struct ErrorConstants {
 
     // MARK: - Properties
@@ -60,6 +62,7 @@ struct ErrorConstants {
 
 // MARK: - Layout Constants
 
+/// Application-wide layout constants
 struct LayoutConstants {
     static let sideIndents: CGFloat = 20.0
     static let textViewHeight: CGFloat = 50.0
@@ -70,6 +73,7 @@ struct LayoutConstants {
 
 // MARK: - Animation Constants
 
+/// Application-wide animation constants
 struct AnimationConstants {
     static let animationDuration = 0.3
 }

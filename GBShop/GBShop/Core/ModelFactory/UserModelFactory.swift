@@ -7,6 +7,13 @@
 
 import Foundation
 
+/// Factory creating user data models
+///
+/// For example:
+/// ```
+/// func construct(from signUpModel: SignUpUser, with id: Int) -> User
+/// ```
+/// creates a `User` model from a registration `SignUpUser` data model
 struct UserModelFactory {
 
     // MARK: - Functions

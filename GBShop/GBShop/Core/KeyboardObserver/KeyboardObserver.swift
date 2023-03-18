@@ -7,20 +7,28 @@
 
 import UIKit
 
+/// Monitors the state of the keyboard and handles state change notifications
+///
+/// - Note: When the keyboard is displayed, the content view is shifted inside the scroll view (here it's the ``KeyboardObserver/targetView``).
+///         When the keyboard is hidden, the offset is reset to zero
 final class KeyboardObserver {
-
-    // MARK: - Properties
-
-    let targetView: UIScrollView?
-    var keyboardWillShowHandler: ((_ notification: NSNotification) -> Void)?
-    var keyboardWillHideHandler: ((_ notification: NSNotification) -> Void)?
 
     // MARK: - Private properties
 
-    let viewTag: Int?
+    private let targetView: UIScrollView?
+    private let viewTag: Int?
+    private var keyboardWillShowHandler: ((_ notification: NSNotification) -> Void)?
+    private var keyboardWillHideHandler: ((_ notification: NSNotification) -> Void)?
 
     // MARK: - Constructions
 
+
+    /// Main initializer with required and optional properties, to be used on the authorization screen to offset the view defined by the second tag parameter
+    /// - Parameters:
+    ///   - targetView: The view to which the offset changes will be applied
+    ///   - viewTag: The view tag to which the screen will be shifted. Default is `nil`
+    ///
+    /// - Note: When used in the ``SignInView``, the tag of the bottom element of the screen must be passed to the second parameter
     init(targetView: UIScrollView?, scrollTo viewTag: Int? = nil) {
         self.targetView = targetView
         self.viewTag = viewTag

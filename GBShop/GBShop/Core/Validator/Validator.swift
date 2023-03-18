@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Responsible for validating user input and may generate errors
 final class Validator {
 
     // MARK: - Functions
@@ -21,6 +22,10 @@ final class Validator {
         }
     }
 
+    /// Checks the password entered by the user against the rules and the password entered again
+    /// - Parameters:
+    ///   - password: Password or new password (for registration) required
+    ///   - repeatPassword: The repeated password at registration can be nil if matching is not required
     func validatePassword(_ password: String?, repeatPassword: String? = nil) throws {
         guard let password, !password.isEmpty else {
             throw ValidationError.valueIsEmpty("Пароль")
@@ -114,6 +119,7 @@ extension Validator {
 
 extension Validator {
 
+    /// Enumeration model of possible validation errors with localization of description
     enum ValidationError: Error, Equatable {
         case emailWrongFormat
         case passwordWrongFormat

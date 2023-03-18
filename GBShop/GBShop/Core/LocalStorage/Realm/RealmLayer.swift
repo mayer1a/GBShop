@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+/// Contract obliging to implement standard **CRUD** methods for `Realm` database management
 protocol UserCredentialRealmStorage {
     @discardableResult func create<T: Object>(_ object: T) -> Bool
     func read<T: Object>(of type: T.Type) -> Results<T>
@@ -16,11 +17,12 @@ protocol UserCredentialRealmStorage {
     func delete<T: Object>(_ objects: Results<T>)
 }
 
+/// `RealmLayer` is a layer with generic methods that is responsible for working with the  **Realm**, regardless of the data model being sent/requested
 final class RealmLayer: UserCredentialRealmStorage {
 
-    // MARK: - Properties
+    // MARK: - Private properties
 
-    var realm: Realm
+    private var realm: Realm
 
     // MARK: - Constructions
 
@@ -63,6 +65,7 @@ final class RealmLayer: UserCredentialRealmStorage {
         }
     }
 
+    /// Removes an object from a **Realm**
     func delete<T: Object>(_ object: T) {
         do {
             try realm.write {
@@ -73,6 +76,7 @@ final class RealmLayer: UserCredentialRealmStorage {
         }
     }
 
+    /// Removes a collection/sequence of objects from a **Realm**
     func delete<T: Sequence>(_ objects: T) where T.Element: Object {
         do {
             try realm.write {

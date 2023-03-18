@@ -661,12 +661,12 @@
 			isa = PBXGroup;
 			children = (
 				49ADCC6929AFA3DF001108DC /* Basket+Extensions.swift */,
+				493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */,
 				49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */,
 				495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */,
 				49C0AA4A29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift */,
 				493D064529C2FA7700442609 /* UIButton+Extensions.swift */,
 				493D064729C30AD300442609 /* UISegmentedControl+Extensions.swift */,
-				493D065329C35D0000442609 /* EditProfileViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

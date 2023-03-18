@@ -13,6 +13,15 @@ enum RequestRouterEncoding {
 
 // MARK: - URLRequestConvertible
 
+/// The main request router contract inherits from **URLRequestConvertible**
+///
+/// Contains basic request parameters:
+/// - ``baseUrl`` - base url address of server request
+/// - ``fullUrl-1pwda`` - full address containing ``baseUrl`` and additional address ``path`` with request path
+/// - ``path`` - additional address with request path
+/// - ``method`` - request method such as **GET**, **POST**, etc.
+/// - ``parameters`` - request parameters
+/// - ``encoding-9djhk`` - enumeration of encoding type ``RequestRouterEncoding/url`` or ``RequestRouterEncoding/json``
 protocol RequestRouter: URLRequestConvertible {
 
     // MARK: - Properties
