@@ -7,12 +7,13 @@
 
 import Alamofire
 
+/// Server request factory contract for user authorization actions
 protocol SignInRequestFactory {
 
     // MARK: - Functions
 
     func login(
-        userName: String,
+        email: String,
         password: String,
         completionHandler: @escaping (AFDataResponse<SignInResult>) -> Void)
 }

@@ -9,7 +9,8 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class Reviews: AbstractRequestFactory {
+/// `Reviews` implements sending requests related to feedback actions to the server.
+final class Reviews: AbstractRequestFactory {
 
     // MARK: - Properties
 

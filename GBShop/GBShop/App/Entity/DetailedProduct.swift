@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The data model of a detailed view of a specific product.
 struct DetailedProduct: Codable {
 
     // MARK: - CodingKeys

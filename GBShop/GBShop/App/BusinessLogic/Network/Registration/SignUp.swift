@@ -9,7 +9,8 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class SignUp: AbstractRequestFactory {
+/// `SignUp` implements sending requests related to user registration to the server.
+final class SignUp: AbstractRequestFactory {
 
     // MARK: - Properties
 
@@ -48,6 +49,8 @@ extension SignUp {
 
         var parameters: Parameters? {
             return [
+                "name": profile.name,
+                "lastname": profile.lastname,
                 "username": profile.username,
                 "password": profile.password,
                 "email": profile.email,

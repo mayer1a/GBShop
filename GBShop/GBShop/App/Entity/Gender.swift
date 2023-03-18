@@ -7,10 +7,9 @@
 
 import Foundation
 
-// MARK: - Gender
-
+/// Enumeration model for gender with a raw value representation.
 enum Gender: String, Codable {
-    case man
-    case woman
-    case indeterminate
+    case man = "Мужской"
+    case woman = "Женский"
+    case indeterminate = "Другой"
 }

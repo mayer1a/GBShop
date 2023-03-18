@@ -7,7 +7,8 @@
 
 import Alamofire
 
-class Basket: AbstractRequestFactory {
+/// `Basket` implements sending requests related to the user's shopping cart to the server
+final class Basket: AbstractRequestFactory {
 
     // MARK: - Properties
 

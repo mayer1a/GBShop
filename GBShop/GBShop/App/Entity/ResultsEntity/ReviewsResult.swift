@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - ReviewsResult
-
+/// The data model of the server's response to a request to get a list of reviews.
 struct ReviewsResult: Codable {
 
     // MARK: - CodingKeys

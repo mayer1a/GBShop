@@ -9,7 +9,8 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class GetProduct: AbstractRequestFactory {
+/// `GetProduct` implements sending requests related to receiving goods to the server.
+final class GetProduct: AbstractRequestFactory {
 
     // MARK: - Properties
 

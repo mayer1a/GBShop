@@ -9,7 +9,8 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class Logout: AbstractRequestFactory {
+/// `Logout` implements sending requests related to the user's exit from the profile to the server.
+final class Logout: AbstractRequestFactory {
 
     // MARK: - Properties
 

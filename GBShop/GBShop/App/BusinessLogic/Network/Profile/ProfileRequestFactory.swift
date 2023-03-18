@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Server request factory contract to modify user profile data
 protocol ProfileRequestFactory {
 
     // MARK: - Functions

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The data model of the server's response to the logout request.
 struct LogoutResult: Codable {
 
     // MARK: - Properties

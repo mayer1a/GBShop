@@ -9,7 +9,8 @@ import Alamofire
 
 // MARK: - DataResponseSerializerProtocol
 
-class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
+/// Decodable serializer for converting data received from the server.
+final class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
 
     // MARK: - Private properties
 
@@ -23,6 +24,10 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
 
     // MARK: - Functions
 
+    /// Decodes the server response
+    ///
+    /// - Returns:
+    ///     value: Generic type of T class type
     func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> T {
         if let error = errorParser.parse(response: response, data: data, error: error) {
             throw error

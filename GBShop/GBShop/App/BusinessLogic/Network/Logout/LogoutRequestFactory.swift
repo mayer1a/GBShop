@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Request factory contract to notify the server when a user has logged out of a profile
 protocol LogoutRequestFactory {
 
     // MARK: - Functions

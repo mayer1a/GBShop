@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Server request factory contract for user registration
 protocol SignUpRequestFactory {
 
     // MARK: - Functions

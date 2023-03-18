@@ -1,5 +1,5 @@
 //
-//  Profile.swift
+//  SignUpUser.swift
 //  GBShop
 //
 //  Created by Artem Mayer on 01.03.2023.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-// MARK: - User
-
-struct EditProfile: Codable {
+/// The data model of the `SignUpModule` for sending a request to the server.
+struct SignUpUser: Codable {
 
     // MARK: - CodingKeys
 
     enum CodingKeys: String, CodingKey {
-        case id = "user_id"
+        case name
+        case lastname
         case username
         case password
         case email
@@ -25,11 +25,12 @@ struct EditProfile: Codable {
 
     // MARK: - Properties
 
-    let id: Int
+    let name: String
+    let lastname: String
     let username: String
     let password: String
     let email: String
     let creditCard: String
-    let gender: Gender
+    let gender: Gender.RawValue
     let bio: String
 }

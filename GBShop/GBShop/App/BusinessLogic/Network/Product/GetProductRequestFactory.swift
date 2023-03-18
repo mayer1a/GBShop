@@ -7,6 +7,7 @@
 
 import Alamofire
 
+/// Server request factory contract to receive product
 protocol GetProductRequestFactory {
 
     // MARK: - Functions

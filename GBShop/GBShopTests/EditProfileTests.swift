@@ -26,204 +26,153 @@ final class EditProfileTests: XCTestCase {
 
     // MARK: - Functions
 
-    func testEditProfileCorrectInput() {
+    func testEditProfileCorrectInputWithoutEmail() {
         let edit = requestFactory.makeEditProfileRequestFactory()
         let exp = expectation(description: "correctInput")
-        var result = -1
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
         let profile = EditProfile(
-            id: 123,
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 1)
-    }
-
-    func testEditProfileIncorrectUserId() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "correctInput")
-        var result = -1
-        let profile = EditProfile(
-            id: -20,
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-
-        XCTExpectFailure("trying to logout with incorrect user id but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileIncorrectUsername() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "incorrectUsername")
-        var result = -1
-        let profile = EditProfile(
-            id: 123,
-            username: "самбади",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to logout with incorrect username but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileIncorrectPassword() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "incorrectPassword")
-        var result = -1
-        let profile = EditProfile(
-            id: 123,
-            username: "Somebody",
-            password: "_Б",
-            email: "some@some.ru",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to logout with incorrect password but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileIncorrectEmail() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "incorrectEmail")
-        var result = -1
-        let profile = EditProfile(
-            id: 123,
-            username: "Somebody",
-            password: "mypassword",
-            email: "some @so",
-            creditCard: "9872389-2424-234224-234",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to logout with incorrect email but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileIncorrectCardNumber() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "incorrectCardNumber")
-        var result = -1
-        let profile = EditProfile(
-            id: 123,
-            username: "Somebody",
-            password: "mypassword",
-            email: "some@some.ru",
-            creditCard: "98723B A7476",
-            gender: .man,
-            bio: "This is good! I think I will switch to another language")
-
-        XCTExpectFailure("trying to logout with incorrect card number but edit profile was succesful")
-
-        edit.editProfile(profile: profile) { response in
-            switch response.result {
-            case .success(let response):
-                result = response.result
-            case .failure(let error):
-                XCTFail("Connection or server error with description: \(error.localizedDescription)")
-            }
-
-            exp.fulfill()
-        }
-
-        waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
-    }
-
-    func testEditProfileEmptyInput() {
-        let edit = requestFactory.makeEditProfileRequestFactory()
-        let exp = expectation(description: "emptyInput")
-        var result = -1
-        let profile = EditProfile(
-            id: 0,
-            username: "",
-            password: "",
+            userId: 100,
+            name: "Foo",
+            lastname: "Bar",
+            username: "FooBarBaz0000",
             email: "",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Foo bar baz bio")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileCorrectInputWithEmail() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "correctInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "Foo",
+            lastname: "Bar",
+            username: "FooBarBaz0000",
+            email: "foobar@baz.ah",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Foo bar baz bio")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileCorrectInputWithoutEmailAndPassword() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "correctInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "Foo",
+            lastname: "Bar",
+            username: "FooBarBaz0000",
+            oldPassword: "FooBarBaz0000",
+            newPassword: "BazFooBar0000",
+            email: "",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Foo bar baz bio")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileCorrectInputWithEmailAndPassword() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "correctInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "Foo",
+            lastname: "Bar",
+            username: "FooBarBaz0000",
+            oldPassword: "BazFooBar0000",
+            newPassword: "FooBarBaz0000",
+            email: "foobar@baz.al",
+            creditCard: "0000000000000000",
+            gender: Gender.indeterminate.rawValue,
+            bio: "Foo bar baz bio")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileCorrectOnlyEmail() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "correctInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "",
+            lastname: "",
+            username: "",
+            email: "foobar@baz.am",
             creditCard: "",
-            gender: .man,
+            gender: Gender.indeterminate.rawValue,
             bio: "")
 
-        XCTExpectFailure("trying to logout with empty input but edit profile was succesful")
-
         edit.editProfile(profile: profile) { response in
             switch response.result {
-            case .success(let response):
-                result = response.result
+            case .success(let result):
+                editResult = result
             case .failure(let error):
                 XCTFail("Connection or server error with description: \(error.localizedDescription)")
             }
@@ -232,7 +181,140 @@ final class EditProfileTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(result, 0)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileCorrectOnlyPassword() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "correctInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "",
+            lastname: "",
+            username: "",
+            oldPassword: "FooBarBaz0000",
+            newPassword: "BazFooBar0000",
+            email: "",
+            creditCard: "",
+            gender: Gender.indeterminate.rawValue,
+            bio: "")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileCorrectOnlyEmailPassword() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "correctInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "",
+            lastname: "",
+            username: "",
+            oldPassword: "BazFooBar0000",
+            newPassword: "FooBarBaz0000",
+            email: "foobar@baz.ar",
+            creditCard: "",
+            gender: Gender.indeterminate.rawValue,
+            bio: "")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(1, editResult.result)
+        XCTAssertNil(editResult.errorMessage)
+    }
+
+    func testEditProfileInCorrectOldPassword() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "incorrectInput")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: 100,
+            name: "",
+            lastname: "",
+            username: "",
+            oldPassword: "BazFooBar0000",
+            newPassword: "FooBarBaz0000",
+            email: "",
+            creditCard: "",
+            gender: Gender.indeterminate.rawValue,
+            bio: "")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(0, editResult.result)
+        XCTAssertNotNil(editResult.errorMessage)
+        XCTAssertEqual("Не удалось обновить данные, так как Вы указываете неверный email, username или пароль", editResult.errorMessage)
+    }
+
+    func testEditProfileInCorrectUserId() {
+        let edit = requestFactory.makeEditProfileRequestFactory()
+        let exp = expectation(description: "incorrectUserId")
+        var editResult = EditProfileResult(result: -1, errorMessage: nil)
+
+        let profile = EditProfile(
+            userId: -100,
+            name: "",
+            lastname: "",
+            username: "",
+            email: "",
+            creditCard: "",
+            gender: Gender.indeterminate.rawValue,
+            bio: "")
+
+        edit.editProfile(profile: profile) { response in
+            switch response.result {
+            case .success(let result):
+                editResult = result
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(0, editResult.result)
+        XCTAssertNotNil(editResult.errorMessage)
+        XCTAssertEqual("Не удалось обновить данные, так как Вы указываете неверный email, username или пароль", editResult.errorMessage)
     }
 
 }

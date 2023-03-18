@@ -1,0 +1,22 @@
+//
+//  UISegmentedControl+Extensions.swift
+//  GBShop
+//
+//  Created by Artem Mayer on 16.03.2023.
+//
+
+import UIKit
+
+extension UISegmentedControl {
+
+    // MARK: Functions
+
+    /// Basic **UISegmentedControl** configuration vethod for displaying the user's gender
+    func configure() {
+        let font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        backgroundColor = .systemBackground
+        tintColor = .label
+        selectedSegmentTintColor = .systemGray5
+    }
+}

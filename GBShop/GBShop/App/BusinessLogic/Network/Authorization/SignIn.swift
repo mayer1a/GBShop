@@ -9,7 +9,8 @@ import Alamofire
 
 // MARK: - AbstractRequestFactory
 
-class SignIn: AbstractRequestFactory {
+/// `SignIn` implements sending requests related to the user authorization to the server
+final class SignIn: AbstractRequestFactory {
 
     // MARK: - Properties
 
@@ -44,12 +45,12 @@ extension SignIn {
         let method: HTTPMethod = .post
         let path: String = "signin"
 
-        let login: String
+        let email: String
         let password: String
 
         var parameters: Parameters? {
             return [
-                "username": login,
+                "email": email,
                 "password": password
             ]
         }
@@ -63,11 +64,11 @@ extension SignIn: SignInRequestFactory {
     // MARK: - Functions
 
     func login(
-        userName: String,
+        email: String,
         password: String,
         completionHandler: @escaping (AFDataResponse<SignInResult>) -> Void
     ) {
-        let requestModel = SignIn(baseUrl: baseUrl, login: userName, password: password)
+        let requestModel = SignIn(baseUrl: baseUrl, email: email, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
