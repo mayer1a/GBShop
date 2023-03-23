@@ -57,6 +57,7 @@
 		4957440C29CC41E400155116 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957440B29CC41E400155116 /* MainCoordinator.swift */; };
 		4957440E29CC422D00155116 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957440D29CC422D00155116 /* TabBarCoordinator.swift */; };
 		4957441029CC425500155116 /* CatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957440F29CC425500155116 /* CatalogCoordinator.swift */; };
+		4957441229CC42E400155116 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441129CC42E400155116 /* ProfileCoordinator.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -185,6 +186,7 @@
 		4957440B29CC41E400155116 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		4957440D29CC422D00155116 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		4957440F29CC425500155116 /* CatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCoordinator.swift; sourceTree = "<group>"; };
+		4957441129CC42E400155116 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				4957440B29CC41E400155116 /* MainCoordinator.swift */,
 				4957440D29CC422D00155116 /* TabBarCoordinator.swift */,
 				4957440F29CC425500155116 /* CatalogCoordinator.swift */,
+				4957441129CC42E400155116 /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				49991266299E318A0034015A /* ProductResult.swift in Sources */,
 				49556387299A5DAC00A22FA4 /* RequestRouter.swift in Sources */,
 				49D0286829AC7F3100715F08 /* AddReviewResult.swift in Sources */,
+				4957441229CC42E400155116 /* ProfileCoordinator.swift in Sources */,
 				493D065229C35AE700442609 /* EditProfileViewController.swift in Sources */,
 				49ADCC6129AFA143001108DC /* RemoveProductResult.swift in Sources */,
 				49ADCC6A29AFA3DF001108DC /* Basket+Extensions.swift in Sources */,
