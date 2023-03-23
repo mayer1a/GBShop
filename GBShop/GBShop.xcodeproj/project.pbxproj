@@ -53,6 +53,7 @@
 		49556398299A696900A22FA4 /* SignInRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556397299A696900A22FA4 /* SignInRequestFactory.swift */; };
 		4955639A299A69B900A22FA4 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556399299A69B900A22FA4 /* SignIn.swift */; };
 		4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955639B299A6A6A00A22FA4 /* RequestFactory.swift */; };
+		4957440A29CC3F0500155116 /* CoordinatorContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957440929CC3F0500155116 /* CoordinatorContracts.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -177,6 +178,7 @@
 		49556397299A696900A22FA4 /* SignInRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequestFactory.swift; sourceTree = "<group>"; };
 		49556399299A69B900A22FA4 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		4955639B299A6A6A00A22FA4 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		4957440929CC3F0500155116 /* CoordinatorContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorContracts.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */,
+				4957440929CC3F0500155116 /* CoordinatorContracts.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				49991260299E221C0034015A /* CatalogRequestFactory.swift in Sources */,
 				493D064B29C30D3800442609 /* ProfileView.swift in Sources */,
 				4955638B299A60D300A22FA4 /* User.swift in Sources */,
+				4957440A29CC3F0500155116 /* CoordinatorContracts.swift in Sources */,
 				490A6D3829BCE08900427C50 /* Utils.swift in Sources */,
 				49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */,
 				49ADCC6629AFA202001108DC /* BasketRequestFactory.swift in Sources */,
