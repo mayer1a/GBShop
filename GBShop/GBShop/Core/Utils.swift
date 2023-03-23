@@ -12,6 +12,7 @@ import Alamofire
 typealias AFSignUpResult = AFDataResponse<SignUpResult>
 typealias AFEditResult = AFDataResponse<EditProfileResult>
 typealias AFSignInResult = AFDataResponse<SignInResult>
+typealias AFCatalogResult = AFDataResponse<CatalogResult>
 typealias UserDataKey = CoordinatorConstants.UserDataKey
 typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
