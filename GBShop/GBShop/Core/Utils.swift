@@ -13,6 +13,10 @@ typealias AFSignUpResult = AFDataResponse<SignUpResult>
 typealias AFEditResult = AFDataResponse<EditProfileResult>
 typealias AFSignInResult = AFDataResponse<SignInResult>
 typealias UserDataKey = CoordinatorConstants.UserDataKey
+typealias AppFlow = CoordinatorConstants.AppFlow
+typealias InitialFlow = CoordinatorConstants.InitialFlow
+typealias TabFlow = CoordinatorConstants.TabFlow
+typealias CatalogFlow = CoordinatorConstants.CatalogFlow
 
 // MARK: - App Constants
 
