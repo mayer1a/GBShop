@@ -54,6 +54,7 @@
 		4955639A299A69B900A22FA4 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556399299A69B900A22FA4 /* SignIn.swift */; };
 		4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955639B299A6A6A00A22FA4 /* RequestFactory.swift */; };
 		4957440A29CC3F0500155116 /* CoordinatorContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957440929CC3F0500155116 /* CoordinatorContracts.swift */; };
+		4957440C29CC41E400155116 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957440B29CC41E400155116 /* MainCoordinator.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -179,6 +180,7 @@
 		49556399299A69B900A22FA4 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		4955639B299A6A6A00A22FA4 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		4957440929CC3F0500155116 /* CoordinatorContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorContracts.swift; sourceTree = "<group>"; };
+		4957440B29CC41E400155116 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			children = (
 				4900A6DD29BB247800FFF9A8 /* AppCoordinator.swift */,
 				4957440929CC3F0500155116 /* CoordinatorContracts.swift */,
+				4957440B29CC41E400155116 /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */,
 				49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */,
 				493D064F29C34E4F00442609 /* EditProfilePresenter.swift in Sources */,
+				4957440C29CC41E400155116 /* MainCoordinator.swift in Sources */,
 				4955639A299A69B900A22FA4 /* SignIn.swift in Sources */,
 				49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */,
 				4900A6CE29BB138600FFF9A8 /* WarningPaddingLabel.swift in Sources */,
