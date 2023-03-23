@@ -12,6 +12,7 @@ import Alamofire
 typealias AFSignUpResult = AFDataResponse<SignUpResult>
 typealias AFEditResult = AFDataResponse<EditProfileResult>
 typealias AFSignInResult = AFDataResponse<SignInResult>
+typealias UserDataKey = CoordinatorConstants.UserDataKey
 
 // MARK: - App Constants
 
@@ -76,4 +77,40 @@ struct LayoutConstants {
 /// Application-wide animation constants
 struct AnimationConstants {
     static let animationDuration = 0.3
+}
+
+// MARK: - Coordinator Constants
+
+struct CoordinatorConstants {
+
+    // MARK: - UserDataKey
+
+    enum UserDataKey {
+        case user
+    }
+
+    // MARK: - Main App Flow
+
+    enum AppFlow {
+        case initial(InitialFlow)
+        case tabBar(TabFlow)
+    }
+
+    enum InitialFlow {
+        case initialScreen
+        case signInScreen
+        case signUpScreen
+    }
+
+    // MARK: - TabBar Flow
+
+    enum TabFlow {
+        case catalogFlow(CatalogFlow)
+        case profileScreen
+    }
+
+    enum CatalogFlow {
+        case catalogScreen
+        case goodsScreen
+    }
 }
