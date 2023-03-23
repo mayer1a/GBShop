@@ -42,8 +42,10 @@ final class CatalogPresenter {
     private var currentPage: Int
     private var currentCategory: Int
     private var nextPage: Int {
-        currentPage += 1
-        return currentPage
+        get {
+            currentPage += 1
+            return currentPage
+        }
     }
 
     // MARK: - Constructions
@@ -76,7 +78,6 @@ final class CatalogPresenter {
 
             self.view.catalogPageDidFetch(products)
             // TODO: Save fetched result to realm
-            // storageService.create(objects)
         case .failure(_):
             self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }

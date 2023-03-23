@@ -60,6 +60,8 @@
 		4957441429CC430700155116 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441329CC430700155116 /* InitialCoordinator.swift */; };
 		4957441629CC477B00155116 /* UITabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441529CC477B00155116 /* UITabBarController+Extensions.swift */; };
 		4957441A29CC590A00155116 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441929CC590A00155116 /* CatalogPresenter.swift */; };
+		4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441B29CC72A200155116 /* CatalogStorageService.swift */; };
+		4957441E29CC734600155116 /* RealmProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441D29CC734600155116 /* RealmProduct.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -191,6 +193,8 @@
 		4957441329CC430700155116 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
 		4957441529CC477B00155116 /* UITabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extensions.swift"; sourceTree = "<group>"; };
 		4957441929CC590A00155116 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
+		4957441B29CC72A200155116 /* CatalogStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogStorageService.swift; sourceTree = "<group>"; };
+		4957441D29CC734600155116 /* RealmProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProduct.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				490A6D2D29BC6E1C00427C50 /* Realm */,
 				49DC253629BC5A7C0095290D /* UserDefaults */,
 				49DC253429BB99D60095290D /* UserCredentialsStorageService.swift */,
+				4957441B29CC72A200155116 /* CatalogStorageService.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				490A6D3129BCCA9100427C50 /* RealmUser.swift */,
+				4957441D29CC734600155116 /* RealmProduct.swift */,
 			);
 			path = RealmEntity;
 			sourceTree = "<group>";
@@ -1093,6 +1099,7 @@
 				4900A6CF29BB138600FFF9A8 /* SignInViewController.swift in Sources */,
 				49ADCC5F29AFA11C001108DC /* AddProductResult.swift in Sources */,
 				49991260299E221C0034015A /* CatalogRequestFactory.swift in Sources */,
+				4957441E29CC734600155116 /* RealmProduct.swift in Sources */,
 				493D064B29C30D3800442609 /* ProfileView.swift in Sources */,
 				4955638B299A60D300A22FA4 /* User.swift in Sources */,
 				4957440A29CC3F0500155116 /* CoordinatorContracts.swift in Sources */,
@@ -1111,6 +1118,7 @@
 				493D064829C30AD300442609 /* UISegmentedControl+Extensions.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
+				4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */,
 				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
 				4900A6CD29BB138600FFF9A8 /* ProfileTextField.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
