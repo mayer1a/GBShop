@@ -16,7 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        configureNavigationBar()
         return true
+    }
+
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance(idiom: .phone)
+        appearance.shadowColor = .white
+        appearance.backgroundColor = .white
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().backItem?.titleView?.tintColor = .label
+        UINavigationBar.appearance().tintColor = .label
+        UINavigationBar.appearance().prefersLargeTitles = true
     }
 
     // MARK: UISceneSession Lifecycle
