@@ -18,7 +18,7 @@ protocol SignUpPresenterProtocol: AnyObject {
     init(
         view: SignUpViewProtocol,
         requestFactory: SignUpRequestFactory,
-        coordinator: CoordinatorProtocol,
+        coordinator: InitialBaseCoordinator,
         storageService: UserCredentialsStorageService
     )
 
@@ -33,7 +33,7 @@ final class SignUpPresenter {
 
     private weak var view: SignUpViewProtocol!
     private var signUpUser: SignUpRawModel
-    private let coordinator: CoordinatorProtocol
+    private let coordinator: InitialBaseCoordinator
     private let requestFactory: SignUpRequestFactory
     private let storageService: UserCredentialsStorageService
     private let validator: Validator
@@ -44,7 +44,7 @@ final class SignUpPresenter {
     init(
         view: SignUpViewProtocol,
         requestFactory: SignUpRequestFactory,
-        coordinator: CoordinatorProtocol,
+        coordinator: InitialBaseCoordinator,
         storageService: UserCredentialsStorageService
     ) {
         self.view = view
@@ -88,7 +88,7 @@ final class SignUpPresenter {
 
             let user = userModelFactory.construct(from: signUpUserModel, with: userId)
             storageService.createUser(from: user)
-            coordinator.showProfileFlow(with: user)
+            coordinator.moveTo(flow: .tabBar(.catalogFlow(.catalogScreen)), userData: [.user: user])
         case .failure(_):
             self.view.signUpFailure(with: "Сервер недоступен. Повторите попытку позже.")
         }
@@ -119,7 +119,7 @@ extension SignUpPresenter: SignUpPresenterProtocol {
     }
 
     func backButtonTapped() {
-        coordinator.popViewController()
+        coordinator.resetToRoot(animated: true)
     }
 
     func inputFieldsTapped() {
