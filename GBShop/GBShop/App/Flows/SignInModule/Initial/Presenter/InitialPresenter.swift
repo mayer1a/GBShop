@@ -13,7 +13,7 @@ protocol InitialViewProtocol: AnyObject {
 }
 
 protocol InitialPresenterProtocol: AnyObject {
-    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol, storageService: UserCredentialsStorageService)
+    init(view: InitialViewProtocol, coordinator: InitialBaseCoordinator, storageService: UserCredentialsStorageService)
     func onViewWillAppear()
 }
 
@@ -22,12 +22,12 @@ final class InitialPresenter {
     // MARK: - Properties
 
     private weak var view: InitialViewProtocol!
-    private let coordinator: CoordinatorProtocol
+    private let coordinator: InitialBaseCoordinator
     private let storageService: UserCredentialsStorageService
 
     // MARK: - Constructions
 
-    init(view: InitialViewProtocol, coordinator: CoordinatorProtocol, storageService: UserCredentialsStorageService) {
+    init(view: InitialViewProtocol, coordinator: InitialBaseCoordinator, storageService: UserCredentialsStorageService) {
         self.view = view
         self.coordinator = coordinator
         self.storageService = storageService
@@ -44,9 +44,10 @@ final class InitialPresenter {
             self.view.hideLoadingSpinner()
 
             if self.storageService.isUserAuthenticated {
-                self.coordinator.showProfileFlow(with: self.storageService.user)
+                let userData: [UserDataKey: Any] = [.user: self.storageService.user]
+                self.coordinator.moveTo(flow: .tabBar(.catalogFlow(.catalogScreen)), userData: userData)
             } else {
-                self.coordinator.showSignInFlow()
+                self.coordinator.moveTo(flow: .initial(.signInScreen), userData: nil)
             }
         }
     }

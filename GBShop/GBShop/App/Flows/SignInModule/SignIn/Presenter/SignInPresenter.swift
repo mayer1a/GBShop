@@ -18,7 +18,7 @@ protocol SignInPresenterProtocol: AnyObject {
     init(
         view: SignInViewProtocol,
         requestFactory: SignInRequestFactory,
-        coordinator: CoordinatorProtocol,
+        coordinator: InitialBaseCoordinator,
         storageService: UserCredentialsStorageService)
 
     func signIn(email: String?, password: String?)
@@ -31,7 +31,7 @@ final class SignInPresenter {
     // MARK: - Private properties
 
     private weak var view: SignInViewProtocol!
-    private var coordinator: CoordinatorProtocol
+    private var coordinator: InitialBaseCoordinator
     private let requestFactory: SignInRequestFactory
     private let storageService: UserCredentialsStorageService
 
@@ -40,7 +40,7 @@ final class SignInPresenter {
     init(
         view: SignInViewProtocol,
         requestFactory: SignInRequestFactory,
-        coordinator: CoordinatorProtocol,
+        coordinator: InitialBaseCoordinator,
         storageService: UserCredentialsStorageService
     ) {
         self.view = view
@@ -62,7 +62,7 @@ final class SignInPresenter {
             }
 
             self.storageService.createUser(from: user)
-            self.coordinator.showProfileFlow(with: user)
+            self.coordinator.moveTo(flow: .tabBar(.catalogFlow(.catalogScreen)), userData: [.user: user])
         case .failure(_):
             self.view?.signInFailure(with: "Сервер недоступен. Повторите попытку позже.")
         }
@@ -92,7 +92,7 @@ extension SignInPresenter: SignInPresenterProtocol {
     }
 
     func signUpButtonTapped() {
-        coordinator.showSignUpFlow()
+        coordinator.moveTo(flow: .initial(.signUpScreen), userData: nil)
     }
 
     func inputFieldsTapped() {
