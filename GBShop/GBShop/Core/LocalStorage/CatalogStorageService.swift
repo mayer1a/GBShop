@@ -91,7 +91,9 @@ private extension ProductsStorageService {
         let product = Product(
             id: object.id,
             name: object.name,
-            price: object.price)
+            category: object.category,
+            price: object.price,
+            mainImage: object.mainImage)
 
         return product
     }
@@ -101,7 +103,9 @@ private extension ProductsStorageService {
         let realmProduct = RealmProduct()
         realmProduct.id = product.id
         realmProduct.name = product.name
+        realmProduct.category = product.category
         realmProduct.price = product.price
+        realmProduct.mainImage = product.mainImage
 
         return realmProduct
     }
