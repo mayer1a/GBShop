@@ -62,6 +62,7 @@
 		4957441A29CC590A00155116 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441929CC590A00155116 /* CatalogPresenter.swift */; };
 		4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441B29CC72A200155116 /* CatalogStorageService.swift */; };
 		4957441E29CC734600155116 /* RealmProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441D29CC734600155116 /* RealmProduct.swift */; };
+		4957442529CE16EA00155116 /* ProductCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442429CE16EA00155116 /* ProductCellModel.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -195,6 +196,7 @@
 		4957441929CC590A00155116 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
 		4957441B29CC72A200155116 /* CatalogStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogStorageService.swift; sourceTree = "<group>"; };
 		4957441D29CC734600155116 /* RealmProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProduct.swift; sourceTree = "<group>"; };
+		4957442429CE16EA00155116 /* ProductCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellModel.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				49ADCC5A29AF3D18001108DC /* Product.swift */,
 				49D0285E29ABB14600715F08 /* Review.swift */,
 				4955638A299A60D300A22FA4 /* User.swift */,
+				4957442429CE16EA00155116 /* ProductCellModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1065,6 +1068,7 @@
 				49ADCC6129AFA143001108DC /* RemoveProductResult.swift in Sources */,
 				49ADCC6A29AFA3DF001108DC /* Basket+Extensions.swift in Sources */,
 				49556385299A5D7500A22FA4 /* AbstractRequestFactory.swift in Sources */,
+				4957442529CE16EA00155116 /* ProductCellModel.swift in Sources */,
 				49D0285F29ABB14600715F08 /* Review.swift in Sources */,
 				49ADCC6329AFA170001108DC /* PayBasketResult.swift in Sources */,
 				4900A6D829BB1A7000FFF9A8 /* ModuleBuilder.swift in Sources */,
