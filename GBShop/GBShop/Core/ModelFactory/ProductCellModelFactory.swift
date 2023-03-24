@@ -15,8 +15,8 @@ struct ProductCellModelFactory {
         ProductCellModel(
             id: "\(product.id)",
             name: product.name,
-            category: "",
+            category: product.category,
             price: "\(product.price) ₽",
-            imageUrl: "")
+            imageUrl: product.mainImage)
     }
 }
