@@ -17,5 +17,9 @@ final class RealmProduct: Object {
     @Persisted
     var name: String
     @Persisted
+    var category: String
+    @Persisted
     var price: Int
+    @Persisted
+    var mainImage: String
 }
