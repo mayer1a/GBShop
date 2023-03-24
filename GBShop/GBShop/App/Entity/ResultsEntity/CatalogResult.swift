@@ -14,13 +14,15 @@ struct CatalogResult: Codable {
 
     enum CodingKeys: String, CodingKey {
         case result
-        case pageNumber = "page_number"
+        case nextPage = "next_page"
         case products
+        case errorMessage = "error_message"
     }
 
     // MARK: - Properties
 
     let result: Int
-    let pageNumber: Int?
     let products: [Product]?
+    let nextPage: Int?
+    let errorMessage: String?
 }
