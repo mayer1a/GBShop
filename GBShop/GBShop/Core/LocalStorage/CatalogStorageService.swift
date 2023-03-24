@@ -68,6 +68,7 @@ private extension ProductsStorageService {
 
     private func createProduct(_ product: Product) {
         let realmProduct = modelToRealm(product)
+        realm.create(realmProduct)
     }
 
     private func deleteProduct(_ product: Product) {
