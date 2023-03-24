@@ -40,14 +40,8 @@ final class CatalogPresenter {
     private let coordinator: CatalogBaseCoordinator
     private let requestFactory: CatalogRequestFactory
     private let storageService: ProductsStorageService
-    private var currentPage: Int
+    private var nextPage: Int?
     private var currentCategory: Int
-    private var nextPage: Int {
-        get {
-            currentPage += 1
-            return currentPage
-        }
-    }
 
     // MARK: - Constructions
 
@@ -61,8 +55,8 @@ final class CatalogPresenter {
         self.requestFactory = requestFactory
         self.coordinator = coordinator
         self.storageService = storageService
-        currentPage = 0
-        currentCategory = 0
+        nextPage = 1
+        currentCategory = 1
     }
 
     // MARK: - Private functions
@@ -74,6 +68,8 @@ final class CatalogPresenter {
                 self.view.showFailure(with: nil)
                 return
             }
+            
+            nextPage = catalogResult.nextPage
 
             guard let products = catalogResult.products else { return }
 
@@ -84,7 +80,9 @@ final class CatalogPresenter {
         }
     }
 
-    private func fetchProduct(for pageNumber: Int, categoryId: Int) {
+    private func fetchProduct(for pageNumber: Int?, categoryId: Int) {
+        guard let pageNumber else { return }
+
         view.startLoadingSpinner()
 
         requestFactory.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { [weak self] response in
@@ -106,7 +104,7 @@ extension CatalogPresenter: CatalogPresenterProtocol {
     // MARK: - Functions
 
     func onViewDidLoad() {
-        fetchProduct(for: currentPage, categoryId: currentCategory)
+        fetchProduct(for: nextPage, categoryId: currentCategory)
     }
 
     func showProductDetail(for product: Product) {
