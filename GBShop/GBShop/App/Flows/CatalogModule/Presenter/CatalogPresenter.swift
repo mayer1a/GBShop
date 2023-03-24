@@ -27,6 +27,7 @@ protocol CatalogPresenterProtocol: AnyObject {
     func addToBasket(_ product: Product)
     func addToFavorite(_ product: Product)
     func scrollWillEnd()
+    func getImage(from link: String, completion: @escaping (UIImage) -> Void)
 }
 
 // MARK: - CatalogPresenter
@@ -122,5 +123,10 @@ extension CatalogPresenter: CatalogPresenterProtocol {
 
     func scrollWillEnd() {
         fetchProduct(for: nextPage, categoryId: currentCategory)
+    }
+
+    func getImage(from link: String, completion: @escaping (UIImage) -> Void) {
+        // TODO: Call imageService to download image
+        completion(UIImage())
     }
 }
