@@ -67,6 +67,7 @@
 		4957442A29CE17DA00155116 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442929CE17DA00155116 /* ProductCell.swift */; };
 		4957442C29CE1A8100155116 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442B29CE1A8100155116 /* CatalogView.swift */; };
 		4957442F29CE1B0400155116 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442E29CE1B0400155116 /* CollectionViewCellFactory.swift */; };
+		4957443129CE1B3D00155116 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957443029CE1B3D00155116 /* CatalogViewController.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -205,6 +206,7 @@
 		4957442929CE17DA00155116 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		4957442B29CE1A8100155116 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		4957442E29CE1B0400155116 /* CollectionViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellFactory.swift; sourceTree = "<group>"; };
+		4957443029CE1B3D00155116 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 			children = (
 				4957442929CE17DA00155116 /* ProductCell.swift */,
 				4957442B29CE1A8100155116 /* CatalogView.swift */,
+				4957443029CE1B3D00155116 /* CatalogViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				49ADCC6629AFA202001108DC /* BasketRequestFactory.swift in Sources */,
 				4928AD0D299B4B2B00B665C8 /* Logout.swift in Sources */,
 				49B7787C299AAADA00597F11 /* SignUp.swift in Sources */,
+				4957443129CE1B3D00155116 /* CatalogViewController.swift in Sources */,
 				4928AD13299B4CF700B665C8 /* ProfileRequestFactory.swift in Sources */,
 				4957441629CC477B00155116 /* UITabBarController+Extensions.swift in Sources */,
 				4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */,
