@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 
 protocol ProductViewProtocol: AnyObject {
     func startLoadingSpinner()
@@ -58,7 +57,7 @@ final class ProductPresenter {
 
     // MARK: - Private functions
 
-    private func serverDidResponded(_ response: AFDataResponse<ProductResult>) {
+    private func serverDidResponded(_ response: AFProductResult) {
         switch response.result {
         case .success(let productResult):
             if productResult.result == 0 {
