@@ -19,11 +19,15 @@ protocol ModuleBuilderProtocol {
 /// Assembly of all module components and injects dependencies
 final class ModuleBuilder: ModuleBuilderProtocol {
 
+    // MARK: - Private properties
+
+    private var realmService: UserCredentialRealmStorage = RealmLayer()
+
     // MARK: - Functions
 
     func createInitialModule(coordinator: InitialBaseCoordinator) -> UIViewController {
         let view = InitialViewController()
-        let storageService = UserCredentialsStorageService()
+        let storageService = UserCredentialsStorageService(realm: realmService)
         let presenter = InitialPresenter(view: view, coordinator: coordinator, storageService: storageService)
         view.setPresenter(presenter)
 
@@ -33,7 +37,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     func createSignInModule(coordinator: InitialBaseCoordinator) -> UIViewController {
         let signInView = SignInViewController()
         let signInReq = RequestFactory().makeSignInRequestFatory()
-        let storageService = UserCredentialsStorageService()
+        let storageService = UserCredentialsStorageService(realm: realmService)
         let presenter = SignInPresenter(
             view: signInView,
             requestFactory: signInReq,
@@ -48,7 +52,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     func createEditProfileModule(with user: User, coordinator: ProfileBaseCoordinator) -> UIViewController {
         let view = EditProfileViewController()
         let factory = RequestFactory().makeEditProfileRequestFactory()
-        let storageService = UserCredentialsStorageService()
+        let storageService = UserCredentialsStorageService(realm: realmService)
         let presenter = EditProfilePresenter(
             user: user,
             view: view,
@@ -64,7 +68,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     func createSignUpModule(coordinator: InitialBaseCoordinator) -> UIViewController {
         let view = SignUpViewController()
         let factory = RequestFactory().makeSignUpRequestFactory()
-        let storageService = UserCredentialsStorageService()
+        let storageService = UserCredentialsStorageService(realm: realmService)
         let presenter = SignUpPresenter(
             view: view,
             requestFactory: factory,
@@ -77,8 +81,17 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     }
 
     func createCatalogModule(coordinator: CatalogBaseCoordinator) -> UIViewController {
-        let view = UIViewController()
-        view.view.backgroundColor = .blue
+        let view = CatalogViewController()
+        let factory = RequestFactory().makeCatalogRequestFactory()
+        let storageService = ProductsStorageService(realm: realmService)
+        let presenter = CatalogPresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            storageService: storageService)
+
+        view.setPresenter(presenter)
+        
         return view
     }
 }

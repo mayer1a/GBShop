@@ -12,6 +12,7 @@ import Alamofire
 typealias AFSignUpResult = AFDataResponse<SignUpResult>
 typealias AFEditResult = AFDataResponse<EditProfileResult>
 typealias AFSignInResult = AFDataResponse<SignInResult>
+typealias AFCatalogResult = AFDataResponse<CatalogResult>
 typealias UserDataKey = CoordinatorConstants.UserDataKey
 typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
@@ -117,4 +118,19 @@ struct CoordinatorConstants {
         case catalogScreen
         case goodsScreen
     }
+}
+
+// MARK: - CatalogConstants
+
+struct CatalogConstants {
+
+    // MARK: - Properties
+
+    static let interitemSpacing: CGFloat = 20.0
+    static let lineSpacing: CGFloat = 40.0
+    static let cellSubviewsIndent: CGFloat = 10.0
+    static let cellTextIndent: CGFloat = 20.0
+    static let cellImageMultiplier: CGFloat = 1.1
+    static let favoriteButtonSize: CGFloat = 30.0
+    static let basketButtonSize: CGFloat = 40.0
 }

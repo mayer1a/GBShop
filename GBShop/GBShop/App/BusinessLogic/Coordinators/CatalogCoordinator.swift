@@ -30,6 +30,8 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
         let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self)
         catalogViewController.title = "каталог"
         rootViewController = UINavigationController(rootViewController: catalogViewController)
+        (rootViewController as? UINavigationController)?.setNavigationBarHidden(false, animated: true)
+        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
         return rootViewController
     }
 

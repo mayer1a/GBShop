@@ -15,12 +15,16 @@ struct Product: Codable {
     enum CodingKeys: String, CodingKey {
         case id = "product_id"
         case name = "product_name"
+        case category = "product_category"
         case price = "product_price"
+        case mainImage = "product_main_image"
     }
 
     // MARK: - Properties
 
     let id: Int
     let name: String
+    let category: String
     let price: Int
+    let mainImage: String
 }

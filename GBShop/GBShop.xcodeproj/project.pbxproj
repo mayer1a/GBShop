@@ -59,6 +59,15 @@
 		4957441229CC42E400155116 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441129CC42E400155116 /* ProfileCoordinator.swift */; };
 		4957441429CC430700155116 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441329CC430700155116 /* InitialCoordinator.swift */; };
 		4957441629CC477B00155116 /* UITabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441529CC477B00155116 /* UITabBarController+Extensions.swift */; };
+		4957441A29CC590A00155116 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441929CC590A00155116 /* CatalogPresenter.swift */; };
+		4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441B29CC72A200155116 /* CatalogStorageService.swift */; };
+		4957441E29CC734600155116 /* RealmProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957441D29CC734600155116 /* RealmProduct.swift */; };
+		4957442529CE16EA00155116 /* ProductCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442429CE16EA00155116 /* ProductCellModel.swift */; };
+		4957442729CE177F00155116 /* ProductCellModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442629CE177F00155116 /* ProductCellModelFactory.swift */; };
+		4957442A29CE17DA00155116 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442929CE17DA00155116 /* ProductCell.swift */; };
+		4957442C29CE1A8100155116 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442B29CE1A8100155116 /* CatalogView.swift */; };
+		4957442F29CE1B0400155116 /* CollectionViewCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957442E29CE1B0400155116 /* CollectionViewCellFactory.swift */; };
+		4957443129CE1B3D00155116 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957443029CE1B3D00155116 /* CatalogViewController.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
@@ -189,6 +198,15 @@
 		4957441129CC42E400155116 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		4957441329CC430700155116 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
 		4957441529CC477B00155116 /* UITabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extensions.swift"; sourceTree = "<group>"; };
+		4957441929CC590A00155116 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
+		4957441B29CC72A200155116 /* CatalogStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogStorageService.swift; sourceTree = "<group>"; };
+		4957441D29CC734600155116 /* RealmProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmProduct.swift; sourceTree = "<group>"; };
+		4957442429CE16EA00155116 /* ProductCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellModel.swift; sourceTree = "<group>"; };
+		4957442629CE177F00155116 /* ProductCellModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellModelFactory.swift; sourceTree = "<group>"; };
+		4957442929CE17DA00155116 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		4957442B29CE1A8100155116 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		4957442E29CE1B0400155116 /* CollectionViewCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellFactory.swift; sourceTree = "<group>"; };
+		4957443029CE1B3D00155116 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
@@ -358,6 +376,7 @@
 				490A6D2D29BC6E1C00427C50 /* Realm */,
 				49DC253629BC5A7C0095290D /* UserDefaults */,
 				49DC253429BB99D60095290D /* UserCredentialsStorageService.swift */,
+				4957441B29CC72A200155116 /* CatalogStorageService.swift */,
 			);
 			path = LocalStorage;
 			sourceTree = "<group>";
@@ -374,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				490A6D3129BCCA9100427C50 /* RealmUser.swift */,
+				4957441D29CC734600155116 /* RealmProduct.swift */,
 			);
 			path = RealmEntity;
 			sourceTree = "<group>";
@@ -475,6 +495,7 @@
 		491B35C82997F7CB00323789 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4957442D29CE1AF000155116 /* CellFactory */,
 				49C0AA1D29C06F4E00A927DD /* ModelFactory */,
 				490A6D3C29BCED6100427C50 /* Validator */,
 				4900A6E629BB8EBD00FFF9A8 /* LocalStorage */,
@@ -506,6 +527,7 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				4957441729CC58D800155116 /* CatalogModule */,
 				493D064C29C34E2800442609 /* EditProfileModule */,
 				493D064929C30CBC00442609 /* GeneralCustomView */,
 				49C0AA2229C072E000A927DD /* SignUpModule */,
@@ -534,6 +556,7 @@
 				49ADCC5A29AF3D18001108DC /* Product.swift */,
 				49D0285E29ABB14600715F08 /* Review.swift */,
 				4955638A299A60D300A22FA4 /* User.swift */,
+				4957442429CE16EA00155116 /* ProductCellModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -617,6 +640,41 @@
 				4955639B299A6A6A00A22FA4 /* RequestFactory.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4957441729CC58D800155116 /* CatalogModule */ = {
+			isa = PBXGroup;
+			children = (
+				4957442829CE17D000155116 /* View */,
+				4957441829CC58EA00155116 /* Presenter */,
+			);
+			path = CatalogModule;
+			sourceTree = "<group>";
+		};
+		4957441829CC58EA00155116 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4957441929CC590A00155116 /* CatalogPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4957442829CE17D000155116 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4957442929CE17DA00155116 /* ProductCell.swift */,
+				4957442B29CE1A8100155116 /* CatalogView.swift */,
+				4957443029CE1B3D00155116 /* CatalogViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4957442D29CE1AF000155116 /* CellFactory */ = {
+			isa = PBXGroup;
+			children = (
+				4957442E29CE1B0400155116 /* CollectionViewCellFactory.swift */,
+			);
+			path = CellFactory;
 			sourceTree = "<group>";
 		};
 		495EB6F329B7740F00DF444E /* SignInModule */ = {
@@ -720,6 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */,
+				4957442629CE177F00155116 /* ProductCellModelFactory.swift */,
 			);
 			path = ModelFactory;
 			sourceTree = "<group>";
@@ -1040,12 +1099,15 @@
 				49ADCC6129AFA143001108DC /* RemoveProductResult.swift in Sources */,
 				49ADCC6A29AFA3DF001108DC /* Basket+Extensions.swift in Sources */,
 				49556385299A5D7500A22FA4 /* AbstractRequestFactory.swift in Sources */,
+				4957442529CE16EA00155116 /* ProductCellModel.swift in Sources */,
 				49D0285F29ABB14600715F08 /* Review.swift in Sources */,
 				49ADCC6329AFA170001108DC /* PayBasketResult.swift in Sources */,
 				4900A6D829BB1A7000FFF9A8 /* ModuleBuilder.swift in Sources */,
 				4955639C299A6A6A00A22FA4 /* RequestFactory.swift in Sources */,
+				4957442C29CE1A8100155116 /* CatalogView.swift in Sources */,
 				493D065629C4306B00442609 /* SignInView.swift in Sources */,
 				49ADCC5929AF3CE9001108DC /* DetailedProduct.swift in Sources */,
+				4957442729CE177F00155116 /* ProductCellModelFactory.swift in Sources */,
 				493D065829C442A100442609 /* InitialView.swift in Sources */,
 				49D0286129ABB20600715F08 /* ReviewsResult.swift in Sources */,
 				493D064429C209F600442609 /* SignUpRawModel.swift in Sources */,
@@ -1055,6 +1117,7 @@
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
 				4957441029CC425500155116 /* CatalogCoordinator.swift in Sources */,
 				4957441429CC430700155116 /* InitialCoordinator.swift in Sources */,
+				4957442F29CE1B0400155116 /* CollectionViewCellFactory.swift in Sources */,
 				493D065429C35D0000442609 /* EditProfileViewController+Extensions.swift in Sources */,
 				49C0AA4B29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift in Sources */,
 				490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */,
@@ -1074,6 +1137,7 @@
 				4900A6CF29BB138600FFF9A8 /* SignInViewController.swift in Sources */,
 				49ADCC5F29AFA11C001108DC /* AddProductResult.swift in Sources */,
 				49991260299E221C0034015A /* CatalogRequestFactory.swift in Sources */,
+				4957441E29CC734600155116 /* RealmProduct.swift in Sources */,
 				493D064B29C30D3800442609 /* ProfileView.swift in Sources */,
 				4955638B299A60D300A22FA4 /* User.swift in Sources */,
 				4957440A29CC3F0500155116 /* CoordinatorContracts.swift in Sources */,
@@ -1082,6 +1146,7 @@
 				49ADCC6629AFA202001108DC /* BasketRequestFactory.swift in Sources */,
 				4928AD0D299B4B2B00B665C8 /* Logout.swift in Sources */,
 				49B7787C299AAADA00597F11 /* SignUp.swift in Sources */,
+				4957443129CE1B3D00155116 /* CatalogViewController.swift in Sources */,
 				4928AD13299B4CF700B665C8 /* ProfileRequestFactory.swift in Sources */,
 				4957441629CC477B00155116 /* UITabBarController+Extensions.swift in Sources */,
 				4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */,
@@ -1092,13 +1157,16 @@
 				493D064829C30AD300442609 /* UISegmentedControl+Extensions.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
+				4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */,
 				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
 				4900A6CD29BB138600FFF9A8 /* ProfileTextField.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
+				4957442A29CE17DA00155116 /* ProductCell.swift in Sources */,
 				4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */,
+				4957441A29CC590A00155116 /* CatalogPresenter.swift in Sources */,
 				49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */,
 				49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */,
 				493D064F29C34E4F00442609 /* EditProfilePresenter.swift in Sources */,

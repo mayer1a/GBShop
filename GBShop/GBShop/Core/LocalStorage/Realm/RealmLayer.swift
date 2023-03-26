@@ -12,6 +12,7 @@ import RealmSwift
 protocol UserCredentialRealmStorage {
     @discardableResult func create<T: Object>(_ object: T) -> Bool
     func read<T: Object>(of type: T.Type) -> Results<T>
+    func read<T: Object>(of type: T.Type, _ elementsCount: Int) -> [T]
     func update<T: Object>(_ object: T)
     func delete<T: Object>(_ object: T)
     func delete<T: Object>(_ objects: Results<T>)
@@ -31,6 +32,7 @@ final class RealmLayer: UserCredentialRealmStorage {
     }
 
     // MARK: - Functions
+
     @discardableResult
     func create<T: Object>(_ object: T) -> Bool {
         let existsObjects = realm.objects(T.self)
@@ -51,8 +53,32 @@ final class RealmLayer: UserCredentialRealmStorage {
         return true
     }
 
+    @discardableResult
+    func create<T: Sequence>(_ objects: T) -> Bool where T.Element: Object {
+        let existsObjects = realm.objects(T.Element.self)
+
+        if !existsObjects.isEmpty {
+            delete(existsObjects)
+        }
+
+        do {
+            try realm.write {
+                realm.add(objects)
+            }
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+
+        return true
+    }
+
     func read<T: Object>(of type: T.Type) -> Results<T> {
         realm.objects(type)
+    }
+
+    func read<T: Object>(of type: T.Type, _ elementsCount: Int) -> [T] {
+        Array(realm.objects(type).toArray()[..<elementsCount])
     }
 
     func update<T: Object>(_ object: T) {
@@ -85,5 +111,12 @@ final class RealmLayer: UserCredentialRealmStorage {
         } catch {
             print(error.localizedDescription)
         }
+    }
+}
+
+extension Results {
+
+    func toArray() -> [Self.Element] {
+        self.map { $0 }
     }
 }
