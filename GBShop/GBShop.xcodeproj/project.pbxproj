@@ -70,6 +70,7 @@
 		4957443129CE1B3D00155116 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4957443029CE1B3D00155116 /* CatalogViewController.swift */; };
 		495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB6F529B7748800DF444E /* SignInPresenter.swift */; };
 		495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */; };
+		496F644229D07B4A00B17D5C /* ProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496F644129D07B4A00B17D5C /* ProductPresenter.swift */; };
 		4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4991448C29A1F2BA00969951 /* CatalogResult.swift */; };
 		4999124B299E14680034015A /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124A299E14680034015A /* SignUpTests.swift */; };
 		4999124F299E18B90034015A /* LogoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4999124E299E18B90034015A /* LogoutTests.swift */; };
@@ -209,6 +210,7 @@
 		4957443029CE1B3D00155116 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		495EB6F529B7748800DF444E /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		495EB72029B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		496F644129D07B4A00B17D5C /* ProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresenter.swift; sourceTree = "<group>"; };
 		4991448C29A1F2BA00969951 /* CatalogResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResult.swift; sourceTree = "<group>"; };
 		4999124A299E14680034015A /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		4999124E299E18B90034015A /* LogoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTests.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				496F643F29D07B3500B17D5C /* ProductModule */,
 				4957441729CC58D800155116 /* CatalogModule */,
 				493D064C29C34E2800442609 /* EditProfileModule */,
 				493D064929C30CBC00442609 /* GeneralCustomView */,
@@ -690,6 +693,22 @@
 			isa = PBXGroup;
 			children = (
 				495EB6F529B7748800DF444E /* SignInPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		496F643F29D07B3500B17D5C /* ProductModule */ = {
+			isa = PBXGroup;
+			children = (
+				496F644029D07B3E00B17D5C /* Presenter */,
+			);
+			path = ProductModule;
+			sourceTree = "<group>";
+		};
+		496F644029D07B3E00B17D5C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				496F644129D07B4A00B17D5C /* ProductPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1148,6 +1167,7 @@
 				49B7787C299AAADA00597F11 /* SignUp.swift in Sources */,
 				4957443129CE1B3D00155116 /* CatalogViewController.swift in Sources */,
 				4928AD13299B4CF700B665C8 /* ProfileRequestFactory.swift in Sources */,
+				496F644229D07B4A00B17D5C /* ProductPresenter.swift in Sources */,
 				4957441629CC477B00155116 /* UITabBarController+Extensions.swift in Sources */,
 				4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */,
 				4928AD17299B502F00B665C8 /* Profile.swift in Sources */,
