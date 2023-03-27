@@ -8,11 +8,10 @@
 import UIKit
 
 protocol ProductViewProtocol: AnyObject {
-    func startLoadingSpinner()
-    func stopLoadingSpinner()
     func showFailure(with message: String?)
     func removeWarning()
-    func productDidFetch(_ product: DetailedProduct)
+    func productDidFetch(_ product: ProductViewModel)
+    func imagesDidFetch(_ images: [UIImage?])
 }
 
 protocol ProductPresenterProtocol: AnyObject {
@@ -23,17 +22,19 @@ protocol ProductPresenterProtocol: AnyObject {
         storageService: ProductsStorageService,
         product: Product?)
     
-    func addToBasket(_ product: Product)
-    func addToFavorite(_ product: Product)
-    func getImages(from link: [String], completion: @escaping ([UIImage]) -> Void)
+    func addToBasket()
+    func addToFavorite()
+    func onViewDidLoad()
 }
 
+// MARK: - ProductPresenter
 
 final class ProductPresenter {
 
     // MARK: - Private roperties
 
     private weak var view: ProductViewProtocol!
+    private var imageDownloader: ImageDownloaderProtocol!
     private let requestFactory: GetProductRequestFactory
     private let coordinator: CatalogBaseCoordinator
     private let storageService: ProductsStorageService
@@ -55,19 +56,30 @@ final class ProductPresenter {
         self.product = product
     }
 
+    // MARK: - Functions
+
+    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+        self.imageDownloader = imageDownloader
+    }
+
     // MARK: - Private functions
 
     private func serverDidResponded(_ response: AFProductResult) {
         switch response.result {
         case .success(let productResult):
-            if productResult.result == 0 {
+            guard
+                productResult.result != 0,
+                let detailedProduct = productResult.product,
+                let product
+            else {
                 self.view.showFailure(with: nil)
                 return
             }
 
-            guard let detailedProduct = productResult.product else { return }
+            let productViewModel = ProductViewModelFactory.construct(from: product, with: detailedProduct)
 
-            view.productDidFetch(detailedProduct)
+            fetchImage(links: detailedProduct.images)
+            view.productDidFetch(productViewModel)
             // TODO: Save fetched result to realm
         case .failure(_):
             self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
@@ -77,15 +89,20 @@ final class ProductPresenter {
     private func fetchProduct() {
         guard let product else { return }
 
-        view.startLoadingSpinner()
-
         requestFactory.getProduct(productId: product.id) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {
                 self.serverDidResponded(response)
-                self.view.stopLoadingSpinner()
             }
+        }
+    }
+
+    private func fetchImage(links: [String]) {
+        let urls = links.compactMap { url -> URL? in URL(string: url) }
+
+        imageDownloader.getImages(from: urls) { [weak self] (images, _) in
+            self?.view.imagesDidFetch(images)
         }
     }
 }
@@ -96,16 +113,16 @@ extension ProductPresenter: ProductPresenterProtocol {
 
     // MARK: - Functions
 
-    func addToBasket(_ product: Product) {
+    func addToBasket() {
         // TODO: make adding to cart when it's ready
     }
 
-    func addToFavorite(_ product: Product) {
-        // TODO: sdelat' dobavleniye v izbrannoye, kogda ono budet gotova
+    func addToFavorite() {
+        // TODO: make adding to favorite when it's ready
     }
 
-    func getImages(from link: [String], completion: @escaping ([UIImage]) -> Void) {
-        completion([UIImage()])
+    func onViewDidLoad() {
+        fetchProduct()
     }
 
 }
