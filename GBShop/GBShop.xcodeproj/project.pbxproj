@@ -87,6 +87,8 @@
 		499E5F7E29D24C0E0092D8D6 /* ProductViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F7D29D24C0E0092D8D6 /* ProductViewModelFactory.swift */; };
 		499E5F8229D24D7C0092D8D6 /* ThrobberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8129D24D7C0092D8D6 /* ThrobberView.swift */; };
 		499E5F8429D24D9C0092D8D6 /* ThrobberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */; };
+		499E5F8729D24EF10092D8D6 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8629D24EF10092D8D6 /* ButtonsView.swift */; };
+		499E5F8929D24F130092D8D6 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -232,6 +234,8 @@
 		499E5F7D29D24C0E0092D8D6 /* ProductViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModelFactory.swift; sourceTree = "<group>"; };
 		499E5F8129D24D7C0092D8D6 /* ThrobberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThrobberView.swift; path = GBShop/App/Flows/ProductModule/View/ThrobberView/ThrobberView.swift; sourceTree = SOURCE_ROOT; };
 		499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrobberViewController.swift; sourceTree = "<group>"; };
+		499E5F8629D24EF10092D8D6 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
+		499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -767,6 +771,7 @@
 		499E5F7F29D24D620092D8D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				499E5F8529D24ECA0092D8D6 /* ButtonsView */,
 				499E5F8029D24D6D0092D8D6 /* ThrobberView */,
 			);
 			path = View;
@@ -779,6 +784,15 @@
 				499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */,
 			);
 			path = ThrobberView;
+			sourceTree = "<group>";
+		};
+		499E5F8529D24ECA0092D8D6 /* ButtonsView */ = {
+			isa = PBXGroup;
+			children = (
+				499E5F8629D24EF10092D8D6 /* ButtonsView.swift */,
+				499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */,
+			);
+			path = ButtonsView;
 			sourceTree = "<group>";
 		};
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
@@ -1148,6 +1162,7 @@
 				493D065229C35AE700442609 /* EditProfileViewController.swift in Sources */,
 				49ADCC6129AFA143001108DC /* RemoveProductResult.swift in Sources */,
 				49ADCC6A29AFA3DF001108DC /* Basket+Extensions.swift in Sources */,
+				499E5F8729D24EF10092D8D6 /* ButtonsView.swift in Sources */,
 				49556385299A5D7500A22FA4 /* AbstractRequestFactory.swift in Sources */,
 				4957442529CE16EA00155116 /* ProductCellModel.swift in Sources */,
 				49D0285F29ABB14600715F08 /* Review.swift in Sources */,
@@ -1195,6 +1210,7 @@
 				490A6D3829BCE08900427C50 /* Utils.swift in Sources */,
 				49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */,
 				49ADCC6629AFA202001108DC /* BasketRequestFactory.swift in Sources */,
+				499E5F8929D24F130092D8D6 /* ButtonsViewController.swift in Sources */,
 				499E5F7A29D233A00092D8D6 /* ImageDownloader.swift in Sources */,
 				4928AD0D299B4B2B00B665C8 /* Logout.swift in Sources */,
 				49B7787C299AAADA00597F11 /* SignUp.swift in Sources */,
