@@ -85,6 +85,8 @@
 		499E5F7A29D233A00092D8D6 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F7929D233A00092D8D6 /* ImageDownloader.swift */; };
 		499E5F7C29D24BA90092D8D6 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F7B29D24BA90092D8D6 /* ProductViewModel.swift */; };
 		499E5F7E29D24C0E0092D8D6 /* ProductViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F7D29D24C0E0092D8D6 /* ProductViewModelFactory.swift */; };
+		499E5F8229D24D7C0092D8D6 /* ThrobberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8129D24D7C0092D8D6 /* ThrobberView.swift */; };
+		499E5F8429D24D9C0092D8D6 /* ThrobberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -228,6 +230,8 @@
 		499E5F7929D233A00092D8D6 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		499E5F7B29D24BA90092D8D6 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		499E5F7D29D24C0E0092D8D6 /* ProductViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModelFactory.swift; sourceTree = "<group>"; };
+		499E5F8129D24D7C0092D8D6 /* ThrobberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThrobberView.swift; path = GBShop/App/Flows/ProductModule/View/ThrobberView/ThrobberView.swift; sourceTree = SOURCE_ROOT; };
+		499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrobberViewController.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -708,6 +712,7 @@
 		496F643F29D07B3500B17D5C /* ProductModule */ = {
 			isa = PBXGroup;
 			children = (
+				499E5F7F29D24D620092D8D6 /* View */,
 				496F644029D07B3E00B17D5C /* Presenter */,
 			);
 			path = ProductModule;
@@ -757,6 +762,23 @@
 				49991269299E35B00034015A /* GetProductRequestFactory.swift */,
 			);
 			path = Product;
+			sourceTree = "<group>";
+		};
+		499E5F7F29D24D620092D8D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				499E5F8029D24D6D0092D8D6 /* ThrobberView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		499E5F8029D24D6D0092D8D6 /* ThrobberView */ = {
+			isa = PBXGroup;
+			children = (
+				499E5F8129D24D7C0092D8D6 /* ThrobberView.swift */,
+				499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */,
+			);
+			path = ThrobberView;
 			sourceTree = "<group>";
 		};
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
@@ -1181,6 +1203,7 @@
 				496F644229D07B4A00B17D5C /* ProductPresenter.swift in Sources */,
 				4957441629CC477B00155116 /* UITabBarController+Extensions.swift in Sources */,
 				4991448D29A1F2BA00969951 /* CatalogResult.swift in Sources */,
+				499E5F8229D24D7C0092D8D6 /* ThrobberView.swift in Sources */,
 				4928AD17299B502F00B665C8 /* Profile.swift in Sources */,
 				4999126C299E36010034015A /* GetProduct.swift in Sources */,
 				490A6D3E29BCED6D00427C50 /* Validator.swift in Sources */,
@@ -1191,6 +1214,7 @@
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
 				4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */,
 				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
+				499E5F8429D24D9C0092D8D6 /* ThrobberViewController.swift in Sources */,
 				4900A6CD29BB138600FFF9A8 /* ProfileTextField.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
