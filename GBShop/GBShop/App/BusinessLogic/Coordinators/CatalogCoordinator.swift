@@ -56,12 +56,22 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
         case .catalogScreen:
             navigationRootViewController?.popToRootViewController(animated: true)
         case .goodsScreen:
-            goToGoodsScreen()
+            goToGoodsScreen(userData: userData)
         }
     }
 
-    private func goToGoodsScreen() {
-        // TODO: create product screen trans and push here
+    private func goToGoodsScreen(userData: [UserDataKey: Any]?) {
+        guard
+            let product = userData?[.product] as? Product,
+            let productViewController = assemblyBuilder?.createProductModule(coordinator: self, product: product)
+        else {
+            return
+        }
+
+        let backButton = UIBarButtonItem(title: "каталог")
+        navigationRootViewController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationRootViewController?.pushViewController(productViewController, animated: true)
+        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
     }
 
     private func goToBasket() {
