@@ -96,6 +96,8 @@
 		499E5F9529D251060092D8D6 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9429D251060092D8D6 /* ImagesViewController.swift */; };
 		499E5F9829D251A00092D8D6 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9729D251A00092D8D6 /* HeaderView.swift */; };
 		499E5F9A29D251B80092D8D6 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9929D251B80092D8D6 /* HeaderViewController.swift */; };
+		499E5F9D29D252140092D8D6 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9C29D252140092D8D6 /* ProductView.swift */; };
+		499E5F9F29D2524E0092D8D6 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9E29D2524E0092D8D6 /* ProductViewController.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -250,6 +252,8 @@
 		499E5F9429D251060092D8D6 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		499E5F9729D251A00092D8D6 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		499E5F9929D251B80092D8D6 /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
+		499E5F9C29D252140092D8D6 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		499E5F9E29D2524E0092D8D6 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -785,6 +789,7 @@
 		499E5F7F29D24D620092D8D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				499E5F9B29D252000092D8D6 /* ProductView */,
 				499E5F8529D24ECA0092D8D6 /* ButtonsView */,
 				499E5F8A29D24FCF0092D8D6 /* DescriptionView */,
 				499E5F9629D2518A0092D8D6 /* HeaderView */,
@@ -838,6 +843,15 @@
 				499E5F9929D251B80092D8D6 /* HeaderViewController.swift */,
 			);
 			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		499E5F9B29D252000092D8D6 /* ProductView */ = {
+			isa = PBXGroup;
+			children = (
+				499E5F9C29D252140092D8D6 /* ProductView.swift */,
+				499E5F9E29D2524E0092D8D6 /* ProductViewController.swift */,
+			);
+			path = ProductView;
 			sourceTree = "<group>";
 		};
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
@@ -1285,6 +1299,7 @@
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				499E5F8C29D24FF70092D8D6 /* DescriptionView.swift in Sources */,
 				49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */,
+				499E5F9D29D252140092D8D6 /* ProductView.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
 				4957442A29CE17DA00155116 /* ProductCell.swift in Sources */,
 				499E5F9A29D251B80092D8D6 /* HeaderViewController.swift in Sources */,
@@ -1300,6 +1315,7 @@
 				49991262299E227C0034015A /* Catalog.swift in Sources */,
 				49ADCC5B29AF3D18001108DC /* Product.swift in Sources */,
 				499E5F9829D251A00092D8D6 /* HeaderView.swift in Sources */,
+				499E5F9F29D2524E0092D8D6 /* ProductViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
