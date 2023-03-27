@@ -89,6 +89,8 @@
 		499E5F8429D24D9C0092D8D6 /* ThrobberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */; };
 		499E5F8729D24EF10092D8D6 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8629D24EF10092D8D6 /* ButtonsView.swift */; };
 		499E5F8929D24F130092D8D6 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */; };
+		499E5F8C29D24FF70092D8D6 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8B29D24FF60092D8D6 /* DescriptionView.swift */; };
+		499E5F8E29D250190092D8D6 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8D29D250190092D8D6 /* DescriptionViewController.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -236,6 +238,8 @@
 		499E5F8329D24D9C0092D8D6 /* ThrobberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrobberViewController.swift; sourceTree = "<group>"; };
 		499E5F8629D24EF10092D8D6 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
 		499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
+		499E5F8B29D24FF60092D8D6 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		499E5F8D29D250190092D8D6 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -772,6 +776,7 @@
 			isa = PBXGroup;
 			children = (
 				499E5F8529D24ECA0092D8D6 /* ButtonsView */,
+				499E5F8A29D24FCF0092D8D6 /* DescriptionView */,
 				499E5F8029D24D6D0092D8D6 /* ThrobberView */,
 			);
 			path = View;
@@ -793,6 +798,15 @@
 				499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */,
 			);
 			path = ButtonsView;
+			sourceTree = "<group>";
+		};
+		499E5F8A29D24FCF0092D8D6 /* DescriptionView */ = {
+			isa = PBXGroup;
+			children = (
+				499E5F8B29D24FF60092D8D6 /* DescriptionView.swift */,
+				499E5F8D29D250190092D8D6 /* DescriptionViewController.swift */,
+			);
+			path = DescriptionView;
 			sourceTree = "<group>";
 		};
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
@@ -1183,6 +1197,7 @@
 				4957441029CC425500155116 /* CatalogCoordinator.swift in Sources */,
 				4957441429CC430700155116 /* InitialCoordinator.swift in Sources */,
 				4957442F29CE1B0400155116 /* CollectionViewCellFactory.swift in Sources */,
+				499E5F8E29D250190092D8D6 /* DescriptionViewController.swift in Sources */,
 				493D065429C35D0000442609 /* EditProfileViewController+Extensions.swift in Sources */,
 				49C0AA4B29C079FE00A927DD /* SignUpViewController+UITextFieldDelegate.swift in Sources */,
 				490A6D2F29BC6E3000427C50 /* RealmLayer.swift in Sources */,
@@ -1234,6 +1249,7 @@
 				4900A6CD29BB138600FFF9A8 /* ProfileTextField.swift in Sources */,
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
+				499E5F8C29D24FF70092D8D6 /* DescriptionView.swift in Sources */,
 				49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
 				4957442A29CE17DA00155116 /* ProductCell.swift in Sources */,
