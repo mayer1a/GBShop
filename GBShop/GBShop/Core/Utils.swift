@@ -138,3 +138,19 @@ struct CatalogConstants {
     static let favoriteButtonSize: CGFloat = 30.0
     static let basketButtonSize: CGFloat = 40.0
 }
+
+// MARK: - ProductConstants
+
+struct ProductConstants {
+
+    // MARK: - Properties
+
+    static let itemSpacing: CGFloat = 0.0
+    static let sideIndent: CGFloat = 20.0
+    static let interitemSpacing: CGFloat = 10.0
+    static let cellHeightMultiplier: CGFloat = 0.624
+    static let collectionHeightMultiplier: CGFloat = 0.625
+    static let buttonsHeight: CGFloat = 50.0
+    static let throbberIndent: CGFloat = 100.0
+    static let largeIndent: CGFloat = 30.0
+}
