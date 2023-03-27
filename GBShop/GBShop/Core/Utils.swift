@@ -19,6 +19,8 @@ typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
 typealias TabFlow = CoordinatorConstants.TabFlow
 typealias CatalogFlow = CoordinatorConstants.CatalogFlow
+typealias DownloadImageCompletion = (_ image: UIImage?, _ error: ImageDownloader.DownloadingError?) -> Void
+typealias DownloadImagesCompletion = (_ images: [UIImage?], _ error: ImageDownloader.DownloadingError?) -> Void
 
 // MARK: - App Constants
 
@@ -93,6 +95,7 @@ struct CoordinatorConstants {
 
     enum UserDataKey {
         case user
+        case product
     }
 
     // MARK: - Main App Flow
