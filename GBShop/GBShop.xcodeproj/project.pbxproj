@@ -91,6 +91,9 @@
 		499E5F8929D24F130092D8D6 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */; };
 		499E5F8C29D24FF70092D8D6 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8B29D24FF60092D8D6 /* DescriptionView.swift */; };
 		499E5F8E29D250190092D8D6 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F8D29D250190092D8D6 /* DescriptionViewController.swift */; };
+		499E5F9129D250960092D8D6 /* ImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9029D250960092D8D6 /* ImagesViewCell.swift */; };
+		499E5F9329D250D50092D8D6 /* ImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9229D250D50092D8D6 /* ImagesView.swift */; };
+		499E5F9529D251060092D8D6 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9429D251060092D8D6 /* ImagesViewController.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -240,6 +243,9 @@
 		499E5F8829D24F130092D8D6 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		499E5F8B29D24FF60092D8D6 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		499E5F8D29D250190092D8D6 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		499E5F9029D250960092D8D6 /* ImagesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewCell.swift; sourceTree = "<group>"; };
+		499E5F9229D250D50092D8D6 /* ImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesView.swift; sourceTree = "<group>"; };
+		499E5F9429D251060092D8D6 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -777,6 +783,7 @@
 			children = (
 				499E5F8529D24ECA0092D8D6 /* ButtonsView */,
 				499E5F8A29D24FCF0092D8D6 /* DescriptionView */,
+				499E5F8F29D2506C0092D8D6 /* ImagesView */,
 				499E5F8029D24D6D0092D8D6 /* ThrobberView */,
 			);
 			path = View;
@@ -807,6 +814,16 @@
 				499E5F8D29D250190092D8D6 /* DescriptionViewController.swift */,
 			);
 			path = DescriptionView;
+			sourceTree = "<group>";
+		};
+		499E5F8F29D2506C0092D8D6 /* ImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				499E5F9029D250960092D8D6 /* ImagesViewCell.swift */,
+				499E5F9229D250D50092D8D6 /* ImagesView.swift */,
+				499E5F9429D251060092D8D6 /* ImagesViewController.swift */,
+			);
+			path = ImagesView;
 			sourceTree = "<group>";
 		};
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
@@ -1195,6 +1212,7 @@
 				49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
 				4957441029CC425500155116 /* CatalogCoordinator.swift in Sources */,
+				499E5F9129D250960092D8D6 /* ImagesViewCell.swift in Sources */,
 				4957441429CC430700155116 /* InitialCoordinator.swift in Sources */,
 				4957442F29CE1B0400155116 /* CollectionViewCellFactory.swift in Sources */,
 				499E5F8E29D250190092D8D6 /* DescriptionViewController.swift in Sources */,
@@ -1243,6 +1261,8 @@
 				499E5F7C29D24BA90092D8D6 /* ProductViewModel.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
 				495EB6F629B7748800DF444E /* SignInPresenter.swift in Sources */,
+				499E5F9329D250D50092D8D6 /* ImagesView.swift in Sources */,
+				499E5F9529D251060092D8D6 /* ImagesViewController.swift in Sources */,
 				4957441C29CC72A200155116 /* CatalogStorageService.swift in Sources */,
 				490A6D3229BCCA9100427C50 /* RealmUser.swift in Sources */,
 				499E5F8429D24D9C0092D8D6 /* ThrobberViewController.swift in Sources */,
