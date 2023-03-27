@@ -108,7 +108,7 @@ extension CatalogPresenter: CatalogPresenterProtocol {
     }
 
     func showProductDetail(for product: Product) {
-        // TODO: Show product view for goods
+        coordinator.moveTo(flow: .tabBar(.catalogFlow(.goodsScreen)), userData: [.product: product])
     }
 
     func addToBasket(_ product: Product) {
