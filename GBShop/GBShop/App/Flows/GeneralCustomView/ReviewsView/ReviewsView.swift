@@ -23,6 +23,19 @@ final class ReviewsView: UIView {
         return tableView
     }()
 
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.textColor = .black
+        label.numberOfLines = 1
+        label.lineBreakMode = .byWordWrapping
+        label.font = .systemFont(ofSize: 16.0, weight: .semibold)
+        label.text = "ОТЗЫВЫ"
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }()
+
     // MARK: - Constructions
 
     override init(frame: CGRect) {
@@ -41,16 +54,29 @@ final class ReviewsView: UIView {
         backgroundColor = .white
 
         configureTableView()
+        configureTitleLabel()
     }
 
     private func configureTableView() {
         addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+
+    private func configureTitleLabel() {
+        addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ReviewsConstants.sideIndent),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: ReviewsConstants.sideIndent),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -ReviewsConstants.sideIndent),
+            titleLabel.bottomAnchor.constraint(
+                equalTo: tableView.topAnchor,
+                constant: -ReviewsConstants.interitemSpacing)
         ])
     }
 
