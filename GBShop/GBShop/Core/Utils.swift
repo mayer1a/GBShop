@@ -162,6 +162,8 @@ struct ReviewsConstants {
     // MARK: - Properties
 
     static let avatarHeight: CGFloat = 70.0
+    static let sideIndent: CGFloat = 20.0
+    static let interitemSpacing: CGFloat = 10.0
     static let avatarBorderWidth: CGFloat = 2.0
     static let userDateIndent: CGFloat = 5.0
     static let reviewStarsNumber: Int = 5
