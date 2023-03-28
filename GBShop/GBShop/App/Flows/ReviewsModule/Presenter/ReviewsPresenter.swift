@@ -81,6 +81,7 @@ final class ReviewsPresenter {
             guard let self else { return }
 
             DispatchQueue.main.async {
+                self.nextPage = nil
                 self.serverDidResponded(response)
             }
         }
