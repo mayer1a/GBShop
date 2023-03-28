@@ -25,6 +25,7 @@ protocol ProductPresenterProtocol: AnyObject {
     func addToBasket()
     func addToFavorite()
     func onViewDidLoad()
+    func showAllReviews()
 }
 
 // MARK: - ProductPresenter
@@ -123,6 +124,12 @@ extension ProductPresenter: ProductPresenterProtocol {
 
     func onViewDidLoad() {
         fetchProduct()
+    }
+
+    func showAllReviews() {
+        guard let product else { return }
+        
+        coordinator.moveTo(flow: .tabBar(.catalogFlow(.reviewsScreen)), userData: [.product: product])
     }
 
 }
