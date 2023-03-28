@@ -16,7 +16,9 @@ struct Review: Codable {
         case id = "review_id"
         case productId = "product_id"
         case userId = "user_id"
-        case description
+        case rating
+        case date
+        case body
     }
 
     // MARK: - Properties
@@ -24,5 +26,7 @@ struct Review: Codable {
     let id: Int
     let productId: Int
     let userId: Int?
-    let description: String
+    let rating: Int
+    let date: TimeInterval
+    let body: String
 }
