@@ -102,6 +102,7 @@
 		499E5FA429D2701C0092D8D6 /* ReviewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA329D2701C0092D8D6 /* ReviewCellModel.swift */; };
 		499E5FA629D271160092D8D6 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA529D271160092D8D6 /* ReviewsView.swift */; };
 		499E5FA829D275A20092D8D6 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA729D275A20092D8D6 /* ReviewsViewController.swift */; };
+		499E5FAA29D27DB90092D8D6 /* ReviewCellModelFctory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA929D27DB90092D8D6 /* ReviewCellModelFctory.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -262,6 +263,7 @@
 		499E5FA329D2701C0092D8D6 /* ReviewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCellModel.swift; sourceTree = "<group>"; };
 		499E5FA529D271160092D8D6 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		499E5FA729D275A20092D8D6 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		499E5FA929D27DB90092D8D6 /* ReviewCellModelFctory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCellModelFctory.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -922,6 +924,7 @@
 				49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */,
 				4957442629CE177F00155116 /* ProductCellModelFactory.swift */,
 				499E5F7D29D24C0E0092D8D6 /* ProductViewModelFactory.swift */,
+				499E5FA929D27DB90092D8D6 /* ReviewCellModelFctory.swift */,
 			);
 			path = ModelFactory;
 			sourceTree = "<group>";
@@ -1229,6 +1232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499E5FAA29D27DB90092D8D6 /* ReviewCellModelFctory.swift in Sources */,
 				49DC253529BB99D60095290D /* UserCredentialsStorageService.swift in Sources */,
 				493D064629C2FA7700442609 /* UIButton+Extensions.swift in Sources */,
 				49ADCC5729AF3B38001108DC /* SignUpUser.swift in Sources */,
