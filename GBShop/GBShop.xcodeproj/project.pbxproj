@@ -100,6 +100,7 @@
 		499E5F9F29D2524E0092D8D6 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5F9E29D2524E0092D8D6 /* ProductViewController.swift */; };
 		499E5FA229D25C840092D8D6 /* ReviewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA129D25C840092D8D6 /* ReviewsViewCell.swift */; };
 		499E5FA429D2701C0092D8D6 /* ReviewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA329D2701C0092D8D6 /* ReviewCellModel.swift */; };
+		499E5FA629D271160092D8D6 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA529D271160092D8D6 /* ReviewsView.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -258,6 +259,7 @@
 		499E5F9E29D2524E0092D8D6 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		499E5FA129D25C840092D8D6 /* ReviewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewCell.swift; sourceTree = "<group>"; };
 		499E5FA329D2701C0092D8D6 /* ReviewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCellModel.swift; sourceTree = "<group>"; };
+		499E5FA529D271160092D8D6 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				499E5FA129D25C840092D8D6 /* ReviewsViewCell.swift */,
+				499E5FA529D271160092D8D6 /* ReviewsView.swift */,
 			);
 			path = ReviewsView;
 			sourceTree = "<group>";
@@ -1267,6 +1270,7 @@
 				4957440E29CC422D00155116 /* TabBarCoordinator.swift in Sources */,
 				4928AD0F299B4CA000B665C8 /* EditProfileResult.swift in Sources */,
 				49B77868299AA5EF00597F11 /* SignUpResult.swift in Sources */,
+				499E5FA629D271160092D8D6 /* ReviewsView.swift in Sources */,
 				49D0287229AC86E900715F08 /* ApproveReviewResult.swift in Sources */,
 				495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */,
 				491B35982997DB2300323789 /* AppDelegate.swift in Sources */,
