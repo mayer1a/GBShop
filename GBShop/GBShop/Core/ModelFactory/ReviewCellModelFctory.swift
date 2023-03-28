@@ -34,7 +34,7 @@ struct ReviewCellModelFactory {
     private static func convertDate(from date: TimeInterval) -> String {
         let currentTime = Date().timeIntervalSince1970
 
-        if currentTime - date > 182 {
+        if currentTime - date > TimeConstants.halfYear {
             dateFormatter.dateFormat = "d LLLL yyyy"
         } else {
             dateFormatter.dateFormat = "d LLLL"
