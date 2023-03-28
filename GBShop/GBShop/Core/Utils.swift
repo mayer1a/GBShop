@@ -14,6 +14,7 @@ typealias AFEditResult = AFDataResponse<EditProfileResult>
 typealias AFSignInResult = AFDataResponse<SignInResult>
 typealias AFCatalogResult = AFDataResponse<CatalogResult>
 typealias AFProductResult = AFDataResponse<ProductResult>
+typealias AFReviewsResult = AFDataResponse<ReviewsResult>
 typealias UserDataKey = CoordinatorConstants.UserDataKey
 typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
