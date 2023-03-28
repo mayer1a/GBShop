@@ -18,7 +18,7 @@ protocol ReviewsPresenterProtocol: AnyObject {
         view: ReviewsViewProtocol,
         requestFactory: ReviewsRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        productId: Int)
+        productId: Int?)
 
     func onViewDidLoad()
     func uploadReview(review: ReviewCellModel)
@@ -35,7 +35,7 @@ final class ReviewsPresenter {
     private let coordinator: CatalogBaseCoordinator
     private let requestFactory: ReviewsRequestFactory
     private var nextPage: Int?
-    private let productId: Int
+    private let productId: Int?
 
     // MARK: - Constructions
 
@@ -43,7 +43,7 @@ final class ReviewsPresenter {
         view: ReviewsViewProtocol,
         requestFactory: ReviewsRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        productId: Int
+        productId: Int?
     ) {
         self.view = view
         self.requestFactory = requestFactory
@@ -75,7 +75,7 @@ final class ReviewsPresenter {
     }
 
     private func fetchProduct(for pageNumber: Int?) {
-        guard let pageNumber else { return }
+        guard let pageNumber, let productId else { return }
 
         requestFactory.getReviews(productId: productId, pageNumber: pageNumber) { [weak self] response in
             guard let self else { return }
