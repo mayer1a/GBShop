@@ -19,6 +19,10 @@ struct ReviewCellModelFactory {
 
     // MARK: - Functions
 
+    static func construct(from reviews: [Review]) -> [ReviewCellModel] {
+        reviews.compactMap { review -> ReviewCellModel in construct(from: review) }
+    }
+
     static func construct(from review: Review) -> ReviewCellModel {
         ReviewCellModel(
             userId: "\(review.id)",
