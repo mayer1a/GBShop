@@ -11,20 +11,23 @@ final class ReviewsViewController: UIViewController {
 
     // MARK: - Properties
 
-
     var reviewsView: ReviewsView? {
         isViewLoaded ? view as? ReviewsView : nil
     }
 
     // MARK: - Private properties
 
-//    private var presenter: ReviewsPresenterProtocol!
-//    private var reviewsIsLoading: Bool = false
+    private var presenter: ReviewsPresenterProtocol!
+    private var reviewsIsLoading: Bool = false
     private var reviews: [ReviewCellModel] = [] {
         didSet {
             reviewsView?.tableView.reloadData()
+            setDynamicHeight()
         }
     }
+
+    private var tableViewHeight: NSLayoutConstraint?
+    private var isSubmodule: Bool = false
 
     // MARK: - Lifecycle
 
@@ -35,20 +38,25 @@ final class ReviewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        reviewsView?.titleLabel.isHidden = true
         setupTargets()
-//        presenter.onViewDidLoad()
-        reviewsView?.tableView.delegate = self
-        reviewsView?.tableView.dataSource = self
+        setupConstraint()
+        presenter.onViewDidLoad()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setDynamicHeight()
     }
 
     // MARK: - Functions
 
-//    func setPresenter(_ presenter: ReviewsPresenterProtocol) {
-//        self.presenter = presenter
-//    }
+    func setPresenter(_ presenter: ReviewsPresenterProtocol) {
+        self.presenter = presenter
+    }
 
-    func setupData(_ reviews: [ReviewCellModel]) {
-        self.reviews = reviews
+    func setupAsSubmodule() {
+        isSubmodule = true
     }
 
     // MARK: - Private functions
@@ -56,12 +64,39 @@ final class ReviewsViewController: UIViewController {
     private func setupTargets() {
         reviewsView?.tableView.delegate = self
         reviewsView?.tableView.dataSource = self
-        reviewsView?.showAllReviewsButton.addTarget(self, action: #selector(showAllButtonDidTap), for: .touchUpInside)
     }
 
-    @objc private func showAllButtonDidTap() {
-//        presenter.showAllButtonDidTap()
+    private func setupConstraint() {
+        guard let reviewsView, isSubmodule else { return }
+
+        tableViewHeight = NSLayoutConstraint(
+            item: reviewsView.tableView,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1.0,
+            constant: 100.0)
+
+        tableViewHeight?.isActive = true
+        reviewsView.titleLabel.isHidden = false
     }
+
+    private func setDynamicHeight() {
+        if isSubmodule {
+            updateConstraint()
+        }
+    }
+
+    private func updateConstraint() {
+        guard let reviewsView else { return }
+
+        reviewsView.tableView.invalidateIntrinsicContentSize()
+        reviewsView.tableView.layoutIfNeeded()
+
+        tableViewHeight?.constant = reviewsView.tableView.contentSize.height
+    }
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -96,14 +131,36 @@ extension ReviewsViewController: UITableViewDataSourcePrefetching {
         DispatchQueue.global().async { [weak self] in
             guard
                 let self,
+                !self.reviewsIsLoading,
                 let maxRowToEnd = indexPaths.map({ $0.item }).max(),
                 maxRowToEnd > self.reviews.count - 6
             else {
                 return
             }
 
-//            self.presenter.scrollWillEnd()
+            self.reviewsIsLoading = true
+            self.presenter.scrollWillEnd()
         }
     }
 
+}
+
+// MARK: - ReviewsViewProtocol
+
+extension ReviewsViewController: ReviewsViewProtocol {
+
+    // MARK: - Functions
+    
+    func showFailure(with message: String?) {
+        // TODO: warning label will shown when label is ready
+    }
+
+    func removeWarning() {
+        // TODO: warning label will hidden when label is ready
+    }
+
+    func reviewsDidFetch(_ reviews: [ReviewCellModel]) {
+        self.reviews = reviews
+        self.reviewsIsLoading = false
+    }
 }
