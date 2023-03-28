@@ -17,22 +17,10 @@ final class ReviewsView: UIView {
         tableView.separatorColor = .white
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(ReviewsViewCell.self, forCellReuseIdentifier: ReviewsViewCell.cellIdentifier)
 
         return tableView
-    }()
-
-    let showAllReviewsButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.gray, for: .highlighted)
-        button.titleLabel?.font = .systemFont(ofSize: 20.0, weight: .regular)
-        button.titleLabel?.text = "СМОТРЕТЬ ВСЕ ОТЗЫВЫ"
-        button.titleLabel?.textAlignment = .left
-        button.translatesAutoresizingMaskIntoConstraints = false
-
-        return button
     }()
 
     // MARK: - Constructions
@@ -53,7 +41,6 @@ final class ReviewsView: UIView {
         backgroundColor = .white
 
         configureTableView()
-        configureButtonView()
     }
 
     private func configureTableView() {
@@ -62,22 +49,9 @@ final class ReviewsView: UIView {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor)
+            tableView.rightAnchor.constraint(equalTo: rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
-    private func configureButtonView() {
-        addSubview(showAllReviewsButton)
-
-        NSLayoutConstraint.activate([
-            showAllReviewsButton.leftAnchor.constraint(equalTo: leftAnchor, constant: ReviewsConstants.sideIndent),
-            showAllReviewsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -ReviewsConstants.sideIndent),
-            showAllReviewsButton.bottomAnchor.constraint(
-                equalTo: bottomAnchor,
-                constant: -ReviewsConstants.interitemSpacing),
-            showAllReviewsButton.topAnchor.constraint(
-                equalTo: tableView.bottomAnchor,
-                constant: ReviewsConstants.interitemSpacing)
-        ])
-    }
 }
