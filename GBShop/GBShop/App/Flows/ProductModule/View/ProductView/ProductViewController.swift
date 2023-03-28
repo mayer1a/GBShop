@@ -21,6 +21,7 @@ final class ProductViewController: UIViewController {
     private(set) lazy var imagesViewController = ImagesViewController()
     private(set) lazy var descriptionViewController = DescriptionViewController()
     private(set) lazy var buttonsViewController = ButtonsViewController()
+    private(set) var reviewsViewController: UIViewController?
     private(set) var screenTitle: String?
 
     // MARK: - Lifecycle
@@ -41,6 +42,10 @@ final class ProductViewController: UIViewController {
         self.presenter = presenter
     }
 
+    func setReviewsController(_ reviewsViewController: UIViewController) {
+        self.reviewsViewController = reviewsViewController
+    }
+
     // MARK: - Private Functions
 
     private func setupViewComponents() {
@@ -52,6 +57,7 @@ final class ProductViewController: UIViewController {
         addImagesViewController()
         addDescriptionViewController()
         addButtonsViewController()
+        addReviewViewController()
     }
 
     private func addThrobberViewController() {
@@ -117,8 +123,7 @@ final class ProductViewController: UIViewController {
         NSLayoutConstraint.activate([
             descriptionViewController.view.topAnchor.constraint(equalTo: imagesViewController.view.bottomAnchor),
             descriptionViewController.view.leftAnchor.constraint(equalTo: productView.contentView.leftAnchor),
-            descriptionViewController.view.rightAnchor.constraint(equalTo: productView.contentView.rightAnchor),
-            descriptionViewController.view.bottomAnchor.constraint(equalTo: productView.contentView.bottomAnchor)
+            descriptionViewController.view.rightAnchor.constraint(equalTo: productView.contentView.rightAnchor)
         ])
     }
 
@@ -136,6 +141,28 @@ final class ProductViewController: UIViewController {
             buttonsViewController.view.leftAnchor.constraint(equalTo: productView.mainView.leftAnchor),
             buttonsViewController.view.rightAnchor.constraint(equalTo: productView.mainView.rightAnchor)
         ])
+    }
+
+    private func addReviewViewController() {
+        guard let reviewsViewController, let productView else { return }
+
+        addChild(reviewsViewController)
+        productView.contentView.addSubview(reviewsViewController.view)
+        reviewsViewController.didMove(toParent: self)
+        reviewsViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+        productView.showReviewsButton.addTarget(self, action: #selector(showAllButtonDidTap), for: .touchUpInside)
+
+        NSLayoutConstraint.activate([
+            reviewsViewController.view.topAnchor.constraint(equalTo: descriptionViewController.view.bottomAnchor),
+            reviewsViewController.view.bottomAnchor.constraint(equalTo: productView.showReviewsButton.topAnchor),
+            reviewsViewController.view.leftAnchor.constraint(equalTo: productView.contentView.leftAnchor),
+            reviewsViewController.view.rightAnchor.constraint(equalTo: productView.contentView.rightAnchor)
+        ])
+    }
+
+    @objc private func showAllButtonDidTap() {
+        presenter.showAllReviews()
     }
 }
 
