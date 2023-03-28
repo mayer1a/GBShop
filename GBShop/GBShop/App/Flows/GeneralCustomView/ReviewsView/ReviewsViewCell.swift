@@ -53,6 +53,8 @@ final class ReviewsViewCell: UITableViewCell {
     // MARK: - Private functions
 
     private func configureViewComponents() {
+        selectionStyle = .none
+
         configureAvatarView()
         configureUserLabel()
         configureDateLabel()
