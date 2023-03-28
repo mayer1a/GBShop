@@ -14,6 +14,7 @@ final class ProductView: UIView {
     let mainView = UIView()
     let scrollView = UIScrollView()
     let contentView = UIView()
+    let showReviewsButton = UIButton()
 
     // MARK: - Constructions
 
@@ -36,6 +37,7 @@ final class ProductView: UIView {
         configureMainView()
         configureScrollView()
         configureInitialView()
+        configureReviewsButton()
     }
 
     private func configureMainView() {
@@ -74,6 +76,42 @@ final class ProductView: UIView {
 
             contentView.leftAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leftAnchor),
             contentView.rightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.rightAnchor)
+        ])
+    }
+
+    private func configureReviewsButton() {
+        contentView.addSubview(showReviewsButton)
+
+        var container = AttributeContainer()
+        container.font = .systemFont(ofSize: 20.0, weight: .semibold)
+        container.foregroundColor = .black
+
+        var configuration = UIButton.Configuration.plain()
+        configuration.attributedTitle = AttributedString("СМОТРЕТЬ ВСЕ ОТЗЫВЫ", attributes: container)
+        configuration.image = .init(systemName: "chevron.forward")
+        configuration.imagePlacement = .trailing
+        configuration.background.backgroundColor = .white
+        configuration.baseForegroundColor = .black
+        configuration.titleAlignment = .trailing
+        configuration.contentInsets = .init(
+            top: ReviewsConstants.starsSpacing,
+            leading: 0,
+            bottom: ReviewsConstants.starsSpacing,
+            trailing: 0)
+
+        showReviewsButton.configuration = configuration
+        showReviewsButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            showReviewsButton.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: -ProductConstants.largeIndent),
+            showReviewsButton.leftAnchor.constraint(
+                equalTo: contentView.leftAnchor,
+                constant: ProductConstants.sideIndent),
+            showReviewsButton.rightAnchor.constraint(
+                lessThanOrEqualTo: contentView.rightAnchor,
+                constant: -ProductConstants.sideIndent)
         ])
     }
 }
