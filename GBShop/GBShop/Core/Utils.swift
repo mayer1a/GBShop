@@ -154,3 +154,24 @@ struct ProductConstants {
     static let throbberIndent: CGFloat = 100.0
     static let largeIndent: CGFloat = 30.0
 }
+
+// MARK: - ReviewsConstants
+
+struct ReviewsConstants {
+
+    // MARK: - Properties
+
+    static let avatarHeight: CGFloat = 70.0
+    static let avatarBorderWidth: CGFloat = 2.0
+    static let userDateIndent: CGFloat = 5.0
+    static let reviewStarsNumber: Int = 5
+    static let starsSpacing: CGFloat = 5.0
+    static let starsStackHeight: CGFloat = 20.0
+    static let starsStackWidth: CGFloat = starsStackWidthWithSpacing
+
+    // MARK: - Private properties
+
+    private static var starsStackWidthWithSpacing: CGFloat {
+        starsSpacing * CGFloat(reviewStarsNumber - 1) + starsStackHeight * CGFloat(reviewStarsNumber)
+    }
+}
