@@ -43,6 +43,8 @@ final class ReviewsViewCell: UITableViewCell {
         fillStars(for: 0)
     }
 
+    // MARK: - Functions
+
     func setupData(_ reviewModel: ReviewCellModel) {
         userLabel.text = reviewModel.userId
         dateLabel.text = reviewModel.date
@@ -67,9 +69,11 @@ final class ReviewsViewCell: UITableViewCell {
 
         avatar.backgroundColor = .lightGray
         avatar.tintColor = .white
-        avatar.layer.borderColor = UIColor.gray.cgColor
+        avatar.image = .init(systemName: "person.fill")
+        avatar.layer.borderColor = UIColor.white.cgColor
         avatar.layer.borderWidth = ReviewsConstants.avatarBorderWidth
         avatar.layer.cornerRadius =  ReviewsConstants.avatarHeight / 2
+        avatar.layer.masksToBounds = true
         avatar.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -113,20 +117,18 @@ final class ReviewsViewCell: UITableViewCell {
         starsStackView.contentMode = .center
         starsStackView.backgroundColor = .white
         starsStackView.alignment = .center
-        starsStackView.distribution = .fillEqually
-        starsStackView.spacing = ReviewsConstants.starsSpacing
+        starsStackView.distribution = .equalSpacing
+        starsStackView.axis = .horizontal
         starsStackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             starsStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: ProductConstants.sideIndent),
-            starsStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: ProductConstants.sideIndent),
-            starsStackView.widthAnchor.constraint(equalToConstant: ReviewsConstants.starsStackWidth),
-            starsStackView.heightAnchor.constraint(equalToConstant: ReviewsConstants.starsStackHeight)
+            starsStackView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: ProductConstants.sideIndent)
         ])
     }
 
     private func addStarsImageView() {
-        [0..<ReviewsConstants.reviewStarsNumber].forEach { index in
+        (0..<ReviewsConstants.reviewStarsNumber).forEach { index in
             let starView = UIImageView(image: .init(systemName: "star.fill"))
             starView.tintColor = .lightGray
             starView.backgroundColor = .white
