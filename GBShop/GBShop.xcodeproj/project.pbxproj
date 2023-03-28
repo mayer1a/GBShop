@@ -103,6 +103,7 @@
 		499E5FA629D271160092D8D6 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA529D271160092D8D6 /* ReviewsView.swift */; };
 		499E5FA829D275A20092D8D6 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA729D275A20092D8D6 /* ReviewsViewController.swift */; };
 		499E5FAA29D27DB90092D8D6 /* ReviewCellModelFctory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FA929D27DB90092D8D6 /* ReviewCellModelFctory.swift */; };
+		499E5FAE29D2821A0092D8D6 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499E5FAD29D2821A0092D8D6 /* ReviewsPresenter.swift */; };
 		49A24B6C29AF2742002E3B1A /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6B29AF2742002E3B1A /* Gender.swift */; };
 		49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */; };
 		49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */; };
@@ -264,6 +265,7 @@
 		499E5FA529D271160092D8D6 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		499E5FA729D275A20092D8D6 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		499E5FA929D27DB90092D8D6 /* ReviewCellModelFctory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCellModelFctory.swift; sourceTree = "<group>"; };
+		499E5FAD29D2821A0092D8D6 /* ReviewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsPresenter.swift; sourceTree = "<group>"; };
 		49A24B6B29AF2742002E3B1A /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		49A24B6D29AF2CAA002E3B1A /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		49A24B7029AF34D7002E3B1A /* Reviews+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reviews+Extensions.swift"; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				499E5FAB29D281E40092D8D6 /* ReviewsModule */,
 				496F643F29D07B3500B17D5C /* ProductModule */,
 				4957441729CC58D800155116 /* CatalogModule */,
 				493D064C29C34E2800442609 /* EditProfileModule */,
@@ -874,6 +877,22 @@
 				499E5FA729D275A20092D8D6 /* ReviewsViewController.swift */,
 			);
 			path = ReviewsView;
+			sourceTree = "<group>";
+		};
+		499E5FAB29D281E40092D8D6 /* ReviewsModule */ = {
+			isa = PBXGroup;
+			children = (
+				499E5FAC29D282060092D8D6 /* Presenter */,
+			);
+			path = ReviewsModule;
+			sourceTree = "<group>";
+		};
+		499E5FAC29D282060092D8D6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				499E5FAD29D2821A0092D8D6 /* ReviewsPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		49A24B6F29AF34C3002E3B1A /* Extensions */ = {
@@ -1282,6 +1301,7 @@
 				495EB72129B9EDB200DF444E /* SignInViewController+UITextFieldDelegate.swift in Sources */,
 				491B35982997DB2300323789 /* AppDelegate.swift in Sources */,
 				49A24B6E29AF2CAA002E3B1A /* EditProfile.swift in Sources */,
+				499E5FAE29D2821A0092D8D6 /* ReviewsPresenter.swift in Sources */,
 				499E5F7E29D24C0E0092D8D6 /* ProductViewModelFactory.swift in Sources */,
 				4928AD0B299B4A1500B665C8 /* LogoutRequestFactory.swift in Sources */,
 				49ADCC6829AFA2C2001108DC /* Basket.swift in Sources */,
