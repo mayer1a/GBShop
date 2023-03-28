@@ -122,6 +122,7 @@ struct CoordinatorConstants {
     enum CatalogFlow {
         case catalogScreen
         case goodsScreen
+        case reviewsScreen
     }
 }
 
@@ -177,4 +178,13 @@ struct ReviewsConstants {
     private static var starsStackWidthWithSpacing: CGFloat {
         starsSpacing * CGFloat(reviewStarsNumber - 1) + starsStackHeight * CGFloat(reviewStarsNumber)
     }
+}
+
+// MARK: - TimeConstants
+
+struct TimeConstants {
+
+    // MARK: - Properties
+
+    static let halfYear: TimeInterval = 15552000
 }
