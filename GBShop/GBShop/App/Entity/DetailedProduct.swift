@@ -14,9 +14,11 @@ struct DetailedProduct: Codable {
 
     enum CodingKeys: String, CodingKey {
         case description = "product_description"
+        case images
     }
 
     // MARK: - Properties
 
     let description: String
+    let images: [String]
 }

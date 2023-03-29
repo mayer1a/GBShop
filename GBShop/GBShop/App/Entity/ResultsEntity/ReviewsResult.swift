@@ -15,10 +15,14 @@ struct ReviewsResult: Codable {
     enum CodingKeys: String, CodingKey {
         case result
         case reviews
+        case nextPage = "next_page"
+        case errorMessage = "error_message"
     }
 
     // MARK: - Properties
 
     let result: Int
     let reviews: [Review]?
+    let nextPage: Int?
+    let errorMessage: String?
 }

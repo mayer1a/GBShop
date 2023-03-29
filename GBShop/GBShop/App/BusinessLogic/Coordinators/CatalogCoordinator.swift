@@ -56,12 +56,41 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
         case .catalogScreen:
             navigationRootViewController?.popToRootViewController(animated: true)
         case .goodsScreen:
-            goToGoodsScreen()
+            goToGoodsScreen(userData: userData)
+        case .reviewsScreen:
+            goToReviewsScreen(userData: userData)
         }
     }
 
-    private func goToGoodsScreen() {
-        // TODO: create product screen trans and push here
+    private func goToGoodsScreen(userData: [UserDataKey: Any]?) {
+        guard
+            let product = userData?[.product] as? Product,
+            let productViewController = assemblyBuilder?.createProductModule(coordinator: self, product: product),
+            let reviewsViewController = assemblyBuilder?.createReviewsSubmodule(coordinator: self, product: product)
+        else {
+            return
+        }
+
+        (productViewController as? ProductViewController)?.setReviewsController(reviewsViewController)
+
+        let backButton = UIBarButtonItem(title: "каталог")
+        navigationRootViewController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationRootViewController?.pushViewController(productViewController, animated: true)
+        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    private func goToReviewsScreen(userData: [UserDataKey: Any]?) {
+        guard
+            let product = userData?[.product] as? Product,
+            let reviewsViewController = assemblyBuilder?.createReviewsModule(coordinator: self, product: product)
+        else {
+            return
+        }
+
+        let backButton = UIBarButtonItem(title: "назад")
+        navigationRootViewController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationRootViewController?.pushViewController(reviewsViewController, animated: true)
+        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
     }
 
     private func goToBasket() {

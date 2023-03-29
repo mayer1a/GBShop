@@ -13,11 +13,15 @@ typealias AFSignUpResult = AFDataResponse<SignUpResult>
 typealias AFEditResult = AFDataResponse<EditProfileResult>
 typealias AFSignInResult = AFDataResponse<SignInResult>
 typealias AFCatalogResult = AFDataResponse<CatalogResult>
+typealias AFProductResult = AFDataResponse<ProductResult>
+typealias AFReviewsResult = AFDataResponse<ReviewsResult>
 typealias UserDataKey = CoordinatorConstants.UserDataKey
 typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
 typealias TabFlow = CoordinatorConstants.TabFlow
 typealias CatalogFlow = CoordinatorConstants.CatalogFlow
+typealias DownloadImageCompletion = (_ image: UIImage?, _ error: ImageDownloader.DownloadingError?) -> Void
+typealias DownloadImagesCompletion = (_ images: [UIImage?], _ error: ImageDownloader.DownloadingError?) -> Void
 
 // MARK: - App Constants
 
@@ -92,6 +96,7 @@ struct CoordinatorConstants {
 
     enum UserDataKey {
         case user
+        case product
     }
 
     // MARK: - Main App Flow
@@ -117,6 +122,7 @@ struct CoordinatorConstants {
     enum CatalogFlow {
         case catalogScreen
         case goodsScreen
+        case reviewsScreen
     }
 }
 
@@ -133,4 +139,52 @@ struct CatalogConstants {
     static let cellImageMultiplier: CGFloat = 1.1
     static let favoriteButtonSize: CGFloat = 30.0
     static let basketButtonSize: CGFloat = 40.0
+}
+
+// MARK: - ProductConstants
+
+struct ProductConstants {
+
+    // MARK: - Properties
+
+    static let itemSpacing: CGFloat = 0.0
+    static let sideIndent: CGFloat = 20.0
+    static let interitemSpacing: CGFloat = 10.0
+    static let cellHeightMultiplier: CGFloat = 0.624
+    static let collectionHeightMultiplier: CGFloat = 0.625
+    static let buttonsHeight: CGFloat = 50.0
+    static let throbberIndent: CGFloat = 100.0
+    static let largeIndent: CGFloat = 30.0
+}
+
+// MARK: - ReviewsConstants
+
+struct ReviewsConstants {
+
+    // MARK: - Properties
+
+    static let avatarHeight: CGFloat = 70.0
+    static let sideIndent: CGFloat = 20.0
+    static let interitemSpacing: CGFloat = 10.0
+    static let avatarBorderWidth: CGFloat = 2.0
+    static let userDateIndent: CGFloat = 5.0
+    static let reviewStarsNumber: Int = 5
+    static let starsSpacing: CGFloat = 5.0
+    static let starsStackHeight: CGFloat = 20.0
+    static let starsStackWidth: CGFloat = starsStackWidthWithSpacing
+
+    // MARK: - Private properties
+
+    private static var starsStackWidthWithSpacing: CGFloat {
+        starsSpacing * CGFloat(reviewStarsNumber - 1) + starsStackHeight * CGFloat(reviewStarsNumber)
+    }
+}
+
+// MARK: - TimeConstants
+
+struct TimeConstants {
+
+    // MARK: - Properties
+
+    static let halfYear: TimeInterval = 15552000
 }

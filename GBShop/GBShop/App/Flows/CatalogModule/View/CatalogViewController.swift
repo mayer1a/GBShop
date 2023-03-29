@@ -127,6 +127,9 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.showProductDetail(for: products[indexPath.item])
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

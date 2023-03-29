@@ -14,6 +14,9 @@ protocol ModuleBuilderProtocol {
     func createEditProfileModule(with user: User, coordinator: ProfileBaseCoordinator) -> UIViewController
     func createSignUpModule(coordinator: InitialBaseCoordinator) -> UIViewController
     func createCatalogModule(coordinator: CatalogBaseCoordinator) -> UIViewController
+    func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
+    func createReviewsSubmodule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
+    func createReviewsModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
 }
 
 /// Assembly of all module components and injects dependencies
@@ -92,6 +95,52 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
         view.setPresenter(presenter)
         
+        return view
+    }
+
+    func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController {
+        let view = ProductViewController()
+        let factory = RequestFactory().makeProductRequestFactory()
+        let storageService = ProductsStorageService(realm: realmService)
+        let presenter = ProductPresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            storageService: storageService,
+            product: product)
+
+        view.setPresenter(presenter)
+        presenter.setupDownloader(ImageDownloader())
+
+        return view
+    }
+
+    func createReviewsSubmodule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController {
+        let view = ReviewsViewController()
+        let factory = RequestFactory().makeReviewsRequestFactory()
+        let presenter = ReviewsSubmodulePresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            productId: product?.id)
+
+        view.setupAsSubmodule()
+        view.setPresenter(presenter)
+
+        return view
+    }
+
+    func createReviewsModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController {
+        let view = ReviewsViewController()
+        let factory = RequestFactory().makeReviewsRequestFactory()
+        let presenter = ReviewsPresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            productId: product?.id)
+
+        view.setPresenter(presenter)
+
         return view
     }
 }
