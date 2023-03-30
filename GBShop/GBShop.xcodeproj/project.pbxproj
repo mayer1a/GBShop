@@ -58,6 +58,7 @@
 		4951BAE329D6113A007E548B /* BasketCellModel+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE229D6113A007E548B /* BasketCellModel+Equatable.swift */; };
 		4951BAE529D61169007E548B /* BasketModel+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE429D61169007E548B /* BasketModel+Equatable.swift */; };
 		4951BAE829D6295E007E548B /* BasketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE729D6295E007E548B /* BasketPresenter.swift */; };
+		4951BAEA29D629E0007E548B /* BasketPresenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -235,6 +236,7 @@
 		4951BAE229D6113A007E548B /* BasketCellModel+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketCellModel+Equatable.swift"; sourceTree = "<group>"; };
 		4951BAE429D61169007E548B /* BasketModel+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketModel+Equatable.swift"; sourceTree = "<group>"; };
 		4951BAE729D6295E007E548B /* BasketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketPresenter.swift; sourceTree = "<group>"; };
+		4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketPresenter+Extensions.swift"; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -974,6 +976,7 @@
 				4957441529CC477B00155116 /* UITabBarController+Extensions.swift */,
 				4951BAE229D6113A007E548B /* BasketCellModel+Equatable.swift */,
 				4951BAE429D61169007E548B /* BasketModel+Equatable.swift */,
+				4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1424,6 +1427,7 @@
 				491B359A2997DB2300323789 /* SceneDelegate.swift in Sources */,
 				49D0287E29AC89B200715F08 /* RemoveReviewResult.swift in Sources */,
 				499E5F8C29D24FF70092D8D6 /* DescriptionView.swift in Sources */,
+				4951BAEA29D629E0007E548B /* BasketPresenter+Extensions.swift in Sources */,
 				49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */,
 				499E5F9D29D252140092D8D6 /* ProductView.swift in Sources */,
 				4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */,
