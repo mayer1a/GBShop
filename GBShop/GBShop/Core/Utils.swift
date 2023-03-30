@@ -116,6 +116,7 @@ struct CoordinatorConstants {
 
     enum TabFlow {
         case catalogFlow(CatalogFlow)
+        case basketFlow(BasketFlow)
         case profileScreen
     }
 
@@ -123,6 +124,11 @@ struct CoordinatorConstants {
         case catalogScreen
         case goodsScreen
         case reviewsScreen
+    }
+
+    enum BasketFlow {
+        case basketScreen
+        case paymentScreen
     }
 }
 
