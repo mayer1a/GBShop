@@ -26,7 +26,8 @@ protocol BasketPresenterProtocol: AnyObject {
 
     func onViewWillAppear()
     func placeOrderButtonDidTap()
-    func productQuantityDidChange(_ product: BasketElement)
+    func productQuantityDidChange(_ product: BasketCellModel)
+    func getImage(from link: String, completion: @escaping (UIImage?) -> Void)
 }
 
 // MARK: - BasketPresenter
@@ -38,6 +39,7 @@ final class BasketPresenter {
     private weak var view: BasketViewProtocol!
     private let coordinator: BasketBaseCoordinator
     private let requestFactory: BasketRequestFactory
+    private var imageDownloader: ImageDownloaderProtocol!
     private var userId: Int
     private var basket: BasketModel?
 
@@ -53,6 +55,12 @@ final class BasketPresenter {
         self.requestFactory = requestFactory
         self.coordinator = coordinator
         self.userId = userId
+    }
+
+    // MARK: Functions
+
+    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+        self.imageDownloader = imageDownloader
     }
 
     // MARK: - Private functions
@@ -138,8 +146,10 @@ final class BasketPresenter {
         }
     }
 
-    private func addProduct(_ product: BasketElement) {
-        requestFactory.addProduct(userId: userId, basketElement: product) { [weak self] response in
+    private func addProduct(_ product: BasketCellModel) {
+        guard let basketElement = BasketCellModelFactory.construct(from: product) else { return }
+
+        requestFactory.addProduct(userId: userId, basketElement: basketElement) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {
@@ -148,8 +158,10 @@ final class BasketPresenter {
         }
     }
 
-    private func editProduct(_ product: BasketElement) {
-        requestFactory.editProduct(userId: userId, basketElement: product) { [weak self] response in
+    private func editProduct(_ product: BasketCellModel) {
+        guard let basketElement = BasketCellModelFactory.construct(from: product) else { return }
+
+        requestFactory.editProduct(userId: userId, basketElement: basketElement) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {
@@ -158,8 +170,8 @@ final class BasketPresenter {
         }
     }
 
-    private func removeProduct(_ product: BasketElement) {
-        requestFactory.removeProduct(userId: userId, productId: product.product.id) { [weak self] response in
+    private func removeProduct(_ product: BasketCellModel) {
+        requestFactory.removeProduct(userId: userId, productId: product.productId) { [weak self] response in
             guard let self else { return }
 
             DispatchQueue.main.async {
@@ -194,7 +206,19 @@ extension BasketPresenter: BasketPresenterProtocol {
         payBasket()
     }
 
-    func productQuantityDidChange(_ product: BasketElement) {
-        editProduct(product)
+    func productQuantityDidChange(_ product: BasketCellModel) {
+        if product.quantity == 0 {
+            removeProduct(product)
+        } else {
+            editProduct(product)
+        }
+    }
+
+    func getImage(from link: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: link) else { return }
+
+        imageDownloader.getImage(fromUrl: url) { (image, _) in
+            completion(image)
+        }
     }
 }
