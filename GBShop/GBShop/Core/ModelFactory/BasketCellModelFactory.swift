@@ -11,14 +11,14 @@ import Foundation
 ///
 /// For example:
 /// ```
-/// func construct(from signUpModel: UserBasket) -> [BasketCellModel]
+/// static func construct(from basketModel: UserBasket) -> BasketModel
 /// ```
 /// creates a `BasketCellModel` models from a server basket `UserBasket` data model
 struct BasketCellModelFactory {
 
     // MARK: - Functions
 
-    func construct(from basketModel: UserBasket) -> BasketModel {
+    static func construct(from basketModel: UserBasket) -> BasketModel {
         let cellModels = basketModel.products.compactMap { basketElement -> BasketCellModel in
             construct(from: basketElement)
         }
@@ -30,8 +30,8 @@ struct BasketCellModelFactory {
     }
 
     // MARK: - Private functions
-    
-    private func construct(from basketElementModel: BasketElement) -> BasketCellModel {
+
+    private static func construct(from basketElementModel: BasketElement) -> BasketCellModel {
         BasketCellModel(
             productId: basketElementModel.product.id,
             category: basketElementModel.product.category,
