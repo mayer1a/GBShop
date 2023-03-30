@@ -21,13 +21,34 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "add-product"
 
-        let productId: Int
-        let quantity: Int
+        let userId: Int
+        let basketElement: BasketElement
 
         var parameters: Parameters? {
-            return [
-                "product_id": productId,
-                "quantity": quantity
+            [
+                "user_id": userId,
+                "basket_element": basketElement
+            ]
+        }
+    }
+
+    // MARK: - EditProduct
+
+    struct EditProduct: RequestRouter {
+
+        // MARK: - Properties
+
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        let path: String = "edit-product"
+
+        let userId: Int
+        let basketElement: BasketElement
+
+        var parameters: Parameters? {
+            [
+                "user_id": userId,
+                "basket_element": basketElement
             ]
         }
     }
@@ -42,12 +63,31 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "remove-product"
 
+        let userId: Int
         let productId: Int
 
         var parameters: Parameters? {
-            return [
+            [
+                "user_id": userId,
                 "product_id": productId
             ]
+        }
+    }
+
+    // MARK: - GetBasket
+
+    struct GetBasket: RequestRouter {
+
+        // MARK: - Properties
+
+        let baseUrl: URL
+        let method: HTTPMethod = .get
+        let path: String = "basket"
+
+        let userId: Int
+
+        var parameters: Parameters? {
+            ["user_id": userId]
         }
     }
 
@@ -61,8 +101,10 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "pay-basket"
 
+        let userId: Int
+
         var parameters: Parameters? {
-            nil
+            ["user_id": userId]
         }
     }
 }
