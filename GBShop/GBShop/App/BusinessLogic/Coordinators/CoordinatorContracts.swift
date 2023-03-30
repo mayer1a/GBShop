@@ -64,6 +64,10 @@ protocol TabFlowCoordinator: AnyObject {
 
 protocol CatalogBaseCoordinator: Coordinator, TabFlowCoordinator {}
 
+// MARK: - CatalogBaseCoordinator
+
+protocol BasketBaseCoordinator: Coordinator, TabFlowCoordinator {}
+
 // MARK: - ProfileBaseCoordinator
 
 protocol ProfileBaseCoordinator: Coordinator, TabFlowCoordinator {}

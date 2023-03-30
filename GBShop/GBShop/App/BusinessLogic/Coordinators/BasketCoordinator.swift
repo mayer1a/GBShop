@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - ProfileBaseCoordinator
 
-final class BasketCoordinator: ProfileBaseCoordinator {
+final class BasketCoordinator: BasketBaseCoordinator {
 
     // MARK: - Properties
 
