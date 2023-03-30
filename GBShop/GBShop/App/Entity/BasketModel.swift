@@ -15,6 +15,7 @@ struct BasketCellModel {
     let name: String
     let price: String
     let quantity: Int
+    let imageUrl: String
 }
 
 // MARK: - BasketModel
