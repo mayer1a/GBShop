@@ -19,6 +19,7 @@ final class BasketViewController: UIViewController {
 
     private var presenter: BasketPresenterProtocol!
     private var basket: BasketModel?
+    private var quantityAction: ((Int) -> Void)?
 
     // MARK: - Lifecycle
 
@@ -48,6 +49,17 @@ final class BasketViewController: UIViewController {
         basketView?.tableView.delegate = self
         basketView?.tableView.dataSource = self
         basketView?.placeOrderButton.addTarget(self, action: #selector(placeOrderButtonDidTap), for: .touchUpInside)
+    }
+
+    private func stepperAction(indexPath: IndexPath) -> ((Int) -> Void)? {
+        quantityAction = { [weak self] _ in
+            guard let self, let cellModel = self.basket?.cellModels[indexPath.row] else {
+                return
+            }
+
+            self.presenter.productQuantityDidChange(cellModel)
+        }
+        return quantityAction
     }
 
     @objc private func placeOrderButtonDidTap(_ sender: UIButton) {
@@ -117,7 +129,12 @@ extension BasketViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
+        presenter.getImage(from: cellModels[indexPath.row].imageUrl) { image in
+            basketCell.setupImage(image)
+        }
+
         basketCell.setupData(cellModels[indexPath.row])
+        basketCell.quantityStepper.stepperAction = stepperAction(indexPath: indexPath)
 
         return basketCell
     }
