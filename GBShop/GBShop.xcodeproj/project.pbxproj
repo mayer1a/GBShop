@@ -50,6 +50,7 @@
 		4951BACA29D57D6E007E548B /* BasketCellModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAC929D57D6E007E548B /* BasketCellModelFactory.swift */; };
 		4951BACC29D57DBC007E548B /* BasketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BACB29D57DBC007E548B /* BasketModel.swift */; };
 		4951BACE29D59B66007E548B /* ChangeableStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BACD29D59B66007E548B /* ChangeableStepper.swift */; };
+		4951BAD229D5B52F007E548B /* BasketProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAD129D5B52F007E548B /* BasketProductCell.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -221,6 +222,7 @@
 		4951BAC929D57D6E007E548B /* BasketCellModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCellModelFactory.swift; sourceTree = "<group>"; };
 		4951BACB29D57DBC007E548B /* BasketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketModel.swift; sourceTree = "<group>"; };
 		4951BACD29D59B66007E548B /* ChangeableStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableStepper.swift; sourceTree = "<group>"; };
+		4951BAD129D5B52F007E548B /* BasketProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketProductCell.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -592,13 +594,14 @@
 		491B35CB2997F91B00323789 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				499E5FAB29D281E40092D8D6 /* ReviewsModule */,
-				496F643F29D07B3500B17D5C /* ProductModule */,
+				4951BACF29D5B4EB007E548B /* BasketModule */,
 				4957441729CC58D800155116 /* CatalogModule */,
 				493D064C29C34E2800442609 /* EditProfileModule */,
 				493D064929C30CBC00442609 /* GeneralCustomView */,
-				49C0AA2229C072E000A927DD /* SignUpModule */,
+				496F643F29D07B3500B17D5C /* ProductModule */,
+				499E5FAB29D281E40092D8D6 /* ReviewsModule */,
 				495EB6F329B7740F00DF444E /* SignInModule */,
+				49C0AA2229C072E000A927DD /* SignUpModule */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -684,6 +687,22 @@
 			isa = PBXGroup;
 			children = (
 				493D065129C35AE700442609 /* EditProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4951BACF29D5B4EB007E548B /* BasketModule */ = {
+			isa = PBXGroup;
+			children = (
+				4951BAD029D5B4FD007E548B /* View */,
+			);
+			path = BasketModule;
+			sourceTree = "<group>";
+		};
+		4951BAD029D5B4FD007E548B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4951BAD129D5B52F007E548B /* BasketProductCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1390,6 +1409,7 @@
 				4900A6E829BB8ECF00FFF9A8 /* UserDefaultsLayer.swift in Sources */,
 				4957441A29CC590A00155116 /* CatalogPresenter.swift in Sources */,
 				49D0286429ABB30800715F08 /* ReviewsRequestFactory.swift in Sources */,
+				4951BAD229D5B52F007E548B /* BasketProductCell.swift in Sources */,
 				49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */,
 				493D064F29C34E4F00442609 /* EditProfilePresenter.swift in Sources */,
 				4957440C29CC41E400155116 /* MainCoordinator.swift in Sources */,
