@@ -40,6 +40,7 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
     // MARK: - Functions
 
     func setupQuantity(_ value: Int) {
+        titleLabel.text = "корзина"
         quantityLabel.text = " / \(value)"
     }
 
@@ -76,13 +77,14 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
 
         NSLayoutConstraint.activate([
             quantityLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor),
-            quantityLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ProductConstants.sideIndent),
+            quantityLabel.topAnchor.constraint(
+                greaterThanOrEqualTo: contentView.topAnchor,
+                constant: ProductConstants.sideIndent),
             quantityLabel.rightAnchor.constraint(
                 lessThanOrEqualTo: contentView.rightAnchor,
                 constant: -ProductConstants.sideIndent),
             quantityLabel.bottomAnchor.constraint(
-                equalTo: contentView.bottomAnchor,
-                constant: -ProductConstants.sideIndent)
+                equalTo: titleLabel.bottomAnchor)
         ])
     }
 
