@@ -15,19 +15,19 @@ protocol BasketRequestFactory {
     func addProduct(
         userId: Int,
         basketElement: BasketElement,
-        completionHandler: @escaping (AFDataResponse<AddProductResult>) -> Void)
+        completionHandler: @escaping (AFBasketResult) -> Void)
 
     func editProduct(
         userId: Int,
         basketElement: BasketElement,
-        completionHandler: @escaping (AFDataResponse<EditProductResult>) -> Void)
+        completionHandler: @escaping (AFBasketResult) -> Void)
 
     func removeProduct(
         userId: Int,
         productId: Int,
-        completionHandler: @escaping (AFDataResponse<RemoveProductResult>) -> Void)
+        completionHandler: @escaping (AFBasketResult) -> Void)
 
-    func getBasket(userId: Int, completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void)
+    func getBasket(userId: Int, completionHandler: @escaping (AFBasketResult) -> Void)
 
-    func payBasket(userId: Int, completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void)
+    func payBasket(userId: Int, completionHandler: @escaping (AFPayBasketResult) -> Void)
 }

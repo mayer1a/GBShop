@@ -39,7 +39,7 @@ extension Basket: BasketRequestFactory {
     func addProduct(
         userId: Int,
         basketElement: BasketElement,
-        completionHandler: @escaping (AFDataResponse<AddProductResult>) -> Void
+        completionHandler: @escaping (AFBasketResult) -> Void
     ) {
         let requestModel = AddProduct(baseUrl: baseUrl, userId: userId, basketElement: basketElement)
         self.request(request: requestModel, completionHandler: completionHandler)
@@ -48,7 +48,7 @@ extension Basket: BasketRequestFactory {
     func editProduct(
         userId: Int,
         basketElement: BasketElement,
-        completionHandler: @escaping (AFDataResponse<EditProductResult>) -> Void
+        completionHandler: @escaping (AFBasketResult) -> Void
     ) {
         let requestModel = EditProduct(baseUrl: baseUrl, userId: userId, basketElement: basketElement)
         self.request(request: requestModel, completionHandler: completionHandler)
@@ -57,18 +57,18 @@ extension Basket: BasketRequestFactory {
     func removeProduct(
         userId: Int,
         productId: Int,
-        completionHandler: @escaping (AFDataResponse<RemoveProductResult>) -> Void
+        completionHandler: @escaping (AFBasketResult) -> Void
     ) {
         let requestModel = RemoveProduct(baseUrl: baseUrl, userId: userId, productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
-    func getBasket(userId: Int, completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void) {
+    func getBasket(userId: Int, completionHandler: @escaping (AFBasketResult) -> Void) {
         let requestModel = GetBasket(baseUrl: baseUrl, userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
-    func payBasket(userId: Int, completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void) {
+    func payBasket(userId: Int, completionHandler: @escaping (AFPayBasketResult) -> Void) {
         let requestModel = PayBasket(baseUrl: baseUrl, userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
