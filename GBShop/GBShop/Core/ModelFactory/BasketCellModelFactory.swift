@@ -29,6 +29,18 @@ struct BasketCellModelFactory {
             cellModels: cellModels)
     }
 
+    static func construct(from basketModel: BasketCellModel) -> BasketElement? {
+        guard let price = Int(basketModel.price) else { return nil }
+        let product = Product(
+            id: basketModel.productId,
+            name: basketModel.name,
+            category: basketModel.category,
+            price: price,
+            mainImage: basketModel.imageUrl)
+
+        return BasketElement(product: product, quantity: basketModel.quantity)
+    }
+
     // MARK: - Private functions
 
     private static func construct(from basketElementModel: BasketElement) -> BasketCellModel {
@@ -37,6 +49,7 @@ struct BasketCellModelFactory {
             category: basketElementModel.product.category,
             name: basketElementModel.product.name,
             price: "\(basketElementModel.product.price * basketElementModel.quantity)",
-            quantity: basketElementModel.quantity)
+            quantity: basketElementModel.quantity,
+            imageUrl: basketElementModel.product.mainImage)
     }
 }
