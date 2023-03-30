@@ -37,24 +37,39 @@ extension Basket: BasketRequestFactory {
     // MARK: - Functions
 
     func addProduct(
-        productId: Int,
-        quantity: Int,
+        userId: Int,
+        basketElement: BasketElement,
         completionHandler: @escaping (AFDataResponse<AddProductResult>) -> Void
     ) {
-        let requestModel = AddProduct(baseUrl: baseUrl, productId: productId, quantity: quantity)
+        let requestModel = AddProduct(baseUrl: baseUrl, userId: userId, basketElement: basketElement)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+
+    func editProduct(
+        userId: Int,
+        basketElement: BasketElement,
+        completionHandler: @escaping (AFDataResponse<EditProductResult>) -> Void
+    ) {
+        let requestModel = EditProduct(baseUrl: baseUrl, userId: userId, basketElement: basketElement)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
     func removeProduct(
+        userId: Int,
         productId: Int,
         completionHandler: @escaping (AFDataResponse<RemoveProductResult>) -> Void
     ) {
-        let requestModel = RemoveProduct(baseUrl: baseUrl, productId: productId)
+        let requestModel = RemoveProduct(baseUrl: baseUrl, userId: userId, productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
-    func payBasket(completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void) {
-        let requestModel = PayBasket(baseUrl: baseUrl)
+    func getBasket(userId: Int, completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void) {
+        let requestModel = GetBasket(baseUrl: baseUrl, userId: userId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+
+    func payBasket(userId: Int, completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void) {
+        let requestModel = PayBasket(baseUrl: baseUrl, userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }

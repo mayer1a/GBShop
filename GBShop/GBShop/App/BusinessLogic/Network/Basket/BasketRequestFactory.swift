@@ -13,13 +13,21 @@ protocol BasketRequestFactory {
     // MARK: - Functions
 
     func addProduct(
-        productId: Int,
-        quantity: Int,
+        userId: Int,
+        basketElement: BasketElement,
         completionHandler: @escaping (AFDataResponse<AddProductResult>) -> Void)
 
+    func editProduct(
+        userId: Int,
+        basketElement: BasketElement,
+        completionHandler: @escaping (AFDataResponse<EditProductResult>) -> Void)
+
     func removeProduct(
+        userId: Int,
         productId: Int,
         completionHandler: @escaping (AFDataResponse<RemoveProductResult>) -> Void)
 
-    func payBasket(completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void)
+    func getBasket(userId: Int, completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void)
+
+    func payBasket(userId: Int, completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void)
 }
