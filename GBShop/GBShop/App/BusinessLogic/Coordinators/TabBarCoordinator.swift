@@ -18,6 +18,7 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
     lazy var rootViewController: UIViewController = UITabBarController()
     lazy var catalogCoordinator: CatalogBaseCoordinator = CatalogCoordinator(self, assemblyBuilder: assemblyBuilder)
     lazy var profileCoordinator: ProfileBaseCoordinator = ProfileCoordinator(self, with: user, assemblyBuilder: assemblyBuilder)
+    lazy var basketCoordinator: BasketCoordinator = BasketCoordinator(self, assemblyBuilder: assemblyBuilder)
 
     // MARK: - Private properties
 
@@ -41,11 +42,16 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
         let catalogImage = UIImage(systemName: "list.bullet.circle")
         catalogViewController.tabBarItem = UITabBarItem(title: "каталог", image: catalogImage, tag: 0)
 
+        let basketViewController = basketCoordinator.start()
+        let basketImage = UIImage(systemName: "")
+        basketViewController.tabBarItem = UITabBarItem(title: "корзина", image: basketImage, tag: 1)
+
         let profileViewController = profileCoordinator.start()
         let profileImage = UIImage(systemName: "person.crop.circle")
-        profileViewController.tabBarItem = UITabBarItem(title: "профиль", image: profileImage, tag: 1)
+        profileViewController.tabBarItem = UITabBarItem(title: "профиль", image: profileImage, tag: 2)
 
-        (rootViewController as? UITabBarController)?.viewControllers = [catalogViewController, profileViewController]
+        let viewControllers = [catalogViewController, basketViewController, profileViewController]
+        (rootViewController as? UITabBarController)?.viewControllers = viewControllers
         (rootViewController as? UITabBarController)?.configure()
 
         return rootViewController
@@ -70,6 +76,8 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
         switch screen {
         case .catalogFlow:
             goToCatalog(flow, userData: userData)
+        case .basketFlow:
+            goToBasket(flow, userData: userData)
         case .profileScreen:
             goToProfile(flow, userData: userData)
         }
@@ -80,8 +88,13 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
         (rootViewController as? UITabBarController)?.selectedIndex = 0
     }
 
+    private func goToBasket(_ flow: AppFlow, userData: [UserDataKey: Any]?) {
+        basketCoordinator.moveTo(flow: flow, userData: userData)
+        (rootViewController as? UITabBarController)?.selectedIndex = 1
+    }
+
     private func goToProfile(_ flow: AppFlow, userData: [UserDataKey: Any]?) {
         profileCoordinator.moveTo(flow: flow, userData: userData)
-        (rootViewController as? UITabBarController)?.selectedIndex = 1
+        (rootViewController as? UITabBarController)?.selectedIndex = 2
     }
 }
