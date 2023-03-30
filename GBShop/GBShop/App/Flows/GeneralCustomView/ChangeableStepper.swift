@@ -63,6 +63,11 @@ final class ChangeableStepper: UIView {
         self.value = value
     }
 
+    func clearLabel() {
+        value = 0
+        numberLabel.text = nil
+    }
+
     // MARK: - Private functions
 
     private func configureVieComponents() {
