@@ -45,6 +45,7 @@
 		4951BABE29D571F7007E548B /* GetBasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BABD29D571F7007E548B /* GetBasketResult.swift */; };
 		4951BAC029D57270007E548B /* UserBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BABF29D57270007E548B /* UserBasket.swift */; };
 		4951BAC229D57421007E548B /* BasketElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAC129D57421007E548B /* BasketElement.swift */; };
+		4951BAC429D57711007E548B /* EditProductResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAC329D57711007E548B /* EditProductResult.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -211,6 +212,7 @@
 		4951BABD29D571F7007E548B /* GetBasketResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBasketResult.swift; sourceTree = "<group>"; };
 		4951BABF29D57270007E548B /* UserBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBasket.swift; sourceTree = "<group>"; };
 		4951BAC129D57421007E548B /* BasketElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketElement.swift; sourceTree = "<group>"; };
+		4951BAC329D57711007E548B /* EditProductResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductResult.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -790,6 +792,7 @@
 				49D0286029ABB20600715F08 /* ReviewsResult.swift */,
 				4955638C299A614D00A22FA4 /* SignInResult.swift */,
 				49B77867299AA5EF00597F11 /* SignUpResult.swift */,
+				4951BAC329D57711007E548B /* EditProductResult.swift */,
 			);
 			path = ResultsEntity;
 			sourceTree = "<group>";
@@ -1347,6 +1350,7 @@
 				490A6D3E29BCED6D00427C50 /* Validator.swift in Sources */,
 				499E5FA429D2701C0092D8D6 /* ReviewCellModel.swift in Sources */,
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
+				4951BAC429D57711007E548B /* EditProductResult.swift in Sources */,
 				493D064829C30AD300442609 /* UISegmentedControl+Extensions.swift in Sources */,
 				499E5F7C29D24BA90092D8D6 /* ProductViewModel.swift in Sources */,
 				49556381299A53C600A22FA4 /* DataRequest.swift in Sources */,
