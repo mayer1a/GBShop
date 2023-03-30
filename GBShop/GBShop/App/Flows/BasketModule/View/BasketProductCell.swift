@@ -12,6 +12,7 @@ final class BasketProductCell: UITableViewCell {
     // MARK: - Properties
 
     static let cellIdentifier = "BasketProductCell"
+    var quantityStepper = ChangeableStepper()
 
     // MARK: - Private properties
 
@@ -19,7 +20,6 @@ final class BasketProductCell: UITableViewCell {
     private var categoryLabel = UILabel()
     private var nameLabel = UILabel()
     private var amountLabel = UILabel()
-    private var quantityStepper = ChangeableStepper()
 
     // MARK: - Constructions
 
@@ -42,6 +42,7 @@ final class BasketProductCell: UITableViewCell {
         categoryLabel.text = nil
         nameLabel.text = nil
         amountLabel.text = nil
+        quantityStepper.stepperAction = nil
         quantityStepper.clearLabel()
     }
 
@@ -52,6 +53,10 @@ final class BasketProductCell: UITableViewCell {
         nameLabel.text = cellModel.name
         amountLabel.text = cellModel.price
         quantityStepper.setupValue(cellModel.quantity)
+    }
+
+    func setupImage(_ image: UIImage?) {
+        productImageView.image = image
     }
 
     // MARK: - Private functions
