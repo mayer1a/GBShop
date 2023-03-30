@@ -11,15 +11,16 @@ import Foundation
 
 struct BasketCellModel {
     let productId: Int
-    let productName: String
-    let productPrice: String
-    let quantity: String
+    let category: String
+    let name: String
+    let price: String
+    let quantity: Int
 }
 
 // MARK: - BasketModel
 
 struct BasketModel {
     let amount: String
-    let productQuantity: Int
+    let productsQuantity: Int
     let cellModels: [BasketCellModel]
 }

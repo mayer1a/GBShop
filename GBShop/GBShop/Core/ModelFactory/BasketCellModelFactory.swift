@@ -25,7 +25,7 @@ struct BasketCellModelFactory {
 
         return BasketModel(
             amount: "\(basketModel.amount)",
-            productQuantity: basketModel.productsQuantity,
+            productsQuantity: basketModel.productsQuantity,
             cellModels: cellModels)
     }
 
@@ -34,8 +34,9 @@ struct BasketCellModelFactory {
     private func construct(from basketElementModel: BasketElement) -> BasketCellModel {
         BasketCellModel(
             productId: basketElementModel.product.id,
-            productName: basketElementModel.product.name,
-            productPrice: "\(basketElementModel.product.price)",
-            quantity: "\(basketElementModel.quantity)")
+            category: basketElementModel.product.category,
+            name: basketElementModel.product.name,
+            price: "\(basketElementModel.product.price * basketElementModel.quantity)",
+            quantity: basketElementModel.quantity)
     }
 }
