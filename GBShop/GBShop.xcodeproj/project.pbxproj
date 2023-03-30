@@ -52,6 +52,7 @@
 		4951BACE29D59B66007E548B /* ChangeableStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BACD29D59B66007E548B /* ChangeableStepper.swift */; };
 		4951BAD229D5B52F007E548B /* BasketProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAD129D5B52F007E548B /* BasketProductCell.swift */; };
 		4951BAD629D5C455007E548B /* BasketHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAD529D5C455007E548B /* BasketHeaderView.swift */; };
+		4951BAD829D5CA09007E548B /* BasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAD729D5CA09007E548B /* BasketView.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -225,6 +226,7 @@
 		4951BACD29D59B66007E548B /* ChangeableStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableStepper.swift; sourceTree = "<group>"; };
 		4951BAD129D5B52F007E548B /* BasketProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketProductCell.swift; sourceTree = "<group>"; };
 		4951BAD529D5C455007E548B /* BasketHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketHeaderView.swift; sourceTree = "<group>"; };
+		4951BAD729D5CA09007E548B /* BasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketView.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			children = (
 				4951BAD129D5B52F007E548B /* BasketProductCell.swift */,
 				4951BAD529D5C455007E548B /* BasketHeaderView.swift */,
+				4951BAD729D5CA09007E548B /* BasketView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1335,6 +1338,7 @@
 				49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */,
 				4900A6BD29BAFF4000FFF9A8 /* InitialPresenter.swift in Sources */,
 				4957441029CC425500155116 /* CatalogCoordinator.swift in Sources */,
+				4951BAD829D5CA09007E548B /* BasketView.swift in Sources */,
 				499E5F9129D250960092D8D6 /* ImagesViewCell.swift in Sources */,
 				4957441429CC430700155116 /* InitialCoordinator.swift in Sources */,
 				4957442F29CE1B0400155116 /* CollectionViewCellFactory.swift in Sources */,
