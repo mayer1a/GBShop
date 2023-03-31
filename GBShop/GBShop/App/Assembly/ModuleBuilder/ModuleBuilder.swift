@@ -17,6 +17,7 @@ protocol ModuleBuilderProtocol {
     func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
     func createReviewsSubmodule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
     func createReviewsModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
+    func createBasketModule(coordinator: BasketBaseCoordinator, userId: Int) -> UIViewController
 }
 
 /// Assembly of all module components and injects dependencies
@@ -143,6 +144,20 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
         return view
     }
-}
 
+    func createBasketModule(coordinator: BasketBaseCoordinator, userId: Int) -> UIViewController {
+        let view = BasketViewController()
+        let factory = RequestFactory().makeBasketRequestFactory()
+        let presenter = BasketPresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            userId: userId)
+
+        view.setPresenter(presenter)
+        presenter.setupDownloader(ImageDownloader())
+
+        return view
+    }
+}
 
