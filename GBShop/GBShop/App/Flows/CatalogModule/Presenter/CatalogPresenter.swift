@@ -40,6 +40,7 @@ final class CatalogPresenter {
     private let coordinator: CatalogBaseCoordinator
     private let requestFactory: CatalogRequestFactory
     private let storageService: ProductsStorageService
+    private var imageDownloader: ImageDownloaderProtocol!
     private var nextPage: Int?
     private var currentCategory: Int
 
@@ -57,6 +58,12 @@ final class CatalogPresenter {
         self.storageService = storageService
         nextPage = 1
         currentCategory = 1
+    }
+
+    // MARK: - Functions
+
+    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+        self.imageDownloader = imageDownloader
     }
 
     // MARK: - Private functions
