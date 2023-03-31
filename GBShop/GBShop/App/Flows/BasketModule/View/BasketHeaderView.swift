@@ -41,7 +41,7 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
 
     func setupQuantity(_ value: Int) {
         titleLabel.text = "корзина"
-        quantityLabel.text = " / \(value)"
+        quantityLabel.text = " / \(value) шт."
     }
 
     func setupEmpty() {
@@ -52,7 +52,6 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
     // MARK: - Private functions
 
     private func configureViewComponents() {
-        backgroundColor = .white
         contentView.backgroundColor = .white
 
         setupEmpty()
@@ -62,7 +61,9 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
 
     private func configureTitleLabel() {
         contentView.addSubview(titleLabel)
-        configureLabel(label: titleLabel, font: .systemFont(ofSize: 20.0, weight: .bold))
+        titleLabel.minimumScaleFactor = 1.0
+        titleLabel.numberOfLines = 2
+        configureLabel(label: titleLabel, font: .systemFont(ofSize: 24.0, weight: .bold))
 
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: ProductConstants.sideIndent),
@@ -73,7 +74,7 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
 
     private func configureQuantityLabel() {
         contentView.addSubview(quantityLabel)
-        configureLabel(label: quantityLabel, font: .systemFont(ofSize: 16.0, weight: .semibold))
+        configureLabel(label: quantityLabel, font: .systemFont(ofSize: 12.0, weight: .semibold))
 
         NSLayoutConstraint.activate([
             quantityLabel.leftAnchor.constraint(equalTo: titleLabel.rightAnchor),
@@ -89,11 +90,11 @@ final class BasketHeaderView: UITableViewHeaderFooterView {
     }
 
     private func configureLabel(label: UILabel, font: UIFont) {
-        titleLabel.font = font
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .left
-        titleLabel.backgroundColor = .white
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        label.font = font
+        label.textColor = .black
+        label.textAlignment = .left
+        label.backgroundColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
     }
 
 }
