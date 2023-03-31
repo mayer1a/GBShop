@@ -75,7 +75,8 @@ final class BasketPresenter {
         let userBasket = BasketCellModelFactory.construct(from: basket)
         let indexes = getIndexes(for: userBasket, with: self.basket)
         self.basket = userBasket
-        
+
+        setupBadge()
         action(indexes, userBasket)
     }
     
@@ -89,6 +90,7 @@ final class BasketPresenter {
             
             let basketModel = BasketCellModelFactory.construct(from: userBasket)
             basket = basketModel
+            setupBadge()
             view.basketDidFetch(basketModel)
         case .failure(_):
             self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
@@ -125,12 +127,16 @@ final class BasketPresenter {
     private func handlePayBasketResponse(_ response: AFPayBasketResult) {
         switch response.result {
         case .success(let basketResult):
-            if basketResult.result == 0 {
+            switch basketResult.result {
+            case -1...0:
                 view.showFailure(with: basketResult.errorMessage)
                 return
+            default:
+                break
             }
             
             basket = nil
+            setupBadge()
             view.basketDidPay()
         case .failure(_):
             view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
@@ -186,6 +192,15 @@ final class BasketPresenter {
             DispatchQueue.main.async {
                 self.handlePayBasketResponse(response)
             }
+        }
+    }
+
+    private func setupBadge() {
+        if let items = (coordinator.parentCoordinator?.rootViewController as? UITabBarController)?.tabBar.items {
+            let basketItem = items.first(where: { $0.image == .init(systemName: "basket.fill") })
+
+            let value = basket?.productsQuantity == nil ? nil : "\(basket!.productsQuantity)"
+            basketItem?.badgeValue = value
         }
     }
 }
