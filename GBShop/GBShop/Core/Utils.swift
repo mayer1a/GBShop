@@ -17,13 +17,16 @@ typealias AFProductResult = AFDataResponse<ProductResult>
 typealias AFReviewsResult = AFDataResponse<ReviewsResult>
 typealias AFBasketResult = AFDataResponse<GetBasketResult>
 typealias AFPayBasketResult = AFDataResponse<PayBasketResult>
+
 typealias UserDataKey = CoordinatorConstants.UserDataKey
 typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
 typealias TabFlow = CoordinatorConstants.TabFlow
 typealias CatalogFlow = CoordinatorConstants.CatalogFlow
+
 typealias DownloadImageCompletion = (_ image: UIImage?, _ error: ImageDownloader.DownloadingError?) -> Void
 typealias DownloadImagesCompletion = (_ images: [UIImage?], _ error: ImageDownloader.DownloadingError?) -> Void
+typealias ReloadCompletion = (([IndexPath], UITableView.RowAnimation) -> Void)?
 
 // MARK: - App Constants
 
