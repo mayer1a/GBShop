@@ -22,6 +22,7 @@ final class GBShopUITests: XCTestCase {
         try super.setUpWithError()
         continueAfterFailure = false
         app = XCUIApplication()
+        app.launchArguments = ["enable-testing"]
         app.launch()
         sleep(1)
     }
