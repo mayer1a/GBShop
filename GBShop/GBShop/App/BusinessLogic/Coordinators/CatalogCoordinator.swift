@@ -16,6 +16,7 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     var parentCoordinator: TabBarBaseCoordinator?
     var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
+    var userId: Int?
 
     // MARK: - Constructions
 
@@ -27,7 +28,9 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self)
+        guard let userId else { return rootViewController }
+
+        let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self, userId: userId)
         catalogViewController.title = "каталог"
         rootViewController = UINavigationController(rootViewController: catalogViewController)
         (rootViewController as? UINavigationController)?.setNavigationBarHidden(false, animated: true)
@@ -49,6 +52,10 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
         }
     }
 
+    func setup(userId: Int) {
+        self.userId = userId
+    }
+
     // MARK: - Private functions
 
     private func handleCatalogFlow(for screen: CatalogFlow, userData: [UserDataKey: Any]?) {
@@ -65,11 +72,17 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     private func goToGoodsScreen(userData: [UserDataKey: Any]?) {
         guard
             let product = userData?[.product] as? Product,
-            let productViewController = assemblyBuilder?.createProductModule(coordinator: self, product: product),
-            let reviewsViewController = assemblyBuilder?.createReviewsSubmodule(coordinator: self, product: product)
+            let userId = userId,
+            let assemblyBuilder
         else {
             return
         }
+
+        let productViewController = assemblyBuilder.createProductModule(
+            coordinator: self,
+            product: product,
+            userId: userId)
+        let reviewsViewController = assemblyBuilder.createReviewsSubmodule(coordinator: self, product: product)
 
         (productViewController as? ProductViewController)?.setReviewsController(reviewsViewController)
 

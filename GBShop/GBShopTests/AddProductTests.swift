@@ -29,11 +29,17 @@ final class AddProductTests: XCTestCase {
     func testAddProductCorrectInput() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "correctInput")
-        let productId = 123
-        let quantity = 1
-        var addProductResult: AddProductResult? = nil
+        let userId = 100
+        let product = Product(
+            id: 23019,
+            name: "Grandorf Adult Indoor Белая рыба/бурый рис для кошек 2 кг.",
+            category: "СУПЕРПРЕМИУМ СУХОЙ КОРМ ДЛЯ КОШЕК",
+            price: 2378,
+            mainImage: "https://cdn.mokryinos.ru/images/site/catalog/480x480/2_17618_1675935990.webp")
+        let quantity = BasketElement(product: product, quantity: 1)
+        var addProductResult: GetBasketResult? = nil
 
-        basketFactory.addProduct(productId: productId, quantity: quantity) { response in
+        basketFactory.addProduct(userId: userId, basketElement: quantity) { response in
             switch response.result {
             case .success(let response):
                 addProductResult = response
@@ -52,13 +58,19 @@ final class AddProductTests: XCTestCase {
     func testAddProductIncorrectProductId() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "incorrectProductId")
-        let productId = -2123
-        let quantity = 1
-        var addProductResult: AddProductResult? = nil
+        let userId = 100
+        let product = Product(
+            id: -23019,
+            name: "Grandorf Adult Indoor Белая рыба/бурый рис для кошек 2 кг.",
+            category: "СУПЕРПРЕМИУМ СУХОЙ КОРМ ДЛЯ КОШЕК",
+            price: 2378,
+            mainImage: "https://cdn.mokryinos.ru/images/site/catalog/480x480/2_17618_1675935990.webp")
+        let quantity = BasketElement(product: product, quantity: 1)
+        var addProductResult: GetBasketResult? = nil
 
         XCTExpectFailure("trying to add product to basket with incorrect product id but the product was added")
 
-        basketFactory.addProduct(productId: productId, quantity: quantity) { response in
+        basketFactory.addProduct(userId: userId, basketElement: quantity) { response in
             switch response.result {
             case .success(let response):
                 addProductResult = response
@@ -77,13 +89,19 @@ final class AddProductTests: XCTestCase {
     func testAddProductIncorrectQuantity() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "incorrectQuantity")
-        let productId = 123
-        let quantity = -1
-        var addProductResult: AddProductResult? = nil
+        let userId = 100
+        let product = Product(
+            id: 23019,
+            name: "Grandorf Adult Indoor Белая рыба/бурый рис для кошек 2 кг.",
+            category: "СУПЕРПРЕМИУМ СУХОЙ КОРМ ДЛЯ КОШЕК",
+            price: 2378,
+            mainImage: "https://cdn.mokryinos.ru/images/site/catalog/480x480/2_17618_1675935990.webp")
+        let quantity = BasketElement(product: product, quantity: -1)
+        var addProductResult: GetBasketResult? = nil
 
         XCTExpectFailure("trying to add product to basket with incorrect quantity but the product was added")
 
-        basketFactory.addProduct(productId: productId, quantity: quantity) { response in
+        basketFactory.addProduct(userId: userId, basketElement: quantity) { response in
             switch response.result {
             case .success(let response):
                 addProductResult = response

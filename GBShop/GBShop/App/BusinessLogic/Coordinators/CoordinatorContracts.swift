@@ -62,7 +62,15 @@ protocol TabFlowCoordinator: AnyObject {
 
 // MARK: - CatalogBaseCoordinator
 
-protocol CatalogBaseCoordinator: Coordinator, TabFlowCoordinator {}
+protocol CatalogBaseCoordinator: Coordinator, TabFlowCoordinator {
+    func setup(userId: Int)
+}
+
+// MARK: - CatalogBaseCoordinator
+
+protocol BasketBaseCoordinator: Coordinator, TabFlowCoordinator {
+    func setup(userId: Int)
+}
 
 // MARK: - ProfileBaseCoordinator
 

@@ -83,7 +83,7 @@ final class ProductCell: UICollectionViewCell {
         priceLabel.text = cellModel.price
     }
 
-    func setupImage(_ image: UIImage) {
+    func setupImage(_ image: UIImage?) {
         productImage.image = image
     }
 
@@ -117,7 +117,8 @@ final class ProductCell: UICollectionViewCell {
 
     private func configureImageView() {
         productImage.translatesAutoresizingMaskIntoConstraints = false
-        productImage.contentMode = .scaleAspectFit
+        productImage.contentMode = .scaleAspectFill
+        productImage.clipsToBounds = true
         productImage.image = UIImage(systemName: "brain.head.profile")
         productImage.backgroundColor = .systemGray6
         contentView.addSubview(productImage)

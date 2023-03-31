@@ -15,13 +15,18 @@ typealias AFSignInResult = AFDataResponse<SignInResult>
 typealias AFCatalogResult = AFDataResponse<CatalogResult>
 typealias AFProductResult = AFDataResponse<ProductResult>
 typealias AFReviewsResult = AFDataResponse<ReviewsResult>
+typealias AFBasketResult = AFDataResponse<GetBasketResult>
+typealias AFPayBasketResult = AFDataResponse<PayBasketResult>
+
 typealias UserDataKey = CoordinatorConstants.UserDataKey
 typealias AppFlow = CoordinatorConstants.AppFlow
 typealias InitialFlow = CoordinatorConstants.InitialFlow
 typealias TabFlow = CoordinatorConstants.TabFlow
 typealias CatalogFlow = CoordinatorConstants.CatalogFlow
+
 typealias DownloadImageCompletion = (_ image: UIImage?, _ error: ImageDownloader.DownloadingError?) -> Void
 typealias DownloadImagesCompletion = (_ images: [UIImage?], _ error: ImageDownloader.DownloadingError?) -> Void
+typealias ReloadCompletion = (([IndexPath], UITableView.RowAnimation) -> Void)?
 
 // MARK: - App Constants
 
@@ -116,6 +121,7 @@ struct CoordinatorConstants {
 
     enum TabFlow {
         case catalogFlow(CatalogFlow)
+        case basketFlow(BasketFlow)
         case profileScreen
     }
 
@@ -123,6 +129,11 @@ struct CoordinatorConstants {
         case catalogScreen
         case goodsScreen
         case reviewsScreen
+    }
+
+    enum BasketFlow {
+        case basketScreen
+        case paymentScreen
     }
 }
 
@@ -187,4 +198,14 @@ struct TimeConstants {
     // MARK: - Properties
 
     static let halfYear: TimeInterval = 15552000
+}
+
+struct StepperConstants {
+
+    // MARK: Properties
+
+    static let cornerRadius: CGFloat = 10.0
+    static let minStepperValue: Int = 0
+    static let maxStepperValue: Int = 100
+
 }

@@ -20,7 +20,8 @@ protocol ProductPresenterProtocol: AnyObject {
         requestFactory: GetProductRequestFactory,
         coordinator: CatalogBaseCoordinator,
         storageService: ProductsStorageService,
-        product: Product?)
+        product: Product?,
+        userId: Int)
     
     func addToBasket()
     func addToFavorite()
@@ -39,7 +40,9 @@ final class ProductPresenter {
     private let requestFactory: GetProductRequestFactory
     private let coordinator: CatalogBaseCoordinator
     private let storageService: ProductsStorageService
+    private let basketRequstFactory: BasketRequestFactory
     private let product: Product?
+    private let userId: Int
 
     // MARK: - Constructions
 
@@ -48,13 +51,16 @@ final class ProductPresenter {
         requestFactory: GetProductRequestFactory,
         coordinator: CatalogBaseCoordinator,
         storageService: ProductsStorageService,
-        product: Product?
+        product: Product?,
+        userId: Int
     ) {
         self.view = view
         self.requestFactory = requestFactory
         self.coordinator = coordinator
         self.storageService = storageService
         self.product = product
+        self.userId = userId
+        basketRequstFactory = RequestFactory().makeBasketRequestFactory()
     }
 
     // MARK: - Functions
@@ -106,6 +112,25 @@ final class ProductPresenter {
             self?.view.imagesDidFetch(images)
         }
     }
+
+    private func handleAddProductResult(_ response: AFBasketResult) {
+        switch response.result {
+        case .success(let catalogResult):
+            guard catalogResult.result != 0, let basket = catalogResult.basket else {
+                view.showFailure(with: catalogResult.errorMessage)
+                return
+            }
+
+            if let items = (coordinator.parentCoordinator?.rootViewController as? UITabBarController)?.tabBar.items {
+                let basketItem = items.first(where: { $0.image == .init(systemName: "basket.fill") })
+
+                basketItem?.badgeValue = "\(basket.productsQuantity)"
+                basketItem?.badgeColor = .black
+            }
+        case .failure(_):
+            self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
+        }
+    }
 }
 
 // MARK: - Extensions
@@ -115,7 +140,17 @@ extension ProductPresenter: ProductPresenterProtocol {
     // MARK: - Functions
 
     func addToBasket() {
-        // TODO: make adding to cart when it's ready
+        guard let product else { return }
+        
+        let basketElement = BasketCellModelFactory.construct(from: product, with: 1)
+
+        basketRequstFactory.addProduct(userId: userId, basketElement: basketElement) { [weak self] response in
+            guard let self else { return }
+
+            DispatchQueue.main.async {
+                self.handleAddProductResult(response)
+            }
+        }
     }
 
     func addToFavorite() {

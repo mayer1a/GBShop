@@ -29,9 +29,10 @@ final class PayBasketTests: XCTestCase {
     func testPayBasketCorrect() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "correctInput")
+        let userId = 100
         var payBasketResult: PayBasketResult? = nil
 
-        basketFactory.payBasket { response in
+        basketFactory.payBasket(userId: userId) { response in
             switch response.result {
             case .success(let response):
                 payBasketResult = response
@@ -53,11 +54,12 @@ final class PayBasketTests: XCTestCase {
     func testPayBasketIncorrect() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "canceledPurchaseDueMoneyLack")
+        let userId = 100
         var payBasketResult: PayBasketResult? = nil
 
         XCTExpectFailure("trying to pay for a basket with insufficient money on the card but the purchase was paid")
 
-        basketFactory.payBasket { response in
+        basketFactory.payBasket(userId: userId) { response in
             switch response.result {
             case .success(let response):
                 payBasketResult = response

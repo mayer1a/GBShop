@@ -20,14 +20,15 @@ protocol CatalogPresenterProtocol: AnyObject {
         view: CatalogViewProtocol,
         requestFactory: CatalogRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        storageService: ProductsStorageService)
+        storageService: ProductsStorageService,
+        userId: Int)
 
     func onViewDidLoad()
     func showProductDetail(for product: Product)
     func addToBasket(_ product: Product)
     func addToFavorite(_ product: Product)
     func scrollWillEnd()
-    func getImage(from link: String, completion: @escaping (UIImage) -> Void)
+    func getImage(from link: String, completion: @escaping (UIImage?) -> Void)
 }
 
 // MARK: - CatalogPresenter
@@ -39,9 +40,12 @@ final class CatalogPresenter {
     private weak var view: CatalogViewProtocol!
     private let coordinator: CatalogBaseCoordinator
     private let requestFactory: CatalogRequestFactory
+    private let basketRequstFactory: BasketRequestFactory
     private let storageService: ProductsStorageService
+    private var imageDownloader: ImageDownloaderProtocol!
     private var nextPage: Int?
     private var currentCategory: Int
+    private var userId: Int
 
     // MARK: - Constructions
 
@@ -49,14 +53,23 @@ final class CatalogPresenter {
         view: CatalogViewProtocol,
         requestFactory: CatalogRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        storageService: ProductsStorageService
+        storageService: ProductsStorageService,
+        userId: Int
     ) {
         self.view = view
         self.requestFactory = requestFactory
         self.coordinator = coordinator
         self.storageService = storageService
+        self.userId = userId
+        basketRequstFactory = RequestFactory().makeBasketRequestFactory()
         nextPage = 1
         currentCategory = 1
+    }
+
+    // MARK: - Functions
+
+    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+        self.imageDownloader = imageDownloader
     }
 
     // MARK: - Private functions
@@ -95,6 +108,25 @@ final class CatalogPresenter {
         }
     }
 
+    private func handleAddProductResult(_ response: AFBasketResult) {
+        switch response.result {
+        case .success(let catalogResult):
+            guard catalogResult.result != 0, let basket = catalogResult.basket else {
+                view.showFailure(with: catalogResult.errorMessage)
+                return
+            }
+
+            if let items = (coordinator.parentCoordinator?.rootViewController as? UITabBarController)?.tabBar.items {
+                let basketItem = items.first(where: { $0.image == .init(systemName: "basket.fill") })
+
+                basketItem?.badgeValue = "\(basket.productsQuantity)"
+                basketItem?.badgeColor = .black
+            }
+        case .failure(_):
+            self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
+        }
+    }
+
 }
 
 // MARK: - Extensions
@@ -112,7 +144,15 @@ extension CatalogPresenter: CatalogPresenterProtocol {
     }
 
     func addToBasket(_ product: Product) {
-        // TODO: Show modal view to add goods to basket
+        let basketElement = BasketCellModelFactory.construct(from: product, with: 1)
+
+        basketRequstFactory.addProduct(userId: userId, basketElement: basketElement) { [weak self] response in
+            guard let self else { return }
+            
+            DispatchQueue.main.async {
+                self.handleAddProductResult(response)
+            }
+        }
     }
 
     func addToFavorite(_ product: Product) {
@@ -123,8 +163,11 @@ extension CatalogPresenter: CatalogPresenterProtocol {
         fetchProduct(for: nextPage, categoryId: currentCategory)
     }
 
-    func getImage(from link: String, completion: @escaping (UIImage) -> Void) {
-        // TODO: Call imageService to download image
-        completion(UIImage())
+    func getImage(from link: String, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: link) else { return }
+
+        imageDownloader.getImage(fromUrl: url) { (image, _) in
+            completion(image)
+        }
     }
 }

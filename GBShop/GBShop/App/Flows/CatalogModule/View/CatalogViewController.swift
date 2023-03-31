@@ -70,14 +70,6 @@ extension CatalogViewController: CatalogViewProtocol {
 
     // MARK: - Functions
 
-    func startLoadingSpinner() {
-
-    }
-
-    func stopLoadingSpinner() {
-
-    }
-
     func catalogPageDidFetch(_ products: [Product]) {
         let firstInsertIndex = self.products.count - 1
         let lastInsertIndex = firstInsertIndex + (products.count - 1)
@@ -95,12 +87,20 @@ extension CatalogViewController: CatalogViewProtocol {
         productsIsLoading = false
     }
 
-    func showFailure(with message: String?) {
+    func startLoadingSpinner() {
+        // TODO: call the alert display method when it's ready
+    }
 
+    func stopLoadingSpinner() {
+        // TODO: call the warning remove method when it's ready
+    }
+
+    func showFailure(with message: String?) {
+        // TODO: call the alert display method when it's ready
     }
 
     func removeWarning() {
-
+        // TODO: call the warning remove method when it's ready
     }
 }
 
@@ -156,7 +156,6 @@ extension CatalogViewController: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: cellWidth, height: cellHeight)
     }
-
 }
 
 // MARK: - UICollectionViewDataSourcePrefetching
@@ -178,6 +177,4 @@ extension CatalogViewController: UICollectionViewDataSourcePrefetching {
             self.presenter.scrollWillEnd()
         }
     }
-
-
 }

@@ -15,10 +15,12 @@ struct PayBasketResult: Codable {
     enum CodingKeys: String, CodingKey {
         case result
         case userMessage = "user_message"
+        case errorMessage = "error_message"
     }
 
     // MARK: - Properties
 
     let result: Int
     let userMessage: String?
+    let errorMessage: String?
 }

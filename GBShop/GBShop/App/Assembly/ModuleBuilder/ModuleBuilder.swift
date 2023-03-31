@@ -13,10 +13,11 @@ protocol ModuleBuilderProtocol {
     func createSignInModule(coordinator: InitialBaseCoordinator) -> UIViewController
     func createEditProfileModule(with user: User, coordinator: ProfileBaseCoordinator) -> UIViewController
     func createSignUpModule(coordinator: InitialBaseCoordinator) -> UIViewController
-    func createCatalogModule(coordinator: CatalogBaseCoordinator) -> UIViewController
-    func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
+    func createCatalogModule(coordinator: CatalogBaseCoordinator, userId: Int) -> UIViewController
+    func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?, userId: Int) -> UIViewController
     func createReviewsSubmodule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
     func createReviewsModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
+    func createBasketModule(coordinator: BasketBaseCoordinator, userId: Int) -> UIViewController
 }
 
 /// Assembly of all module components and injects dependencies
@@ -83,7 +84,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         return view
     }
 
-    func createCatalogModule(coordinator: CatalogBaseCoordinator) -> UIViewController {
+    func createCatalogModule(coordinator: CatalogBaseCoordinator, userId: Int) -> UIViewController {
         let view = CatalogViewController()
         let factory = RequestFactory().makeCatalogRequestFactory()
         let storageService = ProductsStorageService(realm: realmService)
@@ -91,14 +92,16 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             view: view,
             requestFactory: factory,
             coordinator: coordinator,
-            storageService: storageService)
+            storageService: storageService,
+            userId: userId)
 
         view.setPresenter(presenter)
+        presenter.setupDownloader(ImageDownloader())
         
         return view
     }
 
-    func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController {
+    func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?, userId: Int) -> UIViewController {
         let view = ProductViewController()
         let factory = RequestFactory().makeProductRequestFactory()
         let storageService = ProductsStorageService(realm: realmService)
@@ -107,7 +110,8 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             requestFactory: factory,
             coordinator: coordinator,
             storageService: storageService,
-            product: product)
+            product: product,
+            userId: userId)
 
         view.setPresenter(presenter)
         presenter.setupDownloader(ImageDownloader())
@@ -143,6 +147,20 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
         return view
     }
-}
 
+    func createBasketModule(coordinator: BasketBaseCoordinator, userId: Int) -> UIViewController {
+        let view = BasketViewController()
+        let factory = RequestFactory().makeBasketRequestFactory()
+        let presenter = BasketPresenter(
+            view: view,
+            requestFactory: factory,
+            coordinator: coordinator,
+            userId: userId)
+
+        view.setPresenter(presenter)
+        presenter.setupDownloader(ImageDownloader())
+
+        return view
+    }
+}
 

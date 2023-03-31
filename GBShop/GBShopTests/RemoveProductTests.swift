@@ -30,9 +30,10 @@ final class RemoveProductTests: XCTestCase {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "correctInput")
         let productId = 123
-        var removeProductResult: RemoveProductResult? = nil
+        let userId = 100
+        var removeProductResult: GetBasketResult? = nil
 
-        basketFactory.removeProduct(productId: productId) { response in
+        basketFactory.removeProduct(userId: userId, productId: productId) { response in
             switch response.result {
             case .success(let response):
                 removeProductResult = response
@@ -52,11 +53,12 @@ final class RemoveProductTests: XCTestCase {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "incorrectProductId")
         let productId = -2123
-        var removeProductResult: RemoveProductResult? = nil
+        let userId = 100
+        var removeProductResult: GetBasketResult? = nil
 
         XCTExpectFailure("trying to remove product from basket with incorrect product id but the product was removed")
 
-        basketFactory.removeProduct(productId: productId) { response in
+        basketFactory.removeProduct(userId: userId, productId: productId) { response in
             switch response.result {
             case .success(let response):
                 removeProductResult = response

@@ -52,12 +52,12 @@ final class ReviewsTests: XCTestCase {
         XCTAssertEqual(reviewResult?.reviews?[0].id, 111)
         XCTAssertEqual(reviewResult?.reviews?[0].productId, 456)
         XCTAssertEqual(reviewResult?.reviews?[0].userId, 123)
-        XCTAssertEqual(reviewResult?.reviews?[0].description, "Хорошая мышь")
+        XCTAssertEqual(reviewResult?.reviews?[0].body, "Хорошая мышь")
 
         XCTAssertEqual(reviewResult?.reviews?[1].id, 112)
         XCTAssertEqual(reviewResult?.reviews?[1].productId, 456)
         XCTAssertNil(reviewResult?.reviews?[1].userId)
-        XCTAssertEqual(reviewResult?.reviews?[1].description, "Стоит своих денег!")
+        XCTAssertEqual(reviewResult?.reviews?[1].body, "Стоит своих денег!")
     }
 
     func testGetReviewsIncorrectProductId() {

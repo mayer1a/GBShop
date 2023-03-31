@@ -76,7 +76,7 @@ final class CatalogTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(catalogResult?.result, 0)
-        XCTAssertNil(catalogResult?.pageNumber)
+        XCTAssertNil(catalogResult?.nextPage)
         XCTAssertNil(catalogResult?.products)
     }
 
@@ -102,7 +102,7 @@ final class CatalogTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(catalogResult?.result, 0)
-        XCTAssertNil(catalogResult?.pageNumber)
+        XCTAssertNil(catalogResult?.nextPage)
         XCTAssertNil(catalogResult?.products)
     }
 
