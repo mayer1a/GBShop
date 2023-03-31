@@ -95,6 +95,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             storageService: storageService)
 
         view.setPresenter(presenter)
+        presenter.setupDownloader(ImageDownloader())
         
         return view
     }
