@@ -72,11 +72,17 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     private func goToGoodsScreen(userData: [UserDataKey: Any]?) {
         guard
             let product = userData?[.product] as? Product,
-            let productViewController = assemblyBuilder?.createProductModule(coordinator: self, product: product),
-            let reviewsViewController = assemblyBuilder?.createReviewsSubmodule(coordinator: self, product: product)
+            let userId = userId,
+            let assemblyBuilder
         else {
             return
         }
+
+        let productViewController = assemblyBuilder.createProductModule(
+            coordinator: self,
+            product: product,
+            userId: userId)
+        let reviewsViewController = assemblyBuilder.createReviewsSubmodule(coordinator: self, product: product)
 
         (productViewController as? ProductViewController)?.setReviewsController(reviewsViewController)
 
