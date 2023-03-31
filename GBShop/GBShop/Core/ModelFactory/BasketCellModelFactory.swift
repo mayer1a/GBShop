@@ -54,6 +54,10 @@ struct BasketCellModelFactory {
         return BasketElement(product: product, quantity: quantity)
     }
 
+    static func construct(from product: Product, with quantity: Int) -> BasketElement {
+        BasketElement(product: product, quantity: quantity)
+    }
+
     // MARK: - Private functions
 
     private static func construct(from basketElementModel: BasketElement) -> BasketCellModel {
