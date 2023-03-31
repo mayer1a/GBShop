@@ -28,6 +28,12 @@ final class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewTargets()
+
+        #if DEBUG
+        if CommandLine.arguments.contains("enable-testing") {
+            setupUITests()
+        }
+        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +91,14 @@ final class SignInViewController: UIViewController {
         signInView?.scrollView.endEditing(true)
     }
 
+    private func setupUITests() {
+        view.accessibilityIdentifier = "signInView"
+        signInView?.emailTextField.accessibilityIdentifier = "emailTextField"
+        signInView?.passwordTextField.accessibilityIdentifier = "passwordTextField"
+        signInView?.signInButton.accessibilityIdentifier = "signInButton"
+        signInView?.signUpButton.accessibilityIdentifier = "signUpButton"
+        signInView?.warningLabel.accessibilityIdentifier = "warningLabel"
+    }
 }
 
 extension SignInViewController: SignInViewProtocol {

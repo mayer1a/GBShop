@@ -27,6 +27,11 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewTargets()
+        #if DEBUG
+        if CommandLine.arguments.contains("enable-testing") {
+            setupUITests()
+        }
+        #endif
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -137,6 +142,24 @@ final class SignUpViewController: UIViewController {
         if (!isEmpty && repeatButton.alpha.isZero) || (isEmpty && repeatButton.alpha == 1.0) {
             shouldShowRepeatPassword(isEmpty)
         }
+    }
+
+    private func setupUITests() {
+        view.accessibilityIdentifier =  "signUpView"
+        profileView?.nameTextField.accessibilityIdentifier = "nameTextField"
+        profileView?.lastnameTextField.accessibilityIdentifier = "lastnameTextField"
+        profileView?.usernameTextField.accessibilityIdentifier = "usernameTextField"
+        profileView?.emailTextField.accessibilityIdentifier = "emailTextField"
+        profileView?.passwordTextField.accessibilityIdentifier = "passwordTextField"
+        profileView?.repeatPasswordTextField.accessibilityIdentifier = "repeatPasswordTextField"
+        profileView?.cardNumberTextField.accessibilityIdentifier = "cardNumberTextField"
+        profileView?.genderControl.accessibilityIdentifier = "genderControl"
+        profileView?.bioTextField.accessibilityIdentifier = "bioTextField"
+        profileView?.actionButton.accessibilityIdentifier = "signUpButtonSignUpView"
+        profileView?.warningLabel.accessibilityIdentifier = "warningLabel"
+
+        profileView?.passwordTextField.isSecureTextEntry = false
+        profileView?.repeatPasswordTextField.isSecureTextEntry = false
     }
 }
 
