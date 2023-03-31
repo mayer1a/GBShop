@@ -12,10 +12,9 @@ final class BasketView: UIView {
     // MARK: - Properties
 
     let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.register(BasketProductCell.self, forCellReuseIdentifier: BasketProductCell.cellIdentifier)
         tableView.register(BasketHeaderView.self, forHeaderFooterViewReuseIdentifier: BasketHeaderView.reuseIdentifier)
 
@@ -23,6 +22,12 @@ final class BasketView: UIView {
     }()
 
     let placeOrderButton = UIButton()
+
+    var isHiddenBottomView: Bool = true {
+        didSet {
+            bottomView.isHidden = isHiddenBottomView
+        }
+    }
 
     // MARK: - Private properties
 
@@ -44,8 +49,8 @@ final class BasketView: UIView {
 
     // MARK: - Functions
 
-    func setupPrice(_ value: Int) {
-        totalPriceLabel.text = "\(value) ₽"
+    func setupPrice(_ value: String) {
+        totalPriceLabel.text = value
     }
 
     // MARK: - Private functions
@@ -63,7 +68,7 @@ final class BasketView: UIView {
         addSubview(tableView)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
             tableView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
@@ -87,7 +92,8 @@ final class BasketView: UIView {
     }
 
     private func setupPriceTitleLabel() {
-        setupLabel(totalPriceLabel, font: .systemFont(ofSize: 9.0, weight: .regular))
+        totalPriceTitleLabel.text = "ИТОГО"
+        setupLabel(totalPriceTitleLabel, font: .systemFont(ofSize: 9.0, weight: .regular))
 
         NSLayoutConstraint.activate([
             totalPriceTitleLabel.leftAnchor.constraint(
@@ -98,7 +104,7 @@ final class BasketView: UIView {
                 constant: ProductConstants.interitemSpacing),
             totalPriceTitleLabel.bottomAnchor.constraint(
                 equalTo: totalPriceLabel.topAnchor,
-                constant: -ProductConstants.interitemSpacing),
+                constant: -ProductConstants.interitemSpacing / 2),
             totalPriceTitleLabel.rightAnchor.constraint(
                 equalTo: placeOrderButton.leftAnchor,
                 constant: -ProductConstants.interitemSpacing)
@@ -113,11 +119,10 @@ final class BasketView: UIView {
                 equalTo: bottomView.leftAnchor,
                 constant: ProductConstants.sideIndent),
             totalPriceLabel.bottomAnchor.constraint(
-                lessThanOrEqualTo: bottomView.bottomAnchor,
+                equalTo: bottomView.bottomAnchor,
                 constant: -ProductConstants.interitemSpacing),
-            totalPriceTitleLabel.topAnchor.constraint(
-                equalTo: placeOrderButton.centerYAnchor,
-                constant: ProductConstants.interitemSpacing / 2),
+            totalPriceLabel.topAnchor.constraint(
+                equalTo: placeOrderButton.centerYAnchor),
             totalPriceLabel.rightAnchor.constraint(
                 equalTo: placeOrderButton.leftAnchor,
                 constant: -ProductConstants.interitemSpacing)
