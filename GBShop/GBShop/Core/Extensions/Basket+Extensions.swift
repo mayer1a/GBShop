@@ -27,7 +27,16 @@ extension Basket {
         var parameters: Parameters? {
             [
                 "user_id": userId,
-                "basket_element": basketElement
+                "basket_element": [
+                    "product": [
+                        "product_id": basketElement.product.id,
+                        "product_name": basketElement.product.name,
+                        "product_category": basketElement.product.category,
+                        "product_price": basketElement.product.price,
+                        "product_main_image": basketElement.product.mainImage
+                    ],
+                    "quantity": basketElement.quantity,
+                ]
             ]
         }
     }
@@ -48,7 +57,16 @@ extension Basket {
         var parameters: Parameters? {
             [
                 "user_id": userId,
-                "basket_element": basketElement
+                "basket_element": [
+                    "product": [
+                        "product_id": basketElement.product.id,
+                        "product_name": basketElement.product.name,
+                        "product_category": basketElement.product.category,
+                        "product_price": basketElement.product.price,
+                        "product_main_image": basketElement.product.mainImage
+                    ],
+                    "quantity": basketElement.quantity,
+                ]
             ]
         }
     }
