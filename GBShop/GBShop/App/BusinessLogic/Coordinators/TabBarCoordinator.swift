@@ -34,7 +34,7 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        guard user != nil else {
+        guard let user else {
             return rootViewController
         }
 
@@ -42,13 +42,14 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
         let catalogImage = UIImage(systemName: "list.bullet.circle")
         catalogViewController.tabBarItem = UITabBarItem(title: "каталог", image: catalogImage, tag: 0)
 
-        let basketViewController = basketCoordinator.start()
-        let basketImage = UIImage(systemName: "")
-        basketViewController.tabBarItem = UITabBarItem(title: "корзина", image: basketImage, tag: 1)
-
         let profileViewController = profileCoordinator.start()
         let profileImage = UIImage(systemName: "person.crop.circle")
-        profileViewController.tabBarItem = UITabBarItem(title: "профиль", image: profileImage, tag: 2)
+        profileViewController.tabBarItem = UITabBarItem(title: "профиль", image: profileImage, tag: 1)
+
+        basketCoordinator.setupUserId(user.id)
+        let basketViewController = basketCoordinator.start()
+        let basketImage = UIImage(systemName: "basket.fill")
+        basketViewController.tabBarItem = UITabBarItem(title: "корзина", image: basketImage, tag: 2)
 
         let viewControllers = [catalogViewController, basketViewController, profileViewController]
         (rootViewController as? UITabBarController)?.viewControllers = viewControllers
@@ -88,13 +89,13 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
         (rootViewController as? UITabBarController)?.selectedIndex = 0
     }
 
-    private func goToBasket(_ flow: AppFlow, userData: [UserDataKey: Any]?) {
-        basketCoordinator.moveTo(flow: flow, userData: userData)
+    private func goToProfile(_ flow: AppFlow, userData: [UserDataKey: Any]?) {
+        profileCoordinator.moveTo(flow: flow, userData: userData)
         (rootViewController as? UITabBarController)?.selectedIndex = 1
     }
 
-    private func goToProfile(_ flow: AppFlow, userData: [UserDataKey: Any]?) {
-        profileCoordinator.moveTo(flow: flow, userData: userData)
+    private func goToBasket(_ flow: AppFlow, userData: [UserDataKey: Any]?) {
+        basketCoordinator.moveTo(flow: flow, userData: userData)
         (rootViewController as? UITabBarController)?.selectedIndex = 2
     }
 }

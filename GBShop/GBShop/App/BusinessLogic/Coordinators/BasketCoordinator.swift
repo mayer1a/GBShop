@@ -17,6 +17,10 @@ final class BasketCoordinator: BasketBaseCoordinator {
     var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
 
+    // MARK: - Private properties
+
+    var userId: Int?
+
     // MARK: - Constructions
 
     init(_ parentCoordinator: TabBarBaseCoordinator?, assemblyBuilder: ModuleBuilderProtocol?) {
@@ -27,11 +31,11 @@ final class BasketCoordinator: BasketBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-//        let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self)
-//        catalogViewController.title = "каталог"
-//        rootViewController = UINavigationController(rootViewController: catalogViewController)
-//        (rootViewController as? UINavigationController)?.setNavigationBarHidden(false, animated: true)
-//        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
+        guard let userId else { return rootViewController }
+
+        let basketViewController = ModuleBuilder().createBasketModule(coordinator: self, userId: userId)
+        rootViewController = UINavigationController(rootViewController: basketViewController)
+        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
         return rootViewController
     }
 
@@ -47,6 +51,10 @@ final class BasketCoordinator: BasketBaseCoordinator {
         default:
             parentCoordinator?.moveTo(flow: flow, userData: userData)
         }
+    }
+
+    func setupUserId(_ userId: Int) {
+        self.userId = userId
     }
 
     // MARK: - Private functions
