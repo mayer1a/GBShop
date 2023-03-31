@@ -33,19 +33,6 @@ final class BasketProductCell: UITableViewCell {
         configureViewComponents()
     }
 
-
-    // MARK: - Lifecycle
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        productImageView.image = nil
-        categoryLabel.text = nil
-        nameLabel.text = nil
-        amountLabel.text = nil
-        quantityStepper.stepperAction = nil
-        quantityStepper.clearLabel()
-    }
-
     // MARK: - Functions
 
     func setupData(_ cellModel: BasketCellModel) {
@@ -59,10 +46,20 @@ final class BasketProductCell: UITableViewCell {
         productImageView.image = image
     }
 
+    func resetData() {
+        productImageView.image = nil
+        categoryLabel.text = nil
+        nameLabel.text = nil
+        amountLabel.text = nil
+        quantityStepper.stepperAction = nil
+        quantityStepper.clearLabel()
+    }
+
     // MARK: - Private functions
 
     private func configureViewComponents() {
         selectionStyle = .none
+        contentView.backgroundColor = .white
 
         configureImageView()
         configureCategoryLabel()
@@ -76,7 +73,8 @@ final class BasketProductCell: UITableViewCell {
 
         productImageView.backgroundColor = .lightGray
         productImageView.tintColor = .white
-        productImageView.contentMode = .scaleAspectFit
+        productImageView.contentMode = .scaleAspectFill
+        productImageView.clipsToBounds = true
         productImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -112,7 +110,7 @@ final class BasketProductCell: UITableViewCell {
     private func configureNameLabel() {
         contentView.addSubview(nameLabel)
 
-        setupLabel(nameLabel, font: .systemFont(ofSize: 16.0, weight: .semibold), textColor: .gray, lines: 3)
+        setupLabel(nameLabel, font: .systemFont(ofSize: 16.0, weight: .semibold), textColor: .black, lines: 3)
 
         NSLayoutConstraint.activate([
             nameLabel.leftAnchor.constraint(
@@ -130,7 +128,7 @@ final class BasketProductCell: UITableViewCell {
     private func configureAmountLabel() {
         contentView.addSubview(amountLabel)
         
-        setupLabel(nameLabel, font: .systemFont(ofSize: 16.0, weight: .semibold), textColor: .gray, lines: 1)
+        setupLabel(amountLabel, font: .systemFont(ofSize: 16.0, weight: .semibold), textColor: .black, lines: 1)
 
         NSLayoutConstraint.activate([
             amountLabel.leftAnchor.constraint(
@@ -153,7 +151,7 @@ final class BasketProductCell: UITableViewCell {
             quantityStepper.leftAnchor.constraint(
                 greaterThanOrEqualTo: amountLabel.rightAnchor,
                 constant: ProductConstants.sideIndent),
-            quantityStepper.topAnchor.constraint(equalTo: amountLabel.topAnchor),
+            quantityStepper.centerYAnchor.constraint(equalTo: amountLabel.centerYAnchor),
             quantityStepper.rightAnchor.constraint(
                 equalTo: contentView.rightAnchor,
                 constant: -ProductConstants.sideIndent),
