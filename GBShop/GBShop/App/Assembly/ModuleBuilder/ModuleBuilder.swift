@@ -13,7 +13,7 @@ protocol ModuleBuilderProtocol {
     func createSignInModule(coordinator: InitialBaseCoordinator) -> UIViewController
     func createEditProfileModule(with user: User, coordinator: ProfileBaseCoordinator) -> UIViewController
     func createSignUpModule(coordinator: InitialBaseCoordinator) -> UIViewController
-    func createCatalogModule(coordinator: CatalogBaseCoordinator) -> UIViewController
+    func createCatalogModule(coordinator: CatalogBaseCoordinator, userId: Int) -> UIViewController
     func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
     func createReviewsSubmodule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
     func createReviewsModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController
@@ -84,7 +84,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
         return view
     }
 
-    func createCatalogModule(coordinator: CatalogBaseCoordinator) -> UIViewController {
+    func createCatalogModule(coordinator: CatalogBaseCoordinator, userId: Int) -> UIViewController {
         let view = CatalogViewController()
         let factory = RequestFactory().makeCatalogRequestFactory()
         let storageService = ProductsStorageService(realm: realmService)
@@ -92,7 +92,8 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             view: view,
             requestFactory: factory,
             coordinator: coordinator,
-            storageService: storageService)
+            storageService: storageService,
+            userId: userId)
 
         view.setPresenter(presenter)
         presenter.setupDownloader(ImageDownloader())
