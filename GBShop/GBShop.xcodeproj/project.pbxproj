@@ -60,6 +60,7 @@
 		4951BAE829D6295E007E548B /* BasketPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE729D6295E007E548B /* BasketPresenter.swift */; };
 		4951BAEA29D629E0007E548B /* BasketPresenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */; };
 		4951BAEC29D62A98007E548B /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAEB29D62A98007E548B /* BasketViewController.swift */; };
+		4951BAEE29D652F6007E548B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAED29D652F6007E548B /* UIColor+Extensions.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -239,6 +240,7 @@
 		4951BAE729D6295E007E548B /* BasketPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketPresenter.swift; sourceTree = "<group>"; };
 		4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketPresenter+Extensions.swift"; sourceTree = "<group>"; };
 		4951BAEB29D62A98007E548B /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		4951BAED29D652F6007E548B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -980,6 +982,7 @@
 				4951BAE229D6113A007E548B /* BasketCellModel+Equatable.swift */,
 				4951BAE429D61169007E548B /* BasketModel+Equatable.swift */,
 				4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */,
+				4951BAED29D652F6007E548B /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1453,6 +1456,7 @@
 				49A24B7129AF34D7002E3B1A /* Reviews+Extensions.swift in Sources */,
 				4900A6CE29BB138600FFF9A8 /* WarningPaddingLabel.swift in Sources */,
 				49991262299E227C0034015A /* Catalog.swift in Sources */,
+				4951BAEE29D652F6007E548B /* UIColor+Extensions.swift in Sources */,
 				49ADCC5B29AF3D18001108DC /* Product.swift in Sources */,
 				499E5F9829D251A00092D8D6 /* HeaderView.swift in Sources */,
 				499E5F9F29D2524E0092D8D6 /* ProductViewController.swift in Sources */,
