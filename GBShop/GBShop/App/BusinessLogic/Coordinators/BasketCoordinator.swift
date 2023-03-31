@@ -53,7 +53,7 @@ final class BasketCoordinator: BasketBaseCoordinator {
         }
     }
 
-    func setupUserId(_ userId: Int) {
+    func setup(userId: Int) {
         self.userId = userId
     }
 
@@ -69,17 +69,7 @@ final class BasketCoordinator: BasketBaseCoordinator {
     }
 
     private func goToPaymentScreen(userData: [UserDataKey: Any]?) {
-//        guard
-//            let product = userData?[.product] as? Product,
-//            let productViewController = assemblyBuilder?.createProductModule(coordinator: self, product: product)
-//        else {
-//            return
-//        }
-//
-//        let backButton = UIBarButtonItem(title: "корзина")
-//        navigationRootViewController?.navigationBar.topItem?.backBarButtonItem = backButton
-//        navigationRootViewController?.pushViewController(productViewController, animated: true)
-//        navigationRootViewController?.setNavigationBarHidden(false, animated: true)
+        // TODO: call coordinator.move() when payment screen ready
     }
 
 }

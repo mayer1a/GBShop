@@ -18,7 +18,7 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
     lazy var rootViewController: UIViewController = UITabBarController()
     lazy var catalogCoordinator: CatalogBaseCoordinator = CatalogCoordinator(self, assemblyBuilder: assemblyBuilder)
     lazy var profileCoordinator: ProfileBaseCoordinator = ProfileCoordinator(self, with: user, assemblyBuilder: assemblyBuilder)
-    lazy var basketCoordinator: BasketCoordinator = BasketCoordinator(self, assemblyBuilder: assemblyBuilder)
+    lazy var basketCoordinator: BasketBaseCoordinator = BasketCoordinator(self, assemblyBuilder: assemblyBuilder)
 
     // MARK: - Private properties
 
@@ -38,6 +38,7 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
             return rootViewController
         }
 
+        catalogCoordinator.setup(userId: user.id)
         let catalogViewController = catalogCoordinator.start()
         let catalogImage = UIImage(systemName: "list.bullet.circle")
         catalogViewController.tabBarItem = UITabBarItem(title: "каталог", image: catalogImage, tag: 0)
@@ -46,10 +47,11 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
         let profileImage = UIImage(systemName: "person.crop.circle")
         profileViewController.tabBarItem = UITabBarItem(title: "профиль", image: profileImage, tag: 1)
 
-        basketCoordinator.setupUserId(user.id)
+        basketCoordinator.setup(userId: user.id)
         let basketViewController = basketCoordinator.start()
         let basketImage = UIImage(systemName: "basket.fill")
         basketViewController.tabBarItem = UITabBarItem(title: "корзина", image: basketImage, tag: 2)
+
 
         let viewControllers = [catalogViewController, basketViewController, profileViewController]
         (rootViewController as? UITabBarController)?.viewControllers = viewControllers

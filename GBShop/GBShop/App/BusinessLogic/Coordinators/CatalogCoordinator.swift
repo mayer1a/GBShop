@@ -16,6 +16,7 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     var parentCoordinator: TabBarBaseCoordinator?
     var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
+    var userId: Int?
 
     // MARK: - Constructions
 
@@ -27,7 +28,9 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self)
+        guard let userId else { return rootViewController }
+
+        let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self, userId: userId)
         catalogViewController.title = "каталог"
         rootViewController = UINavigationController(rootViewController: catalogViewController)
         (rootViewController as? UINavigationController)?.setNavigationBarHidden(false, animated: true)
@@ -47,6 +50,10 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
         default:
             parentCoordinator?.moveTo(flow: flow, userData: userData)
         }
+    }
+
+    func setup(userId: Int) {
+        self.userId = userId
     }
 
     // MARK: - Private functions
