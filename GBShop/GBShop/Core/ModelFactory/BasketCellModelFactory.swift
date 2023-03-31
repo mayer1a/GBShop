@@ -24,7 +24,7 @@ struct BasketCellModelFactory {
         }
 
         return BasketModel(
-            amount: "\(basketModel.amount)",
+            amount: "\(basketModel.amount) ₽",
             productsQuantity: basketModel.productsQuantity,
             cellModels: cellModels)
     }
@@ -41,6 +41,19 @@ struct BasketCellModelFactory {
         return BasketElement(product: product, quantity: basketModel.quantity)
     }
 
+    static func construct(from basketModel: BasketCellModel, with quantity: Int) -> BasketElement? {
+        guard let price = Int(basketModel.price.trimmingCharacters(in: ["₽", " "])) else { return nil }
+        
+        let product = Product(
+            id: basketModel.productId,
+            name: basketModel.name,
+            category: basketModel.category,
+            price: price,
+            mainImage: basketModel.imageUrl)
+
+        return BasketElement(product: product, quantity: quantity)
+    }
+
     // MARK: - Private functions
 
     private static func construct(from basketElementModel: BasketElement) -> BasketCellModel {
@@ -48,7 +61,7 @@ struct BasketCellModelFactory {
             productId: basketElementModel.product.id,
             category: basketElementModel.product.category,
             name: basketElementModel.product.name,
-            price: "\(basketElementModel.product.price * basketElementModel.quantity)",
+            price: "\(basketElementModel.product.price * basketElementModel.quantity) ₽",
             quantity: basketElementModel.quantity,
             imageUrl: basketElementModel.product.mainImage)
     }
