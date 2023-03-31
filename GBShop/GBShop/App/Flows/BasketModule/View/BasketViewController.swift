@@ -125,6 +125,7 @@ extension BasketViewController: BasketViewProtocol {
     func basketDidPay() {
         basket = nil
         basketView?.tableView.reloadData()
+        basketView?.isHiddenBottomView = true
     }
 
     func setDisabledWhileSending(at index: Int?) {
