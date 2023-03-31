@@ -16,7 +16,17 @@ final class ChangeableStepper: UIView {
             if stepperAction == nil {
                 minusButton.removeTarget(self, action: #selector(minusButtonDidTap), for: .touchUpInside)
                 plusButton.removeTarget(self, action: #selector(plusButtonDidTap), for: .touchUpInside)
+            } else {
+                minusButton.addTarget(self, action: #selector(minusButtonDidTap), for: .touchUpInside)
+                plusButton.addTarget(self, action: #selector(plusButtonDidTap), for: .touchUpInside)
             }
+        }
+    }
+
+    var isEnabled: Bool = true {
+        didSet {
+            minusButton.isEnabled = isEnabled
+            plusButton.isEnabled = isEnabled
         }
     }
 
@@ -66,6 +76,7 @@ final class ChangeableStepper: UIView {
     func clearLabel() {
         value = 0
         numberLabel.text = nil
+        isEnabled = true
     }
 
     // MARK: - Private functions
@@ -82,8 +93,6 @@ final class ChangeableStepper: UIView {
     private func configureStepperButton() {
         generalButtonSetup(minusButton, imageName: "minus")
         generalButtonSetup(plusButton, imageName: "plus")
-        minusButton.addTarget(self, action: #selector(minusButtonDidTap), for: .touchUpInside)
-        plusButton.addTarget(self, action: #selector(plusButtonDidTap), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             minusButton.leftAnchor.constraint(equalTo: horizontalStack.leftAnchor),
@@ -99,7 +108,7 @@ final class ChangeableStepper: UIView {
     private func configureLabel() {
         numberLabel.font = .monospacedDigitSystemFont(ofSize: 16.0, weight: .semibold)
         numberLabel.textAlignment = .center
-        numberLabel.backgroundColor = .lightGray
+        numberLabel.backgroundColor = .grayColor
         numberLabel.textColor = .black
         numberLabel.numberOfLines = 1
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +124,7 @@ final class ChangeableStepper: UIView {
     private func generalButtonSetup(_ button: UIButton, imageName: String) {
         button.setImage(.init(systemName: imageName), for: .normal)
         button.tintColor = .black
-        button.backgroundColor = .lightGray
+        button.backgroundColor = .grayColor
         button.setPreferredSymbolConfiguration(.init(weight: .semibold), forImageIn: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -126,7 +135,9 @@ final class ChangeableStepper: UIView {
         horizontalStack.addArrangedSubview(plusButton)
 
         horizontalStack.axis = .horizontal
-        horizontalStack.backgroundColor = .lightGray
+        horizontalStack.backgroundColor = .grayColor
+        horizontalStack.alignment = .fill
+        horizontalStack.distribution = .fillEqually
         horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         horizontalStack.layer.cornerRadius = StepperConstants.cornerRadius
         horizontalStack.layer.borderWidth = 1.0
@@ -137,7 +148,9 @@ final class ChangeableStepper: UIView {
             horizontalStack.leftAnchor.constraint(equalTo: leftAnchor),
             horizontalStack.rightAnchor.constraint(equalTo: rightAnchor),
             horizontalStack.topAnchor.constraint(equalTo: topAnchor),
-            horizontalStack.bottomAnchor.constraint(equalTo: bottomAnchor)
+            horizontalStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            horizontalStack.widthAnchor.constraint(greaterThanOrEqualToConstant: 100),
+            horizontalStack.heightAnchor.constraint(greaterThanOrEqualToConstant: 34)
         ])
     }
 
