@@ -41,6 +41,7 @@ final class ReviewsViewController: UIViewController {
         reviewsView?.titleLabel.isHidden = true
         setupTargets()
         setupConstraint()
+        setupAddReviewButton()
         presenter.onViewDidLoad()
     }
 
@@ -95,6 +96,10 @@ final class ReviewsViewController: UIViewController {
         reviewsView.tableView.layoutIfNeeded()
 
         tableViewHeight?.constant = reviewsView.tableView.contentSize.height
+    }
+
+    @objc private func addReviewButtonDidTap(_ sender: UIButton) {
+        presenter.addReviewButtonDidTap()
     }
 
 }
@@ -162,5 +167,15 @@ extension ReviewsViewController: ReviewsViewProtocol {
     func reviewsDidFetch(_ reviews: [ReviewCellModel]) {
         self.reviews = reviews
         self.reviewsIsLoading = false
+    }
+
+    func setupAddReviewButton() {
+        let reviewButton = UIBarButtonItem()
+        reviewButton.title = "написать отзыв"
+        reviewButton.target = self
+        reviewButton.style = .plain
+        reviewButton.action = #selector(addReviewButtonDidTap)
+
+        navigationItem.rightBarButtonItem = reviewButton
     }
 }
