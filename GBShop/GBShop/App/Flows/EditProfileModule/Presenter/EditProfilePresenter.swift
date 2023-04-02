@@ -26,6 +26,7 @@ protocol EditProfilePresenterProtocol: AnyObject {
 
     func editButtonTapped(rawModel: SignUpRawModel)
     func inputFieldsTapped()
+    func exitButtonDidTap()
 }
 
 final class EditProfilePresenter {
@@ -127,5 +128,10 @@ extension EditProfilePresenter: EditProfilePresenterProtocol {
 
     func inputFieldsTapped() {
         view.removeWarning()
+    }
+
+    func exitButtonDidTap() {
+        storageService.userDidExit(user)
+        coordinator.moveTo(flow: .initial(.signInScreen), userData: nil)
     }
 }
