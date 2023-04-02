@@ -30,11 +30,6 @@ final class EditProfileViewController: UIViewController {
         keyboardObserver = KeyboardObserver(targetView: profileView?.scrollView)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureNavigationController()
-    }
-
     // MARK: - Functions
 
     func setPresenter(_ presenter: EditProfilePresenterProtocol) {
@@ -59,6 +54,8 @@ final class EditProfileViewController: UIViewController {
         setupTextFieldsDelegate(profileView?.repeatPasswordTextField)
         setupTextFieldsDelegate(profileView?.cardNumberTextField)
         setupTextFieldsDelegate(profileView?.bioTextField)
+
+        setupExitButton()
     }
 
     private func addTargets() {
@@ -92,9 +89,9 @@ final class EditProfileViewController: UIViewController {
         textField?.addTarget(self, action: #selector(textFieldsEditingChanged), for: .editingChanged)
     }
 
-    private func configureNavigationController() {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.title = "Профиль"
+    private func setupExitButton() {
+        let exitButton = UIBarButtonItem(title: "ВЫЙТИ", style: .plain, target: self, action: #selector(exitButtonDidTap))
+        navigationItem.rightBarButtonItem = exitButton
     }
 
     private func getRawModelFromInput() -> SignUpRawModel {
@@ -150,6 +147,9 @@ final class EditProfileViewController: UIViewController {
         }
     }
 
+    @objc private func exitButtonDidTap(_ sender: UIButton) {
+        presenter.exitButtonDidTap()
+    }
 }
 
 // MARK: - Extensions
@@ -186,6 +186,4 @@ extension EditProfileViewController: EditProfileViewProtocol {
             self.profileView?.warningLabel.text = ""
         }
     }
-
-    
 }
