@@ -14,6 +14,7 @@ final class ProductView: UIView {
     let mainView = UIView()
     let scrollView = UIScrollView()
     let contentView = UIView()
+    let addReviewButton = UIButton(type: .system)
     let showReviewsButton = UIButton()
 
     // MARK: - Constructions
@@ -37,6 +38,7 @@ final class ProductView: UIView {
         configureMainView()
         configureScrollView()
         configureInitialView()
+        configureAddReviewButton()
         configureReviewsButton()
     }
 
@@ -79,30 +81,38 @@ final class ProductView: UIView {
         ])
     }
 
+    private func configureAddReviewButton() {
+        contentView.addSubview(addReviewButton)
+
+        let font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        let config = getConfiguration(font: font, title: "НАПИСАТЬ ОТЗЫВ")
+        addReviewButton.configuration = config
+        addReviewButton.backgroundColor = .white
+        addReviewButton.layer.borderColor = UIColor.grayColor.cgColor
+        addReviewButton.layer.borderWidth = 1.0
+        addReviewButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            addReviewButton.leftAnchor.constraint(
+                equalTo: contentView.leftAnchor,
+                constant: ProductConstants.sideIndent),
+            addReviewButton.rightAnchor.constraint(
+                lessThanOrEqualTo: contentView.rightAnchor,
+                constant: -ProductConstants.sideIndent)
+        ])
+    }
+
     private func configureReviewsButton() {
         contentView.addSubview(showReviewsButton)
-
-        var container = AttributeContainer()
-        container.font = .systemFont(ofSize: 20.0, weight: .semibold)
-        container.foregroundColor = .black
-
-        var configuration = UIButton.Configuration.plain()
-        configuration.attributedTitle = AttributedString("СМОТРЕТЬ ВСЕ ОТЗЫВЫ", attributes: container)
-        configuration.image = .init(systemName: "chevron.forward")
-        configuration.imagePlacement = .trailing
-        configuration.background.backgroundColor = .white
-        configuration.baseForegroundColor = .black
-        configuration.titleAlignment = .trailing
-        configuration.contentInsets = .init(
-            top: ReviewsConstants.starsSpacing,
-            leading: 0,
-            bottom: ReviewsConstants.starsSpacing,
-            trailing: 0)
-
-        showReviewsButton.configuration = configuration
+        let font = UIFont.systemFont(ofSize: 20.0, weight: .semibold)
+        let config = getConfiguration(font: font, title: "СМОТРЕТЬ ВСЕ ОТЗЫВЫ", imageName: "chevron.forward")
+        showReviewsButton.configuration = config
         showReviewsButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
+            showReviewsButton.topAnchor.constraint(
+                equalTo: addReviewButton.bottomAnchor,
+                constant: ProductConstants.sideIndent),
             showReviewsButton.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
                 constant: -ProductConstants.largeIndent),
@@ -113,5 +123,29 @@ final class ProductView: UIView {
                 lessThanOrEqualTo: contentView.rightAnchor,
                 constant: -ProductConstants.sideIndent)
         ])
+    }
+
+    private func getConfiguration(font: UIFont, title: String, imageName: String = "") -> UIButton.Configuration {
+        var container = AttributeContainer()
+        container.font = font
+        container.foregroundColor = .black
+
+        var configuration = UIButton.Configuration.plain()
+        configuration.attributedTitle = AttributedString(title, attributes: container)
+
+        var sideInset: CGFloat = 10.0
+        let topInset = ReviewsConstants.starsSpacing
+
+        if !imageName.isEmpty {
+            configuration.image = .init(systemName: imageName)
+            configuration.imagePlacement = .trailing
+            sideInset = 0
+        }
+
+        configuration.background.backgroundColor = .white
+        configuration.baseForegroundColor = .black
+        configuration.contentInsets = .init(top: topInset, leading: sideInset, bottom: topInset, trailing: sideInset)
+
+        return configuration
     }
 }

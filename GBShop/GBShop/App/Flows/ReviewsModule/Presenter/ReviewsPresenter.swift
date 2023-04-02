@@ -11,6 +11,7 @@ protocol ReviewsViewProtocol: AnyObject {
     func showFailure(with message: String?)
     func removeWarning()
     func reviewsDidFetch(_ reviews: [ReviewCellModel])
+    func setupAddReviewButton()
 }
 
 protocol ReviewsPresenterProtocol: AnyObject {
@@ -23,6 +24,7 @@ protocol ReviewsPresenterProtocol: AnyObject {
     func onViewDidLoad()
     func uploadReview(review: ReviewCellModel)
     func scrollWillEnd()
+    func addReviewButtonDidTap()
 }
 
 // MARK: - ReviewsPresenter
@@ -96,6 +98,7 @@ extension ReviewsPresenter: ReviewsPresenterProtocol {
 
     func onViewDidLoad() {
         fetchProduct(for: nextPage)
+        view.setupAddReviewButton()
     }
 
     func uploadReview(review: ReviewCellModel) {
@@ -104,5 +107,9 @@ extension ReviewsPresenter: ReviewsPresenterProtocol {
 
     func scrollWillEnd() {
         fetchProduct(for: nextPage)
+    }
+
+    func addReviewButtonDidTap() {
+        // TODO: call coordinator moveTo method
     }
 }

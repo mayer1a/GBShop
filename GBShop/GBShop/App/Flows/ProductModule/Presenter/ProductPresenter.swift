@@ -27,6 +27,7 @@ protocol ProductPresenterProtocol: AnyObject {
     func addToFavorite()
     func onViewDidLoad()
     func showAllReviews()
+    func addReviewButtonDidTap()
 }
 
 // MARK: - ProductPresenter
@@ -165,6 +166,10 @@ extension ProductPresenter: ProductPresenterProtocol {
         guard let product else { return }
         
         coordinator.moveTo(flow: .tabBar(.catalogFlow(.reviewsScreen)), userData: [.product: product])
+    }
+
+    func addReviewButtonDidTap() {
+        // TODO: call coordinator moveTo method
     }
 
 }

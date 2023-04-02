@@ -152,10 +152,11 @@ final class ProductViewController: UIViewController {
         reviewsViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
         productView.showReviewsButton.addTarget(self, action: #selector(showAllButtonDidTap), for: .touchUpInside)
+        productView.addReviewButton.addTarget(self, action: #selector(addReviewButtonDidTap), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             reviewsViewController.view.topAnchor.constraint(equalTo: descriptionViewController.view.bottomAnchor),
-            reviewsViewController.view.bottomAnchor.constraint(equalTo: productView.showReviewsButton.topAnchor),
+            reviewsViewController.view.bottomAnchor.constraint(equalTo: productView.addReviewButton.topAnchor),
             reviewsViewController.view.leftAnchor.constraint(equalTo: productView.contentView.leftAnchor),
             reviewsViewController.view.rightAnchor.constraint(equalTo: productView.contentView.rightAnchor)
         ])
@@ -163,6 +164,10 @@ final class ProductViewController: UIViewController {
 
     @objc private func showAllButtonDidTap() {
         presenter.showAllReviews()
+    }
+
+    @objc private func addReviewButtonDidTap() {
+        presenter.addReviewButtonDidTap()
     }
 }
 

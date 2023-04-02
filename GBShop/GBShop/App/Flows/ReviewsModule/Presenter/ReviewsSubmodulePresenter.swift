@@ -74,4 +74,5 @@ extension ReviewsSubmodulePresenter: ReviewsPresenterProtocol {
 
     func uploadReview(review: ReviewCellModel) {}
     func scrollWillEnd() {}
+    func addReviewButtonDidTap() {}
 }

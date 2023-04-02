@@ -64,9 +64,15 @@ final class UserCredentialsStorageService {
     }
 
     /// Deletes a user entry in local storage (a.k.a **Realm**).
-    func deleteUser(from user: User) {
-        let realmUser = modelToRealm(user)
+    func deleteUser() {
+        guard let realmUser = realm.read(of: RealmUser.self).first else { return }
         realm.delete(realmUser)
+    }
+
+    /// Deletes a user entry in local storage (a.k.a **Realm**) and UD value set false for key "isUserAuthenticated".
+    func userDidExit(_ user: User) {
+        deleteUser()
+        isUserAuthenticated = false
     }
 
 }
