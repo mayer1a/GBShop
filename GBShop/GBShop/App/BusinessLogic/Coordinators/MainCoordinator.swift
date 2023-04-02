@@ -59,6 +59,7 @@ final class MainCoordinator: MainBaseCoordinator {
 
         tabBarCoordinator.setup(user: user)
         (rootViewController as? UINavigationController)?.setViewControllers([tabBarCoordinator.start()], animated: true)
+        (rootViewController as? UINavigationController)?.setNavigationBarHidden(true, animated: true)
         tabBarCoordinator.moveTo(flow: flow, userData: userData)
     }
 }
