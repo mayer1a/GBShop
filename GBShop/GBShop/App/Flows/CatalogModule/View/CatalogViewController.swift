@@ -71,7 +71,7 @@ extension CatalogViewController: CatalogViewProtocol {
     // MARK: - Functions
 
     func catalogPageDidFetch(_ products: [Product]) {
-        let firstInsertIndex = self.products.count - 1
+        let firstInsertIndex = self.products.count == 0 ? 0 : self.products.count - 1
         let lastInsertIndex = firstInsertIndex + (products.count - 1)
 
         self.products.append(contentsOf: products)
