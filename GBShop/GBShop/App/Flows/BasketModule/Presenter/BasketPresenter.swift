@@ -108,9 +108,9 @@ final class BasketPresenter {
         case .success(let basketResult):
             let isSuccess = handleResult(result: basketResult, view.insertProductRows)
             if isSuccess {
-                analyticsManager.log(.serverError(basketResult.errorMessage))
-            } else {
                 analyticsManager.log(.productAddedToBasket(productId: productId))
+            } else {
+                analyticsManager.log(.serverError(basketResult.errorMessage))
             }
         case .failure(let error):
             analyticsManager.log(.serverError(error.localizedDescription))
