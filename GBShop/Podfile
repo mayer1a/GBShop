@@ -8,6 +8,8 @@ target 'GBShop' do
   # Pods for GBShop
   pod 'Alamofire', '5.6.1'
   pod 'RealmSwift', '10.36.0'
+  pod 'Firebase/AnalyticsWithoutAdIdSupport'
+  pod 'Firebase/Crashlytics'
 
   target 'GBShopTests' do
     inherit! :search_paths

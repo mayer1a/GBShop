@@ -140,6 +140,7 @@
 		49B77868299AA5EF00597F11 /* SignUpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77867299AA5EF00597F11 /* SignUpResult.swift */; };
 		49B7787A299AAA8F00597F11 /* SignUpRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B77879299AAA8F00597F11 /* SignUpRequestFactory.swift */; };
 		49B7787C299AAADA00597F11 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B7787B299AAADA00597F11 /* SignUp.swift */; };
+		49BF069C29D9F68E003EE6F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49BF069B29D9F68E003EE6F5 /* GoogleService-Info.plist */; };
 		49C0AA1F29C06F6600A927DD /* UserModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */; };
 		49C0AA2529C0731E00A927DD /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */; };
 		49C0AA2929C073AA00A927DD /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C0AA2829C073AA00A927DD /* SignUpViewController.swift */; };
@@ -320,6 +321,7 @@
 		49B77867299AA5EF00597F11 /* SignUpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResult.swift; sourceTree = "<group>"; };
 		49B77879299AAA8F00597F11 /* SignUpRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestFactory.swift; sourceTree = "<group>"; };
 		49B7787B299AAADA00597F11 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		49BF069B29D9F68E003EE6F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49C0AA1E29C06F6600A927DD /* UserModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelFactory.swift; sourceTree = "<group>"; };
 		49C0AA2429C0731E00A927DD /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		49C0AA2829C073AA00A927DD /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 			isa = PBXGroup;
 			children = (
 				491B35A52997DB2400323789 /* Info.plist */,
+				49BF069B29D9F68E003EE6F5 /* GoogleService-Info.plist */,
 			);
 			path = Environments;
 			sourceTree = "<group>";
@@ -1103,6 +1106,7 @@
 				491B35912997DB2300323789 /* Frameworks */,
 				491B35922997DB2300323789 /* Resources */,
 				25AB582A1438305CA19398AA /* [CP] Embed Pods Frameworks */,
+				49BF069D29D9F796003EE6F5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1202,6 +1206,7 @@
 			files = (
 				491B35A42997DB2400323789 /* LaunchScreen.storyboard in Resources */,
 				491B35A12997DB2400323789 /* Assets.xcassets in Resources */,
+				49BF069C29D9F68E003EE6F5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,6 +1243,25 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GBShop/Pods-GBShop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		49BF069D29D9F796003EE6F5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		5DDB683CE3E64CC72A29F4FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1553,7 +1577,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
