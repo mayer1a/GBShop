@@ -43,6 +43,7 @@ final class CatalogPresenter {
     private let basketRequstFactory: BasketRequestFactory
     private let storageService: ProductsStorageService
     private var imageDownloader: ImageDownloaderProtocol!
+    private var analyticsManager: AnalyticsManagerInterface!
     private var nextPage: Int?
     private var currentCategory: Int
     private var userId: Int
@@ -68,27 +69,29 @@ final class CatalogPresenter {
 
     // MARK: - Functions
 
-    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+    func setupServices(imageDownloader: ImageDownloaderProtocol, analyticsManager: AnalyticsManagerInterface) {
         self.imageDownloader = imageDownloader
+        self.analyticsManager = analyticsManager
     }
 
     // MARK: - Private functions
 
-    private func serverDidResponded(_ response: AFCatalogResult) {
+    private func serverDidResponded(_ response: AFCatalogResult, page: Int, category: Int) {
         switch response.result {
         case .success(let catalogResult):
             if catalogResult.result == 0 {
                 self.view.showFailure(with: nil)
                 return
             }
-            
+            analyticsManager.log(.catalogViewed(page: page, category: category))
             nextPage = catalogResult.nextPage
 
             guard let products = catalogResult.products else { return }
 
             self.view.catalogPageDidFetch(products)
             // TODO: Save fetched result to realm
-        case .failure(_):
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
@@ -102,27 +105,28 @@ final class CatalogPresenter {
             guard let self else { return }
 
             DispatchQueue.main.async {
-                self.serverDidResponded(response)
+                self.serverDidResponded(response, page: pageNumber, category: categoryId)
                 self.view.stopLoadingSpinner()
             }
         }
     }
 
-    private func handleAddProductResult(_ response: AFBasketResult) {
+    private func handleAddProductResult(_ response: AFBasketResult, productId: Int) {
         switch response.result {
         case .success(let catalogResult):
             guard catalogResult.result != 0, let basket = catalogResult.basket else {
                 view.showFailure(with: catalogResult.errorMessage)
                 return
             }
-
+            analyticsManager.log(.productAddedToBasket(productId: productId))
             if let items = (coordinator.parentCoordinator?.rootViewController as? UITabBarController)?.tabBar.items {
                 let basketItem = items.first(where: { $0.image == .init(systemName: "basket.fill") })
 
                 basketItem?.badgeValue = "\(basket.productsQuantity)"
                 basketItem?.badgeColor = .black
             }
-        case .failure(_):
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
@@ -150,7 +154,7 @@ extension CatalogPresenter: CatalogPresenterProtocol {
             guard let self else { return }
             
             DispatchQueue.main.async {
-                self.handleAddProductResult(response)
+                self.handleAddProductResult(response, productId: basketElement.product.id)
             }
         }
     }

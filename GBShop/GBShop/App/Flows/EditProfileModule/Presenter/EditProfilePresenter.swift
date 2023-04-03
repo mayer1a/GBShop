@@ -42,6 +42,7 @@ final class EditProfilePresenter {
     private let coordinator: ProfileBaseCoordinator
     private let requestFactory: ProfileRequestFactory
     private let storageService: UserCredentialsStorageService
+    private var analyticsManager: AnalyticsManagerInterface!
     private let validator: Validator
     private let userModelFactory: UserModelFactory
 
@@ -62,6 +63,12 @@ final class EditProfilePresenter {
         validator = .init()
         userRawModel = .init()
         userModelFactory = .init()
+    }
+
+    // MARK: - Functions
+
+    func setupServices(analyticsManager: AnalyticsManagerInterface) {
+        self.analyticsManager = analyticsManager
     }
 
     // MARK: - Private functions
@@ -132,6 +139,7 @@ extension EditProfilePresenter: EditProfilePresenterProtocol {
 
     func exitButtonDidTap() {
         storageService.userDidExit(user)
+        analyticsManager.log(.logout)
         coordinator.moveTo(flow: .initial(.signInScreen), userData: nil)
     }
 }

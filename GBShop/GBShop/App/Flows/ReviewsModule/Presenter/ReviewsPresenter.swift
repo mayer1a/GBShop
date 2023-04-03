@@ -36,6 +36,7 @@ final class ReviewsPresenter {
     private weak var view: ReviewsViewProtocol!
     private let coordinator: CatalogBaseCoordinator
     private let requestFactory: ReviewsRequestFactory
+    private var analyticsManager: AnalyticsManagerInterface!
     private var nextPage: Int?
     private let productId: Int?
 
@@ -52,6 +53,12 @@ final class ReviewsPresenter {
         self.coordinator = coordinator
         self.productId = productId
         nextPage = 1
+    }
+
+    // MARK: - Functions
+
+    func setupServices(analyticsManager: AnalyticsManagerInterface) {
+        self.analyticsManager = analyticsManager
     }
 
     // MARK: - Private functions
@@ -110,6 +117,6 @@ extension ReviewsPresenter: ReviewsPresenterProtocol {
     }
 
     func addReviewButtonDidTap() {
-        // TODO: call coordinator moveTo method
+        // TODO: call coordinator moveTo method, on add review screen will call analyticsManager.log
     }
 }

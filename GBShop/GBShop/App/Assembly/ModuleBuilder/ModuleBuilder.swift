@@ -26,6 +26,8 @@ final class ModuleBuilder: ModuleBuilderProtocol {
     // MARK: - Private properties
 
     private var realmService: UserCredentialRealmStorage = RealmLayer()
+    private let analyticsManager: AnalyticsManagerInterface = AnalyticsManager(service: AnalyticsService())
+    private let imageDownloader: ImageDownloaderProtocol = ImageDownloader()
 
     // MARK: - Functions
 
@@ -49,6 +51,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             storageService: storageService)
 
         signInView.setPresenter(presenter)
+        presenter.setupServices(analyticsManager: analyticsManager)
 
         return signInView
     }
@@ -65,6 +68,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             storageService: storageService)
 
         view.setPresenter(presenter)
+        presenter.setupServices(analyticsManager: analyticsManager)
 
         return view
     }
@@ -80,6 +84,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             storageService: storageService)
 
         view.setPresenter(presenter)
+        presenter.setupServices(analyticsManager: analyticsManager)
 
         return view
     }
@@ -96,7 +101,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             userId: userId)
 
         view.setPresenter(presenter)
-        presenter.setupDownloader(ImageDownloader())
+        presenter.setupServices(imageDownloader: imageDownloader, analyticsManager: analyticsManager)
         
         return view
     }
@@ -114,7 +119,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             userId: userId)
 
         view.setPresenter(presenter)
-        presenter.setupDownloader(ImageDownloader())
+        presenter.setupServices(imageDownloader: imageDownloader, analyticsManager: analyticsManager)
 
         return view
     }
@@ -130,6 +135,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
         view.setupAsSubmodule()
         view.setPresenter(presenter)
+        presenter.setupServices(analyticsManager: analyticsManager)
 
         return view
     }
@@ -144,6 +150,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             productId: product?.id)
 
         view.setPresenter(presenter)
+        presenter.setupServices(analyticsManager: analyticsManager)
 
         return view
     }
@@ -158,7 +165,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
             userId: userId)
 
         view.setPresenter(presenter)
-        presenter.setupDownloader(ImageDownloader())
+        presenter.setupServices(imageDownloader: imageDownloader, analyticsManager: analyticsManager)
 
         return view
     }

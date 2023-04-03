@@ -13,6 +13,7 @@ final class ReviewsSubmodulePresenter {
 
     private weak var view: ReviewsViewProtocol!
     private let requestFactory: ReviewsRequestFactory
+    private var analyticsManager: AnalyticsManagerInterface!
     private let productId: Int?
 
     // MARK: - Constructions
@@ -26,6 +27,12 @@ final class ReviewsSubmodulePresenter {
         self.view = view
         self.requestFactory = requestFactory
         self.productId = productId
+    }
+
+    // MARK: - Functions
+
+    func setupServices(analyticsManager: AnalyticsManagerInterface) {
+        self.analyticsManager = analyticsManager
     }
 
     // MARK: - Private functions
@@ -72,7 +79,10 @@ extension ReviewsSubmodulePresenter: ReviewsPresenterProtocol {
         fetchProduct()
     }
 
+    func addReviewButtonDidTap() {
+        // TODO: call coordinator moveTo method, on add review screen will call analyticsManager.log
+    }
+
     func uploadReview(review: ReviewCellModel) {}
     func scrollWillEnd() {}
-    func addReviewButtonDidTap() {}
 }
