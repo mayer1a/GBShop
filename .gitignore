@@ -103,3 +103,5 @@ Icon
 # Thumbnails
 ._*
 
+# GoogleInfoPlist
+./GBShop/GBShop/Environments/GoogleService-Info.plist
