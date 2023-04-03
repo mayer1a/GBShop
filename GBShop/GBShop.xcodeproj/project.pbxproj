@@ -42,6 +42,9 @@
 		493D065629C4306B00442609 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065529C4306B00442609 /* SignInView.swift */; };
 		493D065829C442A100442609 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493D065729C442A100442609 /* InitialView.swift */; };
 		49437238299DF57F00AA85A3 /* ResponseCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */; };
+		49441DF929DAAC5300BEA89E /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49441DF829DAAC5300BEA89E /* AnalyticsService.swift */; };
+		49441DFB29DAAFEF00BEA89E /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49441DFA29DAAFEF00BEA89E /* AnalyticsEvent.swift */; };
+		49441DFD29DABBC800BEA89E /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49441DFC29DABBC800BEA89E /* AnalyticsManager.swift */; };
 		4951BABE29D571F7007E548B /* GetBasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BABD29D571F7007E548B /* GetBasketResult.swift */; };
 		4951BAC029D57270007E548B /* UserBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BABF29D57270007E548B /* UserBasket.swift */; };
 		4951BAC229D57421007E548B /* BasketElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAC129D57421007E548B /* BasketElement.swift */; };
@@ -223,6 +226,9 @@
 		493D065529C4306B00442609 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		493D065729C442A100442609 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		49437237299DF57F00AA85A3 /* ResponseCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodableTests.swift; sourceTree = "<group>"; };
+		49441DF829DAAC5300BEA89E /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		49441DFA29DAAFEF00BEA89E /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		49441DFC29DABBC800BEA89E /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		4951BABD29D571F7007E548B /* GetBasketResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBasketResult.swift; sourceTree = "<group>"; };
 		4951BABF29D57270007E548B /* UserBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBasket.swift; sourceTree = "<group>"; };
 		4951BAC129D57421007E548B /* BasketElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketElement.swift; sourceTree = "<group>"; };
@@ -580,6 +586,7 @@
 		491B35C82997F7CB00323789 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				49441DF729DAAC1F00BEA89E /* Analytics */,
 				4957442D29CE1AF000155116 /* CellFactory */,
 				49C0AA1D29C06F4E00A927DD /* ModelFactory */,
 				490A6D3C29BCED6100427C50 /* Validator */,
@@ -708,6 +715,16 @@
 				493D065129C35AE700442609 /* EditProfileViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		49441DF729DAAC1F00BEA89E /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				49441DFA29DAAFEF00BEA89E /* AnalyticsEvent.swift */,
+				49441DFC29DABBC800BEA89E /* AnalyticsManager.swift */,
+				49441DF829DAAC5300BEA89E /* AnalyticsService.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		4951BACF29D5B4EB007E548B /* BasketModule */ = {
@@ -1379,6 +1396,7 @@
 				493D065629C4306B00442609 /* SignInView.swift in Sources */,
 				4951BACE29D59B66007E548B /* ChangeableStepper.swift in Sources */,
 				49ADCC5929AF3CE9001108DC /* DetailedProduct.swift in Sources */,
+				49441DF929DAAC5300BEA89E /* AnalyticsService.swift in Sources */,
 				4957442729CE177F00155116 /* ProductCellModelFactory.swift in Sources */,
 				493D065829C442A100442609 /* InitialView.swift in Sources */,
 				4951BACA29D57D6E007E548B /* BasketCellModelFactory.swift in Sources */,
@@ -1400,6 +1418,7 @@
 				4955638D299A614D00A22FA4 /* SignInResult.swift in Sources */,
 				4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */,
 				4900A6E529BB333400FFF9A8 /* KeyboardObserver.swift in Sources */,
+				49441DFD29DABBC800BEA89E /* AnalyticsManager.swift in Sources */,
 				4957440E29CC422D00155116 /* TabBarCoordinator.swift in Sources */,
 				4928AD0F299B4CA000B665C8 /* EditProfileResult.swift in Sources */,
 				49B77868299AA5EF00597F11 /* SignUpResult.swift in Sources */,
@@ -1440,6 +1459,7 @@
 				499E5F8229D24D7C0092D8D6 /* ThrobberView.swift in Sources */,
 				4928AD17299B502F00B665C8 /* Profile.swift in Sources */,
 				4999126C299E36010034015A /* GetProduct.swift in Sources */,
+				49441DFB29DAAFEF00BEA89E /* AnalyticsEvent.swift in Sources */,
 				490A6D3E29BCED6D00427C50 /* Validator.swift in Sources */,
 				499E5FA429D2701C0092D8D6 /* ReviewCellModel.swift in Sources */,
 				4999126A299E35B00034015A /* GetProductRequestFactory.swift in Sources */,
