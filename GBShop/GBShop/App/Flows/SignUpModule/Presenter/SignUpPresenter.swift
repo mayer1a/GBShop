@@ -36,6 +36,7 @@ final class SignUpPresenter {
     private let coordinator: InitialBaseCoordinator
     private let requestFactory: SignUpRequestFactory
     private let storageService: UserCredentialsStorageService
+    private var analyticsManager: AnalyticsManagerInterface!
     private let validator: Validator
     private let userModelFactory: UserModelFactory
 
@@ -54,6 +55,12 @@ final class SignUpPresenter {
         validator = .init()
         signUpUser = .init()
         userModelFactory = .init()
+    }
+
+    // MARK: - Functions
+
+    func setupServices(analyticsManager: AnalyticsManagerInterface) {
+        self.analyticsManager = analyticsManager
     }
 
     // MARK: - Private functions
@@ -80,17 +87,20 @@ final class SignUpPresenter {
         switch response.result {
         case .success(let signUpResult):
             if signUpResult.result == 0 {
-                self.view.signUpFailure(with: signUpResult.userMessage)
+                analyticsManager.log(.registrationFailed(signUpResult.userMessage))
+                view.signUpFailure(with: signUpResult.userMessage)
                 return
             }
 
             guard let userId = signUpResult.userId else { return }
 
+            analyticsManager.log(.registrationSucceeded)
             let user = userModelFactory.construct(from: signUpUserModel, with: userId)
             storageService.createUser(from: user)
             coordinator.moveTo(flow: .tabBar(.catalogFlow(.catalogScreen)), userData: [.user: user])
-        case .failure(_):
-            self.view.signUpFailure(with: "Сервер недоступен. Повторите попытку позже.")
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
+            view.signUpFailure(with: "Сервер недоступен. Повторите попытку позже.")
         }
     }
 }

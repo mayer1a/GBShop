@@ -41,6 +41,7 @@ final class BasketPresenter {
     private let coordinator: BasketBaseCoordinator
     private let requestFactory: BasketRequestFactory
     private var imageDownloader: ImageDownloaderProtocol!
+    private var analyticsManager: AnalyticsManagerInterface!
     private var userId: Int
     private var basket: BasketModel?
     
@@ -60,16 +61,18 @@ final class BasketPresenter {
     
     // MARK: Functions
     
-    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+    func setupServices(imageDownloader: ImageDownloaderProtocol, analyticsManager: AnalyticsManagerInterface) {
         self.imageDownloader = imageDownloader
+        self.analyticsManager = analyticsManager
     }
     
     // MARK: - Private functions
-    
-    private func handleResult(result: GetBasketResult, _ action: ([IndexPath], BasketModel) -> Void) {
+
+    @discardableResult
+    private func handleResult(result: GetBasketResult, _ action: ([IndexPath], BasketModel) -> Void) -> Bool {
         guard result.result != 0, let basket = result.basket else {
             view.showFailure(with: result.errorMessage)
-            return
+            return false
         }
         
         let userBasket = BasketCellModelFactory.construct(from: basket)
@@ -78,6 +81,8 @@ final class BasketPresenter {
 
         setupBadge()
         action(indexes, userBasket)
+
+        return true
     }
     
     private func basketDidFetch(_ response: AFBasketResult) {
@@ -92,16 +97,23 @@ final class BasketPresenter {
             basket = basketModel
             setupBadge()
             view.basketDidFetch(basketModel)
-        case .failure(_):
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
     
-    private func handleAddProductResponse(_ response: AFBasketResult) {
+    private func handleAddProductResponse(_ response: AFBasketResult, productId: Int) {
         switch response.result {
         case .success(let basketResult):
-            handleResult(result: basketResult, view.insertProductRows)
-        case .failure(_):
+            let isSuccess = handleResult(result: basketResult, view.insertProductRows)
+            if isSuccess {
+                analyticsManager.log(.productAddedToBasket(productId: productId))
+            } else {
+                analyticsManager.log(.serverError(basketResult.errorMessage))
+            }
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
@@ -110,16 +122,23 @@ final class BasketPresenter {
         switch response.result {
         case .success(let basketResult):
             handleResult(result: basketResult, view.updateProductRows)
-        case .failure(_):
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
     
-    private func handleRemoveProductResponse(_ response: AFBasketResult) {
+    private func handleRemoveProductResponse(_ response: AFBasketResult, productId: Int) {
         switch response.result {
         case .success(let basketResult):
-            handleResult(result: basketResult, view.deleteProductRows)
-        case .failure(_):
+            let isSuccess = handleResult(result: basketResult, view.deleteProductRows)
+            if isSuccess {
+                analyticsManager.log(.serverError(basketResult.errorMessage))
+            } else {
+                analyticsManager.log(.productRemovedFromBasket(productId: productId))
+            }
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
@@ -129,6 +148,7 @@ final class BasketPresenter {
         case .success(let basketResult):
             switch basketResult.result {
             case -1...0:
+                analyticsManager.log(.basketFailedPaid(basketResult.errorMessage))
                 view.showFailure(with: basketResult.errorMessage)
                 return
             default:
@@ -138,7 +158,9 @@ final class BasketPresenter {
             basket = nil
             setupBadge()
             view.basketDidPay()
-        case .failure(_):
+            analyticsManager.log(.basketSuccessfullyPaid)
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
             view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
@@ -160,7 +182,7 @@ final class BasketPresenter {
             guard let self else { return }
             
             DispatchQueue.main.async {
-                self.handleAddProductResponse(response)
+                self.handleAddProductResponse(response, productId: basketElement.product.id)
             }
         }
     }
@@ -180,7 +202,7 @@ final class BasketPresenter {
             guard let self else { return }
             
             DispatchQueue.main.async {
-                self.handleRemoveProductResponse(response)
+                self.handleRemoveProductResponse(response, productId: basketElement.product.id)
             }
         }
     }

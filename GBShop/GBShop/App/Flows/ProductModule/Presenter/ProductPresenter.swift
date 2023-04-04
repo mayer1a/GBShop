@@ -42,6 +42,7 @@ final class ProductPresenter {
     private let coordinator: CatalogBaseCoordinator
     private let storageService: ProductsStorageService
     private let basketRequstFactory: BasketRequestFactory
+    private var analyticsManager: AnalyticsManagerInterface!
     private let product: Product?
     private let userId: Int
 
@@ -66,13 +67,14 @@ final class ProductPresenter {
 
     // MARK: - Functions
 
-    func setupDownloader(_ imageDownloader: ImageDownloaderProtocol) {
+    func setupServices(imageDownloader: ImageDownloaderProtocol, analyticsManager: AnalyticsManagerInterface) {
         self.imageDownloader = imageDownloader
+        self.analyticsManager = analyticsManager
     }
 
     // MARK: - Private functions
 
-    private func serverDidResponded(_ response: AFProductResult) {
+    private func serverDidResponded(_ response: AFProductResult, productId: Int) {
         switch response.result {
         case .success(let productResult):
             guard
@@ -80,17 +82,19 @@ final class ProductPresenter {
                 let detailedProduct = productResult.product,
                 let product
             else {
-                self.view.showFailure(with: nil)
+                view.showFailure(with: nil)
                 return
             }
 
+            analyticsManager.log(.detailProductViewed(productId: productId))
             let productViewModel = ProductViewModelFactory.construct(from: product, with: detailedProduct)
 
             fetchImage(links: detailedProduct.images)
             view.productDidFetch(productViewModel)
             // TODO: Save fetched result to realm
-        case .failure(_):
-            self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
+            view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
 
@@ -101,7 +105,7 @@ final class ProductPresenter {
             guard let self else { return }
 
             DispatchQueue.main.async {
-                self.serverDidResponded(response)
+                self.serverDidResponded(response, productId: product.id)
             }
         }
     }
@@ -114,22 +118,23 @@ final class ProductPresenter {
         }
     }
 
-    private func handleAddProductResult(_ response: AFBasketResult) {
+    private func handleAddProductResult(_ response: AFBasketResult, productId: Int) {
         switch response.result {
         case .success(let catalogResult):
             guard catalogResult.result != 0, let basket = catalogResult.basket else {
                 view.showFailure(with: catalogResult.errorMessage)
                 return
             }
-
+            analyticsManager.log(.productAddedToBasket(productId: productId))
             if let items = (coordinator.parentCoordinator?.rootViewController as? UITabBarController)?.tabBar.items {
                 let basketItem = items.first(where: { $0.image == .init(systemName: "basket.fill") })
 
                 basketItem?.badgeValue = "\(basket.productsQuantity)"
                 basketItem?.badgeColor = .black
             }
-        case .failure(_):
-            self.view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
+            view.showFailure(with: "Ошибка сервера. Повторите попытку позже.")
         }
     }
 }
@@ -149,7 +154,7 @@ extension ProductPresenter: ProductPresenterProtocol {
             guard let self else { return }
 
             DispatchQueue.main.async {
-                self.handleAddProductResult(response)
+                self.handleAddProductResult(response, productId: basketElement.product.id)
             }
         }
     }
@@ -169,7 +174,7 @@ extension ProductPresenter: ProductPresenterProtocol {
     }
 
     func addReviewButtonDidTap() {
-        // TODO: call coordinator moveTo method
+        // TODO: call coordinator moveTo method, on add review screen will call analyticsManager.log
     }
 
 }

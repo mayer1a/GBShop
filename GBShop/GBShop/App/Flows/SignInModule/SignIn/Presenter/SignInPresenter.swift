@@ -34,6 +34,7 @@ final class SignInPresenter {
     private var coordinator: InitialBaseCoordinator
     private let requestFactory: SignInRequestFactory
     private let storageService: UserCredentialsStorageService
+    private var analyticsManager: AnalyticsManagerInterface!
 
     // MARK: - Constructions
 
@@ -49,6 +50,12 @@ final class SignInPresenter {
         self.storageService = storageService
     }
 
+    // MARK: - Functions
+
+    func setupServices(analyticsManager: AnalyticsManagerInterface) {
+        self.analyticsManager = analyticsManager
+    }
+
     // MARK: - Private functions
 
     private func serverDidResponded(_ response: AFSignInResult) {
@@ -57,14 +64,17 @@ final class SignInPresenter {
             guard
                 let user = signInResult.user
             else {
+                analyticsManager.log(.loginFailed(signInResult.errorMessage))
                 self.view?.signInFailure(with: signInResult.errorMessage)
                 break
             }
 
-            self.storageService.createUser(from: user)
-            self.coordinator.moveTo(flow: .tabBar(.catalogFlow(.catalogScreen)), userData: [.user: user])
-        case .failure(_):
-            self.view?.signInFailure(with: "Сервер недоступен. Повторите попытку позже.")
+            analyticsManager.log(.loginSucceeded)
+            storageService.createUser(from: user)
+            coordinator.moveTo(flow: .tabBar(.catalogFlow(.catalogScreen)), userData: [.user: user])
+        case .failure(let error):
+            analyticsManager.log(.serverError(error.localizedDescription))
+            view?.signInFailure(with: "Сервер недоступен. Повторите попытку позже.")
         }
     }
 
