@@ -28,6 +28,12 @@ final class EditProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViewComponents()
         keyboardObserver = KeyboardObserver(targetView: profileView?.scrollView)
+
+        #if DEBUG
+        if CommandLine.arguments.contains("enable-testing") {
+            setupUITests()
+        }
+        #endif
     }
 
     // MARK: - Functions
@@ -149,6 +155,11 @@ final class EditProfileViewController: UIViewController {
 
     @objc private func exitButtonDidTap(_ sender: UIButton) {
         presenter.exitButtonDidTap()
+    }
+
+    private func setupUITests() {
+        view.accessibilityIdentifier = "profileView"
+        navigationItem.rightBarButtonItem?.accessibilityIdentifier = "logoutButton"
     }
 }
 
