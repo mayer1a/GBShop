@@ -42,20 +42,28 @@ extension Reviews {
 
         let userId: Int?
         let productId: Int
-        let description: String
+        let body: String
+        let rating: Int
+        let date: TimeInterval
 
         var parameters: Parameters? {
-            guard let userId = userId else {
-                return [
-                    "product_id": productId,
-                    "description": description]
-            }
-
-            return [
-                "user_id": userId,
+            var parameters: Parameters = [
                 "product_id": productId,
-                "description": description
+                "body": body,
+                "rating": rating,
+                "date": date
             ]
+
+            parameters.merge(optionalParameters, uniquingKeysWith: { (_, value) in value })
+            return parameters
+        }
+
+        // MARK: - Private properties
+
+        private var optionalParameters: Parameters {
+            guard let userId else { return [:] }
+
+            return ["user_id": userId]
         }
     }
 
