@@ -29,6 +29,7 @@ final class SignUpRawModel {
         self.lastname = lastname
         self.username = username
         self.password = password
+        self.repeatPassword = repeatPassword
         self.email = email
         self.creditCard = creditCard
         self.gender = gender
