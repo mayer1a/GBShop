@@ -29,7 +29,7 @@ final class ReviewsTests: XCTestCase {
     func testGetReviewsCorrectInput() {
         let reviews = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let productId = 456
+        let productId = 23019
         let pageNumber = 1
         var reviewResult: ReviewsResult? = nil
 
@@ -47,27 +47,16 @@ final class ReviewsTests: XCTestCase {
         waitForExpectations(timeout: 5)
 
         XCTAssertEqual(reviewResult?.result, 1)
-        XCTAssertEqual(reviewResult?.reviews?.count, 2)
-
-        XCTAssertEqual(reviewResult?.reviews?[0].id, 111)
-        XCTAssertEqual(reviewResult?.reviews?[0].productId, 456)
-        XCTAssertEqual(reviewResult?.reviews?[0].userId, 123)
-        XCTAssertEqual(reviewResult?.reviews?[0].body, "Хорошая мышь")
-
-        XCTAssertEqual(reviewResult?.reviews?[1].id, 112)
-        XCTAssertEqual(reviewResult?.reviews?[1].productId, 456)
-        XCTAssertNil(reviewResult?.reviews?[1].userId)
-        XCTAssertEqual(reviewResult?.reviews?[1].body, "Стоит своих денег!")
+        XCTAssertNotNil(reviewResult?.reviews)
+        XCTAssertEqual(reviewResult?.reviews?.isEmpty, false)
     }
 
     func testGetReviewsIncorrectProductId() {
         let reviews = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectProductId")
-        let productId = -123
+        let productId = 1
         let pageNumber = 1
         var reviewResult: ReviewsResult? = nil
-
-        XCTExpectFailure("trying to get reviews with incorrect product id but the reviews were recieved")
 
         reviews.getReviews(productId: productId, pageNumber: pageNumber) { response in
             switch response.result {
@@ -83,16 +72,15 @@ final class ReviewsTests: XCTestCase {
         waitForExpectations(timeout: 5)
         XCTAssertEqual(reviewResult?.result, 0)
         XCTAssertNil(reviewResult?.reviews)
+        XCTAssertEqual(reviewResult?.errorMessage, "Запрашиваемый товар не найден!")
     }
 
     func testGetReviewsIncorrectPageNumber() {
         let reviews = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectProductId")
-        let productId = 456
+        let productId = 23019
         let pageNumber = -1
         var reviewResult: ReviewsResult? = nil
-
-        XCTExpectFailure("trying to get reviews with incorrect page number but the reviews were recieved")
 
         reviews.getReviews(productId: productId, pageNumber: pageNumber) { response in
             switch response.result {
@@ -108,6 +96,7 @@ final class ReviewsTests: XCTestCase {
         waitForExpectations(timeout: 5)
         XCTAssertEqual(reviewResult?.result, 0)
         XCTAssertNil(reviewResult?.reviews)
+        XCTAssertEqual(reviewResult?.errorMessage, "Отзывы не найдены. Неверный номер страницы!")
     }
 
 }

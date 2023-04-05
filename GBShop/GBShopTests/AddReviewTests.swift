@@ -26,15 +26,17 @@ final class AddReviewTests: XCTestCase {
 
     // MARK: - Functions
 
-    func testAddReviewCorrectInput() {
+    func test1AddReviewCorrectInput() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 100
-        let productId = 456
-        let description = "Текст отзыва"
+        let productId = 23019
+        let body = "Текст отзыва"
+        let rating = 4
+        let date = Date.timeIntervalSinceReferenceDate
         var addReviewResult: AddReviewResult? = nil
 
-        addReview.addReview(userId: userId, productId: productId, description: description) { response in
+        addReview.addReview(userId: userId, productId: productId, body: body, rating: rating, date: date) { response in
             switch response.result {
             case .success(let response):
                 addReviewResult = response
@@ -47,19 +49,26 @@ final class AddReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
 
+        guard let userMessage = addReviewResult?.userMessage else {
+            XCTFail("User message is nil!")
+            return
+        }
+
         XCTAssertEqual(addReviewResult?.result, 1)
-        XCTAssertEqual(addReviewResult?.userMessage, "Ваш отзыв был передан на модерацию")
+        XCTAssertTrue(userMessage.contains("был передан на модерацию"))
     }
 
-    func testAddReviewAnonCorrectInput() {
+    func test2AddReviewAnonCorrectInput() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctAnonInput")
         let userId: Int? = nil
-        let productId = 456
-        let description = "Текст отзыва"
+        let productId = 23019
+        let body = "Текст отзыва"
+        let rating = 4
+        let date = Date.timeIntervalSinceReferenceDate
         var addReviewResult: AddReviewResult? = nil
 
-        addReview.addReview(userId: userId, productId: productId, description: description) { response in
+        addReview.addReview(userId: userId, productId: productId, body: body, rating: rating, date: date) { response in
             switch response.result {
             case .success(let response):
                 addReviewResult = response
@@ -72,21 +81,26 @@ final class AddReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
 
+        guard let userMessage = addReviewResult?.userMessage else {
+            XCTFail("User message is nil!")
+            return
+        }
+
         XCTAssertEqual(addReviewResult?.result, 1)
-        XCTAssertEqual(addReviewResult?.userMessage, "Ваш отзыв был передан на модерацию")
+        XCTAssertTrue(userMessage.contains("был передан на модерацию"))
     }
 
-    func testAddReviewIncorrectProductId() {
+    func test3AddReviewIncorrectProductId() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectProductId")
         let userId = 100
-        let productId = -456
-        let description = "Текст отзыва"
+        let productId = 456
+        let body = "Текст отзыва"
+        let rating = 4
+        let date = Date.timeIntervalSinceReferenceDate
         var addReviewResult: AddReviewResult? = nil
 
-        XCTExpectFailure("trying to add review with incorrect product id but the review was added")
-
-        addReview.addReview(userId: userId, productId: productId, description: description) { response in
+        addReview.addReview(userId: userId, productId: productId, body: body, rating: rating, date: date) { response in
             switch response.result {
             case .success(let response):
                 addReviewResult = response
@@ -99,20 +113,20 @@ final class AddReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(addReviewResult?.result, 0)
-        XCTAssertNil(addReviewResult?.userMessage)
+        XCTAssertEqual(addReviewResult?.userMessage, "Товара с указанным id не существует!")
     }
 
-    func testAddReviewsIncorrectUserId() {
+    func test4AddReviewsIncorrectUserId() {
         let addReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "incorrectUserId")
-        let userId = -100
-        let productId = 456
-        let description = "Текст отзыва"
+        let userId = 1
+        let productId = 23019
+        let body = "Текст отзыва"
+        let rating = 4
+        let date = Date.timeIntervalSinceReferenceDate
         var addReviewResult: AddReviewResult? = nil
 
-        XCTExpectFailure("trying to add review with incorrect user id but the review was added")
-
-        addReview.addReview(userId: userId, productId: productId, description: description) { response in
+        addReview.addReview(userId: userId, productId: productId, body: body, rating: rating, date: date) { response in
             switch response.result {
             case .success(let response):
                 addReviewResult = response
@@ -125,7 +139,65 @@ final class AddReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(addReviewResult?.result, 0)
-        XCTAssertNil(addReviewResult?.userMessage)
+        XCTAssertEqual(addReviewResult?.userMessage, "Пользователя с указанным id не существует!")
+    }
+
+    func test5AddExistsReview() {
+        let addReview = requestFactory.makeReviewsRequestFactory()
+        let exp = expectation(description: "addExistsReview")
+        let userId = 100
+        let productId = 23019
+        let body = "Текст отзыва"
+        let rating = 4
+        let date = Date.timeIntervalSinceReferenceDate
+        var addReviewResult: AddReviewResult? = nil
+
+        addReview.addReview(userId: userId, productId: productId, body: body, rating: rating, date: date) { response in
+            switch response.result {
+            case .success(let response):
+                addReviewResult = response
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        XCTAssertEqual(addReviewResult?.result, 0)
+        XCTAssertEqual(addReviewResult?.userMessage, "Данный отзыв уже существует!")
+    }
+
+    func test6AddAnonExistsReview() {
+        let addReview = requestFactory.makeReviewsRequestFactory()
+        let exp = expectation(description: "addExistsReview")
+        let userId: Int? = nil
+        let productId = 23019
+        let body = "Текст отзыва"
+        let rating = 4
+        let date = Date.timeIntervalSinceReferenceDate
+        var addReviewResult: AddReviewResult? = nil
+
+        addReview.addReview(userId: userId, productId: productId, body: body, rating: rating, date: date) { response in
+            switch response.result {
+            case .success(let response):
+                addReviewResult = response
+            case .failure(let error):
+                XCTFail("Connection or server error with description: \(error.localizedDescription)")
+            }
+
+            exp.fulfill()
+        }
+
+        waitForExpectations(timeout: 5)
+        
+        guard let userMessage = addReviewResult?.userMessage else {
+            XCTFail("User message is nil!")
+            return
+        }
+
+        XCTAssertEqual(addReviewResult?.result, 1)
+        XCTAssertTrue(userMessage.contains("был передан на модерацию"))
     }
 
 }

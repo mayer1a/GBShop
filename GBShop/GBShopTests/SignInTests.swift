@@ -25,9 +25,9 @@ final class SignInTests: XCTestCase {
     func testSignInCorrectInput() {
         let signIn = requestFactory.makeSignInRequestFatory()
         let exp = expectation(description: "correctInput")
-        let email = "foobar@baz.az"
-        let password = "FooBarBaz0000"
-        var signInResult = SignInResult(result: -1, user: nil, errorMessage: nil)
+        let email = "adminadmin@adm.in"
+        let password = "Password0000"
+        var signInResult: SignInResult? = nil
 
         signIn.login(email: email, password: password) { response in
             switch response.result {
@@ -42,18 +42,24 @@ final class SignInTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 10)
-        XCTAssertEqual(1, signInResult.result, "Email not found")
-        XCTAssertNotNil(signInResult.user, "Email not found")
-        XCTAssertEqual(100, signInResult.user?.id, "Email not found")
-        XCTAssertNil(signInResult.errorMessage, "Email not found")
+
+        guard let user = signInResult?.user else {
+            XCTFail("User is nil!")
+            return
+        }
+
+        XCTAssertEqual(signInResult?.result, 1)
+        XCTAssertGreaterThanOrEqual(user.id, 100)
+        XCTAssertEqual(signInResult?.user?.email, email)
+        XCTAssertNil(signInResult?.errorMessage)
     }
 
     func testSignInIncorrectEmail() {
         let exp = expectation(description: "incorrectEmail")
         let signIn = requestFactory.makeSignInRequestFatory()
         let email = "foofoobar@bar.af"
-        let password = "FooBarBaz0000"
-        var signInResult = SignInResult(result: -1, user: nil, errorMessage: nil)
+        let password = "Password0000"
+        var signInResult: SignInResult? = nil
 
         signIn.login(email: email, password: password) { response in
             switch response.result {
@@ -67,18 +73,18 @@ final class SignInTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 6)
-        XCTAssertEqual(0, signInResult.result)
-        XCTAssertNil(signInResult.user)
-        XCTAssertNotNil(signInResult.errorMessage)
-        XCTAssertEqual("Неверный логин или пароль", signInResult.errorMessage)
+        XCTAssertEqual(signInResult?.result, 0)
+        XCTAssertNil(signInResult?.user)
+        XCTAssertNotNil(signInResult?.errorMessage)
+        XCTAssertEqual(signInResult?.errorMessage, "Неверный логин или пароль")
     }
 
     func testSignInIncorrectPassword() {
         let exp = expectation(description: "incorrectPassword")
         let signIn = requestFactory.makeSignInRequestFatory()
-        let email = "foobar@baz.az"
-        let password = "BarBar0000"
-        var signInResult = SignInResult(result: -1, user: nil, errorMessage: nil)
+        let email = "adminadmin@adm.in"
+        let password = "password0000"
+        var signInResult: SignInResult? = nil
 
         signIn.login(email: email, password: password) { response in
             switch response.result {
@@ -92,9 +98,9 @@ final class SignInTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 6)
-        XCTAssertEqual(0, signInResult.result)
-        XCTAssertNil(signInResult.user)
-        XCTAssertNotNil(signInResult.errorMessage)
-        XCTAssertEqual("Неверный логин или пароль", signInResult.errorMessage)
+        XCTAssertEqual(signInResult?.result, 0)
+        XCTAssertNil(signInResult?.user)
+        XCTAssertNotNil(signInResult?.errorMessage)
+        XCTAssertEqual(signInResult?.errorMessage, "Неверный логин или пароль")
     }
 }

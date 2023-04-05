@@ -26,7 +26,7 @@ final class AddProductTests: XCTestCase {
 
     // MARK: - Functions
 
-    func testAddProductCorrectInput() {
+    func test1AddProductCorrectInput() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "correctInput")
         let userId = 100
@@ -55,7 +55,7 @@ final class AddProductTests: XCTestCase {
         XCTAssertEqual(addProductResult?.result, 1)
     }
 
-    func testAddProductIncorrectProductId() {
+    func test2AddProductIncorrectProductId() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "incorrectProductId")
         let userId = 100
@@ -67,8 +67,6 @@ final class AddProductTests: XCTestCase {
             mainImage: "https://cdn.mokryinos.ru/images/site/catalog/480x480/2_17618_1675935990.webp")
         let quantity = BasketElement(product: product, quantity: 1)
         var addProductResult: GetBasketResult? = nil
-
-        XCTExpectFailure("trying to add product to basket with incorrect product id but the product was added")
 
         basketFactory.addProduct(userId: userId, basketElement: quantity) { response in
             switch response.result {
@@ -86,7 +84,7 @@ final class AddProductTests: XCTestCase {
         XCTAssertEqual(addProductResult?.result, 0)
     }
 
-    func testAddProductIncorrectQuantity() {
+    func test3AddProductIncorrectQuantity() {
         let basketFactory = requestFactory.makeBasketRequestFactory()
         let exp = expectation(description: "incorrectQuantity")
         let userId = 100
@@ -98,8 +96,6 @@ final class AddProductTests: XCTestCase {
             mainImage: "https://cdn.mokryinos.ru/images/site/catalog/480x480/2_17618_1675935990.webp")
         let quantity = BasketElement(product: product, quantity: -1)
         var addProductResult: GetBasketResult? = nil
-
-        XCTExpectFailure("trying to add product to basket with incorrect quantity but the product was added")
 
         basketFactory.addProduct(userId: userId, basketElement: quantity) { response in
             switch response.result {

@@ -29,8 +29,8 @@ final class ApproveReviewTests: XCTestCase {
     func testApproveReviewCorrectInput() {
         let approveReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = 123
-        let reviewId = 112
+        let userId = 100
+        let reviewId = 104
         var approveReviewResult: ApproveReviewResult? = nil
 
         approveReview.approveReview(userId: userId, reviewId: reviewId) { response in
@@ -51,12 +51,10 @@ final class ApproveReviewTests: XCTestCase {
 
     func testApproveReviewIncorrectUserId() {
         let approveReview = requestFactory.makeReviewsRequestFactory()
-        let exp = expectation(description: "correctInput")
-        let userId = -123
-        let reviewId = 112
+        let exp = expectation(description: "incorrectUserId")
+        let userId = 1
+        let reviewId = 104
         var approveReviewResult: ApproveReviewResult? = nil
-
-        XCTExpectFailure("trying to approve review with incorrect user id but the review was approved")
 
         approveReview.approveReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
@@ -71,16 +69,15 @@ final class ApproveReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(approveReviewResult?.result, 0)
+        XCTAssertEqual(approveReviewResult?.errorMessage, "У Вас нет прав на одобрение отзывов!")
     }
 
     func testApproveReviewIncorrectReviewId() {
         let approveReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = 123
-        let reviewId = -112
+        let userId = 100
+        let reviewId = 1
         var approveReviewResult: ApproveReviewResult? = nil
-
-        XCTExpectFailure("trying to approve review with incorrect review id but the review was approved")
 
         approveReview.approveReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
@@ -95,6 +92,7 @@ final class ApproveReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(approveReviewResult?.result, 0)
+        XCTAssertEqual(approveReviewResult?.errorMessage, "Отзыва с заданным id не существует!")
     }
 
 }
