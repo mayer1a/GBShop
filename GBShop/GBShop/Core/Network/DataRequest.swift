@@ -56,7 +56,8 @@ extension DataRequest {
 
     // MARK: - Functions
 
-    @discardableResult func responseCodable<T: Decodable>(
+    @discardableResult
+    func responseCodable<T: Decodable>(
         errorParser: AbstractErrorParser,
         queue: DispatchQueue = .main,
         completionHandler: @escaping (AFDataResponse<T>) -> Void

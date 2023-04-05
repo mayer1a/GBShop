@@ -11,7 +11,7 @@ extension BasketCellModel: Equatable {
 
     // MARK: - Functions
 
-    static func ==(lhs: BasketCellModel, rhs: BasketCellModel) -> Bool {
+    static func == (lhs: BasketCellModel, rhs: BasketCellModel) -> Bool {
         lhs.productId == rhs.productId && lhs.quantity == rhs.quantity
     }
 }

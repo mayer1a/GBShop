@@ -78,7 +78,7 @@ final class Validator {
 
 }
 
-// MARK: - Extension
+// MARK: - Extensions
 
 extension Validator {
 

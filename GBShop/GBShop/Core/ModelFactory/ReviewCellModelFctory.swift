@@ -31,14 +31,13 @@ struct ReviewCellModelFactory {
             date: convertDate(from: review.date))
     }
 
+    // MARK: - Private functions
+
     private static func convertDate(from date: TimeInterval) -> String {
         let currentTime = Date().timeIntervalSince1970
 
-        if currentTime - date > TimeConstants.halfYear {
-            dateFormatter.dateFormat = "d LLLL yyyy"
-        } else {
-            dateFormatter.dateFormat = "d LLLL"
-        }
+        let hasHalfYearPassed = currentTime - date > TimeConstants.halfYear
+        dateFormatter.dateFormat = hasHalfYearPassed ? "d MMMM yyyy" : "d MMMM"
 
         return dateFormatter.string(from: Date(timeIntervalSince1970: date))
     }

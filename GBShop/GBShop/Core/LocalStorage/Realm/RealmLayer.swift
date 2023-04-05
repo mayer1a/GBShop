@@ -114,7 +114,11 @@ final class RealmLayer: UserCredentialRealmStorage {
     }
 }
 
+// MARK: - Extesnions
+
 extension Results {
+
+    // MARK: - Functions
 
     func toArray() -> [Self.Element] {
         self.map { $0 }

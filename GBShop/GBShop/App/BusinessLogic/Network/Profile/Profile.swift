@@ -58,6 +58,7 @@ extension Profile {
                 "credit_card": profile.creditCard,
                 "bio": profile.bio
             ]
+
             parameters.merge(optionalParameters, uniquingKeysWith: { (_, value) in value })
             return parameters
         }
@@ -65,7 +66,10 @@ extension Profile {
         // MARK: - Private properties
 
         private var optionalParameters: Parameters {
-            guard let oldPassword = profile.oldPassword, let newPassword = profile.newPassword else { return [:] }
+            guard let oldPassword = profile.oldPassword, let newPassword = profile.newPassword else {
+                return [:]
+            }
+
             return ["old_password": oldPassword, "new_password": newPassword]
         }
     }

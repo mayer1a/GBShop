@@ -9,6 +9,7 @@ import Foundation
 
 /// The data model of the server's response to a request to remove a specific review.
 struct RemoveReviewResult: Codable {
+
     // MARK: - CodingKeys
 
     enum CodingKeys: String, CodingKey {

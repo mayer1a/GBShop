@@ -49,9 +49,9 @@ extension Catalog {
         let categoryId: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "page_number": pageNumber,
-                "category_id": categoryId
+                "category_id": categoryId,
             ]
         }
     }

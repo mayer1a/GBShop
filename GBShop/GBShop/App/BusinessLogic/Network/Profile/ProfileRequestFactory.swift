@@ -12,6 +12,10 @@ protocol ProfileRequestFactory {
 
     // MARK: - Functions
 
+    /// Sends a request to change user data to the server with updated user data
+    /// - Parameters:
+    ///   - profile: Updated user profile to send a request to the server.
+    ///   - completionHandler: Received response from the server.
     func editProfile(
         profile: EditProfile,
         completionHandler: @escaping (AFDataResponse<EditProfileResult>) -> Void)

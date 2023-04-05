@@ -51,7 +51,7 @@ final class ImageDownloader: ImageDownloaderProtocol {
             urls.forEach {
                 self?.dispatchGroup.enter()
 
-                getImage(fromUrl: $0){ (image, error) in
+                self?.getImage(fromUrl: $0) { (image, error) in
                     images.append(image)
                     self?.dispatchGroup.leave()
                 }

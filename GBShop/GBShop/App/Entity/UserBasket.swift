@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: - UserBasket
-
+/// The basket data model for server response decoding which contains collection of ``BasketElement``
 struct UserBasket: Codable {
 
     // MARK: - CodingKeys

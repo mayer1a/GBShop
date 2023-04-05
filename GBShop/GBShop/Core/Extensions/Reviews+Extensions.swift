@@ -23,7 +23,7 @@ extension Reviews {
         let pageNumber: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "product_id": productId,
                 "page_number": pageNumber
             ]
@@ -81,7 +81,7 @@ extension Reviews {
         let reviewId: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "user_id": userId,
                 "review_id": reviewId
             ]
@@ -102,7 +102,7 @@ extension Reviews {
         let reviewId: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "user_id": userId,
                 "review_id": reviewId
             ]

@@ -14,12 +14,9 @@ final class RealmProduct: Object {
 
     @Persisted(primaryKey: true)
     var id: Int
-    @Persisted
-    var name: String
-    @Persisted
-    var category: String
-    @Persisted
-    var price: Int
-    @Persisted
-    var mainImage: String
+    
+    @Persisted var name: String
+    @Persisted var category: String
+    @Persisted var price: Int
+    @Persisted var mainImage: String
 }

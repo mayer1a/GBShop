@@ -15,10 +15,10 @@ final class ErrorParser: AbstractErrorParser {
     // MARK: - Functions
     
     func parse(_ result: Error) -> Error {
-        return result
+        result
     }
 
     func parse(response: HTTPURLResponse?, data: Data?, error: Error?) -> Error? {
-        return error
+        error
     }
 }

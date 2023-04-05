@@ -27,16 +27,26 @@ extension Basket {
         var parameters: Parameters? {
             [
                 "user_id": userId,
-                "basket_element": [
-                    "product": [
-                        "product_id": basketElement.product.id,
-                        "product_name": basketElement.product.name,
-                        "product_category": basketElement.product.category,
-                        "product_price": basketElement.product.price,
-                        "product_main_image": basketElement.product.mainImage
-                    ],
-                    "quantity": basketElement.quantity,
-                ]
+                "basket_element": basketElementsParameters
+            ]
+        }
+
+        // MARK: - Private properties
+
+        private var basketElementsParameters: Parameters {
+            [
+                "product": productParameters,
+                "quantity": basketElement.quantity
+            ]
+        }
+
+        private var productParameters: Parameters {
+            [
+                "product_id": basketElement.product.id,
+                "product_name": basketElement.product.name,
+                "product_category": basketElement.product.category,
+                "product_price": basketElement.product.price,
+                "product_main_image": basketElement.product.mainImage
             ]
         }
     }
@@ -57,16 +67,26 @@ extension Basket {
         var parameters: Parameters? {
             [
                 "user_id": userId,
-                "basket_element": [
-                    "product": [
-                        "product_id": basketElement.product.id,
-                        "product_name": basketElement.product.name,
-                        "product_category": basketElement.product.category,
-                        "product_price": basketElement.product.price,
-                        "product_main_image": basketElement.product.mainImage
-                    ],
-                    "quantity": basketElement.quantity,
-                ]
+                "basket_element": basketElementsParameters
+            ]
+        }
+
+        // MARK: - Private properties
+
+        private var basketElementsParameters: Parameters {
+            [
+                "product": productParameters,
+                "quantity": basketElement.quantity
+            ]
+        }
+
+        private var productParameters: Parameters {
+            [
+                "product_id": basketElement.product.id,
+                "product_name": basketElement.product.name,
+                "product_category": basketElement.product.category,
+                "product_price": basketElement.product.price,
+                "product_main_image": basketElement.product.mainImage
             ]
         }
     }

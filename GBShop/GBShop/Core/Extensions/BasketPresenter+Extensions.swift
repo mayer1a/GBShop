@@ -23,6 +23,8 @@ extension BasketPresenter {
         }
     }
 
+    // MARK: - Private functions
+    
     private func calculateIndexes(smaller smallerModel: BasketModel, _ model: BasketModel) -> [IndexPath] {
         let isSizeEqual = smallerModel.productsQuantity == model.productsQuantity
         var indexes = smallerModel.cellModels.enumerated().compactMap { smallerCellModel -> IndexPath? in
