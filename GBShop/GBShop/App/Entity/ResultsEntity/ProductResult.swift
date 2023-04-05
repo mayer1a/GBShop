@@ -15,10 +15,12 @@ struct ProductResult: Codable {
     enum CodingKeys: String, CodingKey {
         case result
         case product
+        case errorMessage = "error_message"
     }
 
     // MARK: - Properties
 
     let result: Int
     let product: DetailedProduct?
+    let errorMessage: String?
 }
