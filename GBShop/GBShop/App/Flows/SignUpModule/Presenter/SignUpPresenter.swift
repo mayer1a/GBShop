@@ -77,6 +77,7 @@ final class SignUpPresenter {
             view?.signUpFailure(with: error.localizedDescription)
             return nil
         } catch {
+            view?.signUpFailure(with: error.localizedDescription)
             return nil
         }
 
