@@ -32,7 +32,9 @@ protocol ReviewsRequestFactory {
     func addReview(
         userId: Int?,
         productId: Int,
-        description: String,
+        body: String,
+        rating: Int,
+        date: TimeInterval,
         completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void)
 
     /// Only an administrator with rights can confirm the review.
