@@ -31,6 +31,11 @@ final class ButtonsViewController: UIViewController {
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
         setupTargets()
+        #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                setupUITests()
+            }
+        #endif
     }
 
     // MARK: - Private functions
@@ -50,5 +55,9 @@ final class ButtonsViewController: UIViewController {
         guard let parent = parent as? ProductButtonsParentProtocol else { return }
 
         parent.favoriteButtonDidTap()
+    }
+    
+    private func setupUITests() {
+        buttonsView?.basketButton.accessibilityIdentifier = "basketButton"
     }
 }

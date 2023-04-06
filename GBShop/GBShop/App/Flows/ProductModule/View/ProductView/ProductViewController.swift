@@ -34,6 +34,12 @@ final class ProductViewController: UIViewController {
         super.viewDidLoad()
         setupViewComponents()
         presenter.onViewDidLoad()
+
+        #if DEBUG
+            if CommandLine.arguments.contains("enable-testing") {
+                setupUITests()
+            }
+        #endif
     }
 
     // MARK: - Functions
@@ -168,6 +174,11 @@ final class ProductViewController: UIViewController {
 
     @objc private func addReviewButtonDidTap() {
         presenter.addReviewButtonDidTap()
+    }
+
+    private func setupUITests() {
+        productView?.accessibilityIdentifier = "productView"
+        productView?.showReviewsButton.accessibilityIdentifier = "showReviewsButton"
     }
 }
 
