@@ -36,8 +36,7 @@ extension AbstractRequestFactory {
     // MARK: - Properties
 
     var baseUrl: URL {
-//        URL(string: "https://gbshop-efcs.onrender.com/")!
-        URL(string: "http://127.0.0.1:8080/")!
+        URL(string: "https://gbshop-efcs.onrender.com/")!
     }
 
     // MARK: - Functions

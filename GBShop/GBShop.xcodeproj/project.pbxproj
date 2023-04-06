@@ -63,6 +63,8 @@
 		4951BAEA29D629E0007E548B /* BasketPresenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */; };
 		4951BAEC29D62A98007E548B /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAEB29D62A98007E548B /* BasketViewController.swift */; };
 		4951BAEE29D652F6007E548B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4951BAED29D652F6007E548B /* UIColor+Extensions.swift */; };
+		4954F18E29DEAAC20084158C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954F18D29DEAAC20084158C /* SnapshotHelper.swift */; };
+		4954F19029DEADB70084158C /* SnapshotGBShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954F18F29DEADB60084158C /* SnapshotGBShopUITests.swift */; };
 		4955637D299A536F00A22FA4 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */; };
 		4955637F299A538900A22FA4 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4955637E299A538900A22FA4 /* ErrorParser.swift */; };
 		49556381299A53C600A22FA4 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49556380299A53C600A22FA4 /* DataRequest.swift */; };
@@ -246,6 +248,8 @@
 		4951BAE929D629E0007E548B /* BasketPresenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasketPresenter+Extensions.swift"; sourceTree = "<group>"; };
 		4951BAEB29D62A98007E548B /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		4951BAED29D652F6007E548B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		4954F18D29DEAAC20084158C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		4954F18F29DEADB60084158C /* SnapshotGBShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotGBShopUITests.swift; sourceTree = "<group>"; };
 		4955637C299A536F00A22FA4 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		4955637E299A538900A22FA4 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		49556380299A53C600A22FA4 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
@@ -562,7 +566,9 @@
 		491B35B72997DB2400323789 /* GBShopUITests */ = {
 			isa = PBXGroup;
 			children = (
+				4954F18D29DEAAC20084158C /* SnapshotHelper.swift */,
 				491B35B82997DB2400323789 /* GBShopUITests.swift */,
+				4954F18F29DEADB60084158C /* SnapshotGBShopUITests.swift */,
 			);
 			path = GBShopUITests;
 			sourceTree = "<group>";
@@ -1530,6 +1536,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				491B35B92997DB2400323789 /* GBShopUITests.swift in Sources */,
+				4954F19029DEADB70084158C /* SnapshotGBShopUITests.swift in Sources */,
+				4954F18E29DEAAC20084158C /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1687,7 +1695,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GBShop/Environments/Info.plist;
@@ -1726,7 +1734,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GBShop/Environments/Info.plist;
@@ -1763,7 +1771,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1787,7 +1795,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1810,7 +1818,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -1833,7 +1841,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 277JX9R2RP;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

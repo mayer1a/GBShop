@@ -24,6 +24,16 @@ struct CollectionViewCellFactory {
             cell.setupRightCellConstraints()
         }
 
+        #if DEBUG
+            setupUITests(for: cell, indexPath: indexPath)
+        #endif
+
         return cell
+    }
+
+    // MARK: - Private functions
+
+    private static func setupUITests(for cell: ProductCell, indexPath: IndexPath) {
+        cell.accessibilityIdentifier = "\(indexPath.item)"
     }
 }

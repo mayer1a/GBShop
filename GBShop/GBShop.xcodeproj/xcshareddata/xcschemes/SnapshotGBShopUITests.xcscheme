@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1420"
-   version = "1.7">
+   LastUpgradeVersion = "1430"
+   version = "2.2">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -9,16 +9,11 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "491B35932997DB2300323789"
-               BuildableName = "GBShop.app"
-               BlueprintName = "GBShop"
-               ReferencedContainer = "container:GBShop.xcodeproj">
-            </BuildableReference>
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <AutocreatedTestPlanReference>
+            </AutocreatedTestPlanReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
@@ -27,36 +22,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      systemAttachmentLifetime = "keepAlways"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES">
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "491B35932997DB2300323789"
-            BuildableName = "GBShop.app"
-            BlueprintName = "GBShop"
-            ReferencedContainer = "container:GBShop.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
+      shouldAutocreateTestPlan = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "491B35A92997DB2400323789"
-               BuildableName = "GBShopTests.xctest"
-               BlueprintName = "GBShopTests"
-               ReferencedContainer = "container:GBShop.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -66,15 +33,29 @@
                BlueprintName = "GBShopUITests"
                ReferencedContainer = "container:GBShop.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
+            <SelectedTests>
                <Test
-                  Identifier = "SnapshotGBShopUITests">
+                  Identifier = "SnapshotGBShopUITests/test1SignInScreen()">
                </Test>
-            </SkippedTests>
-            <LocationScenarioReference
-               identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
-               referenceType = "1">
-            </LocationScenarioReference>
+               <Test
+                  Identifier = "SnapshotGBShopUITests/test2SignUpScreen()">
+               </Test>
+               <Test
+                  Identifier = "SnapshotGBShopUITests/test3CatalogScreen()">
+               </Test>
+               <Test
+                  Identifier = "SnapshotGBShopUITests/test4ProductScreen()">
+               </Test>
+               <Test
+                  Identifier = "SnapshotGBShopUITests/test5ReviewsScreen()">
+               </Test>
+               <Test
+                  Identifier = "SnapshotGBShopUITests/test6BasketScreen()">
+               </Test>
+               <Test
+                  Identifier = "SnapshotGBShopUITests/test7ProfileScreen()">
+               </Test>
+            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>
@@ -123,16 +104,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "491B35932997DB2300323789"
-            BuildableName = "GBShop.app"
-            BlueprintName = "GBShop"
-            ReferencedContainer = "container:GBShop.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
