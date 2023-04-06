@@ -207,5 +207,4 @@ struct StepperConstants {
     static let cornerRadius: CGFloat = 10.0
     static let minStepperValue: Int = 0
     static let maxStepperValue: Int = 100
-
 }

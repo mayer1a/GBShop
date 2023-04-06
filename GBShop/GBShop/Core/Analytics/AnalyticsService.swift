@@ -9,11 +9,13 @@ import Foundation
 import FirebaseAnalytics
 import FirebaseCrashlytics
 
+/// Obliges to implement two methods for handling the sending of logs to ``Firebase`` - crashlitics or analytics
 protocol AnalyticsEngine: AnyObject {
     func assertionFailure(_ message: String)
     func sendAnalyticsEvent(name: String, metadata: [String: String])
 }
 
+/// Firebase analytics handling service for crashlitics and analytics
 final class AnalyticsService: AnalyticsEngine {
 
     // MARK: - Private properties

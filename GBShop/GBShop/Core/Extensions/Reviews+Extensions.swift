@@ -11,6 +11,7 @@ extension Reviews {
 
     // MARK: - Reviews
 
+    /// The structure of the request model for getting reviews for a specific product, used in the ``ReviewsRequestFactory``
     struct Reviews: RequestRouter {
 
         // MARK: - Properties
@@ -32,6 +33,7 @@ extension Reviews {
 
     // MARK: - AddReview
 
+    /// The structure of the request model for adding a review for a specific product, used in the ``ReviewsRequestFactory``
     struct AddReview: RequestRouter {
 
         // MARK: - Properties
@@ -69,6 +71,7 @@ extension Reviews {
 
     // MARK: - ApproveReview
 
+    /// The structure of the request model for approving a review for a specific review ID, used in the ``ReviewsRequestFactory``
     struct ApproveReview: RequestRouter {
 
         // MARK: - Properties
@@ -90,6 +93,7 @@ extension Reviews {
 
     // MARK: - RemoveReview
 
+    /// The structure of the request model for removing a review for a specific review ID, used in the ``ReviewsRequestFactory``
     struct RemoveReview: RequestRouter {
 
         // MARK: - Properties

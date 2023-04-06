@@ -11,7 +11,11 @@ import UIKit
 
 final class GBShopUITests: XCTestCase {
 
+    // MARK: - Properties
+
     var app: XCUIApplication!
+
+    // MARK: - Lifecycle
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
@@ -26,6 +30,8 @@ final class GBShopUITests: XCTestCase {
         app.launch()
         try checkUserAuthState()
     }
+
+    // MARK: - Functions
 
     func test1SignInFailure() throws {
         let startAppElement = app.otherElements["signInView"].firstMatch

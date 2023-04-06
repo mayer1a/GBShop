@@ -7,10 +7,12 @@
 
 import Foundation
 
+/// Obliges to implement the event logging method for ``Firebase`` - crashlitics and analytics based on the ``AnalyticsEvent``.
 protocol AnalyticsManagerInterface: AnyObject {
     func log(_ event: AnalyticsEvent)
 }
 
+/// Firebase analytics event logging manager
 final class AnalyticsManager: AnalyticsManagerInterface {
 
     // MARK: - Private properties

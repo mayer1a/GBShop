@@ -19,7 +19,7 @@ protocol SignUpPresenterProtocol: AnyObject {
         view: SignUpViewProtocol,
         requestFactory: SignUpRequestFactory,
         coordinator: InitialBaseCoordinator,
-        storageService: UserCredentialsStorageService
+        storageService: UserStorageServiceInterface
     )
 
     func signUpButtonTapped(rawModel: SignUpRawModel)
@@ -35,7 +35,7 @@ final class SignUpPresenter {
     private var signUpUser: SignUpRawModel
     private let coordinator: InitialBaseCoordinator
     private let requestFactory: SignUpRequestFactory
-    private let storageService: UserCredentialsStorageService
+    private let storageService: UserStorageServiceInterface
     private var analyticsManager: AnalyticsManagerInterface!
     private let validator: Validator
     private let userModelFactory: UserModelFactory
@@ -46,7 +46,7 @@ final class SignUpPresenter {
         view: SignUpViewProtocol,
         requestFactory: SignUpRequestFactory,
         coordinator: InitialBaseCoordinator,
-        storageService: UserCredentialsStorageService
+        storageService: UserStorageServiceInterface
     ) {
         self.view = view
         self.requestFactory = requestFactory

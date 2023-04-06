@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class CollectionViewCellFactory {
+/// The factory creates a ``ProductCell`` product cell view for ``UICollectionView`` with ``IndexPath``
+/// based on the position of the future cell - left column or right column, changing the indentation of the headings
+struct CollectionViewCellFactory {
 
     // MARK: - Functions
 

@@ -20,7 +20,7 @@ protocol EditProfilePresenterProtocol: AnyObject {
         view: EditProfileViewProtocol,
         requestFactory: ProfileRequestFactory,
         coordinator: ProfileBaseCoordinator,
-        storageService: UserCredentialsStorageService)
+        storageService: UserStorageServiceInterface)
 
     var user: User { get }
 
@@ -41,7 +41,7 @@ final class EditProfilePresenter {
     private var userRawModel: SignUpRawModel
     private let coordinator: ProfileBaseCoordinator
     private let requestFactory: ProfileRequestFactory
-    private let storageService: UserCredentialsStorageService
+    private let storageService: UserStorageServiceInterface
     private var analyticsManager: AnalyticsManagerInterface!
     private let validator: Validator
     private let userModelFactory: UserModelFactory
@@ -53,7 +53,7 @@ final class EditProfilePresenter {
         view: EditProfileViewProtocol,
         requestFactory: ProfileRequestFactory,
         coordinator: ProfileBaseCoordinator,
-        storageService: UserCredentialsStorageService
+        storageService: UserStorageServiceInterface
     ) {
         self.user = user
         self.view = view

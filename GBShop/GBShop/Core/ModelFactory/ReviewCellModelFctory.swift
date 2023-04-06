@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Factory creating reviews cell view model or collection of the models``ReviewCellModel`` from ``Review`` or collection of the ``Review`` models
+/// for detailed product screen ``ProductViewController`` or reviews screen ``ReviewsViewController``
 struct ReviewCellModelFactory {
 
     // MARK: - Private properties

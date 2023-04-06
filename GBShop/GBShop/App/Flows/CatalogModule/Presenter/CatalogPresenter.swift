@@ -20,7 +20,7 @@ protocol CatalogPresenterProtocol: AnyObject {
         view: CatalogViewProtocol,
         requestFactory: CatalogRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        storageService: ProductsStorageService,
+        storageService: ProductsStorageServiceInterface,
         userId: Int)
 
     func onViewDidLoad()
@@ -41,7 +41,7 @@ final class CatalogPresenter {
     private let coordinator: CatalogBaseCoordinator
     private let requestFactory: CatalogRequestFactory
     private let basketRequstFactory: BasketRequestFactory
-    private let storageService: ProductsStorageService
+    private let storageService: ProductsStorageServiceInterface
     private var imageDownloader: ImageDownloaderProtocol!
     private var analyticsManager: AnalyticsManagerInterface!
     private var nextPage: Int?
@@ -54,7 +54,7 @@ final class CatalogPresenter {
         view: CatalogViewProtocol,
         requestFactory: CatalogRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        storageService: ProductsStorageService,
+        storageService: ProductsStorageServiceInterface,
         userId: Int
     ) {
         self.view = view

@@ -11,7 +11,7 @@ extension UISegmentedControl {
 
     // MARK: Functions
 
-    /// Basic **UISegmentedControl** configuration vethod for displaying the user's gender
+    /// Basic ``UISegmentedControl`` configuration vethod for displaying the user's gender
     func configure() {
         let font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)

@@ -15,9 +15,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let assemblyBuilder = ModuleBuilder()
+        let builder = ModuleBuilder(
+            storageService: UserDefaultsLayer(),
+            realmService: RealmLayer(),
+            analyticsService: AnalyticsService(),
+            factory: RequestFactory()
+        )
 
-        window.rootViewController = MainCoordinator(assemblyBuilder: assemblyBuilder).start()
+        window.rootViewController = MainCoordinator(assemblyBuilder: builder).start()
         window.makeKeyAndVisible()
 
         self.window = window

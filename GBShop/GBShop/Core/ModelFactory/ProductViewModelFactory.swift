@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Factory creating product view model ``ProductViewModel`` from ``Product`` and ``DetailedProduct`` models
+/// for detailed product screen ``ProductViewController``
 struct ProductViewModelFactory {
 
     // MARK: - Functions

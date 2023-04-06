@@ -13,6 +13,7 @@ extension Basket {
 
     // MARK: - AddProduct
 
+    /// The request model for adding a product, used in the ``BasketRequestFactory``
     struct AddProduct: RequestRouter {
 
         // MARK: - Properties
@@ -53,6 +54,7 @@ extension Basket {
 
     // MARK: - EditProduct
 
+    /// The request model for editing a product, used in the ``BasketRequestFactory``
     struct EditProduct: RequestRouter {
 
         // MARK: - Properties
@@ -93,6 +95,7 @@ extension Basket {
 
     // MARK: - RemoveProduct
 
+    /// The request model for removing a product, used in the ``BasketRequestFactory``
     struct RemoveProduct: RequestRouter {
 
         // MARK: - Properties
@@ -114,6 +117,7 @@ extension Basket {
 
     // MARK: - GetBasket
 
+    /// The structure of the request model for getting the user's cart, used in the ``BasketRequestFactory``
     struct GetBasket: RequestRouter {
 
         // MARK: - Properties
@@ -131,6 +135,7 @@ extension Basket {
 
     // MARK: - PayBasket
 
+    /// The structure of the request model for paying for the user's cart, used in the ``BasketRequestFactory``
     struct PayBasket: RequestRouter {
 
         // MARK: - Properties

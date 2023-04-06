@@ -14,7 +14,7 @@ final class InitialCoordinator: InitialBaseCoordinator {
     // MARK: - Properties
 
     var parentCoordinator: MainBaseCoordinator?
-    var assemblyBuilder: ModuleBuilderProtocol?
+    private(set) var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
 
     // MARK: - Constructions
@@ -27,7 +27,10 @@ final class InitialCoordinator: InitialBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        let initialViewController = ModuleBuilder().createInitialModule(coordinator: self)
+        guard let assemblyBuilder else {
+            return rootViewController
+        }
+        let initialViewController = assemblyBuilder.createInitialModule(coordinator: self)
         rootViewController = UINavigationController(rootViewController: initialViewController)
         return rootViewController
     }

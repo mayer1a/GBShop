@@ -12,6 +12,9 @@ final class Validator {
 
     // MARK: - Functions
 
+    /// Checks the e-mail entered by the user against the rules
+    /// - Parameter email: Reqiured field for user registrations
+    /// - Note: Сan throw exceptions of ``ValidationError`` type
     func validateEmail(_ email: String?) throws {
         guard let email, !email.isEmpty else {
             throw ValidationError.valueIsEmpty("E-mail")
@@ -26,6 +29,7 @@ final class Validator {
     /// - Parameters:
     ///   - password: Password or new password (for registration) required
     ///   - repeatPassword: The repeated password at registration can be nil if matching is not required
+    /// - Note: Сan throw exceptions of ``ValidationError`` type
     func validatePassword(_ password: String?, repeatPassword: String? = nil) throws {
         guard let password, !password.isEmpty else {
             throw ValidationError.valueIsEmpty("Пароль")
@@ -40,6 +44,9 @@ final class Validator {
         }
     }
 
+    /// Checks the username entered by the user against the rules
+    /// - Parameter username: Reqiured field for user registrations
+    /// - Note: Сan throw exceptions of ``ValidationError`` type
     func validateUsername(_ username: String?) throws {
         guard let username, !username.isEmpty else {
             throw ValidationError.valueIsEmpty("Логин")
@@ -50,6 +57,9 @@ final class Validator {
         }
     }
 
+    /// Checks the card number entered by the user for compliance with the rules
+    /// - Parameter cardNumber: Reqiured field for user registrations
+    /// - Note: Сan throw exceptions of ``ValidationError`` type
     func validateCard(_ cardNumber: String?) throws {
         guard let cardNumber, !cardNumber.isEmpty else {
             throw ValidationError.valueIsEmpty("Номер карты")
@@ -60,6 +70,9 @@ final class Validator {
         }
     }
 
+    /// Checks the "about me" field entered by the user for compliance with the rules
+    /// - Parameter bio: Reqiured field for user registrations
+    /// - Note: Сan throw exceptions of ``ValidationError`` type
     func validateBio(_ bio: String?) throws {
         guard let bio, !bio.isEmpty else {
             throw ValidationError.valueIsEmpty("Раздел \"О себе\"")
@@ -70,6 +83,9 @@ final class Validator {
         }
     }
 
+    /// Checks the gender entered by the user against the rules
+    /// - Parameter gender: Reqiured field for user registrations
+    /// - Note: Сan throw exceptions of ``ValidationError`` type
     func validateGender(_ gender: String?) throws {
         guard let gender, !gender.isEmpty else {
             throw ValidationError.valueIsEmpty("Пол (гендер)")

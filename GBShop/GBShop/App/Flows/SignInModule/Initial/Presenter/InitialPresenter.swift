@@ -13,7 +13,7 @@ protocol InitialViewProtocol: AnyObject {
 }
 
 protocol InitialPresenterProtocol: AnyObject {
-    init(view: InitialViewProtocol, coordinator: InitialBaseCoordinator, storageService: UserCredentialsStorageService)
+    init(view: InitialViewProtocol, coordinator: InitialBaseCoordinator, storageService: UserStorageServiceInterface)
     func onViewWillAppear()
 }
 
@@ -23,11 +23,11 @@ final class InitialPresenter {
 
     private weak var view: InitialViewProtocol!
     private let coordinator: InitialBaseCoordinator
-    private let storageService: UserCredentialsStorageService
+    private let storageService: UserStorageServiceInterface
 
     // MARK: - Constructions
 
-    init(view: InitialViewProtocol, coordinator: InitialBaseCoordinator, storageService: UserCredentialsStorageService) {
+    init(view: InitialViewProtocol, coordinator: InitialBaseCoordinator, storageService: UserStorageServiceInterface) {
         self.view = view
         self.coordinator = coordinator
         self.storageService = storageService
