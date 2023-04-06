@@ -69,7 +69,7 @@ platform :ios do
     git_commit(
       path: [
         "./GBShop.xcodeproj/project.pbxproj",
-        "./GBShop/Environment/Info.plist"],
+        "./GBShop/Environments/Info.plist"],
       message: "build project, all test success executed, up build version"
     )
 
