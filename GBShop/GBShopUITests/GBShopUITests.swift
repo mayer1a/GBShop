@@ -108,10 +108,10 @@ final class GBShopUITests: XCTestCase {
         lastnameTextField.typeText("Bar")
 
         usernameTextField.tap()
-        usernameTextField.typeText("foobarbaz")
+        usernameTextField.typeText("bazbarbaz")
 
         emailTextField.tap()
-        emailTextField.typeText("foobar@foob.bar")
+        emailTextField.typeText("bazbarbaz@foob.bar")
 
         passwordTextField.tap()
         passwordTextField.typeText("Password0000")
@@ -127,7 +127,7 @@ final class GBShopUITests: XCTestCase {
         cardNumberTextField.typeText("0000000000000000")
 
         bioTextField.tap()
-        bioTextField.typeText("Foo bar baz 2!")
+        bioTextField.typeText("Foo bar baz 1!")
 
         signUpButtonSignUpView.tap()
 
@@ -184,10 +184,10 @@ final class GBShopUITests: XCTestCase {
         lastnameTextField.typeText("Bar")
 
         usernameTextField.tap()
-        usernameTextField.typeText("foobarbaz")
+        usernameTextField.typeText("bazbarbaz")
 
         emailTextField.tap()
-        emailTextField.typeText("foobar@foob.bar")
+        emailTextField.typeText("bazbarbaz@foob.bar")
 
         passwordTextField.tap()
         passwordTextField.typeText("Password0000")
@@ -195,12 +195,12 @@ final class GBShopUITests: XCTestCase {
         repeatPasswordTextField.tap()
         repeatPasswordTextField.typeText("Password0000")
 
-        cardNumberTextField.tap()
-        cardNumberTextField.typeText("0000000000000000")
-
         let indeterminateButton = genderControl.buttons["Другой"].firstMatch
         XCTAssert(signUpButtonSignUpView.exists)
         indeterminateButton.tap()
+
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("0000000000000000")
 
         bioTextField.tap()
         bioTextField.typeText("Foo bar baz 2!")
