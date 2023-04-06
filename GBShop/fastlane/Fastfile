@@ -37,7 +37,7 @@ platform :ios do
     run_tests(
       workspace: "GBShop.xcworkspace",
       scheme: "GBShop",
-      device: "iPhone 14 Pro Max",
+      device: "iPhone 13 Pro Max",
       clean: false,
       code_coverage: true,
       open_report: true
