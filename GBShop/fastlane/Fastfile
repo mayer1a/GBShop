@@ -48,10 +48,18 @@ platform :ios do
 
     # increment build number
     increment_build_number
+
+    # commit changes to git
+    versionNumber = get_version_number
+    buildNumber = get_build_number
+    tag = "#{versionNumber}.#{buildNumber}"
+
+    # set build version to Info.plist
     set_info_plist_value(
       path: "./GBShop/Environments/Info.plist",
       key: "CFBundleShortVersionString",
-      value: get_build_number(xcodeproj: "GBShop.xcodeproj"))
+      value: "#{buildNumber}"
+    )
 
     # git_add
     git_add(path: [
