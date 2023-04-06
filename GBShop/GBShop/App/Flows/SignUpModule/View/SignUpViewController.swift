@@ -99,6 +99,8 @@ final class SignUpViewController: UIViewController {
     }
 
     @objc private func signUpButtonTapped() {
+        profileView?.bioTextField.becomeFirstResponder()
+        profileView?.bioTextField.resignFirstResponder()
         presenter.signUpButtonTapped(rawModel: getRawModelFromInput())
     }
 

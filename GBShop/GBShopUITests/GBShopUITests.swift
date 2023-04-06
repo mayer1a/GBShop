@@ -131,6 +131,8 @@ final class GBShopUITests: XCTestCase {
 
         signUpButtonSignUpView.tap()
 
+        signUpView.swipeDown()
+
         let warningLabel = app.staticTexts["warningLabel"].firstMatch
         XCTAssert(warningLabel.waitForExistence(timeout: 10))
     }
