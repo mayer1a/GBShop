@@ -45,23 +45,30 @@ final class CatalogTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(catalogResult?.products?.count, 2)
-        XCTAssertEqual(catalogResult?.products?[0].id, 123)
-        XCTAssertEqual(catalogResult?.products?[0].name, "Ноутбук")
-        XCTAssertEqual(catalogResult?.products?[0].price, 45600)
-        XCTAssertEqual(catalogResult?.products?[1].id, 456)
-        XCTAssertEqual(catalogResult?.products?[1].name, "Компьютерная мышь")
-        XCTAssertEqual(catalogResult?.products?[1].price, 1000)
+        XCTAssertEqual(catalogResult?.result, 1)
+        let productsCount = catalogResult?.products?.count
+        XCTAssertEqual(productsCount, 10)
+        XCTAssertEqual(catalogResult?.products?[0].id, 23019)
+        XCTAssertEqual(catalogResult?.products?[0].category, "СУПЕРПРЕМИУМ СУХОЙ КОРМ ДЛЯ КОШЕК")
+        XCTAssertEqual(catalogResult?.products?[0].name, "Grandorf Adult Indoor Белая рыба/бурый рис для кошек 2 кг.")
+
+        let imageUrl = "https://cdn.mokryinos.ru/images/site/catalog/480x480/2_17618_1675935990.webp"
+        XCTAssertEqual(catalogResult?.products?[0].mainImage, imageUrl)
+        XCTAssertEqual(catalogResult?.products?[0].price, 2378)
+
+        if let productsCount, productsCount <= 20 {
+            XCTAssertNil(catalogResult?.nextPage)
+        } else {
+            XCTAssertNotNil(catalogResult?.nextPage)
+        }
     }
 
     func testGetCatalogIncorrectPageNumber() {
         let catalog = requestFactory.makeCatalogRequestFactory()
         let exp = expectation(description: "incorrectPageNumber")
-        let pageNumber = -2
+        let pageNumber = 0
         let categoryId = 1
         var catalogResult: CatalogResult? = nil
-
-        XCTExpectFailure("trying to get catalog with incorrect page number but the products were recieved")
 
         catalog.getCatalog(pageNumber: pageNumber, categoryId: categoryId) { response in
             switch response.result {
@@ -75,7 +82,9 @@ final class CatalogTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
+
         XCTAssertEqual(catalogResult?.result, 0)
+        XCTAssertEqual(catalogResult?.errorMessage, "Номер страницы должен быть больше 0!")
         XCTAssertNil(catalogResult?.nextPage)
         XCTAssertNil(catalogResult?.products)
     }
@@ -84,7 +93,7 @@ final class CatalogTests: XCTestCase {
         let catalog = requestFactory.makeCatalogRequestFactory()
         let exp = expectation(description: "incorrectCategoryId")
         let pageNumber = 1
-        let categoryId = -98
+        let categoryId = -1
         var catalogResult: CatalogResult? = nil
 
         XCTExpectFailure("trying to get catalog with incorrect category id but the products were recieved")
@@ -102,6 +111,7 @@ final class CatalogTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(catalogResult?.result, 0)
+        XCTAssertEqual(catalogResult?.errorMessage, "Неверный идентификатор категории")
         XCTAssertNil(catalogResult?.nextPage)
         XCTAssertNil(catalogResult?.products)
     }

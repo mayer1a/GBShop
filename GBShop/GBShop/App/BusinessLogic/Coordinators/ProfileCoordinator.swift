@@ -14,7 +14,7 @@ final class ProfileCoordinator: ProfileBaseCoordinator {
     // MARK: - Properties
 
     var parentCoordinator: TabBarBaseCoordinator?
-    var assemblyBuilder: ModuleBuilderProtocol?
+    private(set) var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
 
     // MARK: - Private properties
@@ -32,11 +32,11 @@ final class ProfileCoordinator: ProfileBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        guard let user else {
+        guard let user, let assemblyBuilder else {
             return rootViewController
         }
 
-        let profileViewController = ModuleBuilder().createEditProfileModule(with: user,coordinator: self)
+        let profileViewController = assemblyBuilder.createEditProfileModule(with: user,coordinator: self)
         profileViewController.title = "профиль"
         rootViewController = UINavigationController(rootViewController: profileViewController)
         return rootViewController

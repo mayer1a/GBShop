@@ -19,7 +19,7 @@ protocol ProductPresenterProtocol: AnyObject {
         view: ProductViewProtocol,
         requestFactory: GetProductRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        storageService: ProductsStorageService,
+        storageService: ProductsStorageServiceInterface,
         product: Product?,
         userId: Int)
     
@@ -40,7 +40,7 @@ final class ProductPresenter {
     private var imageDownloader: ImageDownloaderProtocol!
     private let requestFactory: GetProductRequestFactory
     private let coordinator: CatalogBaseCoordinator
-    private let storageService: ProductsStorageService
+    private let storageService: ProductsStorageServiceInterface
     private let basketRequstFactory: BasketRequestFactory
     private var analyticsManager: AnalyticsManagerInterface!
     private let product: Product?
@@ -52,7 +52,7 @@ final class ProductPresenter {
         view: ProductViewProtocol,
         requestFactory: GetProductRequestFactory,
         coordinator: CatalogBaseCoordinator,
-        storageService: ProductsStorageService,
+        storageService: ProductsStorageServiceInterface,
         product: Product?,
         userId: Int
     ) {

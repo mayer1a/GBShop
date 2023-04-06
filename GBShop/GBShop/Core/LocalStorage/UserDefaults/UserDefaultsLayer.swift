@@ -42,7 +42,7 @@ final class UserDefaultsLayer: UserCredentialStorage {
 
 extension UserDefaultsLayer {
 
-    // MARK: - Private struct
+    // MARK: - Private properties
     
     private struct GeneralKeys {
         static let isUserAuthenticated = "isUserAuthenticated"

@@ -8,7 +8,6 @@
 import Foundation
 
 /// Factory creating basket data models
-///
 /// For example:
 /// ```
 /// static func construct(from basketModel: UserBasket) -> BasketModel

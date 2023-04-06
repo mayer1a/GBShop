@@ -29,7 +29,7 @@ final class SignUpTests: XCTestCase {
     func testSignUpCorrectInput() {
         let signUp = requestFactory.makeSignUpRequestFactory()
         let exp = expectation(description: "correctInput")
-        var signUpResult = SignUpResult(result: -1, userId: -1, userMessage: "")
+        var signUpResult: SignUpResult? = nil
         let profile = SignUpUser(
             name: "Foo",
             lastname: "Bar",
@@ -52,21 +52,27 @@ final class SignUpTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(1, signUpResult.result, "trying to registration")
-        XCTAssertEqual("Регистрация прошла успешно!", signUpResult.userMessage, "trying to registration")
-        XCTAssertNotEqual(-1, signUpResult.userId, "trying to registration")
+
+        guard let userId = signUpResult?.userId else {
+            XCTFail("User id is nil")
+            return
+        }
+
+        XCTAssertEqual(signUpResult?.result, 1)
+        XCTAssertEqual(signUpResult?.userMessage, "Регистрация прошла успешно!")
+        XCTAssertGreaterThan(userId, 100)
     }
 
     func testSignUpWithExistsEmail() {
         let exp = expectation(description: "existsEmail")
         let signUp = requestFactory.makeSignUpRequestFactory()
-        var signUpResult = SignUpResult(result: -1, userId: -1, userMessage: "")
+        var signUpResult: SignUpResult? = nil
         let profile = SignUpUser(
             name: "Bar",
             lastname: "Foob",
             username: "bazbarbaz0",
             password: "FooBarBaz0000",
-            email: "foobar@baz.az",
+            email: "adminadmin@adm.in",
             creditCard: "0000000000000000",
             gender: Gender.indeterminate.rawValue,
             bio: "Foob baz baz bio")
@@ -83,19 +89,20 @@ final class SignUpTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(0, signUpResult.result)
-        XCTAssertEqual("Регистрация завершилась отказом! Введённый email и/или username уже существуют", signUpResult.userMessage)
-        XCTAssertNil(signUpResult.userId)
+        let errorMessage = "Регистрация завершилась отказом! Введённый email и/или username уже существуют"
+        XCTAssertEqual(signUpResult?.result, 0)
+        XCTAssertEqual(signUpResult?.userMessage, errorMessage)
+        XCTAssertNil(signUpResult?.userId)
     }
 
     func testSignUpWithExistsUsername() {
         let exp = expectation(description: "existsUsername")
         let signUp = requestFactory.makeSignUpRequestFactory()
-        var signUpResult = SignUpResult(result: -1, userId: -1, userMessage: "")
+        var signUpResult: SignUpResult? = nil
         let profile = SignUpUser(
             name: "Baz",
             lastname: "Barb",
-            username: "foobarbaz",
+            username: "adminadmin",
             password: "FooBarBaz0000",
             email: "foobaz@bar.ar",
             creditCard: "0000000000000000",
@@ -114,8 +121,9 @@ final class SignUpTests: XCTestCase {
         }
 
         waitForExpectations(timeout: 5)
-        XCTAssertEqual(0, signUpResult.result)
-        XCTAssertEqual("Регистрация завершилась отказом! Введённый email и/или username уже существуют", signUpResult.userMessage)
-        XCTAssertNil(signUpResult.userId)
+        let errorMessage = "Регистрация завершилась отказом! Введённый email и/или username уже существуют"
+        XCTAssertEqual(signUpResult?.result, 0)
+        XCTAssertEqual(signUpResult?.userMessage, errorMessage)
+        XCTAssertNil(signUpResult?.userId)
     }
 }

@@ -14,12 +14,12 @@ final class BasketCoordinator: BasketBaseCoordinator {
     // MARK: - Properties
 
     var parentCoordinator: TabBarBaseCoordinator?
-    var assemblyBuilder: ModuleBuilderProtocol?
+    private(set) var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
 
     // MARK: - Private properties
 
-    var userId: Int?
+    private var userId: Int?
 
     // MARK: - Constructions
 
@@ -31,9 +31,11 @@ final class BasketCoordinator: BasketBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        guard let userId else { return rootViewController }
+        guard let userId, let assemblyBuilder else {
+            return rootViewController
+        }
 
-        let basketViewController = ModuleBuilder().createBasketModule(coordinator: self, userId: userId)
+        let basketViewController = assemblyBuilder.createBasketModule(coordinator: self, userId: userId)
         rootViewController = UINavigationController(rootViewController: basketViewController)
         navigationRootViewController?.setNavigationBarHidden(false, animated: true)
         return rootViewController

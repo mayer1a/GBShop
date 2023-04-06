@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// The review data model to display in the list of reviews for a related product.
+/// The review data model for server response decoding
 struct Review: Codable {
 
     // MARK: - CodingKeys

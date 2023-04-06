@@ -25,16 +25,34 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     // MARK: - Private properties
 
-    private var realmService: UserCredentialRealmStorage = RealmLayer()
-    private let analyticsManager: AnalyticsManagerInterface = AnalyticsManager(service: AnalyticsService())
-    private let imageDownloader: ImageDownloaderProtocol = ImageDownloader()
+    private let realmService: UserCredentialRealmStorage
+    private let userStorageService: UserStorageServiceInterface
+    private let productsStorageService: ProductsStorageServiceInterface
+    private let analyticsManager: AnalyticsManagerInterface
+    private let imageDownloader: ImageDownloaderProtocol
+    private let factory: RequestFactory
+
+    // MARK: - Constructions
+
+    init(
+        storageService: UserCredentialStorage,
+        realmService: UserCredentialRealmStorage,
+        analyticsService: AnalyticsEngine,
+        factory: RequestFactory
+    ) {
+        self.realmService = realmService
+        self.factory = factory
+        analyticsManager = AnalyticsManager(service: analyticsService)
+        userStorageService = UserCredentialsStorageService(storage: storageService, realm: realmService)
+        productsStorageService = ProductsStorageService(realm: realmService)
+        imageDownloader = ImageDownloader()
+    }
 
     // MARK: - Functions
 
     func createInitialModule(coordinator: InitialBaseCoordinator) -> UIViewController {
         let view = InitialViewController()
-        let storageService = UserCredentialsStorageService(realm: realmService)
-        let presenter = InitialPresenter(view: view, coordinator: coordinator, storageService: storageService)
+        let presenter = InitialPresenter(view: view, coordinator: coordinator, storageService: userStorageService)
         view.setPresenter(presenter)
 
         return view
@@ -42,13 +60,12 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createSignInModule(coordinator: InitialBaseCoordinator) -> UIViewController {
         let signInView = SignInViewController()
-        let signInReq = RequestFactory().makeSignInRequestFatory()
-        let storageService = UserCredentialsStorageService(realm: realmService)
+        let signInReq = factory.makeSignInRequestFatory()
         let presenter = SignInPresenter(
             view: signInView,
             requestFactory: signInReq,
             coordinator: coordinator,
-            storageService: storageService)
+            storageService: userStorageService)
 
         signInView.setPresenter(presenter)
         presenter.setupServices(analyticsManager: analyticsManager)
@@ -58,14 +75,13 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createEditProfileModule(with user: User, coordinator: ProfileBaseCoordinator) -> UIViewController {
         let view = EditProfileViewController()
-        let factory = RequestFactory().makeEditProfileRequestFactory()
-        let storageService = UserCredentialsStorageService(realm: realmService)
+        let factory = factory.makeEditProfileRequestFactory()
         let presenter = EditProfilePresenter(
             user: user,
             view: view,
             requestFactory: factory,
             coordinator: coordinator,
-            storageService: storageService)
+            storageService: userStorageService)
 
         view.setPresenter(presenter)
         presenter.setupServices(analyticsManager: analyticsManager)
@@ -75,13 +91,12 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createSignUpModule(coordinator: InitialBaseCoordinator) -> UIViewController {
         let view = SignUpViewController()
-        let factory = RequestFactory().makeSignUpRequestFactory()
-        let storageService = UserCredentialsStorageService(realm: realmService)
+        let factory = factory.makeSignUpRequestFactory()
         let presenter = SignUpPresenter(
             view: view,
             requestFactory: factory,
             coordinator: coordinator,
-            storageService: storageService)
+            storageService: userStorageService)
 
         view.setPresenter(presenter)
         presenter.setupServices(analyticsManager: analyticsManager)
@@ -91,13 +106,12 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createCatalogModule(coordinator: CatalogBaseCoordinator, userId: Int) -> UIViewController {
         let view = CatalogViewController()
-        let factory = RequestFactory().makeCatalogRequestFactory()
-        let storageService = ProductsStorageService(realm: realmService)
+        let factory = factory.makeCatalogRequestFactory()
         let presenter = CatalogPresenter(
             view: view,
             requestFactory: factory,
             coordinator: coordinator,
-            storageService: storageService,
+            storageService: productsStorageService,
             userId: userId)
 
         view.setPresenter(presenter)
@@ -108,13 +122,12 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createProductModule(coordinator: CatalogBaseCoordinator, product: Product?, userId: Int) -> UIViewController {
         let view = ProductViewController()
-        let factory = RequestFactory().makeProductRequestFactory()
-        let storageService = ProductsStorageService(realm: realmService)
+        let factory = factory.makeProductRequestFactory()
         let presenter = ProductPresenter(
             view: view,
             requestFactory: factory,
             coordinator: coordinator,
-            storageService: storageService,
+            storageService: productsStorageService,
             product: product,
             userId: userId)
 
@@ -126,7 +139,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createReviewsSubmodule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController {
         let view = ReviewsViewController()
-        let factory = RequestFactory().makeReviewsRequestFactory()
+        let factory = factory.makeReviewsRequestFactory()
         let presenter = ReviewsSubmodulePresenter(
             view: view,
             requestFactory: factory,
@@ -142,7 +155,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createReviewsModule(coordinator: CatalogBaseCoordinator, product: Product?) -> UIViewController {
         let view = ReviewsViewController()
-        let factory = RequestFactory().makeReviewsRequestFactory()
+        let factory = factory.makeReviewsRequestFactory()
         let presenter = ReviewsPresenter(
             view: view,
             requestFactory: factory,
@@ -157,7 +170,7 @@ final class ModuleBuilder: ModuleBuilderProtocol {
 
     func createBasketModule(coordinator: BasketBaseCoordinator, userId: Int) -> UIViewController {
         let view = BasketViewController()
-        let factory = RequestFactory().makeBasketRequestFactory()
+        let factory = factory.makeBasketRequestFactory()
         let presenter = BasketPresenter(
             view: view,
             requestFactory: factory,

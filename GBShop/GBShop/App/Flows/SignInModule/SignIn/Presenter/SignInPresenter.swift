@@ -19,7 +19,7 @@ protocol SignInPresenterProtocol: AnyObject {
         view: SignInViewProtocol,
         requestFactory: SignInRequestFactory,
         coordinator: InitialBaseCoordinator,
-        storageService: UserCredentialsStorageService)
+        storageService: UserStorageServiceInterface)
 
     func signIn(email: String?, password: String?)
     func signUpButtonTapped()
@@ -33,7 +33,7 @@ final class SignInPresenter {
     private weak var view: SignInViewProtocol!
     private var coordinator: InitialBaseCoordinator
     private let requestFactory: SignInRequestFactory
-    private let storageService: UserCredentialsStorageService
+    private let storageService: UserStorageServiceInterface
     private var analyticsManager: AnalyticsManagerInterface!
 
     // MARK: - Constructions
@@ -42,7 +42,7 @@ final class SignInPresenter {
         view: SignInViewProtocol,
         requestFactory: SignInRequestFactory,
         coordinator: InitialBaseCoordinator,
-        storageService: UserCredentialsStorageService
+        storageService: UserStorageServiceInterface
     ) {
         self.view = view
         self.requestFactory = requestFactory

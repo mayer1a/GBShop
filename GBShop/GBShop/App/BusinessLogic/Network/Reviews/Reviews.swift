@@ -53,14 +53,18 @@ extension Reviews: ReviewsRequestFactory {
     func addReview(
         userId: Int?,
         productId: Int,
-        description: String,
+        body: String,
+        rating: Int,
+        date: TimeInterval,
         completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void
     ) {
         let requestModel = AddReview(
             baseUrl: self.baseUrl,
             userId: userId,
             productId: productId,
-            description: description)
+            body: body,
+            rating: rating,
+            date: date)
 
         self.request(request: requestModel, completionHandler: completionHandler)
     }

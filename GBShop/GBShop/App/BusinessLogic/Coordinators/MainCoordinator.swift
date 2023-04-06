@@ -14,10 +14,14 @@ final class MainCoordinator: MainBaseCoordinator {
     // MARK: - Properties
 
     var parentCoordinator: MainBaseCoordinator?
-    var assemblyBuilder: ModuleBuilderProtocol?
+    private(set) var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UINavigationController()
-    lazy var initialCoordinator: InitialBaseCoordinator = InitialCoordinator(self, assemblyBuilder: assemblyBuilder)
-    lazy var tabBarCoordinator: TabBarBaseCoordinator = TabBarCoordinator(self, assemblyBuilder: assemblyBuilder)
+    private(set) lazy var initialCoordinator: InitialBaseCoordinator = {
+        InitialCoordinator(self, assemblyBuilder: assemblyBuilder)
+    }()
+    private(set) lazy var tabBarCoordinator: TabBarBaseCoordinator = {
+        TabBarCoordinator(self, assemblyBuilder: assemblyBuilder)
+    }()
 
     // MARK: - Constructions
 

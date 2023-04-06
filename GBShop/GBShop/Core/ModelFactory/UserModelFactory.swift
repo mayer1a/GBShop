@@ -8,7 +8,6 @@
 import Foundation
 
 /// Factory creating user data models
-///
 /// For example:
 /// ```
 /// func construct(from signUpModel: SignUpUser, with id: Int) -> User

@@ -29,7 +29,7 @@ final class LogoutTests: XCTestCase {
     func testLogoutCorrectId() {
         let logout = requestFactory.makeLogoutRequestFactory()
         let exp = expectation(description: "correctId")
-        let userId = 123
+        let userId = 100
         var result = -1
 
         logout.logout(userId: userId) { response in
@@ -50,10 +50,8 @@ final class LogoutTests: XCTestCase {
     func testLogoutIncorrectId() {
         let logout = requestFactory.makeLogoutRequestFactory()
         let exp = expectation(description: "incorrectId")
-        let userId = -20
+        let userId = 1
         var result = -1
-
-        XCTExpectFailure("trying to logout with incorrect user id but logout was succesful")
 
         logout.logout(userId: userId) { response in
             switch response.result {

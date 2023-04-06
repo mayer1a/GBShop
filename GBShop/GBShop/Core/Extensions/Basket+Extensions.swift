@@ -13,6 +13,7 @@ extension Basket {
 
     // MARK: - AddProduct
 
+    /// The request model for adding a product, used in the ``BasketRequestFactory``
     struct AddProduct: RequestRouter {
 
         // MARK: - Properties
@@ -27,22 +28,33 @@ extension Basket {
         var parameters: Parameters? {
             [
                 "user_id": userId,
-                "basket_element": [
-                    "product": [
-                        "product_id": basketElement.product.id,
-                        "product_name": basketElement.product.name,
-                        "product_category": basketElement.product.category,
-                        "product_price": basketElement.product.price,
-                        "product_main_image": basketElement.product.mainImage
-                    ],
-                    "quantity": basketElement.quantity,
-                ]
+                "basket_element": basketElementsParameters
+            ]
+        }
+
+        // MARK: - Private properties
+
+        private var basketElementsParameters: Parameters {
+            [
+                "product": productParameters,
+                "quantity": basketElement.quantity
+            ]
+        }
+
+        private var productParameters: Parameters {
+            [
+                "product_id": basketElement.product.id,
+                "product_name": basketElement.product.name,
+                "product_category": basketElement.product.category,
+                "product_price": basketElement.product.price,
+                "product_main_image": basketElement.product.mainImage
             ]
         }
     }
 
     // MARK: - EditProduct
 
+    /// The request model for editing a product, used in the ``BasketRequestFactory``
     struct EditProduct: RequestRouter {
 
         // MARK: - Properties
@@ -57,22 +69,33 @@ extension Basket {
         var parameters: Parameters? {
             [
                 "user_id": userId,
-                "basket_element": [
-                    "product": [
-                        "product_id": basketElement.product.id,
-                        "product_name": basketElement.product.name,
-                        "product_category": basketElement.product.category,
-                        "product_price": basketElement.product.price,
-                        "product_main_image": basketElement.product.mainImage
-                    ],
-                    "quantity": basketElement.quantity,
-                ]
+                "basket_element": basketElementsParameters
+            ]
+        }
+
+        // MARK: - Private properties
+
+        private var basketElementsParameters: Parameters {
+            [
+                "product": productParameters,
+                "quantity": basketElement.quantity
+            ]
+        }
+
+        private var productParameters: Parameters {
+            [
+                "product_id": basketElement.product.id,
+                "product_name": basketElement.product.name,
+                "product_category": basketElement.product.category,
+                "product_price": basketElement.product.price,
+                "product_main_image": basketElement.product.mainImage
             ]
         }
     }
 
     // MARK: - RemoveProduct
 
+    /// The request model for removing a product, used in the ``BasketRequestFactory``
     struct RemoveProduct: RequestRouter {
 
         // MARK: - Properties
@@ -94,6 +117,7 @@ extension Basket {
 
     // MARK: - GetBasket
 
+    /// The structure of the request model for getting the user's cart, used in the ``BasketRequestFactory``
     struct GetBasket: RequestRouter {
 
         // MARK: - Properties
@@ -111,6 +135,7 @@ extension Basket {
 
     // MARK: - PayBasket
 
+    /// The structure of the request model for paying for the user's cart, used in the ``BasketRequestFactory``
     struct PayBasket: RequestRouter {
 
         // MARK: - Properties

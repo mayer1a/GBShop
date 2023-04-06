@@ -7,7 +7,11 @@
 
 import Foundation
 
+/// The model for representation ``Review`` model to product cell view model for ``ReviewsViewController``
 struct ReviewCellModel {
+
+    // MARK: - Properties
+    
     let userId: String
     let body: String
     let reviewStars: Int

@@ -34,8 +34,6 @@ extension AnalyticsEvent {
         switch self {
         case .loginFailed:
             return "loginFailed"
-        case .loginSucceeded, .logout, .registrationSucceeded, .basketSuccessfullyPaid:
-            return String(describing: self)
         case .registrationFailed:
             return "registrationFailed"
         case .catalogViewed:
@@ -54,6 +52,8 @@ extension AnalyticsEvent {
             return "reviewFailedAdded"
         case .serverError:
             return "serverError"
+        case .loginSucceeded, .logout, .registrationSucceeded, .basketSuccessfullyPaid:
+            return String(describing: self)
         }
     }
 }

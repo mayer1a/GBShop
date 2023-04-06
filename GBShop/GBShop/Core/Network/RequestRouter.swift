@@ -41,11 +41,11 @@ extension RequestRouter {
     // MARK: - Properties
 
     var fullUrl: URL {
-        return baseUrl.appendingPathComponent(path)
+        baseUrl.appendingPathComponent(path)
     }
 
     var encoding: RequestRouterEncoding {
-        return .url
+        .url
     }
 
     // MARK: - Functions

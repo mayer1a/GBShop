@@ -7,8 +7,30 @@
 
 import RealmSwift
 
+protocol ProductsStorageServiceInterface: AnyObject {
+
+    /// Get product from local storage (a.k.a **Realm**) by product id.
+    /// > Warning:
+    /// > If the products record does not exist, an empty product model will be returned.
+    func read(by id: Int) -> Product
+
+    /// Get products from local storage (a.k.a **Realm**) by number of products.
+    /// > Warning:
+    /// > If the products record does not exist, an empty product model will be returned.
+    func read(_ count: Int) -> [Product]
+
+    /// Creates a products records in local storage (a.k.a **Realm**).
+    func createProducts(from product: [Product])
+
+    /// Updates a products entry in local storage (a.k.a **Realm**).
+    func updateProducts(from products: [Product])
+
+    /// Deletes a products entry in local storage (a.k.a **Realm**).
+    func deleteProducts(from products: [Product])
+}
+
 /// Service for working with local storage for product data using ``RealmLayer``
-final class ProductsStorageService {
+final class ProductsStorageService: ProductsStorageServiceInterface {
 
     // MARK: - Private properties
 
@@ -22,12 +44,8 @@ final class ProductsStorageService {
         self.realm = realm
     }
 
-    // MARK: - Public properties
+    // MARK: - Properties
 
-    /// Get product from local storage (a.k.a **Realm**) by product id.
-    ///
-    /// > Warning:
-    /// > If the products record does not exist, an empty product model will be returned.
     func read(by id: Int) -> Product {
         let realmProduct = realm.read(of: RealmProduct.self).filter("ANY id == \(id)").first ?? .init()
         return realmToModel(realmProduct)
@@ -38,17 +56,14 @@ final class ProductsStorageService {
         return realmToModel(realmProducts)
     }
 
-    /// Creates a products records in local storage (a.k.a **Realm**).
     func createProducts(from product: [Product]) {
         product.forEach { createProduct($0) }
     }
 
-    /// Updates a products entry in local storage (a.k.a **Realm**).
     func updateProducts(from products: [Product]) {
         products.forEach { updateProduct($0) }
     }
 
-    /// Deletes a products entry in local storage (a.k.a **Realm**).
     func deleteProducts(from products: [Product]) {
         products.forEach { deleteProduct($0) }
     }
@@ -76,17 +91,14 @@ private extension ProductsStorageService {
         realm.delete(realmProduct)
     }
 
-    /// Turns a ``RealmProduct`` collection data model into a ``Product`` collection data model.
     private func realmToModel(_ objects: [RealmProduct]) -> [Product] {
         objects.map { realmToModel($0) }
     }
 
-    /// Turns a ``Product`` collection data model into a ``RealmProduct`` collection data model.
     private func modelToRealm(_ products: [Product]) -> [RealmProduct] {
         products.map { modelToRealm($0) }
     }
 
-    /// Turns a ``RealmProduct`` data model into a ``Product`` data model.
     private func realmToModel(_ object: RealmProduct) -> Product {
         let product = Product(
             id: object.id,
@@ -98,7 +110,6 @@ private extension ProductsStorageService {
         return product
     }
 
-    /// Turns a ``Product`` data model into a ``RealmProduct`` data model.
     private func modelToRealm(_ product: Product) -> RealmProduct {
         let realmProduct = RealmProduct()
         realmProduct.id = product.id

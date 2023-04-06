@@ -12,6 +12,11 @@ protocol SignInRequestFactory {
 
     // MARK: - Functions
 
+    /// Send a request to the server to sign in the user
+    /// - Parameters:
+    ///   - email: User actual email for which you want to sign in.
+    ///   - password: User actual password for which you want to sign in.
+    ///   - completionHandler: Received response from the server.
     func login(
         email: String,
         password: String,

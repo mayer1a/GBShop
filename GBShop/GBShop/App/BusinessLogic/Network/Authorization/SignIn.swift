@@ -49,9 +49,9 @@ extension SignIn {
         let password: String
 
         var parameters: Parameters? {
-            return [
+            [
                 "email": email,
-                "password": password
+                "password": password,
             ]
         }
     }

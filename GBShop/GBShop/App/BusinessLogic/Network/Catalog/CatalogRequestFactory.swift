@@ -12,6 +12,11 @@ protocol CatalogRequestFactory {
 
     // MARK: - Functions
 
+    /// Get a list of products for a specific number of page and category identifier
+    /// - Parameters:
+    ///   - pageNumber: Page number for which you want to get products for.
+    ///   - categoryId: Category ID for which you want to to get reviews for.
+    ///   - completionHandler: Received response from the server.
     func getCatalog(
         pageNumber: Int,
         categoryId: Int,

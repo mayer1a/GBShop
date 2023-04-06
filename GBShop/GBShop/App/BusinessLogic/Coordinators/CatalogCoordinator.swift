@@ -14,9 +14,12 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     // MARK: - Properties
 
     var parentCoordinator: TabBarBaseCoordinator?
-    var assemblyBuilder: ModuleBuilderProtocol?
+    private(set) var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UIViewController()
-    var userId: Int?
+
+    // MARK: - Private properties
+
+    private var userId: Int?
 
     // MARK: - Constructions
 
@@ -28,9 +31,11 @@ final class CatalogCoordinator: CatalogBaseCoordinator {
     // MARK: - Functions
 
     func start() -> UIViewController {
-        guard let userId else { return rootViewController }
+        guard let userId, let assemblyBuilder else {
+            return rootViewController
+        }
 
-        let catalogViewController = ModuleBuilder().createCatalogModule(coordinator: self, userId: userId)
+        let catalogViewController = assemblyBuilder.createCatalogModule(coordinator: self, userId: userId)
         catalogViewController.title = "каталог"
         rootViewController = UINavigationController(rootViewController: catalogViewController)
         navigationRootViewController?.setNavigationBarHidden(false, animated: true)

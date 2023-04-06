@@ -11,7 +11,11 @@ import UIKit
 
 final class GBShopUITests: XCTestCase {
 
+    // MARK: - Properties
+
     var app: XCUIApplication!
+
+    // MARK: - Lifecycle
 
     override func tearDownWithError() throws {
         try super.tearDownWithError()
@@ -24,12 +28,14 @@ final class GBShopUITests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments = ["enable-testing"]
         app.launch()
-        sleep(1)
+        try checkUserAuthState()
     }
 
-    func testSignInFailure() throws {
+    // MARK: - Functions
+
+    func test1SignInFailure() throws {
         let startAppElement = app.otherElements["signInView"].firstMatch
-        XCTAssert(startAppElement.exists)
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
 
         let emailTextField = startAppElement.textFields["emailTextField"].firstMatch
         XCTAssert(emailTextField.exists)
@@ -46,16 +52,16 @@ final class GBShopUITests: XCTestCase {
         emailTextField.tap()
         emailTextField.typeText("foobar@foob.bar")
         passwordTextField.tap()
-        passwordTextField.typeText("Foofoobar0000")
+        passwordTextField.typeText("Password0000")
         signInButton.tap()
 
         let warningLabel = app.staticTexts["warningLabel"].firstMatch
         XCTAssert(warningLabel.waitForExistence(timeout: 5))
     }
 
-    func testSignUpFailure() throws {
+    func test2SignUpFailure() throws {
         let startAppElement = app.otherElements["signInView"].firstMatch
-        XCTAssert(startAppElement.exists)
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
 
         let signUpButton = startAppElement.buttons["signUpButton"].firstMatch
         XCTAssert(signUpButton.exists)
@@ -63,7 +69,7 @@ final class GBShopUITests: XCTestCase {
         signUpButton.tap()
 
         let signUpView = app.otherElements["signUpView"].firstMatch
-        XCTAssert(signUpView.waitForExistence(timeout: 10))
+        XCTAssert(signUpView.waitForExistence(timeout: 5))
 
         let nameTextField = signUpView.textFields["nameTextField"].firstMatch
         XCTAssert(nameTextField.exists)
@@ -129,9 +135,9 @@ final class GBShopUITests: XCTestCase {
         XCTAssert(warningLabel.waitForExistence(timeout: 10))
     }
 
-    func testSignUpSuccess() throws {
+    func test3SignUpSuccess() throws {
         let startAppElement = app.otherElements["signInView"].firstMatch
-        XCTAssert(startAppElement.exists)
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
 
         let signUpButton = startAppElement.buttons["signUpButton"].firstMatch
         XCTAssert(signUpButton.exists)
@@ -139,7 +145,7 @@ final class GBShopUITests: XCTestCase {
         signUpButton.tap()
 
         let signUpView = app.otherElements["signUpView"].firstMatch
-        XCTAssert(signUpView.waitForExistence(timeout: 10))
+        XCTAssert(signUpView.waitForExistence(timeout: 5))
 
         let nameTextField = signUpView.textFields["nameTextField"].firstMatch
         XCTAssert(nameTextField.exists)
@@ -153,10 +159,10 @@ final class GBShopUITests: XCTestCase {
         let emailTextField = signUpView.textFields["emailTextField"].firstMatch
         XCTAssert(emailTextField.exists)
 
-        let passwordTextField = signUpView.textFields["passwordTextField"].firstMatch
+        let passwordTextField = signUpView.secureTextFields["passwordTextField"].firstMatch
         XCTAssert(passwordTextField.exists)
 
-        let repeatPasswordTextField = signUpView.textFields["repeatPasswordTextField"].firstMatch
+        let repeatPasswordTextField = signUpView.secureTextFields["repeatPasswordTextField"].firstMatch
         XCTAssert(repeatPasswordTextField.exists)
 
         let genderControl = signUpView.segmentedControls["genderControl"].firstMatch
@@ -202,13 +208,13 @@ final class GBShopUITests: XCTestCase {
         signUpView.tap()
         signUpButtonSignUpView.tap()
 
-        let warningLabel = app.staticTexts["warningLabel"].firstMatch
-        XCTAssertFalse(warningLabel.waitForExistence(timeout: 10))
+        let catalogButton = app.tabBars.firstMatch.buttons["каталог"]
+        XCTAssert(catalogButton.waitForExistence(timeout: 10))
     }
 
-    func testSignInSuccess() throws {
+    func test4SignInSuccess() throws {
         let startAppElement = app.otherElements["signInView"].firstMatch
-        XCTAssert(startAppElement.exists)
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
 
         let emailTextField = startAppElement.textFields["emailTextField"].firstMatch
         XCTAssert(emailTextField.exists)
@@ -219,16 +225,41 @@ final class GBShopUITests: XCTestCase {
         let signInButton = startAppElement.buttons["signInButton"].firstMatch
         XCTAssert(signInButton.exists)
 
-        let signUpButton = startAppElement.buttons["signUpButton"].firstMatch
-        XCTAssert(signUpButton.exists)
-
         emailTextField.tap()
-        emailTextField.typeText("foobar@foob.bar")
+        emailTextField.typeText("adminadmin@adm.in")
         passwordTextField.tap()
         passwordTextField.typeText("Password0000")
-        signUpButton.tap()
+        signInButton.tap()
+        
+        let catalogButton = app.tabBars.firstMatch.buttons["каталог"]
+        XCTAssert(catalogButton.waitForExistence(timeout: 10))
+    }
 
-        let warningLabel = app.staticTexts["warningLabel"].firstMatch
-        XCTAssertFalse(warningLabel.waitForExistence(timeout: 10))
+    // MARK: - Private functions
+
+    private func checkUserAuthState() throws {
+        let startAppElement = app.otherElements["signInView"].firstMatch
+
+        if !startAppElement.waitForExistence(timeout: 2) {
+            try logout()
+        }
+    }
+
+    private func logout() throws {
+        let startAppElement = app.tabBars.firstMatch
+        XCTAssert(startAppElement.exists)
+
+        let profileTabButton = startAppElement.buttons["профиль"]
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
+        profileTabButton.tap()
+
+        let profileScreen = app.otherElements["profileView"].firstMatch
+        XCTAssert(profileScreen.waitForExistence(timeout: 5))
+
+        let logoutButton = app.buttons["logoutButton"].firstMatch
+        XCTAssert(logoutButton.waitForExistence(timeout: 5))
+        logoutButton.tap()
+
+        print(profileScreen.debugDescription)
     }
 }

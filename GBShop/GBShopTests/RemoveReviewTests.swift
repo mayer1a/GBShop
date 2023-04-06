@@ -29,8 +29,8 @@ final class RemoveReviewTests: XCTestCase {
     func testRemoveReviewCorrectInput() {
         let removeReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = 123
-        let reviewId = 112
+        let userId = 100
+        let reviewId = 104
         var removeReviewResult: RemoveReviewResult? = nil
 
         removeReview.removeReview(userId: userId, reviewId: reviewId) { response in
@@ -47,16 +47,15 @@ final class RemoveReviewTests: XCTestCase {
         waitForExpectations(timeout: 5)
 
         XCTAssertEqual(removeReviewResult?.result, 1)
+        XCTAssertNil(removeReviewResult?.errorMessage)
     }
 
-    func testRemoveReviewIncorrectUserId() {
+    func testRemoveReviewIncorrectAccess() {
         let removeReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = -123
-        let reviewId = 112
+        let userId = 101
+        let reviewId = 105
         var removeReviewResult: RemoveReviewResult? = nil
-
-        XCTExpectFailure("trying to remove review with incorrect user id but the review was removed")
 
         removeReview.removeReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
@@ -71,16 +70,15 @@ final class RemoveReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(removeReviewResult?.result, 0)
+        XCTAssertEqual(removeReviewResult?.errorMessage, "У Вас нет прав на удаление отзывов!")
     }
 
     func testRemoveReviewIncorrectReviewId() {
         let removeReview = requestFactory.makeReviewsRequestFactory()
         let exp = expectation(description: "correctInput")
-        let userId = 123
-        let reviewId = -112
+        let userId = 100
+        let reviewId = 1
         var removeReviewResult: RemoveReviewResult? = nil
-
-        XCTExpectFailure("trying to remove review with incorrect review id but the review was removed")
 
         removeReview.removeReview(userId: userId, reviewId: reviewId) { response in
             switch response.result {
@@ -95,6 +93,7 @@ final class RemoveReviewTests: XCTestCase {
 
         waitForExpectations(timeout: 5)
         XCTAssertEqual(removeReviewResult?.result, 0)
+        XCTAssertEqual(removeReviewResult?.errorMessage, "Отзыва с заданным id не существует!")
     }
 
 }

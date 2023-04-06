@@ -67,8 +67,6 @@ final class SignUpViewController: UIViewController {
         setupTextFieldsDelegate(profileView?.repeatPasswordTextField)
         setupTextFieldsDelegate(profileView?.cardNumberTextField)
         setupTextFieldsDelegate(profileView?.bioTextField)
-
-        profileView?.passwordTextField.addTarget(self, action: #selector(passwordTextFieldEditingChanged), for: .editingChanged)
     }
 
     private func setupTextFieldsDelegate(_ textField: UITextField?) {
@@ -93,30 +91,11 @@ final class SignUpViewController: UIViewController {
             lastname: profileView.lastnameTextField.text,
             username: profileView.usernameTextField.text,
             password: profileView.passwordTextField.text,
-            repeatPassword: profileView.repeatPasswordTextField.text,
+            repeatPassword: profileView.repeatPasswordTextField.text ?? "",
             email: profileView.emailTextField.text,
             creditCard: profileView.cardNumberTextField.text,
             gender: gender,
             bio: profileView.bioTextField.text)
-    }
-
-    private func shouldShowRepeatPassword(_ isHidden: Bool) {
-        let firstKeyStartTime = isHidden ? 0.5 : 0
-        let firstKeyAlpha = isHidden ? 0 : 0.5
-        let secondKeyStartTime = isHidden ? 0 : 0.5
-        let secondKeyAlpha = isHidden ? 0.5 : 1
-        
-        UIView.animateKeyframes(withDuration: AnimationConstants.animationDuration, delay: 0) {
-            UIView.addKeyframe(withRelativeStartTime: firstKeyStartTime, relativeDuration: 0.5) { [weak self] in
-                self?.profileView?.repeatPasswordTextField.alpha = firstKeyAlpha
-                self?.profileView?.repeatPasswordConstraints.forEach({ $0.isActive = !isHidden })
-                self?.profileView?.layoutIfNeeded()
-            }
-
-            UIView.addKeyframe(withRelativeStartTime: secondKeyStartTime, relativeDuration: 0.5) { [weak self] in
-                self?.profileView?.repeatPasswordTextField.alpha = secondKeyAlpha
-            }
-        }
     }
 
     @objc private func signUpButtonTapped() {
@@ -129,19 +108,6 @@ final class SignUpViewController: UIViewController {
 
     @objc private func keyboardShouldBeHidden() {
         profileView?.scrollView.endEditing(true)
-    }
-
-    @objc private func passwordTextFieldEditingChanged(_ sender: UITextField) {
-        guard
-            let isEmpty = sender.text?.isEmpty,
-            let repeatButton = profileView?.repeatPasswordTextField
-        else {
-            return
-        }
-
-        if (!isEmpty && repeatButton.alpha.isZero) || (isEmpty && repeatButton.alpha == 1.0) {
-            shouldShowRepeatPassword(isEmpty)
-        }
     }
 
     private func setupUITests() {
@@ -157,9 +123,6 @@ final class SignUpViewController: UIViewController {
         profileView?.bioTextField.accessibilityIdentifier = "bioTextField"
         profileView?.actionButton.accessibilityIdentifier = "signUpButtonSignUpView"
         profileView?.warningLabel.accessibilityIdentifier = "warningLabel"
-
-        profileView?.passwordTextField.isSecureTextEntry = false
-        profileView?.repeatPasswordTextField.isSecureTextEntry = false
     }
 }
 

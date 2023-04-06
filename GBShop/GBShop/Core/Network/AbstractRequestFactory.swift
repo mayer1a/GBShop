@@ -36,13 +36,15 @@ extension AbstractRequestFactory {
     // MARK: - Properties
 
     var baseUrl: URL {
-        return URL(string: "https://gbshop-efcs.onrender.com/")!
+//        URL(string: "https://gbshop-efcs.onrender.com/")!
+        URL(string: "http://127.0.0.1:8080/")!
     }
 
     // MARK: - Functions
 
     /// Default implementation of the request creation generic method
-    @discardableResult public func request<T: Decodable>(
+    @discardableResult
+    public func request<T: Decodable>(
         request: URLRequestConvertible,
         completionHandler: @escaping (AFDataResponse<T>) -> Void
     ) -> DataRequest {

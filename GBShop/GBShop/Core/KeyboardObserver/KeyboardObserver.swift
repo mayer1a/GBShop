@@ -60,6 +60,19 @@ final class KeyboardObserver {
         NotificationCenter.default.removeObserver(self)
     }
 
+    private func getFrameToScroll() -> CGRect {
+        var frame: CGRect?
+        let subviews = targetView?.subviews.first?.subviews
+
+        if let viewTag {
+            frame = (targetView?.viewWithTag(viewTag) as? UIButton)?.frame
+        } else {
+            frame = subviews?.first(where: { ($0 as? UITextField)?.isFirstResponder == true })?.frame
+        }
+
+        return frame ?? .zero
+    }
+
     @objc private func keyboardWillShow(notification: NSNotification) {
         let info = notification.userInfo as? NSDictionary
         let keyboardSize = info?.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as? NSValue
@@ -88,19 +101,6 @@ final class KeyboardObserver {
             height: signUpFrame.height + additionalInset)
 
         targetView?.scrollRectToVisible(rectangleWithIndent, animated: true)
-    }
-
-    private func getFrameToScroll() -> CGRect {
-        var frame: CGRect?
-        let subviews = targetView?.subviews.first?.subviews
-
-        if let viewTag {
-            frame = (targetView?.viewWithTag(viewTag) as? UIButton)?.frame
-        } else {
-            frame = subviews?.first(where: { ($0 as? UITextField)?.isFirstResponder == true })?.frame
-        }
-
-        return frame ?? .zero
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {

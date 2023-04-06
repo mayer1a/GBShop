@@ -14,11 +14,17 @@ final class TabBarCoordinator: TabBarBaseCoordinator {
     // MARK: - Properties
 
     var parentCoordinator: MainBaseCoordinator?
-    var assemblyBuilder: ModuleBuilderProtocol?
+    private(set) var assemblyBuilder: ModuleBuilderProtocol?
     lazy var rootViewController: UIViewController = UITabBarController()
-    lazy var catalogCoordinator: CatalogBaseCoordinator = CatalogCoordinator(self, assemblyBuilder: assemblyBuilder)
-    lazy var profileCoordinator: ProfileBaseCoordinator = ProfileCoordinator(self, with: user, assemblyBuilder: assemblyBuilder)
-    lazy var basketCoordinator: BasketBaseCoordinator = BasketCoordinator(self, assemblyBuilder: assemblyBuilder)
+    private(set) lazy var catalogCoordinator: CatalogBaseCoordinator = {
+        CatalogCoordinator(self, assemblyBuilder: assemblyBuilder)
+    }()
+    private(set) lazy var profileCoordinator: ProfileBaseCoordinator = {
+        ProfileCoordinator(self, with: user, assemblyBuilder: assemblyBuilder)
+    }()
+    private(set) lazy var basketCoordinator: BasketBaseCoordinator = {
+        BasketCoordinator(self, assemblyBuilder: assemblyBuilder)
+    }()
 
     // MARK: - Private properties
 

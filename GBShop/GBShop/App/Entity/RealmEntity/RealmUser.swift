@@ -19,18 +19,12 @@ final class RealmUser: Object {
 
     @Persisted(primaryKey: true)
     var id: Int
-    @Persisted
-    var username: String
-    @Persisted
-    var name: String
-    @Persisted
-    var email: String
-    @Persisted
-    var creditCard: String
-    @Persisted
-    var lastname: String
-    @Persisted
-    var gender: Gender
-    @Persisted
-    var bio: String
+    
+    @Persisted var username: String
+    @Persisted var name: String
+    @Persisted var email: String
+    @Persisted var creditCard: String
+    @Persisted var lastname: String
+    @Persisted var gender: Gender
+    @Persisted var bio: String
 }

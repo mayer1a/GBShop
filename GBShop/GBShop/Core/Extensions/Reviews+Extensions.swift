@@ -11,6 +11,7 @@ extension Reviews {
 
     // MARK: - Reviews
 
+    /// The structure of the request model for getting reviews for a specific product, used in the ``ReviewsRequestFactory``
     struct Reviews: RequestRouter {
 
         // MARK: - Properties
@@ -23,7 +24,7 @@ extension Reviews {
         let pageNumber: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "product_id": productId,
                 "page_number": pageNumber
             ]
@@ -32,6 +33,7 @@ extension Reviews {
 
     // MARK: - AddReview
 
+    /// The structure of the request model for adding a review for a specific product, used in the ``ReviewsRequestFactory``
     struct AddReview: RequestRouter {
 
         // MARK: - Properties
@@ -42,25 +44,34 @@ extension Reviews {
 
         let userId: Int?
         let productId: Int
-        let description: String
+        let body: String
+        let rating: Int
+        let date: TimeInterval
 
         var parameters: Parameters? {
-            guard let userId = userId else {
-                return [
-                    "product_id": productId,
-                    "description": description]
-            }
-
-            return [
-                "user_id": userId,
+            var parameters: Parameters = [
                 "product_id": productId,
-                "description": description
+                "body": body,
+                "rating": rating,
+                "date": date
             ]
+
+            parameters.merge(optionalParameters, uniquingKeysWith: { (_, value) in value })
+            return parameters
+        }
+
+        // MARK: - Private properties
+
+        private var optionalParameters: Parameters {
+            guard let userId else { return [:] }
+
+            return ["user_id": userId]
         }
     }
 
     // MARK: - ApproveReview
 
+    /// The structure of the request model for approving a review for a specific review ID, used in the ``ReviewsRequestFactory``
     struct ApproveReview: RequestRouter {
 
         // MARK: - Properties
@@ -73,7 +84,7 @@ extension Reviews {
         let reviewId: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "user_id": userId,
                 "review_id": reviewId
             ]
@@ -82,6 +93,7 @@ extension Reviews {
 
     // MARK: - RemoveReview
 
+    /// The structure of the request model for removing a review for a specific review ID, used in the ``ReviewsRequestFactory``
     struct RemoveReview: RequestRouter {
 
         // MARK: - Properties
@@ -94,7 +106,7 @@ extension Reviews {
         let reviewId: Int
 
         var parameters: Parameters? {
-            return [
+            [
                 "user_id": userId,
                 "review_id": reviewId
             ]

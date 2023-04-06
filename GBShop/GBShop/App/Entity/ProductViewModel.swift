@@ -7,7 +7,11 @@
 
 import Foundation
 
+/// The model for representation ``DetailedProduct`` model to product cell view model for ``ProductViewController``
 struct ProductViewModel {
+
+    // MARK: - Properties
+    
     let category: String
     let name: String
     let price: String

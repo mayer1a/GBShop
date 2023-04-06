@@ -48,9 +48,7 @@ extension Logout {
         let userId: Int
 
         var parameters: Parameters? {
-            return [
-                "user_id": userId
-            ]
+            ["user_id": userId]
         }
     }
 }

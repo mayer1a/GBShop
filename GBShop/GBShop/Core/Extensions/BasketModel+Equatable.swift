@@ -11,7 +11,7 @@ extension BasketModel: Equatable {
 
     // MARK: - Functions
 
-    static func ==(_ lhs: BasketModel, _ rhs: BasketModel) -> Bool {
+    static func == (lhs: BasketModel, rhs: BasketModel) -> Bool {
         lhs.cellModels == rhs.cellModels
     }
 }

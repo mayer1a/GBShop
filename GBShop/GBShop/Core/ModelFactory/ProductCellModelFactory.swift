@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Factory creating product cell view model ``ProductCellModel`` from ``Product`` model
+/// for catalog screen ``CatalogViewController``
 struct ProductCellModelFactory {
 
     // MARK: - Functions

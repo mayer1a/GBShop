@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - BasketElement
-
 /// The data model of the `BasketElement` for sending a request to the server.
 struct BasketElement: Codable {
 

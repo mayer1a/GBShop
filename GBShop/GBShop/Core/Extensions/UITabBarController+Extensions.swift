@@ -11,6 +11,7 @@ extension UITabBarController {
 
     // MARK: - Functions
 
+    /// Basic ``UITabBarController`` configuration method. Sets a white background, compact inline appearance for all states and removes translucent
     func configure() {
         let appearance = UITabBarAppearance(idiom: .phone)
         appearance.backgroundColor = .white

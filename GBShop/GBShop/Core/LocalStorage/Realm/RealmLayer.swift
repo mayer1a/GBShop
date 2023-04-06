@@ -10,12 +10,29 @@ import RealmSwift
 
 /// Contract obliging to implement standard **CRUD** methods for `Realm` database management
 protocol UserCredentialRealmStorage {
+
+    /// Creates a user record in local storage for object of type `T` where T: `Objects`.
+    /// - Note: If the record was created successfully returns `true`
     @discardableResult func create<T: Object>(_ object: T) -> Bool
+
+    /// Get product from local storage.
+    /// - Returns:
+    ///    A result of generic ``Results<T>`` type where T : ``RealmSwiftObject``
     func read<T: Object>(of type: T.Type) -> Results<T>
+
+    /// Get products from local storage by number of elements.
+    /// - Returns:
+    ///    An array of generic ``T`` type where T : ``Object``
     func read<T: Object>(of type: T.Type, _ elementsCount: Int) -> [T]
+
+    /// Updates a product entry in local storage for object of type `T` where T: `Objects`.
     func update<T: Object>(_ object: T)
+
+    /// Deletes a product entry in local storage for object of type `T` where T: `Objects`.
     func delete<T: Object>(_ object: T)
-    func delete<T: Object>(_ objects: Results<T>)
+
+    /// Deletes products entry in local storage for object of type `T` where T: `Sequence` and T.Element: `Object`.
+    func delete<T: Sequence>(_ objects: T) where T.Element: Object
 }
 
 /// `RealmLayer` is a layer with generic methods that is responsible for working with the  **Realm**, regardless of the data model being sent/requested
@@ -33,8 +50,7 @@ final class RealmLayer: UserCredentialRealmStorage {
 
     // MARK: - Functions
 
-    @discardableResult
-    func create<T: Object>(_ object: T) -> Bool {
+    @discardableResult func create<T: Object>(_ object: T) -> Bool {
         let existsObjects = realm.objects(T.self)
 
         if !existsObjects.isEmpty {
@@ -91,7 +107,6 @@ final class RealmLayer: UserCredentialRealmStorage {
         }
     }
 
-    /// Removes an object from a **Realm**
     func delete<T: Object>(_ object: T) {
         do {
             try realm.write {
@@ -102,7 +117,6 @@ final class RealmLayer: UserCredentialRealmStorage {
         }
     }
 
-    /// Removes a collection/sequence of objects from a **Realm**
     func delete<T: Sequence>(_ objects: T) where T.Element: Object {
         do {
             try realm.write {
@@ -114,7 +128,11 @@ final class RealmLayer: UserCredentialRealmStorage {
     }
 }
 
+// MARK: - Extesnions
+
 extension Results {
+
+    // MARK: - Functions
 
     func toArray() -> [Self.Element] {
         self.map { $0 }
