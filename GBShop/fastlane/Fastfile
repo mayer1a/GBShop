@@ -52,5 +52,18 @@ platform :ios do
       path: "./GBShop/Environments/Info.plist",
       key: "CFBundleShortVersionString",
       value: get_build_number(xcodeproj: "GBShop.xcodeproj"))
+
+    # git_add
+    git_add(path: [
+      "./GBShop.xcodeproj/project.pbxproj",
+      "./GBShop/Environments/Info.plist"
+    ])
+    git_commit(
+      path: [
+        "./GBShop.xcodeproj/project.pbxproj",
+        "./GBShop/Environment/Info.plist"],
+      message: "build project, all test success executed, up build version"
+    )
+
   end
 end
