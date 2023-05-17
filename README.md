@@ -1,4 +1,4 @@
-# Meowls
+# MEOWLS
 
 ![cover](https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/cover.png)
 
@@ -79,9 +79,11 @@
 - [ ] Покрыть Unit-тестами весь функционал приложения
 
 ## Концепт
-
-![concept](https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/concept.png)
-
+<details>
+  <summary>Концепт</summary>
+  <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/concept.png')>
+</details>
+ 
 Все экраны отличаются своей простотой и дружелюбностью.
 * Каталог товаров - начальный экран при запуска и после успешной авторизации/регистрации
 * Корзина - в ней все товары, которые ты бы хотел купить в дальнейшем
@@ -101,7 +103,7 @@
 
 <details>
   <summary>GIFs</summary>
-    <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/headerCatalogAnim.gif' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/headerProductAnim.gif' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/productPhotosAnim.gif' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/removeProductAnim' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/logoutAnim.gif' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/loginErrorAnim.gif' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/loginAnim.gif' width='500'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/showRepeatPassAnim.gif' width='500'>
+    <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/headerCatalogAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/headerProductAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/productPhotosAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/removeProductAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/logoutAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/loginErrorAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/loginAnim.gif' width='300'> <img src='https://github.com/mayer1a/GBShop/blob/main/DescriptionImages/showRepeatPassAnim.gif' width='300'>
 </details>
 
 ## Поддержка и вклад
