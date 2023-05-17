@@ -77,12 +77,11 @@ Dependencies/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/screenshots/screenshots.html
-fastlane/test_output
-fastlane/FastlaneRunner
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/test_output
+**/fastlane/FastlaneRunner
+screenshots
 
 # Code Injection
 #
@@ -103,3 +102,5 @@ Icon
 # Thumbnails
 ._*
 
+# GoogleInfoPlist
+GBShop/Environments/GoogleService-Info.plist

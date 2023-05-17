@@ -6,36 +6,262 @@
 //
 
 import XCTest
+import UIKit
+@testable import GBShop
 
 final class GBShopUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // MARK: - Properties
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
+    var app: XCUIApplication!
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
+    // MARK: - Lifecycle
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+        app = nil
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launchArguments = ["enable-testing"]
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        try checkUserAuthState()
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
+    // MARK: - Functions
+
+    func test1SignInFailure() throws {
+        let startAppElement = app.otherElements["signInView"].firstMatch
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
+
+        let emailTextField = startAppElement.textFields["emailTextField"].firstMatch
+        XCTAssert(emailTextField.exists)
+
+        let passwordTextField = startAppElement.secureTextFields["passwordTextField"].firstMatch
+        XCTAssert(passwordTextField.exists)
+
+        let signInButton = startAppElement.buttons["signInButton"].firstMatch
+        XCTAssert(signInButton.exists)
+
+        let signUpButton = startAppElement.buttons["signUpButton"].firstMatch
+        XCTAssert(signUpButton.exists)
+
+        emailTextField.tap()
+        emailTextField.typeText("foobar@foob.bar")
+        passwordTextField.tap()
+        passwordTextField.typeText("Password0000")
+        signInButton.tap()
+
+        let warningLabel = app.staticTexts["warningLabel"].firstMatch
+        XCTAssert(warningLabel.waitForExistence(timeout: 5))
+    }
+
+    func test2SignUpFailure() throws {
+        let startAppElement = app.otherElements["signInView"].firstMatch
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
+
+        let signUpButton = startAppElement.buttons["signUpButton"].firstMatch
+        XCTAssert(signUpButton.exists)
+
+        signUpButton.tap()
+
+        let signUpView = app.otherElements["signUpView"].firstMatch
+        XCTAssert(signUpView.waitForExistence(timeout: 5))
+
+        let nameTextField = signUpView.textFields["nameTextField"].firstMatch
+        XCTAssert(nameTextField.exists)
+
+        let lastnameTextField = signUpView.textFields["lastnameTextField"].firstMatch
+        XCTAssert(lastnameTextField.exists)
+
+        let usernameTextField = signUpView.textFields["usernameTextField"].firstMatch
+        XCTAssert(usernameTextField.exists)
+
+        let emailTextField = signUpView.textFields["emailTextField"].firstMatch
+        XCTAssert(emailTextField.exists)
+
+        let passwordTextField = signUpView.secureTextFields["passwordTextField"].firstMatch
+        XCTAssert(passwordTextField.exists)
+
+        let repeatPasswordTextField = signUpView.secureTextFields["repeatPasswordTextField"].firstMatch
+        XCTAssert(repeatPasswordTextField.exists)
+
+        let genderControl = signUpView.segmentedControls["genderControl"].firstMatch
+        XCTAssert(genderControl.exists)
+
+        let cardNumberTextField = signUpView.textFields["cardNumberTextField"].firstMatch
+        XCTAssert(cardNumberTextField.exists)
+
+        let bioTextField = signUpView.textFields["bioTextField"].firstMatch
+        XCTAssert(bioTextField.exists)
+
+        let signUpButtonSignUpView = signUpView.buttons["signUpButtonSignUpView"].firstMatch
+        XCTAssert(signUpButtonSignUpView.exists)
+
+        nameTextField.tap()
+        nameTextField.typeText("Foo")
+
+        lastnameTextField.tap()
+        lastnameTextField.typeText("Bar")
+
+        usernameTextField.tap()
+        usernameTextField.typeText("bazbarbaz")
+
+        emailTextField.tap()
+        emailTextField.typeText("bazbarbaz@foob.bar")
+
+        passwordTextField.tap()
+        passwordTextField.typeText("Password0000")
+
+        repeatPasswordTextField.tap()
+        repeatPasswordTextField.typeText("")
+
+        let indeterminateButton = genderControl.buttons["Другой"].firstMatch
+        XCTAssert(signUpButtonSignUpView.exists)
+        indeterminateButton.tap()
+
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("0000000000000000")
+
+        bioTextField.tap()
+        bioTextField.typeText("Foo bar baz 1!")
+
+        signUpButtonSignUpView.tap()
+
+        signUpView.swipeDown()
+
+        let warningLabel = app.staticTexts["warningLabel"].firstMatch
+        XCTAssert(warningLabel.waitForExistence(timeout: 10))
+    }
+
+    func test3SignUpSuccess() throws {
+        let startAppElement = app.otherElements["signInView"].firstMatch
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
+
+        let signUpButton = startAppElement.buttons["signUpButton"].firstMatch
+        XCTAssert(signUpButton.exists)
+
+        signUpButton.tap()
+
+        let signUpView = app.otherElements["signUpView"].firstMatch
+        XCTAssert(signUpView.waitForExistence(timeout: 5))
+
+        let nameTextField = signUpView.textFields["nameTextField"].firstMatch
+        XCTAssert(nameTextField.exists)
+
+        let lastnameTextField = signUpView.textFields["lastnameTextField"].firstMatch
+        XCTAssert(lastnameTextField.exists)
+
+        let usernameTextField = signUpView.textFields["usernameTextField"].firstMatch
+        XCTAssert(usernameTextField.exists)
+
+        let emailTextField = signUpView.textFields["emailTextField"].firstMatch
+        XCTAssert(emailTextField.exists)
+
+        let passwordTextField = signUpView.secureTextFields["passwordTextField"].firstMatch
+        XCTAssert(passwordTextField.exists)
+
+        let repeatPasswordTextField = signUpView.secureTextFields["repeatPasswordTextField"].firstMatch
+        XCTAssert(repeatPasswordTextField.exists)
+
+        let genderControl = signUpView.segmentedControls["genderControl"].firstMatch
+        XCTAssert(genderControl.exists)
+
+        let cardNumberTextField = signUpView.textFields["cardNumberTextField"].firstMatch
+        XCTAssert(cardNumberTextField.exists)
+
+        let bioTextField = signUpView.textFields["bioTextField"].firstMatch
+        XCTAssert(bioTextField.exists)
+
+        let signUpButtonSignUpView = signUpView.buttons["signUpButtonSignUpView"].firstMatch
+        XCTAssert(signUpButtonSignUpView.exists)
+
+        nameTextField.tap()
+        nameTextField.typeText("Foo")
+
+        lastnameTextField.tap()
+        lastnameTextField.typeText("Bar")
+
+        usernameTextField.tap()
+        usernameTextField.typeText("bazbarbaz")
+
+        emailTextField.tap()
+        emailTextField.typeText("bazbarbaz@foob.bar")
+
+        passwordTextField.tap()
+        passwordTextField.typeText("Password0000")
+
+        repeatPasswordTextField.tap()
+        repeatPasswordTextField.typeText("Password0000")
+
+        let indeterminateButton = genderControl.buttons["Другой"].firstMatch
+        XCTAssert(signUpButtonSignUpView.exists)
+        indeterminateButton.tap()
+
+        cardNumberTextField.tap()
+        cardNumberTextField.typeText("0000000000000000")
+
+        bioTextField.tap()
+        bioTextField.typeText("Foo bar baz 2!")
+
+        signUpView.tap()
+        signUpButtonSignUpView.tap()
+
+        let catalogButton = app.tabBars.firstMatch.buttons["каталог"]
+        XCTAssert(catalogButton.waitForExistence(timeout: 10))
+    }
+
+    func test4SignInSuccess() throws {
+        let startAppElement = app.otherElements["signInView"].firstMatch
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
+
+        let emailTextField = startAppElement.textFields["emailTextField"].firstMatch
+        XCTAssert(emailTextField.exists)
+
+        let passwordTextField = startAppElement.secureTextFields["passwordTextField"].firstMatch
+        XCTAssert(passwordTextField.exists)
+
+        let signInButton = startAppElement.buttons["signInButton"].firstMatch
+        XCTAssert(signInButton.exists)
+
+        emailTextField.tap()
+        emailTextField.typeText("adminadmin@adm.in")
+        passwordTextField.tap()
+        passwordTextField.typeText("Password0000")
+        signInButton.tap()
+        
+        let catalogButton = app.tabBars.firstMatch.buttons["каталог"]
+        XCTAssert(catalogButton.waitForExistence(timeout: 10))
+    }
+
+    // MARK: - Private functions
+
+    private func checkUserAuthState() throws {
+        let startAppElement = app.otherElements["signInView"].firstMatch
+
+        if !startAppElement.waitForExistence(timeout: 2) {
+            try logout()
         }
+    }
+
+    private func logout() throws {
+        let startAppElement = app.tabBars.firstMatch
+        XCTAssert(startAppElement.exists)
+
+        let profileTabButton = startAppElement.buttons["профиль"]
+        XCTAssert(startAppElement.waitForExistence(timeout: 5))
+        profileTabButton.tap()
+
+        let profileScreen = app.otherElements["profileView"].firstMatch
+        XCTAssert(profileScreen.waitForExistence(timeout: 5))
+
+        let logoutButton = app.buttons["logoutButton"].firstMatch
+        XCTAssert(logoutButton.waitForExistence(timeout: 5))
+        logoutButton.tap()
+
+        print(profileScreen.debugDescription)
     }
 }
