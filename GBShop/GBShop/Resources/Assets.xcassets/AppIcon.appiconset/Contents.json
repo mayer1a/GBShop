@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "ContentFrame_1024NR_color@1x.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
